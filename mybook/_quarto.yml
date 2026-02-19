@@ -29,5 +29,3 @@ format:
     theme: cosmo
     toc: true
     number-sections: true
-  pdf:
-    documentclass: scrreprt
