@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">참고 문헌</span></a>
   </div>
 </li>
     </ul>
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-is-transfer-learning" id="toc-what-is-transfer-learning" class="nav-link active" data-scroll-target="#what-is-transfer-learning"><span class="header-section-number">8.1</span> What is transfer learning?</a></li>
   <li><a href="#why-use-transfer-learning" id="toc-why-use-transfer-learning" class="nav-link" data-scroll-target="#why-use-transfer-learning"><span class="header-section-number">8.2</span> Why use transfer learning?</a></li>
   <li><a href="#where-to-find-pretrained-models" id="toc-where-to-find-pretrained-models" class="nav-link" data-scroll-target="#where-to-find-pretrained-models"><span class="header-section-number">8.3</span> Where to find pretrained models</a></li>
-  <li><a href="#what-were-going-to-cover" id="toc-what-were-going-to-cover" class="nav-link" data-scroll-target="#what-were-going-to-cover"><span class="header-section-number">8.4</span> What we’re going to cover</a></li>
+  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용"><span class="header-section-number">8.4</span> 이번 장에서 다룰 내용</a></li>
   <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help"><span class="header-section-number">8.5</span> Where can you get help?</a></li>
   <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup"><span class="header-section-number">8.6</span> 0. Getting setup</a></li>
   <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">8.7</span> 1. Get data</a></li>
@@ -255,8 +255,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#making-predictions-on-a-custom-image" id="toc-making-predictions-on-a-custom-image" class="nav-link" data-scroll-target="#making-predictions-on-a-custom-image"><span class="header-section-number">8.12.1</span> 6.1 Making predictions on a custom image</a></li>
   </ul></li>
   <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways"><span class="header-section-number">8.13</span> Main takeaways</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.14</span> Exercises</a></li>
-  <li><a href="#extra-curriculum" id="toc-extra-curriculum" class="nav-link" data-scroll-target="#extra-curriculum"><span class="header-section-number">8.15</span> Extra-curriculum</a></li>
+  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제"><span class="header-section-number">8.14</span> 연습 문제</a></li>
+  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료"><span class="header-section-number">8.15</span> 추가 학습 자료</a></li>
   </ul>
 </nav>
     </div>
@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><a href="https://colab.research.google.com/github/mrdbourke/pytorch-deep-learning/blob/main/06_pytorch_transfer_learning.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> This notebook uses <code>torchvision</code>’s upcoming <a href="https://pytorch.org/blog/introducing-torchvision-new-multi-weight-support-api/">multi-weight support API (coming in <code>torchvision</code> v0.13)</a>.</p>
+<p><strong>참고:</strong> This notebook uses <code>torchvision</code>’s upcoming <a href="https://pytorch.org/blog/introducing-torchvision-new-multi-weight-support-api/">multi-weight support API (coming in <code>torchvision</code> v0.13)</a>.</p>
 <p>As of June 2022, it requires the <a href="https://pytorch.org/get-started/locally/">nightly versions of PyTorch and <code>torchvision</code> be installed</a>.</p>
 </blockquote>
 <p>We’ve built a few models by hand so far.</p>
@@ -362,8 +362,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Exercise:</strong> Spend 5-minutes going through <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a> as well as the <a href="https://huggingface.co/models">HuggingFace Hub Models page</a>, what do you find? (there’s no right answers here, it’s just to practice exploring)</p>
 </blockquote>
 </section>
-<section id="what-were-going-to-cover" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="what-were-going-to-cover"><span class="header-section-number">8.4</span> What we’re going to cover</h2>
+<section id="이번-장에서-다룰-내용" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="이번-장에서-다룰-내용"><span class="header-section-number">8.4</span> 이번 장에서 다룰 내용</h2>
 <p>We’re going to take a pretrained model from <code>torchvision.models</code> and customise it to work on (and hopefully improve) our FoodVision Mini problem.</p>
 <table class="caption-top table">
 <colgroup>
@@ -422,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We’ll also get the <a href="https://github.com/TylerYep/torchinfo"><code>torchinfo</code></a> package if it’s not available.</p>
 <p><code>torchinfo</code> will help later on to give us a visual representation of our model.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> As of June 2022, this notebook uses the nightly versions of <code>torch</code> and <code>torchvision</code> as <code>torchvision</code> v0.13+ is required for using the updated multi-weights API. You can install these using the command below.</p>
+<p><strong>참고:</strong> As of June 2022, this notebook uses the nightly versions of <code>torch</code> and <code>torchvision</code> as <code>torchvision</code> v0.13+ is required for using the updated multi-weights API. You can install these using the command below.</p>
 </blockquote>
 <div id="8ed820be" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For this notebook to run with updated APIs, we need torch 1.12+ and torchvision 0.13+</span></span>
@@ -475,7 +475,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 <p>Now let’s setup device agnostic code.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> If you’re using Google Colab, and you don’t have a GPU turned on yet, it’s now time to turn one on via <code>Runtime -&gt; Change runtime type -&gt; Hardware accelerator -&gt; GPU</code>.</p>
+<p><strong>참고:</strong> If you’re using Google Colab, and you don’t have a GPU turned on yet, it’s now time to turn one on via <code>Runtime -&gt; Change runtime type -&gt; Hardware accelerator -&gt; GPU</code>.</p>
 </blockquote>
 <div id="b93a75c4-6e40-4575-8d60-d1d43be9220f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup device agnostic code</span></span>
@@ -544,7 +544,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <section id="creating-a-transform-for-torchvision.models-manual-creation" class="level3" data-number="8.8.1">
 <h3 data-number="8.8.1" class="anchored" data-anchor-id="creating-a-transform-for-torchvision.models-manual-creation"><span class="header-section-number">8.8.1</span> 2.1 Creating a transform for <code>torchvision.models</code> (manual creation)</h3>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> As of <code>torchvision</code> v0.13+, there’s an update to how data transforms can be created using <code>torchvision.models</code>. I’ve called the previous method “manual creation” and the new method “auto creation”. This notebook showcases both.</p>
+<p><strong>참고:</strong> As of <code>torchvision</code> v0.13+, there’s an update to how data transforms can be created using <code>torchvision.models</code>. I’ve called the previous method “manual creation” and the new method “auto creation”. This notebook showcases both.</p>
 </blockquote>
 <p>When using a pretrained model, it’s important that <strong>your custom data going into the model is prepared in the same way as the original training data that went into the model</strong>.</p>
 <p>Prior to <code>torchvision</code> v0.13+, to create a transform for a pretrained model in <code>torchvision.models</code>, the documentation stated:</p>
@@ -593,7 +593,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </tbody>
 </table>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> ^some pretrained models from <code>torchvision.models</code> in different sizes to <code>[3, 224, 224]</code>, for example, some might take them in <code>[3, 240, 240]</code>. For specific input image sizes, see the documentation.</p>
+<p><strong>참고:</strong> ^some pretrained models from <code>torchvision.models</code> in different sizes to <code>[3, 224, 224]</code>, for example, some might take them in <code>[3, 240, 240]</code>. For specific input image sizes, see the documentation.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Question:</strong> <em>Where did the mean and standard deviation values come from? Why do we need to do this?</em></p>
@@ -616,7 +616,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <p>We’ll set <code>batch_size=32</code> so our model see’s mini-batches of 32 samples at a time.</p>
 <p>And we can transform our images using the transform pipeline we created above by setting <code>transform=simple_transform</code>.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> I’ve included this manual creation of transforms in this notebook because you may come across resources that use this style. It’s also important to note that because these transforms are manually created, they’re also infinitely customizable. So if you wanted to included data augmentation techniques in your transforms pipeline, you could.</p>
+<p><strong>참고:</strong> I’ve included this manual creation of transforms in this notebook because you may come across resources that use this style. It’s also important to note that because these transforms are manually created, they’re also infinitely customizable. So if you wanted to included data augmentation techniques in your transforms pipeline, you could.</p>
 </blockquote>
 <div id="f7d97a6f-50f8-4212-a777-3d2cfac2a4fe" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create training and testing DataLoaders as well as get a list of class names</span></span>
@@ -640,7 +640,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <p>But as of <code>torchvision</code> v0.13+, an automatic transform creation feature has been added.</p>
 <p>When you setup a model from <code>torchvision.models</code> and select the pretrained model weights you’d like to use, for example, say we’d like to use:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> torchvision.models.EfficientNet_B0_Weights.DEFAULT</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Where, * <code>EfficientNet_B0_Weights</code> is the model architecture weights we’d like to use (there are many different model architecture options in <code>torchvision.models</code>). * <code>DEFAULT</code> means the <em>best available</em> weights (the best performance in ImageNet). * <strong>Note:</strong> Depending on the model architecture you choose, you may also see other options such as <code>IMAGENET_V1</code> and <code>IMAGENET_V2</code> where generally the higher version number the better. Though if you want the best available, <code>DEFAULT</code> is the easiest option. See the <a href="https://pytorch.org/vision/main/models.html"><code>torchvision.models</code> documentation</a> for more.</p>
+<p>Where, * <code>EfficientNet_B0_Weights</code> is the model architecture weights we’d like to use (there are many different model architecture options in <code>torchvision.models</code>). * <code>DEFAULT</code> means the <em>best available</em> weights (the best performance in ImageNet). * <strong>참고:</strong> Depending on the model architecture you choose, you may also see other options such as <code>IMAGENET_V1</code> and <code>IMAGENET_V2</code> where generally the higher version number the better. Though if you want the best available, <code>DEFAULT</code> is the easiest option. See the <a href="https://pytorch.org/vision/main/models.html"><code>torchvision.models</code> documentation</a> for more.</p>
 <p>Let’s try it out.</p>
 <div id="d3f4bd4c-7b7a-41fb-8d1c-ae96ee88f024" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a set of pretrained model weights</span></span>
@@ -742,7 +742,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <p>As of May 2022, <a href="https://nutrify.app">Nutrify</a> (the machine learning powered app I’m working on) is powered by an <code>efficientnet_b0</code>.</p>
 <p><a href="https://comma.ai/">Comma.ai</a> (a company that makes open source self-driving car software) <a href="https://geohot.github.io/blog/jekyll/update/2021/10/29/an-architecture-for-life.html">uses an <code>efficientnet_b2</code></a> to learn a representation of the road.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Even though we’re using <code>efficientnet_bX</code>, it’s important not to get too attached to any one architecture, as they are always changing as new research gets released. Best to experiment, experiment, experiment and see what works for your problem.</p>
+<p><strong>참고:</strong> Even though we’re using <code>efficientnet_bX</code>, it’s important not to get too attached to any one architecture, as they are always changing as new research gets released. Best to experiment, experiment, experiment and see what works for your problem.</p>
 </blockquote>
 </section>
 <section id="setting-up-a-pretrained-model" class="level3" data-number="8.9.2">
@@ -767,7 +767,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#model # uncomment to output (it's very long)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> In previous versions of <code>torchvision</code>, you’d create a prertained model with code like:</p>
+<p><strong>참고:</strong> In previous versions of <code>torchvision</code>, you’d create a prertained model with code like:</p>
 <p><code>model = torchvision.models.efficientnet_b0(pretrained=True).to(device)</code></p>
 <p>However, running this using <code>torchvision</code> v0.13+ will result in errors such as the following:</p>
 <p><code>UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.</code></p>
@@ -783,7 +783,7 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <section id="getting-a-summary-of-our-model-with-torchinfo.summary" class="level3" data-number="8.9.3">
 <h3 data-number="8.9.3" class="anchored" data-anchor-id="getting-a-summary-of-our-model-with-torchinfo.summary"><span class="header-section-number">8.9.3</span> 3.3 Getting a summary of our model with <code>torchinfo.summary()</code></h3>
 <p>To learn more about our model, let’s use <code>torchinfo</code>’s <a href="https://github.com/TylerYep/torchinfo#documentation"><code>summary()</code> method</a>.</p>
-<p>To do so, we’ll pass in: * <code>model</code> - the model we’d like to get a summary of. * <code>input_size</code> - the shape of the data we’d like to pass to our model, for the case of <code>efficientnet_b0</code>, the input size is <code>(batch_size, 3, 224, 224)</code>, though <a href="https://github.com/pytorch/vision/blob/d2bfd639e46e1c5dc3c177f889dc7750c8d137c7/references/classification/train.py#L92-L93">other variants of <code>efficientnet_bX</code> have different input sizes</a>. * <strong>Note:</strong> Many modern models can handle input images of varying sizes thanks to <a href="https://pytorch.org/docs/stable/generated/torch.nn.AdaptiveAvgPool2d.html"><code>torch.nn.AdaptiveAvgPool2d()</code></a>, this layer adaptively adjusts the <code>output_size</code> of a given input as required. You can try this out by passing different size input images to <code>summary()</code> or your models. * <code>col_names</code> - the various information columns we’d like to see about our model. * <code>col_width</code> - how wide the columns should be for the summary. * <code>row_settings</code> - what features to show in a row.</p>
+<p>To do so, we’ll pass in: * <code>model</code> - the model we’d like to get a summary of. * <code>input_size</code> - the shape of the data we’d like to pass to our model, for the case of <code>efficientnet_b0</code>, the input size is <code>(batch_size, 3, 224, 224)</code>, though <a href="https://github.com/pytorch/vision/blob/d2bfd639e46e1c5dc3c177f889dc7750c8d137c7/references/classification/train.py#L92-L93">other variants of <code>efficientnet_bX</code> have different input sizes</a>. * <strong>참고:</strong> Many modern models can handle input images of varying sizes thanks to <a href="https://pytorch.org/docs/stable/generated/torch.nn.AdaptiveAvgPool2d.html"><code>torch.nn.AdaptiveAvgPool2d()</code></a>, this layer adaptively adjusts the <code>output_size</code> of a given input as required. You can try this out by passing different size input images to <code>summary()</code> or your models. * <code>col_names</code> - the various information columns we’d like to see about our model. * <code>col_width</code> - how wide the columns should be for the summary. * <code>row_settings</code> - what features to show in a row.</p>
 <div id="524020c6-09d3-4ecf-b791-dbd71ed389e3" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a summary using torchinfo (uncomment for actual output)</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>summary(model<span class="op">=</span>model, </span>
@@ -862,7 +862,7 @@ Estimated Total Size (MB): 3492.77
 <p><em>You can customise the outputs of a pretrained model by changing the output layer(s) to suit your problem. The original <code>torchvision.models.efficientnet_b0()</code> comes with <code>out_features=1000</code> because there are 1000 classes in ImageNet, the dataset it was trained on. However, for our problem, classifying images of pizza, steak and sushi we only need <code>out_features=3</code>.</em></p>
 <p>Let’s freeze all of the layers/parameters in the <code>features</code> section of our <code>efficientnet_b0</code> model.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> To <em>freeze</em> layers means to keep them how they are during training. For example, if your model has pretrained layers, to <em>freeze</em> them would be to say, “don’t change any of the patterns in these layers during training, keep them how they are.” In essence, we’d like to keep the pretrained weights/patterns our model has learned from ImageNet as a backbone and then only change the output layers.</p>
+<p><strong>참고:</strong> To <em>freeze</em> layers means to keep them how they are during training. For example, if your model has pretrained layers, to <em>freeze</em> them would be to say, “don’t change any of the patterns in these layers during training, keep them how they are.” In essence, we’d like to keep the pretrained weights/patterns our model has learned from ImageNet as a backbone and then only change the output layers.</p>
 </blockquote>
 <p>We can freeze all of the layers/parameters in the <code>features</code> section by setting the attribute <code>requires_grad=False</code>.</p>
 <p>For parameters with <code>requires_grad=False</code>, PyTorch doesn’t track gradient updates and in turn, these parameters won’t be changed by our optimizer during training.</p>
@@ -883,7 +883,7 @@ Estimated Total Size (MB): 3492.77
     (1): Linear(in_features=1280, out_features=1000, bias=True)</code></pre>
 <p>We’ll keep the <code>Dropout</code> layer the same using <a href="https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"><code>torch.nn.Dropout(p=0.2, inplace=True)</code></a>.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> <a href="https://developers.google.com/machine-learning/glossary#dropout_regularization">Dropout layers</a> randomly remove connections between two neural network layers with a probability of <code>p</code>. For example, if <code>p=0.2</code>, 20% of connections between neural network layers will be removed at random each pass. This practice is meant to help regularize (prevent overfitting) a model by making sure the connections that remain learn features to compensate for the removal of the other connections (hopefully these remaining features are <em>more general</em>).</p>
+<p><strong>참고:</strong> <a href="https://developers.google.com/machine-learning/glossary#dropout_regularization">Dropout layers</a> randomly remove connections between two neural network layers with a probability of <code>p</code>. For example, if <code>p=0.2</code>, 20% of connections between neural network layers will be removed at random each pass. This practice is meant to help regularize (prevent overfitting) a model by making sure the connections that remain learn features to compensate for the removal of the other connections (hopefully these remaining features are <em>more general</em>).</p>
 </blockquote>
 <p>And we’ll keep <code>in_features=1280</code> for our <code>Linear</code> output layer but we’ll change the <code>out_features</code> value to the length of our <code>class_names</code> (<code>len(['pizza', 'steak', 'sushi']) = 3</code>).</p>
 <p>Our new <code>classifier</code> layer should be on the same device as our <code>model</code>.</p>
@@ -971,7 +971,7 @@ Estimated Total Size (MB): 3487.41
 <p>Ho, ho! There’s a fair few changes here!</p>
 <p>Let’s go through them: * <strong>Trainable column</strong> - You’ll see that many of the base layers (the ones in the <code>features</code> portion) have their Trainable value as <code>False</code>. This is because we set their attribute <code>requires_grad=False</code>. Unless we change this, these layers won’t be updated during furture training. * <strong>Output shape of <code>classifier</code></strong> - The <code>classifier</code> portion of the model now has an Output Shape value of <code>[32, 3]</code> instead of <code>[32, 1000]</code>. It’s Trainable value is also <code>True</code>. This means its parameters will be updated during training. In essence, we’re using the <code>features</code> portion to feed our <code>classifier</code> portion a base representation of an image and then our <code>classifier</code> layer is going to learn how to base representation aligns with our problem. * <strong>Less trainable parameters</strong> - Previously there was 5,288,548 trainable parameters. But since we froze many of the layers of the model and only left the <code>classifier</code> as trainable, there’s now only 3,843 trainable parameters (even less than our TinyVGG model). Though there’s also 4,007,548 non-trainable parameters, these will create a base representation of our input images to feed into our <code>classifier</code> layer.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> The more trainable parameters a model has, the more compute power/longer it takes to train. Freezing the base layers of our model and leaving it with less trainable parameters means our model should train quite quickly. This is one huge benefit of transfer learning, taking the already learned parameters of a model trained on a problem similar to yours and only tweaking the outputs slightly to suit your problem.</p>
+<p><strong>참고:</strong> The more trainable parameters a model has, the more compute power/longer it takes to train. Freezing the base layers of our model and leaving it with less trainable parameters means our model should train quite quickly. This is one huge benefit of transfer learning, taking the already learned parameters of a model trained on a problem similar to yours and only tweaking the outputs slightly to suit your problem.</p>
 </blockquote>
 </section>
 </section>
@@ -991,7 +991,7 @@ Estimated Total Size (MB): 3487.41
 <p>The <code>train()</code> function is in the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/engine.py"><code>engine.py</code></a> script inside the <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/going_modular/going_modular"><code>going_modular</code> directory</a>.</p>
 <p>Let’s see how long it takes to train our model for 5 epochs.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> We’re only going to be training the parameters <code>classifier</code> here as all of the other parameters in our model have been frozen.</p>
+<p><strong>참고:</strong> We’re only going to be training the parameters <code>classifier</code> here as all of the other parameters in our model have been frozen.</p>
 </blockquote>
 <div id="0e698d13-dedf-48f7-bca3-b21cd969b2d2" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the random seeds</span></span>
@@ -1079,7 +1079,7 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <p>One thing we’ll have to remember is that for our model to make predictions on an image, the image has to be in <em>same</em> format as the images our model was trained on.</p>
 <p>This means we’ll need to make sure our images have: * <strong>Same shape</strong> - If our images are different shapes to what our model was trained on, we’ll get shape errors. * <strong>Same datatype</strong> - If our images are a different datatype (e.g.&nbsp;<code>torch.int8</code> vs.&nbsp;<code>torch.float32</code>) we’ll get datatype errors. * <strong>Same device</strong> - If our images are on a different device to our model, we’ll get device errors. * <strong>Same transformations</strong> - If our model is trained on images that have been transformed in certain way (e.g.&nbsp;normalized with a specific mean and standard deviation) and we try and make preidctions on images transformed in a different way, these predictions may be off.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> These requirements go for all kinds of data if you’re trying to make predictions with a trained model. Data you’d like to predict on should be in the same format as your model was trained on.</p>
+<p><strong>참고:</strong> These requirements go for all kinds of data if you’re trying to make predictions with a trained model. Data you’d like to predict on should be in the same format as your model was trained on.</p>
 </blockquote>
 <p>To do all of this, we’ll create a function <code>pred_and_plot_image()</code> to:</p>
 <ol type="1">
@@ -1095,7 +1095,7 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <li>Plot the image with <code>matplotlib</code> and set the title to the prediction label from step 9 and prediction probability from step 8.</li>
 </ol>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> This is a similar function to <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#113-putting-custom-image-prediction-together-building-a-function">04. PyTorch Custom Datasets section 11.3’s</a> <code>pred_and_plot_image()</code> with a few tweaked steps.</p>
+<p><strong>참고:</strong> This is a similar function to <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#113-putting-custom-image-prediction-together-building-a-function">04. PyTorch Custom Datasets section 11.3’s</a> <code>pred_and_plot_image()</code> with a few tweaked steps.</p>
 </blockquote>
 <div id="96fcc4a2-2e27-499b-aa28-05c37c529a5c" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List, Tuple</span>
@@ -1250,8 +1250,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <li>There are <a href="https://www.learnpytorch.io/06_pytorch_transfer_learning/#where-to-find-pretrained-models">several different places to find pretrained models</a> from the PyTorch domain libraries, HuggingFace Hub and libraries such as <code>timm</code> (PyTorch Image Models).</li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="8.14">
-<h2 data-number="8.14" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.14</span> Exercises</h2>
+<section id="연습-문제" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="연습-문제"><span class="header-section-number">8.14</span> 연습 문제</h2>
 <p>All of the exercises are focused on practicing the code above.</p>
 <p>You should be able to complete them by referencing each section or by following the resource(s) linked.</p>
 <p>All exercises should be completed using <a href="https://pytorch.org/docs/stable/notes/cuda.html#device-agnostic-code">device-agnostic code</a>.</p>
@@ -1277,8 +1277,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 </ul></li>
 </ol>
 </section>
-<section id="extra-curriculum" class="level2" data-number="8.15">
-<h2 data-number="8.15" class="anchored" data-anchor-id="extra-curriculum"><span class="header-section-number">8.15</span> Extra-curriculum</h2>
+<section id="추가-학습-자료" class="level2" data-number="8.15">
+<h2 data-number="8.15" class="anchored" data-anchor-id="추가-학습-자료"><span class="header-section-number">8.15</span> 추가 학습 자료</h2>
 <ul>
 <li>Look up what “model fine-tuning” is and spend 30-minutes researching different methods to perform it with PyTorch. How would we change our code to fine-tine? Tip: fine-tuning usually works best if you have <em>lots</em> of custom data, where as, feature extraction is typically better if you have less custom data.</li>
 <li>Check out the new/upcoming <a href="https://pytorch.org/blog/introducing-torchvision-new-multi-weight-support-api/">PyTorch multi-weights API</a> (still in beta at time of writing, May 2022), it’s a new way to perform transfer learning in PyTorch. What changes to our code would need to made to use the new API?</li>

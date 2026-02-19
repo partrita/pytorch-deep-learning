@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">참고 문헌</span></a>
   </div>
 </li>
     </ul>
@@ -237,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#hows-it-going-to-function" id="toc-hows-it-going-to-function" class="nav-link" data-scroll-target="#hows-it-going-to-function"><span class="header-section-number">11.3.2</span> How’s it going to function?</a></li>
   <li><a href="#ways-to-deploy-a-machine-learning-model" id="toc-ways-to-deploy-a-machine-learning-model" class="nav-link" data-scroll-target="#ways-to-deploy-a-machine-learning-model"><span class="header-section-number">11.3.3</span> Ways to deploy a machine learning model</a></li>
   </ul></li>
-  <li><a href="#what-were-going-to-cover" id="toc-what-were-going-to-cover" class="nav-link" data-scroll-target="#what-were-going-to-cover"><span class="header-section-number">11.4</span> What we’re going to cover</a></li>
+  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용"><span class="header-section-number">11.4</span> 이번 장에서 다룰 내용</a></li>
   <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help"><span class="header-section-number">11.5</span> Where can you get help?</a></li>
   <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup"><span class="header-section-number">11.6</span> 0. Getting setup</a></li>
   <li><a href="#getting-data" id="toc-getting-data" class="nav-link" data-scroll-target="#getting-data"><span class="header-section-number">11.7</span> 1. Getting data</a></li>
@@ -317,8 +317,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#deploying-our-foodvision-big-app-to-huggingface-spaces" id="toc-deploying-our-foodvision-big-app-to-huggingface-spaces" class="nav-link" data-scroll-target="#deploying-our-foodvision-big-app-to-huggingface-spaces"><span class="header-section-number">11.17.7</span> 11.7 Deploying our FoodVision Big app to HuggingFace Spaces</a></li>
   </ul></li>
   <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways"><span class="header-section-number">11.18</span> Main takeaways</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.19</span> Exercises</a></li>
-  <li><a href="#extra-curriculum" id="toc-extra-curriculum" class="nav-link" data-scroll-target="#extra-curriculum"><span class="header-section-number">11.20</span> Extra-curriculum</a></li>
+  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제"><span class="header-section-number">11.19</span> 연습 문제</a></li>
+  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료"><span class="header-section-number">11.20</span> 추가 학습 자료</a></li>
   </ul>
 </nav>
     </div>
@@ -486,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-model-deployment-on-device-vs-cloud.png" width="900" alt="tesla computer vision system on device vs on the cloud"></p>
 <p><em>In the case of a Tesla car’s computer vision system, which would be better? A smaller model that performs well on device (model is on the car) or a larger model that performs better that’s on the cloud? In this case, you’d much prefer the model being on the car. The extra network time it would take for data to go from the car to the cloud and then back to the car just wouldn’t be worth it (or potentially even impossible with poor signal areas).</em></p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> For a full example of seeing what it’s like to deploy a PyTorch model to an edge device, see the <a href="https://pytorch.org/tutorials/intermediate/realtime_rpi.html">PyTorch tutorial on achieving real-time inference (30fps+)</a> with a computer vision model on a Raspberry Pi.</p>
+<p><strong>참고:</strong> For a full example of seeing what it’s like to deploy a PyTorch model to an edge device, see the <a href="https://pytorch.org/tutorials/intermediate/realtime_rpi.html">PyTorch tutorial on achieving real-time inference (30fps+)</a> with a computer vision model on a Raspberry Pi.</p>
 </blockquote>
 </section>
 <section id="hows-it-going-to-function" class="level3" data-number="11.3.2">
@@ -500,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Offline (batch)</strong> - Predictions/inference happen <strong>periodically</strong>. For example, a photos application sorts your images into different categories (such as beach, mealtime, family, friends) whilst your mobile device is plugged into charge.</li>
 </ul>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> “Batch” refers to inference being performed on multiple samples at a time. However, to add a little confusion, batch processing can happen immediately/online (multiple images being classified at once) and/or offline (multiple images being predicted/trained on at once).</p>
+<p><strong>참고:</strong> “Batch” refers to inference being performed on multiple samples at a time. However, to add a little confusion, batch processing can happen immediately/online (multiple images being classified at once) and/or offline (multiple images being predicted/trained on at once).</p>
 </blockquote>
 <p>The main difference between each being: predictions being made immediately or periodically.</p>
 <p>Periodically can have a varying timescale too, from every few seconds to every few hours or days.</p>
@@ -563,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> An <a href="https://en.wikipedia.org/wiki/API">application programming interface (API)</a> is a way for two (or more) computer programs to interact with each other. For example, if your model was deployed as API, you would be able to write a program that could send data to it and then receive predictions back.</p>
+<p><strong>참고:</strong> An <a href="https://en.wikipedia.org/wiki/API">application programming interface (API)</a> is a way for two (or more) computer programs to interact with each other. For example, if your model was deployed as API, you would be able to write a program that could send data to it and then receive predictions back.</p>
 </blockquote>
 <p>Which option you choose will be highly dependent on what you’re building/who you’re working with.</p>
 <p>But with so many options, it can be very intimidating.</p>
@@ -574,8 +574,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>A handful of places and tools to host and deploy machine learning models. There are plenty I’ve missed so if you’d like to add more, please leave a <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">discussion on GitHub</a>.</em></p>
 </section>
 </section>
-<section id="what-were-going-to-cover" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="what-were-going-to-cover"><span class="header-section-number">11.4</span> What we’re going to cover</h2>
+<section id="이번-장에서-다룰-내용" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="이번-장에서-다룰-내용"><span class="header-section-number">11.4</span> 이번 장에서 다룰 내용</h2>
 <p>Enough talking about deploying a machine learning model.</p>
 <p>Let’s become machine learning engineers and actually deploy one.</p>
 <p>Our goal is to deploy our FoodVision Model via a demo Gradio app with the following metrics: 1. <strong>Performance:</strong> 95%+ accuracy. 2. <strong>Speed:</strong> real-time inference of 30FPS+ (each prediction has a latency of lower than ~0.03s).</p>
@@ -656,7 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>torchinfo</code> will help later on to give us a visual representation of our model.</p>
 <p>And since later on we’ll be using <code>torchvision</code> v0.13 package (available as of July 2022), we’ll make sure we’ve got the latest versions.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> If you’re using Google Colab, and you don’t have a GPU turned on yet, it’s now time to turn one on via <code>Runtime -&gt; Change runtime type -&gt; Hardware accelerator -&gt; GPU</code>.</p>
+<p><strong>참고:</strong> If you’re using Google Colab, and you don’t have a GPU turned on yet, it’s now time to turn one on via <code>Runtime -&gt; Change runtime type -&gt; Hardware accelerator -&gt; GPU</code>.</p>
 </blockquote>
 <div id="cell-11" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For this notebook to run with updated APIs, we need torch 1.12+ and torchvision 0.13+</span></span>
@@ -680,12 +680,12 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> If you’re using Google Colab and the cell above starts to install various software packages, you may have to restart your runtime after running the above cell. After restarting, you can run the cell again and verify you’ve got the right versions of <code>torch</code> and <code>torchvision</code>.</p>
+<p><strong>참고:</strong> If you’re using Google Colab and the cell above starts to install various software packages, you may have to restart your runtime after running the above cell. After restarting, you can run the cell again and verify you’ve got the right versions of <code>torch</code> and <code>torchvision</code>.</p>
 </blockquote>
 <p>Now we’ll continue with the regular imports, setting up device agnostic code and this time we’ll also get the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/helper_functions.py"><code>helper_functions.py</code></a> script from GitHub.</p>
 <p>The <code>helper_functions.py</code> script contains several functions we created in previous sections: * <code>set_seeds()</code> to set the random seeds (created in <a href="https://www.learnpytorch.io/07_pytorch_experiment_tracking/#create-a-helper-function-to-set-seeds">07. PyTorch Experiment Tracking section 0</a>). * <code>download_data()</code> to download a data source given a link (created in <a href="https://www.learnpytorch.io/07_pytorch_experiment_tracking/#1-get-data">07. PyTorch Experiment Tracking section 1</a>). * <code>plot_loss_curves()</code> to inspect our model’s training results (created in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#78-plot-the-loss-curves-of-model-0">04. PyTorch Custom Datasets section 7.8</a>)</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> It may be a better idea for many of the functions in the <code>helper_functions.py</code> script to be merged into <code>going_modular/going_modular/utils.py</code>, perhaps that’s an extension you’d like to try.</p>
+<p><strong>참고:</strong> It may be a better idea for many of the functions in the <code>helper_functions.py</code> script to be merged into <code>going_modular/going_modular/utils.py</code>, perhaps that’s an extension you’d like to try.</p>
 </blockquote>
 <div id="cell-13" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Continue with regular imports</span></span>
@@ -735,7 +735,7 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 <p>Since our goal is to deploy the best model for our FoodVision Mini problem, let’s start by downloading the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/data/pizza_steak_sushi_20_percent.zip">20% pizza, steak and sushi dataset</a> and train an EffNetB2 feature extractor and ViT feature extractor on it and then compare the two models.</p>
 <p>This way we’ll be comparing apples to apples (one model trained on a dataset to another model trained on the same dataset).</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> The dataset we’re downloading is a sample of the entire <a href="https://pytorch.org/vision/main/generated/torchvision.datasets.Food101.html#food101">Food101 dataset</a> (101 food classes with 1,000 images each). More specifically, 20% refers to 20% of images from the pizza, steak and sushi classes selected at random. You can see how this dataset was created in <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/04_custom_data_creation.ipynb"><code>extras/04_custom_data_creation.ipynb</code></a> and more details in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#1-get-data">04. PyTorch Custom Datasets section 1</a>.</p>
+<p><strong>참고:</strong> The dataset we’re downloading is a sample of the entire <a href="https://pytorch.org/vision/main/generated/torchvision.datasets.Food101.html#food101">Food101 dataset</a> (101 food classes with 1,000 images each). More specifically, 20% refers to 20% of images from the pizza, steak and sushi classes selected at random. You can see how this dataset was created in <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/04_custom_data_creation.ipynb"><code>extras/04_custom_data_creation.ipynb</code></a> and more details in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#1-get-data">04. PyTorch Custom Datasets section 1</a>.</p>
 </blockquote>
 <p>We can download the data using the <code>download_data()</code> function we created in <a href="https://www.learnpytorch.io/07_pytorch_experiment_tracking/#1-get-data">07. PyTorch Experiment Tracking section 1</a> from <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/helper_functions.py"><code>helper_functions.py</code></a>.</p>
 <div id="cell-17" class="cell" data-execution_count="4">
@@ -784,7 +784,7 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 </ol>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-model-deployment-two-experiments.png" alt="modelling experiments for foodvision mini deployments, one effnetb2 feature extractor model and a vision transformer feature extractor model" width="750"></p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> A “feature extractor model” often starts with a model that has been pretrained on a dataset similar to your own problem. The pretrained model’s base layers are often left frozen (the pretrained patterns/weights stay the same) whilst some of the top (or classifier/classification head) layers get customized to your own problem by training on your own data. We covered the concept of a feature extractor model in <a href="https://www.learnpytorch.io/06_pytorch_transfer_learning/#34-freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs">06. PyTorch Transfer Learning section 3.4</a>.</p>
+<p><strong>참고:</strong> A “feature extractor model” often starts with a model that has been pretrained on a dataset similar to your own problem. The pretrained model’s base layers are often left frozen (the pretrained patterns/weights stay the same) whilst some of the top (or classifier/classification head) layers get customized to your own problem by training on your own data. We covered the concept of a feature extractor model in <a href="https://www.learnpytorch.io/06_pytorch_transfer_learning/#34-freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs">06. PyTorch Transfer Learning section 3.4</a>.</p>
 </blockquote>
 </section>
 <section id="creating-an-effnetb2-feature-extractor" class="level2" data-number="11.9">
@@ -820,7 +820,7 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 </div>
 <p>Excellent! To change the classifier head to suit our own problem, let’s replace the <code>out_features</code> variable with the same number of classes we have (in our case, <code>out_features=3</code>, one for pizza, steak, sushi).</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> This process of changing the output layers/classifier head will be dependent on the problem you’re working on. For example, if you wanted a different <em>number</em> of outputs or a different <em>kind</em> of output, you would have to change the output layers accordingly.</p>
+<p><strong>참고:</strong> This process of changing the output layers/classifier head will be dependent on the problem you’re working on. For example, if you wanted a different <em>number</em> of outputs or a different <em>kind</em> of output, you would have to change the output layers accordingly.</p>
 </blockquote>
 <div id="cell-26" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Update the classifier head</span></span>
@@ -948,7 +948,7 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 <p>As we saw in 07. PyTorch Experiment Tracking, the EffNetB2 feature extractor model works quite well on our data.</p>
 <p>Let’s turn its results into loss curves to inspect them further.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Loss curves are one of the best ways to visualize how your model’s performing. For more on loss curves, check out <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#8-what-should-an-ideal-loss-curve-look-like">04. PyTorch Custom Datasets section 8: What should an ideal loss curve look like?</a></p>
+<p><strong>참고:</strong> Loss curves are one of the best ways to visualize how your model’s performing. For more on loss curves, check out <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#8-what-should-an-ideal-loss-curve-look-like">04. PyTorch Custom Datasets section 8: What should an ideal loss curve look like?</a></p>
 </blockquote>
 <div id="cell-40" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> helper_functions <span class="im">import</span> plot_loss_curves</span>
@@ -1166,7 +1166,7 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 <h3 data-number="11.10.3" class="anchored" data-anchor-id="inspecting-vit-loss-curves"><span class="header-section-number">11.10.3</span> 4.3 Inspecting ViT loss curves</h3>
 <p>Alright, alright, alright, ViT model trained, let’s get visual and see some loss curves.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Don’t forget you can see what an ideal set of loss curves should look like in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#8-what-should-an-ideal-loss-curve-look-like">04. PyTorch Custom Datasets section 8</a>.</p>
+<p><strong>참고:</strong> Don’t forget you can see what an ideal set of loss curves should look like in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#8-what-should-an-ideal-loss-curve-look-like">04. PyTorch Custom Datasets section 8</a>.</p>
 </blockquote>
 <div id="cell-65" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> helper_functions <span class="im">import</span> plot_loss_curves</span>
@@ -1231,7 +1231,7 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 </div>
 <p>Woah, that looks like a fair bit more than our EffNetB2!</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> A larger number of parameters (or weights/patterns) generally means a model has a higher <em>capacity</em> to learn, whether it actually uses this extra capacity is another story. In light of this, our EffNetB2 model has 7,705,221 parameters where as our ViT model has 85,800,963 (11.1x more) so we could assume that our ViT model has more of a capacity to learn, if given more data (more opportunities to learn). However, this larger capacity to learn ofen comes with an increased model filesize and a longer time to perform inference.</p>
+<p><strong>참고:</strong> A larger number of parameters (or weights/patterns) generally means a model has a higher <em>capacity</em> to learn, whether it actually uses this extra capacity is another story. In light of this, our EffNetB2 model has 7,705,221 parameters where as our ViT model has 85,800,963 (11.1x more) so we could assume that our ViT model has more of a capacity to learn, if given more data (more opportunities to learn). However, this larger capacity to learn ofen comes with an increased model filesize and a longer time to perform inference.</p>
 </blockquote>
 <p>Now let’s create a dictionary with some important characteristics of our ViT model.</p>
 <div id="cell-75" class="cell" data-execution_count="29">
@@ -1263,7 +1263,7 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 <p>To find out how long each of our models take to performance inference, let’s create a function called <code>pred_and_store()</code> to iterate over each of the test dataset images one by one and perform a prediction.</p>
 <p>We’ll time each of the predictions as well as store the results in a common prediction format: a list of dictionaries (where each element in the list is a single prediction and each sinlge prediction is a dictionary).</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> We time the predictions one by one rather than by batch because when our model is deployed, it will likely only be making a prediction on one image at a time. As in, someone takes a photo and our model predicts on that single image.</p>
+<p><strong>참고:</strong> We time the predictions one by one rather than by batch because when our model is deployed, it will likely only be making a prediction on one image at a time. As in, someone takes a photo and our model predicts on that single image.</p>
 </blockquote>
 <p>Since we’d like to make predictions across all the images in the test set, let’s first get a list of all of the test image paths so we can iterate over them.</p>
 <p>To do so, we’ll use Python’s <a href="https://docs.python.org/3/library/pathlib.html#basic-use"><code>pathlib.Path("target_dir").glob("*/*.jpg"))</code></a> to find all of the filepaths in a target directory with the extension <code>.jpg</code> (all of our test images).</p>
@@ -1523,7 +1523,7 @@ Name: correct, dtype: int64</code></pre>
 </div>
 <p>Hmm, how does that average prediction time live up to our criteria of our model performing at real-time (~30FPS or 0.03 seconds per prediction)?</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Prediction times will be different across different hardware types (e.g.&nbsp;a local Intel i9 vs Google Colab CPU). The better and faster the hardware, generally, the faster the prediction. For example, on my local deep learning PC with an Intel i9 chip, my average prediction time with EffNetB2 is around 0.031 seconds (just under real-time). However, on Google Colab (I’m not sure what CPU hardware Colab uses but it looks like it might be an <a href="https://stackoverflow.com/questions/47805170/whats-the-hardware-spec-for-google-colaboratory">Intel(R) Xeon(R)</a>), my average prediction time with EffNetB2 is about 0.1396 seconds (3-4x slower).</p>
+<p><strong>참고:</strong> Prediction times will be different across different hardware types (e.g.&nbsp;a local Intel i9 vs Google Colab CPU). The better and faster the hardware, generally, the faster the prediction. For example, on my local deep learning PC with an Intel i9 chip, my average prediction time with EffNetB2 is around 0.031 seconds (just under real-time). However, on Google Colab (I’m not sure what CPU hardware Colab uses but it looks like it might be an <a href="https://stackoverflow.com/questions/47805170/whats-the-hardware-spec-for-google-colaboratory">Intel(R) Xeon(R)</a>), my average prediction time with EffNetB2 is about 0.1396 seconds (3-4x slower).</p>
 </blockquote>
 <p>Let’s add our EffNetB2 average time per prediction to our <code>effnetb2_stats</code> dictionary.</p>
 <div id="cell-93" class="cell" data-execution_count="37">
@@ -1677,7 +1677,7 @@ Name: correct, dtype: int64</code></pre>
 <p>Well, that looks a little slower than our EffNetB2 model’s average time per prediction but how does it look in terms of our second criteria: speed?</p>
 <p>For now, let’s add the value to our <code>vit_stats</code> dictionary so we can compare it to our EffNetB2 model’s stats.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> The average time per prediction values will be highly dependent on the hardware you make them on. For example, for the ViT model, my average time per prediction (on the CPU) was 0.0693-0.0777 seconds on my local deep learning PC with an Intel i9 CPU. Where as on Google Colab, my average time per prediction with the ViT model was 0.6766-0.7113 seconds.</p>
+<p><strong>참고:</strong> The average time per prediction values will be highly dependent on the hardware you make them on. For example, for the ViT model, my average time per prediction (on the CPU) was 0.0693-0.0777 seconds on my local deep learning PC with an Intel i9 CPU. Where as on Google Colab, my average time per prediction with the ViT model was 0.6766-0.7113 seconds.</p>
 </blockquote>
 <div id="cell-105" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add average prediction time for ViT model on CPU</span></span>
@@ -1797,7 +1797,7 @@ Name: correct, dtype: int64</code></pre>
 <p>We’ve seen that our ViT model outperforms our EffNetB2 model in terms of performance metrics such as test loss and test accuracy.</p>
 <p>However, our EffNetB2 model performs predictions faster and has a much smaller model size.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Performance or inference time is also often referred to as “latency”.</p>
+<p><strong>참고:</strong> Performance or inference time is also often referred to as “latency”.</p>
 </blockquote>
 <p>How about we make this fact visual?</p>
 <p>We can do so by creating a plot with matplotlib: 1. Create a scatter plot from the comparison DataFrame to compare EffNetB2 and ViT <code>time_per_pred_cpu</code> and <code>test_acc</code> values. 2. Add titles and labels respective of the data and customize the fontsize for aesthetics. 3. Annotate the samples on the scatter plot from step 1 with their appropriate labels (the model names). 4. Create a legend based on the model sizes (<code>model_size (MB)</code>).</p>
@@ -1852,7 +1852,7 @@ Name: correct, dtype: int64</code></pre>
 <p>In our case, the differences between our model’s performance levels (on the test loss and test accuracy) aren’t too extreme.</p>
 <p>But since we’d like to put an emphasis on speed to begin with, we’re going to stick with deploying EffNetB2 since it’s faster and has a much smaller footprint.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Prediction times will be different across different hardware types (e.g.&nbsp;Intel i9 vs Google Colab CPU vs GPU) so it’s important to think about and test where your model is going to end up. Asking questions like “where is the model going to be run?” or “what is the ideal scenario for running the model?” and then running experiments to try and provide answers on your way to deployment is very helpful.</p>
+<p><strong>참고:</strong> Prediction times will be different across different hardware types (e.g.&nbsp;Intel i9 vs Google Colab CPU vs GPU) so it’s important to think about and test where your model is going to end up. Asking questions like “where is the model going to be run?” or “what is the ideal scenario for running the model?” and then running experiments to try and provide answers on your way to deployment is very helpful.</p>
 </blockquote>
 </section>
 </section>
@@ -1905,7 +1905,7 @@ Name: correct, dtype: int64</code></pre>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-gradio-workflow.png" alt="gradio workflow of inputs flowing into some kind of model or function and then producing outputs" width="900/"></p>
 <p><em>Gradio provides a very helpful <code>Interface</code> class to easily create an inputs -&gt; model/function -&gt; outputs workflow where the inputs and outputs could be almost anything you want. For example, you might input Tweets (text) to see if they’re about machine learning or not or <a href="https://huggingface.co/blog/stable_diffusion">input a text prompt to generate images</a>.</em></p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Gradio has a vast number of possible <code>inputs</code> and <code>outputs</code> options known as “Components” from images to text to numbers to audio to videos and more. You can see all of these in the <a href="https://gradio.app/docs/#components">Gradio Components documentation</a>.</p>
+<p><strong>참고:</strong> Gradio has a vast number of possible <code>inputs</code> and <code>outputs</code> options known as “Components” from images to text to numbers to audio to videos and more. You can see all of these in the <a href="https://gradio.app/docs/#components">Gradio Components documentation</a>.</p>
 </blockquote>
 </section>
 <section id="creating-a-function-to-map-our-inputs-and-outputs" class="level3" data-number="11.13.2">
@@ -2017,7 +2017,7 @@ Prediction time: 0.027 seconds</code></pre>
 <p>Time to put everything together and bring our FoodVision Mini demo to life!</p>
 <p>Let’s create a Gradio interface to replicate the workflow:</p>
 <pre><code>input: image -&gt; transform -&gt; predict with EffNetB2 -&gt; output: pred, pred prob, time taken</code></pre>
-<p>We can do with the <a href="https://gradio.app/docs/#interface"><code>gradio.Interface()</code></a> class with the following parameters: * <code>fn</code> - a Python function to map <code>inputs</code> to <code>outputs</code>, in our case, we’ll use our <code>predict()</code> function. * <code>inputs</code> - the input to our interface, such as an image using <a href="https://gradio.app/docs/#image"><code>gradio.Image()</code></a> or <code>"image"</code>. * <code>outputs</code> - the output of our interface once the <code>inputs</code> have gone through the <code>fn</code>, such as a label using <a href="https://gradio.app/docs/#label"><code>gradio.Label()</code></a> (for our model’s predicted labels) or number using <a href="https://gradio.app/docs/#number"><code>gradio.Number()</code></a> (for our model’s prediction time). * <strong>Note:</strong> Gradio comes with many in-built <code>inputs</code> and <code>outputs</code> options known as <a href="https://gradio.app/docs/#components">“Components”</a>. * <code>examples</code> - a list of examples to showcase for the demo. * <code>title</code> - a string title of the demo. * <code>description</code> - a string description of the demo. * <code>article</code> - a reference note at the bottom of the demo.</p>
+<p>We can do with the <a href="https://gradio.app/docs/#interface"><code>gradio.Interface()</code></a> class with the following parameters: * <code>fn</code> - a Python function to map <code>inputs</code> to <code>outputs</code>, in our case, we’ll use our <code>predict()</code> function. * <code>inputs</code> - the input to our interface, such as an image using <a href="https://gradio.app/docs/#image"><code>gradio.Image()</code></a> or <code>"image"</code>. * <code>outputs</code> - the output of our interface once the <code>inputs</code> have gone through the <code>fn</code>, such as a label using <a href="https://gradio.app/docs/#label"><code>gradio.Label()</code></a> (for our model’s predicted labels) or number using <a href="https://gradio.app/docs/#number"><code>gradio.Number()</code></a> (for our model’s prediction time). * <strong>참고:</strong> Gradio comes with many in-built <code>inputs</code> and <code>outputs</code> options known as <a href="https://gradio.app/docs/#components">“Components”</a>. * <code>examples</code> - a list of examples to showcase for the demo. * <code>title</code> - a string title of the demo. * <code>description</code> - a string description of the demo. * <code>article</code> - a reference note at the bottom of the demo.</p>
 <p>Once we’ve created our demo instance of <code>gr.Interface()</code>, we can bring it to life using <a href="https://gradio.app/docs/#launch-header"><code>gradio.Interface().launch()</code></a> or <code>demo.launch()</code> command.</p>
 <p>Easy!</p>
 <div id="cell-129" class="cell" data-execution_count="52">
@@ -2079,7 +2079,7 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <p>You can think of Hugging Face as the GitHub of machine learning.</p>
 <p>If having a good GitHub portfolio showcases your coding abilities, having a good Hugging Face portfolio can showcase your machine learning abilities.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> There are many other places we could upload and host our Gradio app such as, Google Cloud, AWS (Amazon Web Services) or other cloud vendors, however, we’re going to use Hugging Face Spaces due to the ease of use and wide adoption by the machine learning community.</p>
+<p><strong>참고:</strong> There are many other places we could upload and host our Gradio app such as, Google Cloud, AWS (Amazon Web Services) or other cloud vendors, however, we’re going to use Hugging Face Spaces due to the ease of use and wide adoption by the machine learning community.</p>
 </blockquote>
 </section>
 <section id="deployed-gradio-app-structure" class="level3" data-number="11.14.2">
@@ -2096,7 +2096,7 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
     │   └── example_3.jpg
     ├── model.py
     └── requirements.txt</code></pre>
-<p>Where: * <code>09_pretrained_effnetb2_feature_extractor_pizza_steak_sushi_20_percent.pth</code> is our trained PyTorch model file. * <code>app.py</code> contains our Gradio app (similar to the code that launched the app). * <strong>Note:</strong> <code>app.py</code> is the default filename used for Hugging Face Spaces, if you deploy your app there, Spaces will by default look for a file called <code>app.py</code> to run. This is changeable in settings. * <code>examples/</code> contains example images to use with our Gradio app. * <code>model.py</code> contains the model definition as well as any transforms associated with the model. * <code>requirements.txt</code> contains the dependencies to run our app such as <code>torch</code>, <code>torchvision</code> and <code>gradio</code>.</p>
+<p>Where: * <code>09_pretrained_effnetb2_feature_extractor_pizza_steak_sushi_20_percent.pth</code> is our trained PyTorch model file. * <code>app.py</code> contains our Gradio app (similar to the code that launched the app). * <strong>참고:</strong> <code>app.py</code> is the default filename used for Hugging Face Spaces, if you deploy your app there, Spaces will by default look for a file called <code>app.py</code> to run. This is changeable in settings. * <code>examples/</code> contains example images to use with our Gradio app. * <code>model.py</code> contains the model definition as well as any transforms associated with the model. * <code>requirements.txt</code> contains the dependencies to run our app such as <code>torch</code>, <code>torchvision</code> and <code>gradio</code>.</p>
 <p>Why this way?</p>
 <p>Because it’s one of the simplest layouts we could begin with.</p>
 <p>Our focus is: <em>experiment, experiment, experiment!</em></p>
@@ -2205,7 +2205,7 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <p>Our current model’s <code>state_dict</code> is saved to <code>demos/foodvision_mini/09_pretrained_effnetb2_feature_extractor_pizza_steak_sushi_20_percent.pth</code>.</p>
 <p>To load it in we can use <code>model.load_state_dict()</code> along with <code>torch.load()</code>.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> For a refresh on saving and loading a model (or a model’s <code>state_dict</code> in PyTorch, see <a href="https://www.learnpytorch.io/01_pytorch_workflow/#5-saving-and-loading-a-pytorch-model">01. PyTorch Workflow Fundamentals section 5: Saving and loading a PyTorch model</a> or see the PyTorch recipe for <a href="https://pytorch.org/tutorials/recipes/recipes/what_is_state_dict.html">What is a <code>state_dict</code> in PyTorch?</a></p>
+<p><strong>참고:</strong> For a refresh on saving and loading a model (or a model’s <code>state_dict</code> in PyTorch, see <a href="https://www.learnpytorch.io/01_pytorch_workflow/#5-saving-and-loading-a-pytorch-model">01. PyTorch Workflow Fundamentals section 5: Saving and loading a PyTorch model</a> or see the PyTorch recipe for <a href="https://pytorch.org/tutorials/recipes/recipes/what_is_state_dict.html">What is a <code>state_dict</code> in PyTorch?</a></p>
 </blockquote>
 <p>But before we can do this, we first need a way to instantiate a <code>model</code>.</p>
 <p>To do this in a modular fashion we’ll create a script called <code>model.py</code> which contains our <code>create_effnetb2_model()</code> function we created in <a href="https://www.learnpytorch.io/09_pytorch_model_deployment/#31-creating-a-function-to-make-an-effnetb2-feature-extractor">section 3.1: <em>Creating a function to make an EffNetB2 feature extractor</em></a>.</p>
@@ -2265,7 +2265,7 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <li><strong>Model and transforms preparation</strong> - Here we’ll create an EffNetB2 model instance along with the transforms to go with it and then we’ll load in the saved model weights/<code>state_dict</code>. When we load the model we’ll also set <code>map_location=torch.device("cpu")</code> in <a href="https://pytorch.org/docs/stable/generated/torch.load.html"><code>torch.load()</code></a> so our model gets loaded onto the CPU regardless of the device it trained on (we do this because we won’t necessarily have a GPU when we deploy and we’ll get an error if our model is trained on GPU but we try to deploy it to CPU without explicitly saying so).</li>
 <li><strong>Predict function</strong> - Gradio’s <code>gradio.Interface()</code> takes a <code>fn</code> parameter to map inputs to outputs, our <code>predict()</code> function will be the same as the one we defined above in <a href="https://www.learnpytorch.io/09_pytorch_model_deployment/#72-creating-a-function-to-map-our-inputs-and-outputs">section 7.2: <em>Creating a function to map our inputs and outputs</em></a>, it will take in an image and then use the loaded transforms to preprocess it before using the loaded model to make a prediction on it.
 <ul>
-<li><strong>Note:</strong> We’ll have to create the example list on the fly via the <code>examples</code> parameter. We can do so by creating a list of the files inside the <code>examples/</code> directory with: <code>[["examples/" + example] for example in os.listdir("examples")]</code>.</li>
+<li><strong>참고:</strong> We’ll have to create the example list on the fly via the <code>examples</code> parameter. We can do so by creating a list of the files inside the <code>examples/</code> directory with: <code>[["examples/" + example] for example in os.listdir("examples")]</code>.</li>
 </ul></li>
 <li><strong>Gradio app</strong> - This is where the main logic of our demo will live, we’ll create a <code>gradio.Interface()</code> instance called <code>demo</code> to put together our inputs, <code>predict()</code> function and outputs. And we’ll finish the script by calling <code>demo.launch()</code> to launch our FoodVision Mini demo!</li>
 </ol>
@@ -2385,7 +2385,7 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <p>There are two main options for uploading to a Hugging Face Space (also called a <a href="https://huggingface.co/docs/hub/repositories-getting-started#getting-started-with-repositories">Hugging Face Repository</a>, similar to a git repository): 1. <a href="https://huggingface.co/docs/hub/repositories-getting-started#adding-files-to-a-repository-web-ui">Uploading via the Hugging Face Web interface (easiest)</a>. 2. <a href="https://huggingface.co/docs/hub/repositories-getting-started#terminal">Uploading via the command line or terminal</a>. * <strong>Bonus:</strong> You can also use the <a href="https://huggingface.co/docs/huggingface_hub/index"><code>huggingface_hub</code> library</a> to interact with Hugging Face, this would be a good extension to the above two options.</p>
 <p>Feel free to read the documentation on both options but we’re going to go with option two.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> To host anything on Hugging Face, you will need to <a href="https://huggingface.co/join">sign up for a free Hugging Face account</a>.</p>
+<p><strong>참고:</strong> To host anything on Hugging Face, you will need to <a href="https://huggingface.co/join">sign up for a free Hugging Face account</a>.</p>
 </blockquote>
 <section id="downloading-our-foodvision-mini-app-files" class="level3" data-number="11.15.1">
 <h3 data-number="11.15.1" class="anchored" data-anchor-id="downloading-our-foodvision-mini-app-files"><span class="header-section-number">11.15.1</span> 9.1 Downloading our FoodVision Mini app files</h3>
@@ -2438,10 +2438,10 @@ Not running in Google Colab, can't use google.colab.files.download(), please man
 </section>
 <section id="running-our-foodvision-mini-demo-locally" class="level3" data-number="11.15.2">
 <h3 data-number="11.15.2" class="anchored" data-anchor-id="running-our-foodvision-mini-demo-locally"><span class="header-section-number">11.15.2</span> 9.2 Running our FoodVision Mini demo locally</h3>
-<p>If you download the <code>foodvision_mini.zip</code> file, you can test it locally by: 1. Unzipping the file. 2. Opening terminal or a command line prompt. 3. Changing into the <code>foodvision_mini</code> directory (<code>cd foodvision_mini</code>). 4. Creating an environment (<code>python3 -m venv env</code>). 5. Activating the environment (<code>source env/bin/activate</code>). 5. Installing the requirements (<code>pip install -r requirements.txt</code>, the “<code>-r</code>” is for recursive). * <strong>Note:</strong> This step may take 5-10 minutes depending on your internet connection. And if you’re facing errors, you may need to upgrade <code>pip</code> first: <code>pip install --upgrade pip</code>. 6. Run the app (<code>python3 app.py</code>).</p>
+<p>If you download the <code>foodvision_mini.zip</code> file, you can test it locally by: 1. Unzipping the file. 2. Opening terminal or a command line prompt. 3. Changing into the <code>foodvision_mini</code> directory (<code>cd foodvision_mini</code>). 4. Creating an environment (<code>python3 -m venv env</code>). 5. Activating the environment (<code>source env/bin/activate</code>). 5. Installing the requirements (<code>pip install -r requirements.txt</code>, the “<code>-r</code>” is for recursive). * <strong>참고:</strong> This step may take 5-10 minutes depending on your internet connection. And if you’re facing errors, you may need to upgrade <code>pip</code> first: <code>pip install --upgrade pip</code>. 6. Run the app (<code>python3 app.py</code>).</p>
 <p>This should result in a Gradio demo just like the one we built above running locally on your machine at a URL such as <code>http://127.0.0.1:7860/</code>.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> If you run the app locally and you notice a <code>flagged/</code> directory appear, it contains samples that have been “flagged”.</p>
+<p><strong>참고:</strong> If you run the app locally and you notice a <code>flagged/</code> directory appear, it contains samples that have been “flagged”.</p>
 <p>For example, if someone tries the demo and the model produces an incorrect result, the sample can be “flagged” and reviewed for later.</p>
 <p>For more on flagging in Gradio, see the <a href="https://gradio.app/docs/#flagging">flagging documentation</a>.</p>
 </blockquote>
@@ -2451,25 +2451,25 @@ Not running in Google Colab, can't use google.colab.files.download(), please man
 <p>We’ve verified our FoodVision Mini app works locally, however, the fun of creating a machine learning demo is to show it to other people and allow them to use it.</p>
 <p>To do so, we’re going to upload our FoodVision Mini demo to Hugging Face.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> The following series of steps uses a Git (a file tracking system) workflow. For more on how Git works, I’d recommend going through the <a href="https://youtu.be/RGOj5yH7evk">Git and GitHub for Beginners tutorial</a> on freeCodeCamp.</p>
+<p><strong>참고:</strong> The following series of steps uses a Git (a file tracking system) workflow. For more on how Git works, I’d recommend going through the <a href="https://youtu.be/RGOj5yH7evk">Git and GitHub for Beginners tutorial</a> on freeCodeCamp.</p>
 </blockquote>
 <ol type="1">
 <li><a href="https://huggingface.co/join">Sign up</a> for a Hugging Face account.</li>
 <li>Start a new Hugging Face Space by going to your profile and then <a href="https://huggingface.co/new-space">clicking “New Space”</a>.
 <ul>
-<li><strong>Note:</strong> A Space in Hugging Face is also known as a “code repository” (a place to store your code/files) or “repo” for short.</li>
+<li><strong>참고:</strong> A Space in Hugging Face is also known as a “code repository” (a place to store your code/files) or “repo” for short.</li>
 </ul></li>
 <li>Give the Space a name, for example, mine is called <code>mrdbourke/foodvision_mini</code>, you can see it here: https://huggingface.co/spaces/mrdbourke/foodvision_mini</li>
 <li>Select a license (I used <a href="https://opensource.org/licenses/MIT">MIT</a>).</li>
 <li>Select Gradio as the Space SDK (software development kit).
 <ul>
-<li><strong>Note:</strong> You can use other options such as Streamlit but since our app is built with Gradio, we’ll stick with that.</li>
+<li><strong>참고:</strong> You can use other options such as Streamlit but since our app is built with Gradio, we’ll stick with that.</li>
 </ul></li>
 <li>Choose whether your Space is it’s public or private (I selected public since I’d like my Space to be available to others).</li>
 <li>Click “Create Space”.</li>
 <li>Clone the repo locally by running something like: <code>git clone https://huggingface.co/spaces/[YOUR_USERNAME]/[YOUR_SPACE_NAME]</code> in terminal or command prompt.
 <ul>
-<li><strong>Note:</strong> You can also add files via uploading them under the “Files and versions” tab.</li>
+<li><strong>참고:</strong> You can also add files via uploading them under the “Files and versions” tab.</li>
 </ul></li>
 <li>Copy/move the contents of the downloaded <code>foodvision_mini</code> folder to the cloned repo folder.</li>
 <li>To upload and track larger files (e.g.&nbsp;files over 10MB or in our case, our PyTorch model file) you’ll need to <a href="https://git-lfs.github.com/">install Git LFS</a> (which stands for “git large file storage”).</li>
@@ -2549,7 +2549,7 @@ Not running in Google Colab, can't use google.colab.files.download(), please man
 <p>See how just like our EffNetB2 model for FoodVision Mini the base layers are frozen (these are pretrained on ImageNet) and the outer layers (the <code>classifier</code> layers) are trainable with an output shape of <code>[batch_size, 101]</code> (<code>101</code> for 101 classes in Food101).</p>
 <p>Now since we’re going to be dealing with a fair bit more data than usual, how about we add a little data augmentation to our transforms (<code>effnetb2_transforms</code>) to augment the training data.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Data augmentation is a technique used to alter the appearance of an input training sample (e.g.&nbsp;rotating an image or slightly skewing it) to artificially increase the diversity of a training dataset to hopefully prevent overfitting. You can see more on data augmentation in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#6-other-forms-of-transforms-data-augmentation">04. PyTorch Custom Datasets section 6</a>.</p>
+<p><strong>참고:</strong> Data augmentation is a technique used to alter the appearance of an input training sample (e.g.&nbsp;rotating an image or slightly skewing it) to artificially increase the diversity of a training dataset to hopefully prevent overfitting. You can see more on data augmentation in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#6-other-forms-of-transforms-data-augmentation">04. PyTorch Custom Datasets section 6</a>.</p>
 </blockquote>
 <p>Let’s compose a <code>torchvision.transforms</code> pipeline to use <a href="https://pytorch.org/vision/main/generated/torchvision.transforms.TrivialAugmentWide.html"><code>torchvision.transforms.TrivialAugmentWide()</code></a> (the same data augmentation used by the PyTorch team in their <a href="https://pytorch.org/blog/how-to-train-state-of-the-art-models-using-torchvision-latest-primitives/#break-down-of-key-accuracy-improvements">computer vision recipes</a>) as well as the <code>effnetb2_transforms</code> to transform our training images.</p>
 <div id="cell-164" class="cell" data-execution_count="65">
@@ -2595,7 +2595,7 @@ ImageClassification(
 <p>We’ll first setup a path to directory <code>data/</code> to store the images.</p>
 <p>Then we’ll download and transform the training and testing dataset splits using <code>food101_train_transforms</code> and <code>effnetb2_transforms</code> to transform each dataset respectively.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> If you’re using Google Colab, the cell below will take ~3-5 minutes to fully run and download the Food101 images from PyTorch.</p>
+<p><strong>참고:</strong> If you’re using Google Colab, the cell below will take ~3-5 minutes to fully run and download the Food101 images from PyTorch.</p>
 <p>This is because there is over 100,000 images being downloaded (101 classes x 1000 images per class). If you restart your Google Colab runtime and come back to this cell, the images will have to redownload. Alternatively, if you’re running this notebook locally, the images will be cached and stored in the directory specified by the <code>root</code> parameter of <code>torchvision.datasets.Food101()</code>.</p>
 </blockquote>
 <div id="cell-168" class="cell" data-execution_count="67">
@@ -2705,7 +2705,7 @@ ImageClassification(
 <p>Can you see the trend?</p>
 <p>Just like our model size slowly increased overtime, so has the size of the dataset we’ve been using for experiments.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> To truly beat the original Food101 paper’s results with 20% of the data, we’d have to train a model on 20% of the training data and then evaluate our model on the <em>whole</em> test set rather than the split we created. I’ll leave this as an extension exercise for you to try. I’d also encourage you to try training a model on the entire Food101 training dataset.</p>
+<p><strong>참고:</strong> To truly beat the original Food101 paper’s results with 20% of the data, we’d have to train a model on 20% of the training data and then evaluate our model on the <em>whole</em> test set rather than the split we created. I’ll leave this as an extension exercise for you to try. I’d also encourage you to try training a model on the entire Food101 training dataset.</p>
 </blockquote>
 <p>To make our FoodVision Big (20% data) split, let’s create a function called <code>split_dataset()</code> to split a given dataset into certain proportions.</p>
 <p>We can use <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.random_split"><code>torch.utils.data.random_split()</code></a> to create splits of given sizes using the <code>lengths</code> parameter.</p>
@@ -2803,7 +2803,7 @@ ImageClassification(
 <p>Finally, to keep things quick, we’ll train our model for five epochs using the <code>engine.train()</code> function we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#4-creating-train_step-and-test_step-functions-and-train-to-combine-them">05. PyTorch Going Modular section 4</a> with the goal of beating the original Food101 paper’s result of 56.4% accuracy on the test set.</p>
 <p>Let’s train our biggest model yet!</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Running the cell below will take ~15-20 minutes to run on Google Colab. This is because it’s training the biggest model with the largest amount of data we’ve used so far (15,150 training images, 5050 testing images). And it’s a reason we decided to split 20% of the full Food101 dataset off before (so training didn’t take over an hour).</p>
+<p><strong>참고:</strong> Running the cell below will take ~15-20 minutes to run on Google Colab. This is because it’s training the biggest model with the largest amount of data we’ve used so far (15,150 training images, 5050 testing images). And it’s a reason we decided to split 20% of the full Food101 dataset off before (so training didn’t take over an hour).</p>
 </blockquote>
 <div id="cell-180" class="cell" data-execution_count="72">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> going_modular.going_modular <span class="im">import</span> engine</span>
@@ -3250,26 +3250,26 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 <p>Time to bring our biggest model of the whole course to life!</p>
 <p>Let’s deploy our FoodVision Big Gradio demo to Hugging Face Spaces so we can test it interactively and let others experience the magic of our machine learning efforts!</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> There are <a href="https://huggingface.co/docs/hub/repositories-getting-started#getting-started-with-repositories">several ways to upload files to Hugging Face Spaces</a>. The following steps treat Hugging Face as a git repository to track files. However, you can also upload directly to Hugging Face Spaces via the <a href="https://huggingface.co/docs/hub/repositories-getting-started#adding-files-to-a-repository-web-ui">web interface</a> or by the <a href="https://huggingface.co/docs/huggingface_hub/index"><code>huggingface_hub</code> library</a>.</p>
+<p><strong>참고:</strong> There are <a href="https://huggingface.co/docs/hub/repositories-getting-started#getting-started-with-repositories">several ways to upload files to Hugging Face Spaces</a>. The following steps treat Hugging Face as a git repository to track files. However, you can also upload directly to Hugging Face Spaces via the <a href="https://huggingface.co/docs/hub/repositories-getting-started#adding-files-to-a-repository-web-ui">web interface</a> or by the <a href="https://huggingface.co/docs/huggingface_hub/index"><code>huggingface_hub</code> library</a>.</p>
 </blockquote>
 <p>The good news is, we’ve already done the steps to do so with FoodVision Mini, so now all we have to do is customize them to suit FoodVision Big:</p>
 <ol type="1">
 <li><a href="https://huggingface.co/join">Sign up</a> for a Hugging Face account.</li>
 <li>Start a new Hugging Face Space by going to your profile and then <a href="https://huggingface.co/new-space">clicking “New Space”</a>.
 <ul>
-<li><strong>Note:</strong> A Space in Hugging Face is also known as a “code repository” (a place to store your code/files) or “repo” for short.</li>
+<li><strong>참고:</strong> A Space in Hugging Face is also known as a “code repository” (a place to store your code/files) or “repo” for short.</li>
 </ul></li>
 <li>Give the Space a name, for example, mine is called <code>mrdbourke/foodvision_big</code>, you can see it here: https://huggingface.co/spaces/mrdbourke/foodvision_big</li>
 <li>Select a license (I used <a href="https://opensource.org/licenses/MIT">MIT</a>).</li>
 <li>Select Gradio as the Space SDK (software development kit).
 <ul>
-<li><strong>Note:</strong> You can use other options such as Streamlit but since our app is built with Gradio, we’ll stick with that.</li>
+<li><strong>참고:</strong> You can use other options such as Streamlit but since our app is built with Gradio, we’ll stick with that.</li>
 </ul></li>
 <li>Choose whether your Space is public or private (I selected public since I’d like my Space to be available to others).</li>
 <li>Click “Create Space”.</li>
 <li>Clone the repo locally by running: <code>git clone https://huggingface.co/spaces/[YOUR_USERNAME]/[YOUR_SPACE_NAME]</code> in terminal or command prompt.
 <ul>
-<li><strong>Note:</strong> You can also add files via uploading them under the “Files and versions” tab.</li>
+<li><strong>참고:</strong> You can also add files via uploading them under the “Files and versions” tab.</li>
 </ul></li>
 <li>Copy/move the contents of the downloaded <code>foodvision_big</code> folder to the cloned repo folder.</li>
 <li>To upload and track larger files (e.g.&nbsp;files over 10MB or in our case, our PyTorch model file) you’ll need to <a href="https://git-lfs.github.com/">install Git LFS</a> (which stands for “git large file storage”).</li>
@@ -3277,7 +3277,7 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 <li>In the <code>foodvision_big</code> directory, track the files over 10MB with Git LFS with <code>git lfs track "*.file_extension"</code>.
 <ul>
 <li>Track EffNetB2 PyTorch model file with <code>git lfs track "09_pretrained_effnetb2_feature_extractor_food101_20_percent.pth"</code>.</li>
-<li><strong>Note:</strong> If you get any errors uploading images, you may have to track them with <code>git lfs</code> too, for example <code>git lfs track "examples/04-pizza-dad.jpg"</code></li>
+<li><strong>참고:</strong> If you get any errors uploading images, you may have to track them with <code>git lfs</code> too, for example <code>git lfs track "examples/04-pizza-dad.jpg"</code></li>
 </ul></li>
 <li>Track <code>.gitattributes</code> (automatically created when cloning from HuggingFace, this file will help ensure our larger files are tracked with Git LFS). You can see an example <code>.gitattributes</code> file on the <a href="https://huggingface.co/spaces/mrdbourke/foodvision_big/blob/main/.gitattributes">FoodVision Big Hugging Face Space</a>.
 <ul>
@@ -3331,8 +3331,8 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 <li><strong>Machine learning model deployment is part of the engineering practice of MLOps (machine learning operations).</strong> MLOps is an extension of DevOps (development operations) and involves all the engineering parts around training a model: data collection and storage, data preprocessing, model deployment, model monitoring, versioning and more. It’s a rapidly evolving field but there are some solid resources out there to learn more, many of which are in <a href="https://www.learnpytorch.io/pytorch_extra_resources/#resources-for-machine-learning-and-deep-learning-engineering">PyTorch Extra Resources</a>.</li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="11.19">
-<h2 data-number="11.19" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.19</span> Exercises</h2>
+<section id="연습-문제" class="level2" data-number="11.19">
+<h2 data-number="11.19" class="anchored" data-anchor-id="연습-문제"><span class="header-section-number">11.19</span> 연습 문제</h2>
 <p>All of the exercises are focused on practicing the code above.</p>
 <p>You should be able to complete them by referencing each section or by following the resource(s) linked.</p>
 <p><strong>Resources:</strong></p>
@@ -3376,8 +3376,8 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 </ul></li>
 </ol>
 </section>
-<section id="extra-curriculum" class="level2" data-number="11.20">
-<h2 data-number="11.20" class="anchored" data-anchor-id="extra-curriculum"><span class="header-section-number">11.20</span> Extra-curriculum</h2>
+<section id="추가-학습-자료" class="level2" data-number="11.20">
+<h2 data-number="11.20" class="anchored" data-anchor-id="추가-학습-자료"><span class="header-section-number">11.20</span> 추가 학습 자료</h2>
 <ul>
 <li>Machine learning model deployment is generally an engineering challenge rather than a pure machine learning challenge, see the <a href="https://www.learnpytorch.io/pytorch_extra_resources/#resources-for-machine-learning-and-deep-learning-engineering">PyTorch Extra Resources machine learning engineering section</a> for resources on learning more.
 <ul>
@@ -3811,8 +3811,8 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="참고 문헌">
+        <span class="nav-page-text">참고 문헌</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

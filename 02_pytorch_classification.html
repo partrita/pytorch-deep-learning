@@ -244,7 +244,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">참고 문헌</span></a>
   </div>
 </li>
     </ul>
@@ -258,15 +258,15 @@ window.Quarto = {
    
   <ul>
   <li><a href="#what-is-a-classification-problem" id="toc-what-is-a-classification-problem" class="nav-link active" data-scroll-target="#what-is-a-classification-problem"><span class="header-section-number">4.1</span> What is a classification problem?</a></li>
-  <li><a href="#what-were-going-to-cover" id="toc-what-were-going-to-cover" class="nav-link" data-scroll-target="#what-were-going-to-cover"><span class="header-section-number">4.2</span> What we’re going to cover</a></li>
-  <li><a href="#where-can-can-you-get-help" id="toc-where-can-can-you-get-help" class="nav-link" data-scroll-target="#where-can-can-you-get-help"><span class="header-section-number">4.3</span> Where can can you get help?</a></li>
+  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용"><span class="header-section-number">4.2</span> 이번 장에서 다룰 내용</a></li>
+  <li><a href="#도움을-받을-수-있는-곳" id="toc-도움을-받을-수-있는-곳" class="nav-link" data-scroll-target="#도움을-받을-수-있는-곳"><span class="header-section-number">4.3</span> 도움을 받을 수 있는 곳</a></li>
   <li><a href="#architecture-of-a-classification-neural-network" id="toc-architecture-of-a-classification-neural-network" class="nav-link" data-scroll-target="#architecture-of-a-classification-neural-network"><span class="header-section-number">4.4</span> 0. Architecture of a classification neural network</a></li>
   <li><a href="#make-classification-data-and-get-it-ready" id="toc-make-classification-data-and-get-it-ready" class="nav-link" data-scroll-target="#make-classification-data-and-get-it-ready"><span class="header-section-number">4.5</span> 1. Make classification data and get it ready</a>
   <ul class="collapse">
   <li><a href="#input-and-output-shapes" id="toc-input-and-output-shapes" class="nav-link" data-scroll-target="#input-and-output-shapes"><span class="header-section-number">4.5.1</span> 1.1 Input and output shapes</a></li>
   <li><a href="#turn-data-into-tensors-and-create-train-and-test-splits" id="toc-turn-data-into-tensors-and-create-train-and-test-splits" class="nav-link" data-scroll-target="#turn-data-into-tensors-and-create-train-and-test-splits"><span class="header-section-number">4.5.2</span> 1.2 Turn data into tensors and create train and test splits</a></li>
   </ul></li>
-  <li><a href="#building-a-model" id="toc-building-a-model" class="nav-link" data-scroll-target="#building-a-model"><span class="header-section-number">4.6</span> 2. Building a model</a>
+  <li><a href="#모델-구축하기" id="toc-모델-구축하기" class="nav-link" data-scroll-target="#모델-구축하기"><span class="header-section-number">4.6</span> 2. 모델 구축하기</a>
   <ul class="collapse">
   <li><a href="#setup-loss-function-and-optimizer" id="toc-setup-loss-function-and-optimizer" class="nav-link" data-scroll-target="#setup-loss-function-and-optimizer"><span class="header-section-number">4.6.1</span> 2.1 Setup loss function and optimizer</a></li>
   </ul></li>
@@ -284,7 +284,7 @@ window.Quarto = {
   <li><a href="#the-missing-piece-non-linearity" id="toc-the-missing-piece-non-linearity" class="nav-link" data-scroll-target="#the-missing-piece-non-linearity"><span class="header-section-number">4.10</span> 6. The missing piece: non-linearity</a>
   <ul class="collapse">
   <li><a href="#recreating-non-linear-data-red-and-blue-circles" id="toc-recreating-non-linear-data-red-and-blue-circles" class="nav-link" data-scroll-target="#recreating-non-linear-data-red-and-blue-circles"><span class="header-section-number">4.10.1</span> 6.1 Recreating non-linear data (red and blue circles)</a></li>
-  <li><a href="#building-a-model-with-non-linearity" id="toc-building-a-model-with-non-linearity" class="nav-link" data-scroll-target="#building-a-model-with-non-linearity"><span class="header-section-number">4.10.2</span> 6.2 Building a model with non-linearity</a></li>
+  <li><a href="#모델-구축하기-with-non-linearity" id="toc-모델-구축하기-with-non-linearity" class="nav-link" data-scroll-target="#모델-구축하기-with-non-linearity"><span class="header-section-number">4.10.2</span> 6.2 모델 구축하기 with non-linearity</a></li>
   <li><a href="#training-a-model-with-non-linearity" id="toc-training-a-model-with-non-linearity" class="nav-link" data-scroll-target="#training-a-model-with-non-linearity"><span class="header-section-number">4.10.3</span> 6.3 Training a model with non-linearity</a></li>
   <li><a href="#evaluating-a-model-trained-with-non-linear-activation-functions" id="toc-evaluating-a-model-trained-with-non-linear-activation-functions" class="nav-link" data-scroll-target="#evaluating-a-model-trained-with-non-linear-activation-functions"><span class="header-section-number">4.10.4</span> 6.4 Evaluating a model trained with non-linear activation functions</a></li>
   </ul></li>
@@ -299,8 +299,8 @@ window.Quarto = {
   <li><a href="#making-and-evaluating-predictions-with-a-pytorch-multi-class-model" id="toc-making-and-evaluating-predictions-with-a-pytorch-multi-class-model" class="nav-link" data-scroll-target="#making-and-evaluating-predictions-with-a-pytorch-multi-class-model"><span class="header-section-number">4.12.6</span> 8.6 Making and evaluating predictions with a PyTorch multi-class model</a></li>
   </ul></li>
   <li><a href="#more-classification-evaluation-metrics" id="toc-more-classification-evaluation-metrics" class="nav-link" data-scroll-target="#more-classification-evaluation-metrics"><span class="header-section-number">4.13</span> 9. More classification evaluation metrics</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.14</span> Exercises</a></li>
-  <li><a href="#extra-curriculum" id="toc-extra-curriculum" class="nav-link" data-scroll-target="#extra-curriculum"><span class="header-section-number">4.15</span> Extra-curriculum</a></li>
+  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제"><span class="header-section-number">4.14</span> 연습 문제</a></li>
+  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료"><span class="header-section-number">4.15</span> 추가 학습 자료</a></li>
   </ul>
 </nav>
     </div>
@@ -372,8 +372,8 @@ window.Quarto = {
 <p>In this notebook, we’re going to work through a couple of different classification problems with PyTorch.</p>
 <p>In other words, taking a set of inputs and predicting what class those set of inputs belong to.</p>
 </section>
-<section id="what-were-going-to-cover" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="what-were-going-to-cover"><span class="header-section-number">4.2</span> What we’re going to cover</h2>
+<section id="이번-장에서-다룰-내용" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="이번-장에서-다룰-내용"><span class="header-section-number">4.2</span> 이번 장에서 다룰 내용</h2>
 <p>In this notebook we’re going to reiterate over the PyTorch workflow we coverd in notebook 01.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -408,11 +408,11 @@ window.Quarto = {
 <td>Here we’ll create a model to learn patterns in the data, we’ll also choose a <strong>loss function</strong>, <strong>optimizer</strong> and build a <strong>training loop</strong> specific to classification.</td>
 </tr>
 <tr class="even">
-<td><strong>3. Fitting the model to data (training)</strong></td>
+<td><strong>3. 데이터에 모델 맞추기 (훈련)</strong></td>
 <td>We’ve got data and a model, now let’s let the model (try to) find patterns in the (<strong>training</strong>) data.</td>
 </tr>
 <tr class="odd">
-<td><strong>4. Making predictions and evaluating a model (inference)</strong></td>
+<td><strong>4. 예측 및 모델 평가 (추론)</strong></td>
 <td>Our model’s found patterns in the data, let’s compare its findings to the actual (<strong>testing</strong>) data.</td>
 </tr>
 <tr class="even">
@@ -428,14 +428,14 @@ window.Quarto = {
 <td>We used <strong>non-linear functions</strong> to help model non-linear data, but what do these look like?</td>
 </tr>
 <tr class="odd">
-<td><strong>8. Putting it all together with multi-class classification</strong></td>
+<td><strong>8. 전체 과정 합치기 with multi-class classification</strong></td>
 <td>Let’s put everything we’ve done so far for binary classification together with a multi-class classification problem.</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="where-can-can-you-get-help" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="where-can-can-you-get-help"><span class="header-section-number">4.3</span> Where can can you get help?</h2>
+<section id="도움을-받을-수-있는-곳" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="도움을-받을-수-있는-곳"><span class="header-section-number">4.3</span> 도움을 받을 수 있는 곳</h2>
 <p>All of the materials for this course <a href="https://github.com/mrdbourke/pytorch-deep-learning">live on GitHub</a>.</p>
 <p>And if you run into trouble, you can ask a question on the <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">Discussions page</a> there too.</p>
 <p>There’s also the <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
@@ -726,7 +726,7 @@ Name: label, dtype: int64</code></pre>
 <p>Alrighty, looks like we’ve got a problem to solve.</p>
 <p>Let’s find out how we could build a PyTorch neural network to classify dots into red (0) or blue (1).</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> This dataset is often what’s considered a <strong>toy problem</strong> (a problem that’s used to try and test things out on) in machine learning.</p>
+<p><strong>참고:</strong> This dataset is often what’s considered a <strong>toy problem</strong> (a problem that’s used to try and test things out on) in machine learning.</p>
 <p>But it represents the major key of classification, you have some kind of data represented as numerical values and you’d like to build a model that’s able to classify it, in our case, separate it into red or blue dots.</p>
 </blockquote>
 <section id="input-and-output-shapes" class="level3" data-number="4.5.1">
@@ -807,8 +807,8 @@ Shapes for one sample of X: (2,) and the same for y: ()</code></pre>
 <p>Nice! Looks like we’ve now got 800 training samples and 200 testing samples.</p>
 </section>
 </section>
-<section id="building-a-model" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="building-a-model"><span class="header-section-number">4.6</span> 2. Building a model</h2>
+<section id="모델-구축하기" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="모델-구축하기"><span class="header-section-number">4.6</span> 2. 모델 구축하기</h2>
 <p>We’ve got some data ready, now it’s time to build a model.</p>
 <p>We’ll break it down into a few parts.</p>
 <ol type="1">
@@ -981,7 +981,7 @@ tensor([1., 0., 1., 0., 1., 1., 0., 0., 1., 0.])</code></pre>
 <p><em>Table of various loss functions and optimizers, there are more but these some common ones you’ll see.</em></p>
 <p>Since we’re working with a binary classification problem, let’s use a binary cross entropy loss function.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Recall a <strong>loss function</strong> is what measures how <em>wrong</em> your model predictions are, the higher the loss, the worse your model.</p>
+<p><strong>참고:</strong> Recall a <strong>loss function</strong> is what measures how <em>wrong</em> your model predictions are, the higher the loss, the worse your model.</p>
 <p>Also, PyTorch documentation often refers to loss functions as “loss criterion” or “criterion”, these are all different ways of describing the same thing.</p>
 </blockquote>
 <p>PyTorch has two binary cross entropy implementations: 1. <a href="https://pytorch.org/docs/stable/generated/torch.nn.BCELoss.html"><code>torch.nn.BCELoss()</code></a> - Creates a loss function that measures the binary cross entropy between the target (label) and input (features). 2. <a href="https://pytorch.org/docs/stable/generated/torch.nn.BCEWithLogitsLoss.html"><code>torch.nn.BCEWithLogitsLoss()</code></a> - This is the same as above except it has a sigmoid layer (<a href="https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html"><code>nn.Sigmoid</code></a>) built-in (we’ll see what this means soon).</p>
@@ -991,7 +991,7 @@ tensor([1., 0., 1., 0., 1., 1., 0., 0., 1., 0.])</code></pre>
 <p>Knowing this, let’s create a loss function and an optimizer.</p>
 <p>For the optimizer we’ll use <code>torch.optim.SGD()</code> to optimize the model parameters with learning rate 0.1.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> There’s a <a href="https://discuss.pytorch.org/t/bceloss-vs-bcewithlogitsloss/33586/4">discussion on the PyTorch forums about the use of <code>nn.BCELoss</code> vs.&nbsp;<code>nn.BCEWithLogitsLoss</code></a>. It can be confusing at first but as with many things, it becomes easier with practice.</p>
+<p><strong>참고:</strong> There’s a <a href="https://discuss.pytorch.org/t/bceloss-vs-bcewithlogitsloss/33586/4">discussion on the PyTorch forums about the use of <code>nn.BCELoss</code> vs.&nbsp;<code>nn.BCEWithLogitsLoss</code></a>. It can be confusing at first but as with many things, it becomes easier with practice.</p>
 </blockquote>
 <div id="cell-36" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a loss function</span></span>
@@ -1127,7 +1127,7 @@ PyTorch training loop steps
 <p>To recap, we converted our model’s raw outputs (logits) to predicition probabilities using a sigmoid activation function.</p>
 <p>And then converted the prediction probabilities to prediction labels by rounding them.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> The use of the sigmoid activation function is often only for binary classification logits. For multi-class classification, we’ll be looking at using the <a href="https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html">softmax activation function</a> (this will come later on).</p>
+<p><strong>참고:</strong> The use of the sigmoid activation function is often only for binary classification logits. For multi-class classification, we’ll be looking at using the <a href="https://pytorch.org/docs/stable/generated/torch.nn.Softmax.html">softmax activation function</a> (this will come later on).</p>
 <p>And the use of the sigmoid activation function is not required when passing our model’s raw outputs to the <code>nn.BCEWithLogitsLoss</code> (the “logits” in logits loss is because it works on the model’s raw logits output), this is because it has a sigmoid function built-in.</p>
 </blockquote>
 </section>
@@ -1300,7 +1300,7 @@ Epoch: 90 | Loss: 0.69472, Accuracy: 50.62% | Test loss: 0.69779, Test acc: 49.5
 </tbody>
 </table>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> *because you can adjust all of these by hand, they’re referred to as <strong>hyperparameters</strong>.</p>
+<p><strong>참고:</strong> *because you can adjust all of these by hand, they’re referred to as <strong>hyperparameters</strong>.</p>
 <p>And this is also where machine learning’s half art half science comes in, there’s no real way to know here what the best combination of values is for your project, best to follow the data scientist’s motto of “experiment, experiment, experiment”.</p>
 </blockquote>
 <p>Let’s see what happens if we add an extra layer to our model, fit for longer (<code>epochs=1000</code> instead of <code>epochs=100</code>) and increase the number of hidden units from <code>5</code> to <code>10</code>.</p>
@@ -1514,7 +1514,7 @@ Epoch: 900 | Loss: 0.69298, Accuracy: 51.00% | Test loss: 0.69468, Test acc: 46.
 </div>
 <p>Now let’s train the model using the regular training loop steps for <code>epochs=1000</code> (just like <code>model_1</code>).</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> We’ve been writing similar training loop code over and over again. I’ve made it that way on purpose though, to keep practicing. However, do you have ideas how we could functionize this? That would save a fair bit of coding in the future. Potentially there could be a function for training and a function for testing.</p>
+<p><strong>참고:</strong> We’ve been writing similar training loop code over and over again. I’ve made it that way on purpose though, to keep practicing. However, do you have ideas how we could functionize this? That would save a fair bit of coding in the future. Potentially there could be a function for training and a function for testing.</p>
 </blockquote>
 <div id="cell-77" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="16da5efa-3c3b-494b-ef4e-e5244f4cf097" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
@@ -1599,7 +1599,7 @@ Epoch: 900 | Train loss: 0.05571, Test loss: 0.00603</code></pre>
 <p>This is a good thing.</p>
 <p>It means our model at least has <em>some</em> capacity to learn.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> A helpful troubleshooting step when building deep learning models is to start as small as possible to see if the model works before scaling it up.</p>
+<p><strong>참고:</strong> A helpful troubleshooting step when building deep learning models is to start as small as possible to see if the model works before scaling it up.</p>
 <p>This could mean starting with a simple neural network (not many layers, not many hidden neurons) and a small dataset (like the one we’ve made) and then <strong>overfitting</strong> (making the model perform too well) on that small example before increasing the amount data or the model size/design to <em>reduce</em> overfitting.</p>
 </blockquote>
 <p>So what could it be?</p>
@@ -1663,8 +1663,8 @@ Epoch: 900 | Train loss: 0.05571, Test loss: 0.00603</code></pre>
 </div>
 </div>
 </section>
-<section id="building-a-model-with-non-linearity" class="level3" data-number="4.10.2">
-<h3 data-number="4.10.2" class="anchored" data-anchor-id="building-a-model-with-non-linearity"><span class="header-section-number">4.10.2</span> 6.2 Building a model with non-linearity</h3>
+<section id="모델-구축하기-with-non-linearity" class="level3" data-number="4.10.2">
+<h3 data-number="4.10.2" class="anchored" data-anchor-id="모델-구축하기-with-non-linearity"><span class="header-section-number">4.10.2</span> 6.2 모델 구축하기 with non-linearity</h3>
 <p>Now here comes the fun part.</p>
 <p>What kind of pattern do you think you could draw with unlimited straight (linear) and non-straight (non-linear) lines?</p>
 <p>I bet you could get pretty creative.</p>
@@ -1816,7 +1816,7 @@ Epoch: 900 | Loss: 0.62362, Accuracy: 74.00% | Test Loss: 0.62145, Test Accuracy
 <h2 data-number="4.11" class="anchored" data-anchor-id="replicating-non-linear-activation-functions"><span class="header-section-number">4.11</span> 7. Replicating non-linear activation functions</h2>
 <p>We saw before how adding non-linear activation functions to our model can helped it to model non-linear data.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> Much of the data you’ll encounter in the wild is non-linear (or a combination of linear and non-linear). Right now we’ve been working with dots on a 2D plot. But imagine if you had images of plants you’d like to classify, there’s a lot of different plant shapes. Or text from Wikipedia you’d like to summarize, there’s lots of different ways words can be put together (linear and non-linear patterns).</p>
+<p><strong>참고:</strong> Much of the data you’ll encounter in the wild is non-linear (or a combination of linear and non-linear). Right now we’ve been working with dots on a 2D plot. But imagine if you had images of plants you’d like to classify, there’s a lot of different plant shapes. Or text from Wikipedia you’d like to summarize, there’s lots of different ways words can be put together (linear and non-linear patterns).</p>
 </blockquote>
 <p>But what does a non-linear activation <em>look</em> like?</p>
 <p>How about we replicate some and what they do?</p>
@@ -2142,7 +2142,7 @@ tensor(3, device='cuda:0')</code></pre>
 <p>You can see the output of <code>torch.argmax()</code> returns 3, so for the features (<code>X</code>) of the sample at index 0, the model is predicting that the most likely class value (<code>y</code>) is 3.</p>
 <p>Of course, right now this is just random guessing so it’s got a 25% chance of being right (since there’s four classes). But we can improve those chances by training the model.</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> To summarize the above, a model’s raw output is referred to as <strong>logits</strong>.</p>
+<p><strong>참고:</strong> To summarize the above, a model’s raw output is referred to as <strong>logits</strong>.</p>
 <p>For a multi-class classification problem, to turn the logits into <strong>prediction probabilities</strong>, you use the softmax activation function (<code>torch.softmax</code>).</p>
 <p>The index of the value with the highest <strong>prediction probability</strong> is the class number the model thinks is <em>most</em> likely given the input features for that sample (although this is a prediction, it doesn’t mean it will be correct).</p>
 </blockquote>
@@ -2243,7 +2243,7 @@ Epoch: 90 | Loss: 0.03300, Acc: 99.12% | Test Loss: 0.02423, Test Acc: 99.50%</c
 <p>Though to evaluate them, they’ll have to be in the same form as our labels (<code>y_blob_test</code>) which are in integer form.</p>
 <p>Let’s convert our model’s prediction logits to prediction probabilities (using <code>torch.softmax()</code>) then to prediction labels (by taking the <code>argmax()</code> of each sample).</p>
 <blockquote class="blockquote">
-<p><strong>Note:</strong> It’s possible to skip the <code>torch.softmax()</code> function and go straight from <code>predicted logits -&gt; predicted labels</code> by calling <code>torch.argmax()</code> directly on the logits.</p>
+<p><strong>참고:</strong> It’s possible to skip the <code>torch.softmax()</code> function and go straight from <code>predicted logits -&gt; predicted labels</code> by calling <code>torch.argmax()</code> directly on the logits.</p>
 <p>For example, <code>y_preds = torch.argmax(y_logits, dim=1)</code>, this saves a computation step (no <code>torch.softmax()</code>) but results in no prediction probabilities being available to use.</p>
 </blockquote>
 <div id="cell-136" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ca32986f-8dc0-419d-84df-1cc3ba8577e5" data-execution_count="58">
@@ -2348,8 +2348,8 @@ Test accuracy: 99.5%</code></pre>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="4.14">
-<h2 data-number="4.14" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.14</span> Exercises</h2>
+<section id="연습-문제" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="연습-문제"><span class="header-section-number">4.14</span> 연습 문제</h2>
 <p>All of the exercises are focused on practicing the code in the sections above.</p>
 <p>You should be able to complete them by referencing each section or by following the resource(s) linked.</p>
 <p>All exercises should be completed using <a href="https://pytorch.org/docs/stable/notes/cuda.html#device-agnostic-code">device-agonistic code</a>.</p>
@@ -2409,8 +2409,8 @@ Test accuracy: 99.5%</code></pre>
 <span id="cb105-15"><a href="#cb105-15" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">40</span>, cmap<span class="op">=</span>plt.cm.Spectral)</span>
 <span id="cb105-16"><a href="#cb105-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="extra-curriculum" class="level2" data-number="4.15">
-<h2 data-number="4.15" class="anchored" data-anchor-id="extra-curriculum"><span class="header-section-number">4.15</span> Extra-curriculum</h2>
+<section id="추가-학습-자료" class="level2" data-number="4.15">
+<h2 data-number="4.15" class="anchored" data-anchor-id="추가-학습-자료"><span class="header-section-number">4.15</span> 추가 학습 자료</h2>
 <ul>
 <li>Write down 3 problems where you think machine classification could be useful (these can be anything, get creative as you like, for example, classifying credit card transactions as fraud or not fraud based on the purchase amount and purchase location features).</li>
 <li>Research the concept of “momentum” in gradient-based optimizers (like SGD or Adam), what does it mean?</li>
