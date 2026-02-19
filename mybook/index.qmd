@@ -1,0 +1,20 @@
+# 딥러닝을 위한 PyTorch 배우기
+
+[Zero to Mastery 딥러닝을 위한 PyTorch 배우기 과정](https://dbourke.link/ZTMPyTorch)에 오신 것을 환영합니다. 인터넷에서 PyTorch를 배우기에 두 번째로 좋은 곳입니다(첫 번째는 [PyTorch 설명서](https://pytorch.org/docs/stable/index.html)입니다).
+
+* **2023년 4월 업데이트:** [PyTorch 2.0을 위한 새로운 튜토리얼](https://www.learnpytorch.io/pytorch_2_intro/)이 공개되었습니다! 그리고 PyTorch 2.0은 추가적인(새로운 기능) 및 하위 호환 릴리스이므로 모든 이전 과정 자료는 PyTorch 2.0과 *여전히* 작동합니다.
+
+## 이 페이지의 내용
+
+* [과정 자료/개요](https://github.com/mrdbourke/pytorch-deep-learning#course-materialsoutline)
+* [이 과정에 대하여](https://github.com/mrdbourke/pytorch-deep-learning#about-this-course)
+* [상태](https://github.com/mrdbourke/pytorch-deep-learning#status) (과정 제작 진행 상황)
+* [로그](https://github.com/mrdbourke/pytorch-deep-learning#log) (과정 자료 제작 과정 로그)
+
+## 과정 자료/개요
+
+* 📖 **온라인 책 버전:** 모든 과정 자료는 [learnpytorch.io](https://learnpytorch.io)에서 읽을 수 있는 온라인 책으로 제공됩니다.
+* 🎥 **YouTube의 첫 5개 섹션:** [첫 25시간 분량의 자료](https://youtu.be/Z_ikDlimN6A)를 시청하여 하루 만에 Pytorch를 배우십시오.
+* 🔬 **과정 초점:** 코드, 코드, 코드, 실험, 실험, 실험.
+* 🏃‍♂️ **교수 스타일:** [https://sive.rs/kimo](https://sive.rs/kimo).
+* 🤔 **질문하기:** 기존 질문/자신의 질문을 위해 [GitHub 토론 페이지](https://github.com/mrdbourke/pytorch-deep-learning/discussions)를 참조하십시오.

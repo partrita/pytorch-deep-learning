@@ -1,0 +1,19 @@
+[workspace]
+authors = ["fkt <deepthought@postech.ac.kr>"]
+channels = ["conda-forge"]
+name = "pytorch-deep-learning"
+platforms = ["osx-arm64", "linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+quarto = ">=1.8.27,<2"
+python = ">=3.14.3,<3.15"
+jupyter = ">=1.1.1,<2"
+pytorch = ">=2.10.0,<3"
+torchvision = ">=0.25.0,<0.26"
+matplotlib = ">=3.10.8,<4"
+pandas = ">=3.0.1,<4"
+scikit-learn = ">=1.8.0,<2"
+tqdm = ">=4.67.3,<5"

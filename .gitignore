@@ -170,4 +170,6 @@ flagged/
 
 # Docs
 .cache
-mkdocs-material-insiders
+mkdocs-material-insiders# pixi environments
+.pixi/*
+!.pixi/config.toml

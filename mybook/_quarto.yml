@@ -1,0 +1,33 @@
+project:
+  type: book
+
+book:
+  title: "파이토치 딥러닝 입문"
+  author: "Daniel Bourke (번역: Gemini)"
+  date: "2/19/2026"
+  chapters:
+    - index.qmd
+    - 00_pytorch_fundamentals.ipynb
+    - 01_pytorch_workflow.ipynb
+    - 02_pytorch_classification.ipynb
+    - 03_pytorch_computer_vision.ipynb
+    - 04_pytorch_custom_datasets.ipynb
+    - 05_pytorch_going_modular.ipynb
+    - 06_pytorch_transfer_learning.ipynb
+    - 07_pytorch_experiment_tracking.ipynb
+    - 08_pytorch_paper_replicating.ipynb
+    - 09_pytorch_model_deployment.ipynb
+    - references.qmd
+
+bibliography: references.bib
+
+execute:
+  freeze: true
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+  pdf:
+    documentclass: scrreprt
