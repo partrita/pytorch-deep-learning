@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; 06 - PyTorch 전이 학습 – 파이토치 딥러닝 입문</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07_pytorch_experiment_tracking.html" rel="next">
+<link href="./05_pytorch_going_modular.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-803ae4f7a8810f475153517dc3c4ebae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_pytorch_transfer_learning.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">파이토치 딥러닝 입문</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">00 - PyTorch 기초</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">02 - PyTorch 신경망 분류</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-transfer-learning" id="toc-what-is-transfer-learning" class="nav-link active" data-scroll-target="#what-is-transfer-learning"><span class="header-section-number">8.1</span> What is transfer learning?</a></li>
+  <li><a href="#why-use-transfer-learning" id="toc-why-use-transfer-learning" class="nav-link" data-scroll-target="#why-use-transfer-learning"><span class="header-section-number">8.2</span> Why use transfer learning?</a></li>
+  <li><a href="#where-to-find-pretrained-models" id="toc-where-to-find-pretrained-models" class="nav-link" data-scroll-target="#where-to-find-pretrained-models"><span class="header-section-number">8.3</span> Where to find pretrained models</a></li>
+  <li><a href="#what-were-going-to-cover" id="toc-what-were-going-to-cover" class="nav-link" data-scroll-target="#what-were-going-to-cover"><span class="header-section-number">8.4</span> What we’re going to cover</a></li>
+  <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help"><span class="header-section-number">8.5</span> Where can you get help?</a></li>
+  <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup"><span class="header-section-number">8.6</span> 0. Getting setup</a></li>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">8.7</span> 1. Get data</a></li>
+  <li><a href="#create-datasets-and-dataloaders" id="toc-create-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-datasets-and-dataloaders"><span class="header-section-number">8.8</span> 2. Create Datasets and DataLoaders</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-transform-for-torchvision.models-manual-creation" id="toc-creating-a-transform-for-torchvision.models-manual-creation" class="nav-link" data-scroll-target="#creating-a-transform-for-torchvision.models-manual-creation"><span class="header-section-number">8.8.1</span> 2.1 Creating a transform for <code>torchvision.models</code> (manual creation)</a></li>
+  <li><a href="#creating-a-transform-for-torchvision.models-auto-creation" id="toc-creating-a-transform-for-torchvision.models-auto-creation" class="nav-link" data-scroll-target="#creating-a-transform-for-torchvision.models-auto-creation"><span class="header-section-number">8.8.2</span> 2.2 Creating a transform for <code>torchvision.models</code> (auto creation)</a></li>
+  </ul></li>
+  <li><a href="#getting-a-pretrained-model" id="toc-getting-a-pretrained-model" class="nav-link" data-scroll-target="#getting-a-pretrained-model"><span class="header-section-number">8.9</span> 3. Getting a pretrained model</a>
+  <ul class="collapse">
+  <li><a href="#which-pretrained-model-should-you-use" id="toc-which-pretrained-model-should-you-use" class="nav-link" data-scroll-target="#which-pretrained-model-should-you-use"><span class="header-section-number">8.9.1</span> 3.1 Which pretrained model should you use?</a></li>
+  <li><a href="#setting-up-a-pretrained-model" id="toc-setting-up-a-pretrained-model" class="nav-link" data-scroll-target="#setting-up-a-pretrained-model"><span class="header-section-number">8.9.2</span> 3.2 Setting up a pretrained model</a></li>
+  <li><a href="#getting-a-summary-of-our-model-with-torchinfo.summary" id="toc-getting-a-summary-of-our-model-with-torchinfo.summary" class="nav-link" data-scroll-target="#getting-a-summary-of-our-model-with-torchinfo.summary"><span class="header-section-number">8.9.3</span> 3.3 Getting a summary of our model with <code>torchinfo.summary()</code></a></li>
+  <li><a href="#freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" id="toc-freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" class="nav-link" data-scroll-target="#freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs"><span class="header-section-number">8.9.4</span> 3.4 Freezing the base model and changing the output layer to suit our needs</a></li>
+  </ul></li>
+  <li><a href="#train-model" id="toc-train-model" class="nav-link" data-scroll-target="#train-model"><span class="header-section-number">8.10</span> 4. Train model</a></li>
+  <li><a href="#evaluate-model-by-plotting-loss-curves" id="toc-evaluate-model-by-plotting-loss-curves" class="nav-link" data-scroll-target="#evaluate-model-by-plotting-loss-curves"><span class="header-section-number">8.11</span> 5. Evaluate model by plotting loss curves</a></li>
+  <li><a href="#make-predictions-on-images-from-the-test-set" id="toc-make-predictions-on-images-from-the-test-set" class="nav-link" data-scroll-target="#make-predictions-on-images-from-the-test-set"><span class="header-section-number">8.12</span> 6. Make predictions on images from the test set</a>
+  <ul class="collapse">
+  <li><a href="#making-predictions-on-a-custom-image" id="toc-making-predictions-on-a-custom-image" class="nav-link" data-scroll-target="#making-predictions-on-a-custom-image"><span class="header-section-number">8.12.1</span> 6.1 Making predictions on a custom image</a></li>
+  </ul></li>
+  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways"><span class="header-section-number">8.13</span> Main takeaways</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.14</span> Exercises</a></li>
+  <li><a href="#extra-curriculum" id="toc-extra-curriculum" class="nav-link" data-scroll-target="#extra-curriculum"><span class="header-section-number">8.15</span> Extra-curriculum</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/mrdbourke/pytorch-deep-learning/blob/main/06_pytorch_transfer_learning.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> This notebook uses <code>torchvision</code>’s upcoming <a href="https://pytorch.org/blog/introducing-torchvision-new-multi-weight-support-api/">multi-weight support API (coming in <code>torchvision</code> v0.13)</a>.</p>
+<p>As of June 2022, it requires the <a href="https://pytorch.org/get-started/locally/">nightly versions of PyTorch and <code>torchvision</code> be installed</a>.</p>
+</blockquote>
+<p>We’ve built a few models by hand so far.</p>
+<p>But their performance has been poor.</p>
+<p>You might be thinking, <strong>is there a well-performing model that already exists for our problem?</strong></p>
+<p>And in the world of deep learning, the answer is often <em>yes</em>.</p>
+<p>We’ll see how by using a powerful technique called <a href="https://developers.google.com/machine-learning/glossary#transfer-learning"><strong>transfer learning</strong></a>.</p>
+<section id="what-is-transfer-learning" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="what-is-transfer-learning"><span class="header-section-number">8.1</span> What is transfer learning?</h2>
+<p><strong>Transfer learning</strong> allows us to take the patterns (also called weights) another model has learned from another problem and use them for our own problem.</p>
+<p>For example, we can take the patterns a computer vision model has learned from datasets such as <a href="https://www.image-net.org/">ImageNet</a> (millions of images of different objects) and use them to power our FoodVision Mini model.</p>
+<p>Or we could take the patterns from a <a href="https://developers.google.com/machine-learning/glossary#masked-language-model">language model</a> (a model that’s been through large amounts of text to learn a representation of language) and use them as the basis of a model to classify different text samples.</p>
+<p>The premise remains: find a well-performing existing model and apply it to your own problem.</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-transfer-learning-example-overview.png" alt="transfer learning overview on different problems" width="900/"></p>
+<p><em>Example of transfer learning being applied to computer vision and natural language processing (NLP). In the case of computer vision, a computer vision model might learn patterns on millions of images in ImageNet and then use those patterns to infer on another problem. And for NLP, a language model may learn the structure of language by reading all of Wikipedia (and perhaps more) and then apply that knowledge to a different problem.</em></p>
+</section>
+<section id="why-use-transfer-learning" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="why-use-transfer-learning"><span class="header-section-number">8.2</span> Why use transfer learning?</h2>
+<p>There are two main benefits to using transfer learning:</p>
+<ol type="1">
+<li>Can leverage an existing model (usually a neural network architecture) proven to work on problems similar to our own.</li>
+<li>Can leverage a working model which has <strong>already learned</strong> patterns on similar data to our own. This often results in achieving <strong>great results with less custom data</strong>.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-transfer-learning-for-foodvision-mini%20.png" alt="transfer learning applied to FoodVision Mini" width="900/"></p>
+<p><em>We’ll be putting these to the test for our FoodVision Mini problem, we’ll take a computer vision model pretrained on ImageNet and try to leverage its underlying learned representations for classifying images of pizza, steak and sushi.</em></p>
+<p>Both research and practice support the use of transfer learning too.</p>
+<p>A finding from a recent machine learning research paper recommended practioner’s use transfer learning wherever possible.</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-how-to-train-your-vit-section-6-transfer-learning-highlight.png" width="900" alt="how to train your vision transformer paper section 6, advising to use transfer learning if you can"></p>
+<p><em>A study into the effects of whether training from scratch or using transfer learning was better from a practioner’s point of view, found transfer learning to be far more beneficial in terms of cost and time. <strong>Source:</strong> <a href="https://arxiv.org/abs/2106.10270">How to train your ViT? Data, Augmentation, and Regularization in Vision Transformers</a> paper section 6 (conclusion).</em></p>
+<p>And Jeremy Howard (founder of <a href="https://www.fast.ai/">fastai</a>) is a big proponent of transfer learning.</p>
+<blockquote class="blockquote">
+<p>The things that really make a difference (transfer learning), if we can do better at transfer learning, it’s this world changing thing. Suddenly lots more people can do world-class work with less resources and less data. — <a href="https://youtu.be/Bi7f1JSSlh8?t=72">Jeremy Howard on the Lex Fridman Podcast</a></p>
+</blockquote>
+</section>
+<section id="where-to-find-pretrained-models" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="where-to-find-pretrained-models"><span class="header-section-number">8.3</span> Where to find pretrained models</h2>
+<p>The world of deep learning is an amazing place.</p>
+<p>So amazing that many people around the world share their work.</p>
+<p>Often, code and pretrained models for the latest state-of-the-art research is released within a few days of publishing.</p>
+<p>And there are several places you can find pretrained models to use for your own problems.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Location</strong></th>
+<th><strong>What’s there?</strong></th>
+<th><strong>Link(s)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PyTorch domain libraries</strong></td>
+<td>Each of the PyTorch domain libraries (<code>torchvision</code>, <code>torchtext</code>) come with pretrained models of some form. The models there work right within PyTorch.</td>
+<td><a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a>, <a href="https://pytorch.org/text/main/models.html"><code>torchtext.models</code></a>, <a href="https://pytorch.org/audio/stable/models.html"><code>torchaudio.models</code></a>, <a href="https://pytorch.org/torchrec/torchrec.models.html"><code>torchrec.models</code></a></td>
+</tr>
+<tr class="even">
+<td><strong>HuggingFace Hub</strong></td>
+<td>A series of pretrained models on many different domains (vision, text, audio and more) from organizations around the world. There’s plenty of different datasets too.</td>
+<td>https://huggingface.co/models, https://huggingface.co/datasets</td>
+</tr>
+<tr class="odd">
+<td><strong><code>timm</code> (PyTorch Image Models) library</strong></td>
+<td>Almost all of the latest and greatest computer vision models in PyTorch code as well as plenty of other helpful computer vision features.</td>
+<td>https://github.com/rwightman/pytorch-image-models</td>
+</tr>
+<tr class="even">
+<td><strong>Paperswithcode</strong></td>
+<td>A collection of the latest state-of-the-art machine learning papers with code implementations attached. You can also find benchmarks here of model performance on different tasks.</td>
+<td>https://paperswithcode.com/</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-transfer-learning-where-to-find-pretrained-models.png" alt="different locations to find pretrained neural network models" width="900/"></p>
+<p><em>With access to such high-quality resources as above, it should be common practice at the start of every deep learning problem you take on to ask, “Does a pretrained model exist for my problem?”</em></p>
+<blockquote class="blockquote">
+<p><strong>Exercise:</strong> Spend 5-minutes going through <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a> as well as the <a href="https://huggingface.co/models">HuggingFace Hub Models page</a>, what do you find? (there’s no right answers here, it’s just to practice exploring)</p>
+</blockquote>
+</section>
+<section id="what-were-going-to-cover" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="what-were-going-to-cover"><span class="header-section-number">8.4</span> What we’re going to cover</h2>
+<p>We’re going to take a pretrained model from <code>torchvision.models</code> and customise it to work on (and hopefully improve) our FoodVision Mini problem.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Topic</strong></th>
+<th><strong>Contents</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>0. Getting setup</strong></td>
+<td>We’ve written a fair bit of useful code over the past few sections, let’s download it and make sure we can use it again.</td>
+</tr>
+<tr class="even">
+<td><strong>1. Get data</strong></td>
+<td>Let’s get the pizza, steak and sushi image classification dataset we’ve been using to try and improve our model’s results.</td>
+</tr>
+<tr class="odd">
+<td><strong>2. Create Datasets and DataLoaders</strong></td>
+<td>We’ll use the <code>data_setup.py</code> script we wrote in chapter 05. PyTorch Going Modular to setup our DataLoaders.</td>
+</tr>
+<tr class="even">
+<td><strong>3. Get and customise a pretrained model</strong></td>
+<td>Here we’ll download a pretrained model from <code>torchvision.models</code> and customise it to our own problem.</td>
+</tr>
+<tr class="odd">
+<td><strong>4. Train model</strong></td>
+<td>Let’s see how the new pretrained model goes on our pizza, steak, sushi dataset. We’ll use the training functions we created in the previous chapter.</td>
+</tr>
+<tr class="even">
+<td><strong>5. Evaluate the model by plotting loss curves</strong></td>
+<td>How did our first transfer learning model go? Did it overfit or underfit?</td>
+</tr>
+<tr class="odd">
+<td><strong>6. Make predictions on images from the test set</strong></td>
+<td>It’s one thing to check out a model’s evaluation metrics but it’s another thing to view its predictions on test samples, let’s <em>visualize, visualize, visualize</em>!</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="where-can-you-get-help" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="where-can-you-get-help"><span class="header-section-number">8.5</span> Where can you get help?</h2>
+<p>All of the materials for this course <a href="https://github.com/mrdbourke/pytorch-deep-learning">are available on GitHub</a>.</p>
+<p>If you run into trouble, you can ask a question on the course <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">GitHub Discussions page</a>.</p>
+<p>And of course, there’s the <a href="https://pytorch.org/docs/stable/index.html">PyTorch documentation</a> and <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
+</section>
+<section id="getting-setup" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="getting-setup"><span class="header-section-number">8.6</span> 0. Getting setup</h2>
+<p>Let’s get started by importing/downloading the required modules for this section.</p>
+<p>To save us writing extra code, we’re going to be leveraging some of the Python scripts (such as <code>data_setup.py</code> and <code>engine.py</code>) we created in the previous section, <a href="https://www.learnpytorch.io/05_pytorch_going_modular/">05. PyTorch Going Modular</a>.</p>
+<p>Specifically, we’re going to download the <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/going_modular"><code>going_modular</code></a> directory from the <code>pytorch-deep-learning</code> repository (if we don’t already have it).</p>
+<p>We’ll also get the <a href="https://github.com/TylerYep/torchinfo"><code>torchinfo</code></a> package if it’s not available.</p>
+<p><code>torchinfo</code> will help later on to give us a visual representation of our model.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> As of June 2022, this notebook uses the nightly versions of <code>torch</code> and <code>torchvision</code> as <code>torchvision</code> v0.13+ is required for using the updated multi-weights API. You can install these using the command below.</p>
+</blockquote>
+<div id="8ed820be" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For this notebook to run with updated APIs, we need torch 1.12+ and torchvision 0.13+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> torch</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> torchvision</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">int</span>(torch.__version__.split(<span class="st">"."</span>)[<span class="dv">1</span>]) <span class="op">&gt;=</span> <span class="dv">12</span>, <span class="st">"torch version should be 1.12+"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">int</span>(torchvision.__version__.split(<span class="st">"."</span>)[<span class="dv">1</span>]) <span class="op">&gt;=</span> <span class="dv">13</span>, <span class="st">"torchvision version should be 0.13+"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"torch version: </span><span class="sc">{</span>torch<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"torchvision version: </span><span class="sc">{</span>torchvision<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"[INFO] torch/torchvision versions not as required, installing nightly versions."</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>pip3 install <span class="op">-</span>U <span class="op">--</span>pre torch torchvision torchaudio <span class="op">--</span>extra<span class="op">-</span>index<span class="op">-</span>url https:<span class="op">//</span>download.pytorch.org<span class="op">/</span>whl<span class="op">/</span>nightly<span class="op">/</span>cu113</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> torch</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> torchvision</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"torch version: </span><span class="sc">{</span>torch<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"torchvision version: </span><span class="sc">{</span>torchvision<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>torch version: 1.13.0.dev20220620+cu113
+torchvision version: 0.14.0.dev20220620+cu113</code></pre>
+</div>
+</div>
+<div id="0797a4ff-512e-4c46-a82a-e913e0db10a8" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Continue with regular imports</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchvision</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> transforms</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to get torchinfo, install it if it doesn't work</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> torchinfo <span class="im">import</span> summary</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[INFO] Couldn't find torchinfo... installing it."</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>pip install <span class="op">-</span>q torchinfo</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> torchinfo <span class="im">import</span> summary</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to import the going_modular directory, download it from GitHub if it doesn't work</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> going_modular.going_modular <span class="im">import</span> data_setup, engine</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the going_modular scripts</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[INFO] Couldn't find going_modular scripts... downloading them from GitHub."</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>mrdbourke<span class="op">/</span>pytorch<span class="op">-</span>deep<span class="op">-</span>learning</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>mv pytorch<span class="op">-</span>deep<span class="op">-</span>learning<span class="op">/</span>going_modular .</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>rm <span class="op">-</span>rf pytorch<span class="op">-</span>deep<span class="op">-</span>learning</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> going_modular.going_modular <span class="im">import</span> data_setup, engine</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now let’s setup device agnostic code.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> If you’re using Google Colab, and you don’t have a GPU turned on yet, it’s now time to turn one on via <code>Runtime -&gt; Change runtime type -&gt; Hardware accelerator -&gt; GPU</code>.</p>
+</blockquote>
+<div id="b93a75c4-6e40-4575-8d60-d1d43be9220f" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup device agnostic code</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>'cuda'</code></pre>
+</div>
+</div>
+</section>
+<section id="get-data" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="get-data"><span class="header-section-number">8.7</span> 1. Get data</h2>
+<p>Before we can start to use <strong>transfer learning</strong>, we’ll need a dataset.</p>
+<p>To see how transfer learning compares to our previous attempts at model building, we’ll download the same dataset we’ve been using for FoodVision Mini.</p>
+<p>Let’s write some code to download the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/data/pizza_steak_sushi.zip"><code>pizza_steak_sushi.zip</code></a> dataset from the course GitHub and then unzip it.</p>
+<p>We can also make sure if we’ve already got the data, it doesn’t redownload.</p>
+<div id="8dfd6e3f-3f0d-4fca-9835-6a45a7c797c3" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zipfile</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup path to data folder</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">"data/"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>image_path <span class="op">=</span> data_path <span class="op">/</span> <span class="st">"pizza_steak_sushi"</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># If the image folder doesn't exist, download it and prepare it... </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> image_path.is_dir():</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>image_path<span class="sc">}</span><span class="ss"> directory exists."</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Did not find </span><span class="sc">{</span>image_path<span class="sc">}</span><span class="ss"> directory, creating one..."</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    image_path.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Download pizza, steak, sushi data</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(data_path <span class="op">/</span> <span class="st">"pizza_steak_sushi.zip"</span>, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        request <span class="op">=</span> requests.get(<span class="st">"https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Downloading pizza, steak, sushi data..."</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        f.write(request.content)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Unzip pizza, steak, sushi data</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> zipfile.ZipFile(data_path <span class="op">/</span> <span class="st">"pizza_steak_sushi.zip"</span>, <span class="st">"r"</span>) <span class="im">as</span> zip_ref:</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Unzipping pizza, steak, sushi data..."</span>) </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        zip_ref.extractall(image_path)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove .zip file</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    os.remove(data_path <span class="op">/</span> <span class="st">"pizza_steak_sushi.zip"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data/pizza_steak_sushi directory exists.</code></pre>
+</div>
+</div>
+<p>Excellent!</p>
+<p>Now we’ve got the same dataset we’ve been using previously, a series of images of pizza, steak and sushi in standard image classification format.</p>
+<p>Let’s now create paths to our training and test directories.</p>
+<div id="e3e04e57-44e8-4c13-97db-ba9a21a1924c" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup Dirs</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>train_dir <span class="op">=</span> image_path <span class="op">/</span> <span class="st">"train"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>test_dir <span class="op">=</span> image_path <span class="op">/</span> <span class="st">"test"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="create-datasets-and-dataloaders" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="create-datasets-and-dataloaders"><span class="header-section-number">8.8</span> 2. Create Datasets and DataLoaders</h2>
+<p>Since we’ve downloaded the <code>going_modular</code> directory, we can use the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/data_setup.py"><code>data_setup.py</code></a> script we created in section <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#2-create-datasets-and-dataloaders-data_setuppy">05. PyTorch Going Modular</a> to prepare and setup our DataLoaders.</p>
+<p>But since we’ll be using a pretrained model from <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a>, there’s a specific transform we need to prepare our images first.</p>
+<section id="creating-a-transform-for-torchvision.models-manual-creation" class="level3" data-number="8.8.1">
+<h3 data-number="8.8.1" class="anchored" data-anchor-id="creating-a-transform-for-torchvision.models-manual-creation"><span class="header-section-number">8.8.1</span> 2.1 Creating a transform for <code>torchvision.models</code> (manual creation)</h3>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> As of <code>torchvision</code> v0.13+, there’s an update to how data transforms can be created using <code>torchvision.models</code>. I’ve called the previous method “manual creation” and the new method “auto creation”. This notebook showcases both.</p>
+</blockquote>
+<p>When using a pretrained model, it’s important that <strong>your custom data going into the model is prepared in the same way as the original training data that went into the model</strong>.</p>
+<p>Prior to <code>torchvision</code> v0.13+, to create a transform for a pretrained model in <code>torchvision.models</code>, the documentation stated:</p>
+<blockquote class="blockquote">
+<p>All pre-trained models expect input images normalized in the same way, i.e.&nbsp;mini-batches of 3-channel RGB images of shape (3 x H x W), where H and W are expected to be at least 224.</p>
+<p>The images have to be loaded in to a range of <code>[0, 1]</code> and then normalized using <code>mean = [0.485, 0.456, 0.406]</code> and <code>std = [0.229, 0.224, 0.225]</code>.</p>
+<p>You can use the following transform to normalize:</p>
+<pre><code>normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225])</code></pre>
+</blockquote>
+<p>The good news is, we can achieve the above transformations with a combination of:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Transform number</strong></th>
+<th><strong>Transform required</strong></th>
+<th><strong>Code to perform transform</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Mini-batches of size <code>[batch_size, 3, height, width]</code> where height and width are at least 224x224^.</td>
+<td><code>torchvision.transforms.Resize()</code> to resize images into <code>[3, 224, 224]</code>^ and <code>torch.utils.data.DataLoader()</code> to create batches of images.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Values between 0 &amp; 1.</td>
+<td><code>torchvision.transforms.ToTensor()</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>A mean of <code>[0.485, 0.456, 0.406]</code> (values across each colour channel).</td>
+<td><code>torchvision.transforms.Normalize(mean=...)</code> to adjust the mean of our images.</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>A standard deviation of <code>[0.229, 0.224, 0.225]</code> (values across each colour channel).</td>
+<td><code>torchvision.transforms.Normalize(std=...)</code> to adjust the standard deviation of our images.</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> ^some pretrained models from <code>torchvision.models</code> in different sizes to <code>[3, 224, 224]</code>, for example, some might take them in <code>[3, 240, 240]</code>. For specific input image sizes, see the documentation.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Question:</strong> <em>Where did the mean and standard deviation values come from? Why do we need to do this?</em></p>
+<p>These were calculated from the data. Specifically, the ImageNet dataset by taking the means and standard deviations across a subset of images.</p>
+<p>We also don’t <em>need</em> to do this. Neural networks are usually quite capable of figuring out appropriate data distributions (they’ll calculate where the mean and standard deviations need to be on their own) but setting them at the start can help our networks achieve better performance quicker.</p>
+</blockquote>
+<p>Let’s compose a series of <code>torchvision.transforms</code> to perform the above steps.</p>
+<div id="4e095ac1-af8e-4215-8028-de97cfb65c39" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a transforms pipeline manually (required for torchvision &lt; 0.13)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>manual_transforms <span class="op">=</span> transforms.Compose([</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)), <span class="co"># 1. Reshape all images to 224x224 (though some models may require different sizes)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    transforms.ToTensor(), <span class="co"># 2. Turn image values to between 0 &amp; 1 </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    transforms.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], <span class="co"># 3. A mean of [0.485, 0.456, 0.406] (across each colour channel)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                         std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]) <span class="co"># 4. A standard deviation of [0.229, 0.224, 0.225] (across each colour channel),</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Wonderful!</p>
+<p>Now we’ve got a <strong>manually created series of transforms</strong> ready to prepare our images, let’s create training and testing DataLoaders.</p>
+<p>We can create these using the <code>create_dataloaders</code> function from the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/data_setup.py"><code>data_setup.py</code></a> script we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#2-create-datasets-and-dataloaders-data_setuppy">05. PyTorch Going Modular Part 2</a>.</p>
+<p>We’ll set <code>batch_size=32</code> so our model see’s mini-batches of 32 samples at a time.</p>
+<p>And we can transform our images using the transform pipeline we created above by setting <code>transform=simple_transform</code>.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> I’ve included this manual creation of transforms in this notebook because you may come across resources that use this style. It’s also important to note that because these transforms are manually created, they’re also infinitely customizable. So if you wanted to included data augmentation techniques in your transforms pipeline, you could.</p>
+</blockquote>
+<div id="f7d97a6f-50f8-4212-a777-3d2cfac2a4fe" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create training and testing DataLoaders as well as get a list of class names</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>train_dataloader, test_dataloader, class_names <span class="op">=</span> data_setup.create_dataloaders(train_dir<span class="op">=</span>train_dir,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                                                                               test_dir<span class="op">=</span>test_dir,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                                                                               transform<span class="op">=</span>manual_transforms, <span class="co"># resize, convert images to between 0 &amp; 1 and normalize them</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                                                                               batch_size<span class="op">=</span><span class="dv">32</span>) <span class="co"># set mini-batch size to 32</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>train_dataloader, test_dataloader, class_names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>(&lt;torch.utils.data.dataloader.DataLoader at 0x7fa9429a3a60&gt;,
+ &lt;torch.utils.data.dataloader.DataLoader at 0x7fa9429a37c0&gt;,
+ ['pizza', 'steak', 'sushi'])</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-a-transform-for-torchvision.models-auto-creation" class="level3" data-number="8.8.2">
+<h3 data-number="8.8.2" class="anchored" data-anchor-id="creating-a-transform-for-torchvision.models-auto-creation"><span class="header-section-number">8.8.2</span> 2.2 Creating a transform for <code>torchvision.models</code> (auto creation)</h3>
+<p>As previously stated, when using a pretrained model, it’s important that <strong>your custom data going into the model is prepared in the same way as the original training data that went into the model</strong>.</p>
+<p>Above we saw how to manually create a transform for a pretrained model.</p>
+<p>But as of <code>torchvision</code> v0.13+, an automatic transform creation feature has been added.</p>
+<p>When you setup a model from <code>torchvision.models</code> and select the pretrained model weights you’d like to use, for example, say we’d like to use:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> torchvision.models.EfficientNet_B0_Weights.DEFAULT</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Where, * <code>EfficientNet_B0_Weights</code> is the model architecture weights we’d like to use (there are many different model architecture options in <code>torchvision.models</code>). * <code>DEFAULT</code> means the <em>best available</em> weights (the best performance in ImageNet). * <strong>Note:</strong> Depending on the model architecture you choose, you may also see other options such as <code>IMAGENET_V1</code> and <code>IMAGENET_V2</code> where generally the higher version number the better. Though if you want the best available, <code>DEFAULT</code> is the easiest option. See the <a href="https://pytorch.org/vision/main/models.html"><code>torchvision.models</code> documentation</a> for more.</p>
+<p>Let’s try it out.</p>
+<div id="d3f4bd4c-7b7a-41fb-8d1c-ae96ee88f024" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a set of pretrained model weights</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> torchvision.models.EfficientNet_B0_Weights.DEFAULT <span class="co"># .DEFAULT = best available weights from pretraining on ImageNet</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>weights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>EfficientNet_B0_Weights.IMAGENET1K_V1</code></pre>
+</div>
+</div>
+<p>And now to access the transforms assosciated with our <code>weights</code>, we can use the <code>transforms()</code> method.</p>
+<p>This is essentially saying “get the data transforms that were used to train the <code>EfficientNet_B0_Weights</code> on ImageNet”.</p>
+<div id="29924062-a233-4926-a77a-9052d1956938" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the transforms used to create our pretrained weights</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>auto_transforms <span class="op">=</span> weights.transforms()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>auto_transforms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>ImageClassification(
+    crop_size=[224]
+    resize_size=[256]
+    mean=[0.485, 0.456, 0.406]
+    std=[0.229, 0.224, 0.225]
+    interpolation=InterpolationMode.BICUBIC
+)</code></pre>
+</div>
+</div>
+<p>Notice how <code>auto_transforms</code> is very similar to <code>manual_transforms</code>, the only difference is that <code>auto_transforms</code> came with the model architecture we chose, where as we had to create <code>manual_transforms</code> by hand.</p>
+<p>The benefit of automatically creating a transform through <code>weights.transforms()</code> is that you ensure you’re using the same data transformation as the pretrained model used when it was trained.</p>
+<p>However, the tradeoff of using automatically created transforms is a lack of customization.</p>
+<p>We can use <code>auto_transforms</code> to create DataLoaders with <code>create_dataloaders()</code> just as before.</p>
+<div id="7c21ffb5-a6d9-40d5-b0d0-47828612d282" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create training and testing DataLoaders as well as get a list of class names</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>train_dataloader, test_dataloader, class_names <span class="op">=</span> data_setup.create_dataloaders(train_dir<span class="op">=</span>train_dir,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                                                               test_dir<span class="op">=</span>test_dir,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                                                                               transform<span class="op">=</span>auto_transforms, <span class="co"># perform same data transforms on our own data as the pretrained model</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                                                                               batch_size<span class="op">=</span><span class="dv">32</span>) <span class="co"># set mini-batch size to 32</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>train_dataloader, test_dataloader, class_names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>(&lt;torch.utils.data.dataloader.DataLoader at 0x7fa942951460&gt;,
+ &lt;torch.utils.data.dataloader.DataLoader at 0x7fa942951550&gt;,
+ ['pizza', 'steak', 'sushi'])</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="getting-a-pretrained-model" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="getting-a-pretrained-model"><span class="header-section-number">8.9</span> 3. Getting a pretrained model</h2>
+<p>Alright, here comes the fun part!</p>
+<p>Over the past few notebooks we’ve been building PyTorch neural networks from scratch.</p>
+<p>And while that’s a good skill to have, our models haven’t been performing as well as we’d like.</p>
+<p>That’s where <strong>transfer learning</strong> comes in.</p>
+<p>The whole idea of transfer learning is to <strong>take an already well-performing model on a problem-space similar to yours and then customising it to your use case</strong>.</p>
+<p>Since we’re working on a computer vision problem (image classification with FoodVision Mini), we can find pretrained classification models in <a href="https://pytorch.org/vision/stable/models.html#classification"><code>torchvision.models</code></a>.</p>
+<p>Exploring the documentation, you’ll find plenty of common computer vision architecture backbones such as:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Architecuture backbone</strong></th>
+<th><strong>Code</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://arxiv.org/abs/1512.03385">ResNet</a>’s</td>
+<td><code>torchvision.models.resnet18()</code>, <code>torchvision.models.resnet50()</code>…</td>
+</tr>
+<tr class="even">
+<td><a href="https://arxiv.org/abs/1409.1556">VGG</a> (similar to what we used for TinyVGG)</td>
+<td><code>torchvision.models.vgg16()</code></td>
+</tr>
+<tr class="odd">
+<td><a href="https://arxiv.org/abs/1905.11946">EfficientNet</a>’s</td>
+<td><code>torchvision.models.efficientnet_b0()</code>, <code>torchvision.models.efficientnet_b1()</code>…</td>
+</tr>
+<tr class="even">
+<td><a href="https://arxiv.org/abs/2010.11929">VisionTransformer</a> (ViT’s)</td>
+<td><code>torchvision.models.vit_b_16()</code>, <code>torchvision.models.vit_b_32()</code>…</td>
+</tr>
+<tr class="odd">
+<td><a href="https://arxiv.org/abs/2201.03545">ConvNeXt</a></td>
+<td><code>torchvision.models.convnext_tiny()</code>, <code>torchvision.models.convnext_small()</code>…</td>
+</tr>
+<tr class="even">
+<td>More available in <code>torchvision.models</code></td>
+<td><code>torchvision.models...</code></td>
+</tr>
+</tbody>
+</table>
+<section id="which-pretrained-model-should-you-use" class="level3" data-number="8.9.1">
+<h3 data-number="8.9.1" class="anchored" data-anchor-id="which-pretrained-model-should-you-use"><span class="header-section-number">8.9.1</span> 3.1 Which pretrained model should you use?</h3>
+<p>It depends on your problem/the device you’re working with.</p>
+<p>Generally, the higher number in the model name (e.g.&nbsp;<code>efficientnet_b0()</code> -&gt; <code>efficientnet_b1()</code> -&gt; <code>efficientnet_b7()</code>) means <em>better performance</em> but a <em>larger</em> model.</p>
+<p>You might think better performance is <em>always better</em>, right?</p>
+<p>That’s true but <strong>some better performing models are too big for some devices</strong>.</p>
+<p>For example, say you’d like to run your model on a mobile-device, you’ll have to take into account the limited compute resources on the device, thus you’d be looking for a smaller model.</p>
+<p>But if you’ve got unlimited compute power, as <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html"><em>The Bitter Lesson</em></a> states, you’d likely take the biggest, most compute hungry model you can.</p>
+<p>Understanding this <strong>performance vs.&nbsp;speed vs.&nbsp;size tradeoff</strong> will come with time and practice.</p>
+<p>For me, I’ve found a nice balance in the <code>efficientnet_bX</code> models.</p>
+<p>As of May 2022, <a href="https://nutrify.app">Nutrify</a> (the machine learning powered app I’m working on) is powered by an <code>efficientnet_b0</code>.</p>
+<p><a href="https://comma.ai/">Comma.ai</a> (a company that makes open source self-driving car software) <a href="https://geohot.github.io/blog/jekyll/update/2021/10/29/an-architecture-for-life.html">uses an <code>efficientnet_b2</code></a> to learn a representation of the road.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Even though we’re using <code>efficientnet_bX</code>, it’s important not to get too attached to any one architecture, as they are always changing as new research gets released. Best to experiment, experiment, experiment and see what works for your problem.</p>
+</blockquote>
+</section>
+<section id="setting-up-a-pretrained-model" class="level3" data-number="8.9.2">
+<h3 data-number="8.9.2" class="anchored" data-anchor-id="setting-up-a-pretrained-model"><span class="header-section-number">8.9.2</span> 3.2 Setting up a pretrained model</h3>
+<p>The pretrained model we’re going to be using is <a href="https://pytorch.org/vision/stable/generated/torchvision.models.efficientnet_b0.html#torchvision.models.efficientnet_b0"><code>torchvision.models.efficientnet_b0()</code></a>.</p>
+<p>The architecture is from the paper <em><a href="https://arxiv.org/abs/1905.11946">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</a></em>.</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-effnet-b0-feature-extractor.png" alt="efficienet_b0 from PyTorch torchvision feature extraction model" width="900/"></p>
+<p><em>Example of what we’re going to create, a pretrained <a href="https://ai.googleblog.com/2019/05/efficientnet-improving-accuracy-and.html"><code>EfficientNet_B0</code> model</a> from <code>torchvision.models</code> with the output layer adjusted for our use case of classifying pizza, steak and sushi images.</em></p>
+<p>We can setup the <code>EfficientNet_B0</code> pretrained ImageNet weights using the same code as we used to create the transforms.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> torchvision.models.EfficientNet_B0_Weights.DEFAULT <span class="co"># .DEFAULT = best available weights for ImageNet</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This means the model has already been trained on millions of images and has a good base representation of image data.</p>
+<p>The PyTorch version of this pretrained model is capable of achieving ~77.7% accuracy across ImageNet’s 1000 classes.</p>
+<p>We’ll also send it to the target device.</p>
+<div id="7593110c-0b32-47e6-9e29-f33d6c0ac840" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OLD: Setup the model with pretrained weights and send it to the target device (this was prior to torchvision v0.13)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model = torchvision.models.efficientnet_b0(pretrained=True).to(device) # OLD method (with pretrained=True)</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NEW: Setup the model with pretrained weights and send it to the target device (torchvision v0.13+)</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> torchvision.models.EfficientNet_B0_Weights.DEFAULT <span class="co"># .DEFAULT = best available weights </span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> torchvision.models.efficientnet_b0(weights<span class="op">=</span>weights).to(device)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#model # uncomment to output (it's very long)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> In previous versions of <code>torchvision</code>, you’d create a prertained model with code like:</p>
+<p><code>model = torchvision.models.efficientnet_b0(pretrained=True).to(device)</code></p>
+<p>However, running this using <code>torchvision</code> v0.13+ will result in errors such as the following:</p>
+<p><code>UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.</code></p>
+<p>And…</p>
+<p><code>UserWarning: Arguments other than a weight enum or None for weights are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing weights=EfficientNet_B0_Weights.IMAGENET1K_V1. You can also use weights=EfficientNet_B0_Weights.DEFAULT to get the most up-to-date weights.</code></p>
+</blockquote>
+<p>If we print the model, we get something similar to the following:</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-v2-effnetb0-model-print-out.png" alt="output of printing the efficientnet_b0 model from torchvision.models" width="900/"></p>
+<p>Lots and lots and lots of layers.</p>
+<p>This is one of the benefits of transfer learning, taking an existing model, that’s been crafted by some of the best engineers in the world and applying to your own problem.</p>
+<p>Our <code>efficientnet_b0</code> comes in three main parts: 1. <code>features</code> - A collection of convolutional layers and other various activation layers to learn a base representation of vision data (this base representation/collection of layers is often referred to as <strong>features</strong> or <strong>feature extractor</strong>, “the base layers of the model learn the different <strong>features</strong> of images”). 2. <code>avgpool</code> - Takes the average of the output of the <code>features</code> layer(s) and turns it into a <strong>feature vector</strong>. 3. <code>classifier</code> - Turns the <strong>feature vector</strong> into a vector with the same dimensionality as the number of required output classes (since <code>efficientnet_b0</code> is pretrained on ImageNet and because ImageNet has 1000 classes, <code>out_features=1000</code> is the default).</p>
+</section>
+<section id="getting-a-summary-of-our-model-with-torchinfo.summary" class="level3" data-number="8.9.3">
+<h3 data-number="8.9.3" class="anchored" data-anchor-id="getting-a-summary-of-our-model-with-torchinfo.summary"><span class="header-section-number">8.9.3</span> 3.3 Getting a summary of our model with <code>torchinfo.summary()</code></h3>
+<p>To learn more about our model, let’s use <code>torchinfo</code>’s <a href="https://github.com/TylerYep/torchinfo#documentation"><code>summary()</code> method</a>.</p>
+<p>To do so, we’ll pass in: * <code>model</code> - the model we’d like to get a summary of. * <code>input_size</code> - the shape of the data we’d like to pass to our model, for the case of <code>efficientnet_b0</code>, the input size is <code>(batch_size, 3, 224, 224)</code>, though <a href="https://github.com/pytorch/vision/blob/d2bfd639e46e1c5dc3c177f889dc7750c8d137c7/references/classification/train.py#L92-L93">other variants of <code>efficientnet_bX</code> have different input sizes</a>. * <strong>Note:</strong> Many modern models can handle input images of varying sizes thanks to <a href="https://pytorch.org/docs/stable/generated/torch.nn.AdaptiveAvgPool2d.html"><code>torch.nn.AdaptiveAvgPool2d()</code></a>, this layer adaptively adjusts the <code>output_size</code> of a given input as required. You can try this out by passing different size input images to <code>summary()</code> or your models. * <code>col_names</code> - the various information columns we’d like to see about our model. * <code>col_width</code> - how wide the columns should be for the summary. * <code>row_settings</code> - what features to show in a row.</p>
+<div id="524020c6-09d3-4ecf-b791-dbd71ed389e3" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a summary using torchinfo (uncomment for actual output)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>summary(model<span class="op">=</span>model, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        input_size<span class="op">=</span>(<span class="dv">32</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>), <span class="co"># make sure this is "input_size", not "input_shape"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># col_names=["input_size"], # uncomment for smaller output</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        col_names<span class="op">=</span>[<span class="st">"input_size"</span>, <span class="st">"output_size"</span>, <span class="st">"num_params"</span>, <span class="st">"trainable"</span>],</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        col_width<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        row_settings<span class="op">=</span>[<span class="st">"var_names"</span>]</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>============================================================================================================================================
+Layer (type (var_name))                                      Input Shape          Output Shape         Param #              Trainable
+============================================================================================================================================
+EfficientNet (EfficientNet)                                  [32, 3, 224, 224]    [32, 1000]           --                   True
+├─Sequential (features)                                      [32, 3, 224, 224]    [32, 1280, 7, 7]     --                   True
+│    └─Conv2dNormActivation (0)                              [32, 3, 224, 224]    [32, 32, 112, 112]   --                   True
+│    │    └─Conv2d (0)                                       [32, 3, 224, 224]    [32, 32, 112, 112]   864                  True
+│    │    └─BatchNorm2d (1)                                  [32, 32, 112, 112]   [32, 32, 112, 112]   64                   True
+│    │    └─SiLU (2)                                         [32, 32, 112, 112]   [32, 32, 112, 112]   --                   --
+│    └─Sequential (1)                                        [32, 32, 112, 112]   [32, 16, 112, 112]   --                   True
+│    │    └─MBConv (0)                                       [32, 32, 112, 112]   [32, 16, 112, 112]   1,448                True
+│    └─Sequential (2)                                        [32, 16, 112, 112]   [32, 24, 56, 56]     --                   True
+│    │    └─MBConv (0)                                       [32, 16, 112, 112]   [32, 24, 56, 56]     6,004                True
+│    │    └─MBConv (1)                                       [32, 24, 56, 56]     [32, 24, 56, 56]     10,710               True
+│    └─Sequential (3)                                        [32, 24, 56, 56]     [32, 40, 28, 28]     --                   True
+│    │    └─MBConv (0)                                       [32, 24, 56, 56]     [32, 40, 28, 28]     15,350               True
+│    │    └─MBConv (1)                                       [32, 40, 28, 28]     [32, 40, 28, 28]     31,290               True
+│    └─Sequential (4)                                        [32, 40, 28, 28]     [32, 80, 14, 14]     --                   True
+│    │    └─MBConv (0)                                       [32, 40, 28, 28]     [32, 80, 14, 14]     37,130               True
+│    │    └─MBConv (1)                                       [32, 80, 14, 14]     [32, 80, 14, 14]     102,900              True
+│    │    └─MBConv (2)                                       [32, 80, 14, 14]     [32, 80, 14, 14]     102,900              True
+│    └─Sequential (5)                                        [32, 80, 14, 14]     [32, 112, 14, 14]    --                   True
+│    │    └─MBConv (0)                                       [32, 80, 14, 14]     [32, 112, 14, 14]    126,004              True
+│    │    └─MBConv (1)                                       [32, 112, 14, 14]    [32, 112, 14, 14]    208,572              True
+│    │    └─MBConv (2)                                       [32, 112, 14, 14]    [32, 112, 14, 14]    208,572              True
+│    └─Sequential (6)                                        [32, 112, 14, 14]    [32, 192, 7, 7]      --                   True
+│    │    └─MBConv (0)                                       [32, 112, 14, 14]    [32, 192, 7, 7]      262,492              True
+│    │    └─MBConv (1)                                       [32, 192, 7, 7]      [32, 192, 7, 7]      587,952              True
+│    │    └─MBConv (2)                                       [32, 192, 7, 7]      [32, 192, 7, 7]      587,952              True
+│    │    └─MBConv (3)                                       [32, 192, 7, 7]      [32, 192, 7, 7]      587,952              True
+│    └─Sequential (7)                                        [32, 192, 7, 7]      [32, 320, 7, 7]      --                   True
+│    │    └─MBConv (0)                                       [32, 192, 7, 7]      [32, 320, 7, 7]      717,232              True
+│    └─Conv2dNormActivation (8)                              [32, 320, 7, 7]      [32, 1280, 7, 7]     --                   True
+│    │    └─Conv2d (0)                                       [32, 320, 7, 7]      [32, 1280, 7, 7]     409,600              True
+│    │    └─BatchNorm2d (1)                                  [32, 1280, 7, 7]     [32, 1280, 7, 7]     2,560                True
+│    │    └─SiLU (2)                                         [32, 1280, 7, 7]     [32, 1280, 7, 7]     --                   --
+├─AdaptiveAvgPool2d (avgpool)                                [32, 1280, 7, 7]     [32, 1280, 1, 1]     --                   --
+├─Sequential (classifier)                                    [32, 1280]           [32, 1000]           --                   True
+│    └─Dropout (0)                                           [32, 1280]           [32, 1280]           --                   --
+│    └─Linear (1)                                            [32, 1280]           [32, 1000]           1,281,000            True
+============================================================================================================================================
+Total params: 5,288,548
+Trainable params: 5,288,548
+Non-trainable params: 0
+Total mult-adds (G): 12.35
+============================================================================================================================================
+Input size (MB): 19.27
+Forward/backward pass size (MB): 3452.35
+Params size (MB): 21.15
+Estimated Total Size (MB): 3492.77
+============================================================================================================================================</code></pre>
+</div>
+</div>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-torchinfo-summary-unfrozen-layers.png" alt="output of torchinfo.summary() when passed our model with all layers as trainable" width="900/"></p>
+<p>Woah!</p>
+<p>Now that’s a big model!</p>
+<p>From the output of the summary, we can see all of the various input and output shape changes as our image data goes through the model.</p>
+<p>And there are a whole bunch more total parameters (pretrained weights) to recognize different patterns in our data.</p>
+<p>For reference, our model from previous sections, <strong>TinyVGG had 8,083 parameters vs.&nbsp;5,288,548 parameters for <code>efficientnet_b0</code>, an increase of ~654x</strong>!</p>
+<p>What do you think, will this mean better performance?</p>
+</section>
+<section id="freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" class="level3" data-number="8.9.4">
+<h3 data-number="8.9.4" class="anchored" data-anchor-id="freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs"><span class="header-section-number">8.9.4</span> 3.4 Freezing the base model and changing the output layer to suit our needs</h3>
+<p>The process of transfer learning usually goes: freeze some base layers of a pretrained model (typically the <code>features</code> section) and then adjust the output layers (also called head/classifier layers) to suit your needs.</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-v2-effnet-changing-the-classifier-head.png" alt="changing the efficientnet classifier head to a custom number of outputs" width="900/"></p>
+<p><em>You can customise the outputs of a pretrained model by changing the output layer(s) to suit your problem. The original <code>torchvision.models.efficientnet_b0()</code> comes with <code>out_features=1000</code> because there are 1000 classes in ImageNet, the dataset it was trained on. However, for our problem, classifying images of pizza, steak and sushi we only need <code>out_features=3</code>.</em></p>
+<p>Let’s freeze all of the layers/parameters in the <code>features</code> section of our <code>efficientnet_b0</code> model.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> To <em>freeze</em> layers means to keep them how they are during training. For example, if your model has pretrained layers, to <em>freeze</em> them would be to say, “don’t change any of the patterns in these layers during training, keep them how they are.” In essence, we’d like to keep the pretrained weights/patterns our model has learned from ImageNet as a backbone and then only change the output layers.</p>
+</blockquote>
+<p>We can freeze all of the layers/parameters in the <code>features</code> section by setting the attribute <code>requires_grad=False</code>.</p>
+<p>For parameters with <code>requires_grad=False</code>, PyTorch doesn’t track gradient updates and in turn, these parameters won’t be changed by our optimizer during training.</p>
+<p>In essence, a parameter with <code>requires_grad=False</code> is “untrainable” or “frozen” in place.</p>
+<div id="d9cbf97f-5dbf-4283-b70f-91b49e3713e5" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Freeze all base layers in the "features" section of the model (the feature extractor) by setting requires_grad=False</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> param <span class="kw">in</span> model.features.parameters():</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    param.requires_grad <span class="op">=</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Feature extractor layers frozen!</p>
+<p>Let’s now adjust the output layer or the <code>classifier</code> portion of our pretrained model to our needs.</p>
+<p>Right now our pretrained model has <code>out_features=1000</code> because there are 1000 classes in ImageNet.</p>
+<p>However, we don’t have 1000 classes, we only have three, pizza, steak and sushi.</p>
+<p>We can change the <code>classifier</code> portion of our model by creating a new series of layers.</p>
+<p>The current <code>classifier</code> consists of:</p>
+<pre><code>(classifier): Sequential(
+    (0): Dropout(p=0.2, inplace=True)
+    (1): Linear(in_features=1280, out_features=1000, bias=True)</code></pre>
+<p>We’ll keep the <code>Dropout</code> layer the same using <a href="https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html"><code>torch.nn.Dropout(p=0.2, inplace=True)</code></a>.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> <a href="https://developers.google.com/machine-learning/glossary#dropout_regularization">Dropout layers</a> randomly remove connections between two neural network layers with a probability of <code>p</code>. For example, if <code>p=0.2</code>, 20% of connections between neural network layers will be removed at random each pass. This practice is meant to help regularize (prevent overfitting) a model by making sure the connections that remain learn features to compensate for the removal of the other connections (hopefully these remaining features are <em>more general</em>).</p>
+</blockquote>
+<p>And we’ll keep <code>in_features=1280</code> for our <code>Linear</code> output layer but we’ll change the <code>out_features</code> value to the length of our <code>class_names</code> (<code>len(['pizza', 'steak', 'sushi']) = 3</code>).</p>
+<p>Our new <code>classifier</code> layer should be on the same device as our <code>model</code>.</p>
+<div id="79e804bd-5ddd-470c-9c95-a4150cc1cc3c" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the manual seeds</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>torch.cuda.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the length of class_names (one output unit for each class)</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>output_shape <span class="op">=</span> <span class="bu">len</span>(class_names)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Recreate the classifier layer and seed it to the target device</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>model.classifier <span class="op">=</span> torch.nn.Sequential(</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    torch.nn.Dropout(p<span class="op">=</span><span class="fl">0.2</span>, inplace<span class="op">=</span><span class="va">True</span>), </span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    torch.nn.Linear(in_features<span class="op">=</span><span class="dv">1280</span>, </span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>                    out_features<span class="op">=</span>output_shape, <span class="co"># same number of output units as our number of classes</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                    bias<span class="op">=</span><span class="va">True</span>)).to(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nice!</p>
+<p>Output layer updated, let’s get another summary of our model and see what’s changed.</p>
+<div id="d5370a8b-34cf-441f-925d-4120a929ed62" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Do a summary *after* freezing the features and changing the output classifier layer (uncomment for actual output)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>summary(model, </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        input_size<span class="op">=</span>(<span class="dv">32</span>, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>), <span class="co"># make sure this is "input_size", not "input_shape" (batch_size, color_channels, height, width)</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        verbose<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        col_names<span class="op">=</span>[<span class="st">"input_size"</span>, <span class="st">"output_size"</span>, <span class="st">"num_params"</span>, <span class="st">"trainable"</span>],</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>        col_width<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        row_settings<span class="op">=</span>[<span class="st">"var_names"</span>]</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>============================================================================================================================================
+Layer (type (var_name))                                      Input Shape          Output Shape         Param #              Trainable
+============================================================================================================================================
+EfficientNet (EfficientNet)                                  [32, 3, 224, 224]    [32, 3]              --                   Partial
+├─Sequential (features)                                      [32, 3, 224, 224]    [32, 1280, 7, 7]     --                   False
+│    └─Conv2dNormActivation (0)                              [32, 3, 224, 224]    [32, 32, 112, 112]   --                   False
+│    │    └─Conv2d (0)                                       [32, 3, 224, 224]    [32, 32, 112, 112]   (864)                False
+│    │    └─BatchNorm2d (1)                                  [32, 32, 112, 112]   [32, 32, 112, 112]   (64)                 False
+│    │    └─SiLU (2)                                         [32, 32, 112, 112]   [32, 32, 112, 112]   --                   --
+│    └─Sequential (1)                                        [32, 32, 112, 112]   [32, 16, 112, 112]   --                   False
+│    │    └─MBConv (0)                                       [32, 32, 112, 112]   [32, 16, 112, 112]   (1,448)              False
+│    └─Sequential (2)                                        [32, 16, 112, 112]   [32, 24, 56, 56]     --                   False
+│    │    └─MBConv (0)                                       [32, 16, 112, 112]   [32, 24, 56, 56]     (6,004)              False
+│    │    └─MBConv (1)                                       [32, 24, 56, 56]     [32, 24, 56, 56]     (10,710)             False
+│    └─Sequential (3)                                        [32, 24, 56, 56]     [32, 40, 28, 28]     --                   False
+│    │    └─MBConv (0)                                       [32, 24, 56, 56]     [32, 40, 28, 28]     (15,350)             False
+│    │    └─MBConv (1)                                       [32, 40, 28, 28]     [32, 40, 28, 28]     (31,290)             False
+│    └─Sequential (4)                                        [32, 40, 28, 28]     [32, 80, 14, 14]     --                   False
+│    │    └─MBConv (0)                                       [32, 40, 28, 28]     [32, 80, 14, 14]     (37,130)             False
+│    │    └─MBConv (1)                                       [32, 80, 14, 14]     [32, 80, 14, 14]     (102,900)            False
+│    │    └─MBConv (2)                                       [32, 80, 14, 14]     [32, 80, 14, 14]     (102,900)            False
+│    └─Sequential (5)                                        [32, 80, 14, 14]     [32, 112, 14, 14]    --                   False
+│    │    └─MBConv (0)                                       [32, 80, 14, 14]     [32, 112, 14, 14]    (126,004)            False
+│    │    └─MBConv (1)                                       [32, 112, 14, 14]    [32, 112, 14, 14]    (208,572)            False
+│    │    └─MBConv (2)                                       [32, 112, 14, 14]    [32, 112, 14, 14]    (208,572)            False
+│    └─Sequential (6)                                        [32, 112, 14, 14]    [32, 192, 7, 7]      --                   False
+│    │    └─MBConv (0)                                       [32, 112, 14, 14]    [32, 192, 7, 7]      (262,492)            False
+│    │    └─MBConv (1)                                       [32, 192, 7, 7]      [32, 192, 7, 7]      (587,952)            False
+│    │    └─MBConv (2)                                       [32, 192, 7, 7]      [32, 192, 7, 7]      (587,952)            False
+│    │    └─MBConv (3)                                       [32, 192, 7, 7]      [32, 192, 7, 7]      (587,952)            False
+│    └─Sequential (7)                                        [32, 192, 7, 7]      [32, 320, 7, 7]      --                   False
+│    │    └─MBConv (0)                                       [32, 192, 7, 7]      [32, 320, 7, 7]      (717,232)            False
+│    └─Conv2dNormActivation (8)                              [32, 320, 7, 7]      [32, 1280, 7, 7]     --                   False
+│    │    └─Conv2d (0)                                       [32, 320, 7, 7]      [32, 1280, 7, 7]     (409,600)            False
+│    │    └─BatchNorm2d (1)                                  [32, 1280, 7, 7]     [32, 1280, 7, 7]     (2,560)              False
+│    │    └─SiLU (2)                                         [32, 1280, 7, 7]     [32, 1280, 7, 7]     --                   --
+├─AdaptiveAvgPool2d (avgpool)                                [32, 1280, 7, 7]     [32, 1280, 1, 1]     --                   --
+├─Sequential (classifier)                                    [32, 1280]           [32, 3]              --                   True
+│    └─Dropout (0)                                           [32, 1280]           [32, 1280]           --                   --
+│    └─Linear (1)                                            [32, 1280]           [32, 3]              3,843                True
+============================================================================================================================================
+Total params: 4,011,391
+Trainable params: 3,843
+Non-trainable params: 4,007,548
+Total mult-adds (G): 12.31
+============================================================================================================================================
+Input size (MB): 19.27
+Forward/backward pass size (MB): 3452.09
+Params size (MB): 16.05
+Estimated Total Size (MB): 3487.41
+============================================================================================================================================</code></pre>
+</div>
+</div>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-torchinfo-summary-frozen-layers.png" alt="output of torchinfo.summary() after freezing multiple layers in our model and changing the classifier head" width="900/"></p>
+<p>Ho, ho! There’s a fair few changes here!</p>
+<p>Let’s go through them: * <strong>Trainable column</strong> - You’ll see that many of the base layers (the ones in the <code>features</code> portion) have their Trainable value as <code>False</code>. This is because we set their attribute <code>requires_grad=False</code>. Unless we change this, these layers won’t be updated during furture training. * <strong>Output shape of <code>classifier</code></strong> - The <code>classifier</code> portion of the model now has an Output Shape value of <code>[32, 3]</code> instead of <code>[32, 1000]</code>. It’s Trainable value is also <code>True</code>. This means its parameters will be updated during training. In essence, we’re using the <code>features</code> portion to feed our <code>classifier</code> portion a base representation of an image and then our <code>classifier</code> layer is going to learn how to base representation aligns with our problem. * <strong>Less trainable parameters</strong> - Previously there was 5,288,548 trainable parameters. But since we froze many of the layers of the model and only left the <code>classifier</code> as trainable, there’s now only 3,843 trainable parameters (even less than our TinyVGG model). Though there’s also 4,007,548 non-trainable parameters, these will create a base representation of our input images to feed into our <code>classifier</code> layer.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> The more trainable parameters a model has, the more compute power/longer it takes to train. Freezing the base layers of our model and leaving it with less trainable parameters means our model should train quite quickly. This is one huge benefit of transfer learning, taking the already learned parameters of a model trained on a problem similar to yours and only tweaking the outputs slightly to suit your problem.</p>
+</blockquote>
+</section>
+</section>
+<section id="train-model" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="train-model"><span class="header-section-number">8.10</span> 4. Train model</h2>
+<p>Now we’ve got a pretraiend model that’s semi-frozen and has a customised <code>classifier</code>, how about we see transfer learning in action?</p>
+<p>To begin training, let’s create a loss function and an optimizer.</p>
+<p>Because we’re still working with multi-class classification, we’ll use <code>nn.CrossEntropyLoss()</code> for the loss function.</p>
+<p>And we’ll stick with <code>torch.optim.Adam()</code> as our optimizer with <code>lr=0.001</code>.</p>
+<div id="582200bb-c3f8-4044-ae59-007b921a2422" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define loss and optimizer</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> nn.CrossEntropyLoss()</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.001</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Wonderful!</p>
+<p>To train our model, we can use <code>train()</code> function we defined in the <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#4-creating-train_step-and-test_step-functions-and-train-to-combine-them">05. PyTorch Going Modular section 04</a>.</p>
+<p>The <code>train()</code> function is in the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/engine.py"><code>engine.py</code></a> script inside the <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/going_modular/going_modular"><code>going_modular</code> directory</a>.</p>
+<p>Let’s see how long it takes to train our model for 5 epochs.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> We’re only going to be training the parameters <code>classifier</code> here as all of the other parameters in our model have been frozen.</p>
+</blockquote>
+<div id="0e698d13-dedf-48f7-bca3-b21cd969b2d2" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the random seeds</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>torch.cuda.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Start the timer</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timeit <span class="im">import</span> default_timer <span class="im">as</span> timer </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> timer()</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup training and save the results</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> engine.train(model<span class="op">=</span>model,</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>                       train_dataloader<span class="op">=</span>train_dataloader,</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>                       test_dataloader<span class="op">=</span>test_dataloader,</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>                       optimizer<span class="op">=</span>optimizer,</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>                       loss_fn<span class="op">=</span>loss_fn,</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>                       epochs<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>                       device<span class="op">=</span>device)</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># End the timer and print out how long it took</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> timer()</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"[INFO] Total training time: </span><span class="sc">{</span>end_time<span class="op">-</span>start_time<span class="sc">:.3f}</span><span class="ss"> seconds"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b61588abc1df499286a8e260d139026b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch: 1 | train_loss: 1.0924 | train_acc: 0.3984 | test_loss: 0.9133 | test_acc: 0.5398
+Epoch: 2 | train_loss: 0.8717 | train_acc: 0.7773 | test_loss: 0.7912 | test_acc: 0.8153
+Epoch: 3 | train_loss: 0.7648 | train_acc: 0.7930 | test_loss: 0.7463 | test_acc: 0.8561
+Epoch: 4 | train_loss: 0.7108 | train_acc: 0.7539 | test_loss: 0.6372 | test_acc: 0.8655
+Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc: 0.8561
+[INFO] Total training time: 8.977 seconds</code></pre>
+</div>
+</div>
+<p>Wow!</p>
+<p>Our model trained quite fast (~5 seconds on my local machine with a <a href="https://www.nvidia.com/en-au/deep-learning-ai/products/titan-rtx/">NVIDIA TITAN RTX GPU</a>/about 15 seconds on Google Colab with a <a href="https://www.nvidia.com/en-au/data-center/tesla-p100/">NVIDIA P100 GPU</a>).</p>
+<p>And it looks like it smashed our previous model results out of the park!</p>
+<p>With an <code>efficientnet_b0</code> backbone, our model achieves almost 85%+ accuracy on the test dataset, almost <em>double</em> what we were able to achieve with TinyVGG.</p>
+<p>Not bad for a model we downloaded with a few lines of code.</p>
+</section>
+<section id="evaluate-model-by-plotting-loss-curves" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="evaluate-model-by-plotting-loss-curves"><span class="header-section-number">8.11</span> 5. Evaluate model by plotting loss curves</h2>
+<p>Our model looks like it’s performing pretty well.</p>
+<p>Let’s plot it’s loss curves to see what the training looks like over time.</p>
+<p>We can plot the loss curves using the function <code>plot_loss_curves()</code> we created in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#78-plot-the-loss-curves-of-model-0">04. PyTorch Custom Datasets section 7.8</a>.</p>
+<p>The function is stored in the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/helper_functions.py"><code>helper_functions.py</code></a> script so we’ll try to import it and download the script if we don’t have it.</p>
+<div id="c3c0c6af-3685-4814-b4f6-bd7abeeda28f" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the plot_loss_curves() function from helper_functions.py, download the file if we don't have it</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> helper_functions <span class="im">import</span> plot_loss_curves</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[INFO] Couldn't find helper_functions.py, downloading..."</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"helper_functions.py"</span>, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> requests</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>        request <span class="op">=</span> requests.get(<span class="st">"https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/helper_functions.py"</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>        f.write(request.content)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> helper_functions <span class="im">import</span> plot_loss_curves</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the loss curves of our model</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>plot_loss_curves(results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_pytorch_transfer_learning_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Those are some excellent looking loss curves!</p>
+<p>It looks like the loss for both datasets (train and test) is heading in the right direction.</p>
+<p>The same with the accuracy values, trending upwards.</p>
+<p>That goes to show the power of <strong>transfer learning</strong>. Using a pretrained model often leads to pretty good results with a small amount of data in less time.</p>
+<p>I wonder what would happen if you tried to train the model for longer? Or if we added more data?</p>
+<blockquote class="blockquote">
+<p><strong>Question:</strong> Looking at the loss curves, does our model look like it’s overfitting or underfitting? Or perhaps neither? Hint: Check out notebook <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#8-what-should-an-ideal-loss-curve-look-like">04. PyTorch Custom Datasets part 8. What should an ideal loss curve look like?</a> for ideas.</p>
+</blockquote>
+</section>
+<section id="make-predictions-on-images-from-the-test-set" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="make-predictions-on-images-from-the-test-set"><span class="header-section-number">8.12</span> 6. Make predictions on images from the test set</h2>
+<p>It looks like our model performs well quantitatively but how about qualitatively?</p>
+<p>Let’s find out by making some predictions with our model on images from the test set (these aren’t seen during training) and plotting them.</p>
+<p><em>Visualize, visualize, visualize!</em></p>
+<p>One thing we’ll have to remember is that for our model to make predictions on an image, the image has to be in <em>same</em> format as the images our model was trained on.</p>
+<p>This means we’ll need to make sure our images have: * <strong>Same shape</strong> - If our images are different shapes to what our model was trained on, we’ll get shape errors. * <strong>Same datatype</strong> - If our images are a different datatype (e.g.&nbsp;<code>torch.int8</code> vs.&nbsp;<code>torch.float32</code>) we’ll get datatype errors. * <strong>Same device</strong> - If our images are on a different device to our model, we’ll get device errors. * <strong>Same transformations</strong> - If our model is trained on images that have been transformed in certain way (e.g.&nbsp;normalized with a specific mean and standard deviation) and we try and make preidctions on images transformed in a different way, these predictions may be off.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> These requirements go for all kinds of data if you’re trying to make predictions with a trained model. Data you’d like to predict on should be in the same format as your model was trained on.</p>
+</blockquote>
+<p>To do all of this, we’ll create a function <code>pred_and_plot_image()</code> to:</p>
+<ol type="1">
+<li>Take in a trained model, a list of class names, a filepath to a target image, an image size, a transform and a target device.</li>
+<li>Open an image with <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open"><code>PIL.Image.open()</code></a>.</li>
+<li>Create a transform for the image (this will default to the <code>manual_transforms</code> we created above or it could use a transform generated from <code>weights.transforms()</code>).</li>
+<li>Make sure the model is on the target device.</li>
+<li>Turn on model eval mode with <code>model.eval()</code> (this turns off layers like <code>nn.Dropout()</code>, so they aren’t used for inference) and the inference mode context manager.</li>
+<li>Transform the target image with the transform made in step 3 and add an extra batch dimension with <code>torch.unsqueeze(dim=0)</code> so our input image has shape <code>[batch_size, color_channels, height, width]</code>.</li>
+<li>Make a prediction on the image by passing it to the model ensuring it’s on the target device.</li>
+<li>Convert the model’s output logits to prediction probabilities with <code>torch.softmax()</code>.</li>
+<li>Convert model’s prediction probabilities to prediction labels with <code>torch.argmax()</code>.</li>
+<li>Plot the image with <code>matplotlib</code> and set the title to the prediction label from step 9 and prediction probability from step 8.</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> This is a similar function to <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#113-putting-custom-image-prediction-together-building-a-function">04. PyTorch Custom Datasets section 11.3’s</a> <code>pred_and_plot_image()</code> with a few tweaked steps.</p>
+</blockquote>
+<div id="96fcc4a2-2e27-499b-aa28-05c37c529a5c" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List, Tuple</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Take in a trained model, class names, image path, image size, a transform and target device</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pred_and_plot_image(model: torch.nn.Module,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                        image_path: <span class="bu">str</span>, </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                        class_names: List[<span class="bu">str</span>],</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                        image_size: Tuple[<span class="bu">int</span>, <span class="bu">int</span>] <span class="op">=</span> (<span class="dv">224</span>, <span class="dv">224</span>),</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                        transform: torchvision.transforms <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                        device: torch.device<span class="op">=</span>device):</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Open image</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> Image.<span class="bu">open</span>(image_path)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Create transformation for image (if one doesn't exist)</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> transform <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>        image_transform <span class="op">=</span> transform</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>        image_transform <span class="op">=</span> transforms.Compose([</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>            transforms.Resize(image_size),</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>            transforms.ToTensor(),</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>            transforms.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>],</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>                                 std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">### Predict on image </span><span class="al">###</span><span class="co"> </span></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Make sure the model is on the target device</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>    model.to(device)</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 5. Turn on model evaluation mode and inference mode</span></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 6. Transform and add an extra dimension to image (model requires samples in [batch_size, color_channels, height, width])</span></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>      transformed_image <span class="op">=</span> image_transform(img).unsqueeze(dim<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 7. Make a prediction on image with an extra dimension and send it to the target device</span></span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>      target_image_pred <span class="op">=</span> model(transformed_image.to(device))</span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 8. Convert logits -&gt; prediction probabilities (using torch.softmax() for multi-class classification)</span></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>    target_image_pred_probs <span class="op">=</span> torch.softmax(target_image_pred, dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 9. Convert prediction probabilities -&gt; prediction labels</span></span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>    target_image_pred_label <span class="op">=</span> torch.argmax(target_image_pred_probs, dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 10. Plot image with predicted label and probability </span></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>    plt.imshow(img)</span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"Pred: </span><span class="sc">{</span>class_names[target_image_pred_label]<span class="sc">}</span><span class="ss"> | Prob: </span><span class="sc">{</span>target_image_pred_probs<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="va">False</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>What a good looking function!</p>
+<p>Let’s test it out by making predictions on a few random images from the test set.</p>
+<p>We can get a list of all the test image paths using <code>list(Path(test_dir).glob("*/*.jpg"))</code>, the stars in the <code>glob()</code> method say “any file matching this pattern”, in other words, any file ending in <code>.jpg</code> (all of our images).</p>
+<p>And then we can randomly sample a number of these using Python’s <a href="https://docs.python.org/3/library/random.html#random.sample"><code>random.sample(populuation, k)</code></a> where <code>population</code> is the sequence to sample and <code>k</code> is the number of samples to retrieve.</p>
+<div id="e5e431b7-b7b7-4b7e-99a8-076bc96c8fa4" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a random list of image paths from test set</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>num_images_to_plot <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>test_image_path_list <span class="op">=</span> <span class="bu">list</span>(Path(test_dir).glob(<span class="st">"*/*.jpg"</span>)) <span class="co"># get list all image paths from test data </span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>test_image_path_sample <span class="op">=</span> random.sample(population<span class="op">=</span>test_image_path_list, <span class="co"># go through all of the test image paths</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                                       k<span class="op">=</span>num_images_to_plot) <span class="co"># randomly select 'k' image paths to pred and plot</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on and plot the images</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> image_path <span class="kw">in</span> test_image_path_sample:</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    pred_and_plot_image(model<span class="op">=</span>model, </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>                        image_path<span class="op">=</span>image_path,</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>                        class_names<span class="op">=</span>class_names,</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># transform=weights.transforms(), # optionally pass in a specified transform from our pretrained model weights</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>                        image_size<span class="op">=</span>(<span class="dv">224</span>, <span class="dv">224</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_pytorch_transfer_learning_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_pytorch_transfer_learning_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_pytorch_transfer_learning_files/figure-html/cell-21-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Woohoo!</p>
+<p>Those predictions look far better than the ones our TinyVGG model was previously making.</p>
+<section id="making-predictions-on-a-custom-image" class="level3" data-number="8.12.1">
+<h3 data-number="8.12.1" class="anchored" data-anchor-id="making-predictions-on-a-custom-image"><span class="header-section-number">8.12.1</span> 6.1 Making predictions on a custom image</h3>
+<p>It looks like our model does well qualitatively on data from the test set.</p>
+<p>But how about on our own custom image?</p>
+<p>That’s where the real fun of machine learning is!</p>
+<p>Predicting on your own custom data, outisde of any training or test set.</p>
+<p>To test our model on a custom image, let’s import the old faithful <code>pizza-dad.jpeg</code> image (an image of my dad eating pizza).</p>
+<p>We’ll then pass it to the <code>pred_and_plot_image()</code> function we created above and see what happens.</p>
+<div id="db9f9b21-4b58-4394-8ed4-b4ba704812a3" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download custom image</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup custom image path</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>custom_image_path <span class="op">=</span> data_path <span class="op">/</span> <span class="st">"04-pizza-dad.jpeg"</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the image if it doesn't already exist</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> custom_image_path.is_file():</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(custom_image_path, <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># When downloading from GitHub, need to use the "raw" file link</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>        request <span class="op">=</span> requests.get(<span class="st">"https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/04-pizza-dad.jpeg"</span>)</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Downloading </span><span class="sc">{</span>custom_image_path<span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>        f.write(request.content)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>custom_image_path<span class="sc">}</span><span class="ss"> already exists, skipping download."</span>)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on custom image</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>pred_and_plot_image(model<span class="op">=</span>model,</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>                    image_path<span class="op">=</span>custom_image_path,</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>                    class_names<span class="op">=</span>class_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data/04-pizza-dad.jpeg already exists, skipping download.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06_pytorch_transfer_learning_files/figure-html/cell-22-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Two thumbs up!</p>
+<p>Looks like our model go it right again!</p>
+<p>But this time the prediction probability is higher than the one from TinyVGG (<code>0.373</code>) in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#113-putting-custom-image-prediction-together-building-a-function">04. PyTorch Custom Datasets section 11.3</a>.</p>
+<p>This indicates our <code>efficientnet_b0</code> model is <em>more</em> confident in its prediction where as our TinyVGG model was par with just guessing.</p>
+</section>
+</section>
+<section id="main-takeaways" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="main-takeaways"><span class="header-section-number">8.13</span> Main takeaways</h2>
+<ul>
+<li><strong>Transfer learning</strong> often allows to you get good results with a relatively small amount of custom data.</li>
+<li>Knowing the power of transfer learning, it’s a good idea to ask at the start of every problem, “does an existing well-performing model exist for my problem?”</li>
+<li>When using a pretrained model, it’s important that your custom data be formatted/preprocessed in the same way that the original model was trained on, otherwise you may get degraded performance.</li>
+<li>The same goes for predicting on custom data, ensure your custom data is in the same format as the data your model was trained on.</li>
+<li>There are <a href="https://www.learnpytorch.io/06_pytorch_transfer_learning/#where-to-find-pretrained-models">several different places to find pretrained models</a> from the PyTorch domain libraries, HuggingFace Hub and libraries such as <code>timm</code> (PyTorch Image Models).</li>
+</ul>
+</section>
+<section id="exercises" class="level2" data-number="8.14">
+<h2 data-number="8.14" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.14</span> Exercises</h2>
+<p>All of the exercises are focused on practicing the code above.</p>
+<p>You should be able to complete them by referencing each section or by following the resource(s) linked.</p>
+<p>All exercises should be completed using <a href="https://pytorch.org/docs/stable/notes/cuda.html#device-agnostic-code">device-agnostic code</a>.</p>
+<p><strong>Resources:</strong> * <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/exercises/06_pytorch_transfer_learning_exercises.ipynb">Exercise template notebook for 06</a> * <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/solutions/06_pytorch_transfer_learning_exercise_solutions.ipynb">Example solutions notebook for 06</a> (try the exercises <em>before</em> looking at this) * See a live <a href="https://youtu.be/ueLolShyFqs">video walkthrough of the solutions on YouTube</a> (errors and all)</p>
+<ol type="1">
+<li>Make predictions on the entire test dataset and plot a confusion matrix for the results of our model compared to the truth labels. Check out <a href="https://www.learnpytorch.io/03_pytorch_computer_vision/#10-making-a-confusion-matrix-for-further-prediction-evaluation">03. PyTorch Computer Vision section 10</a> for ideas.</li>
+<li>Get the “most wrong” of the predictions on the test dataset and plot the 5 “most wrong” images. You can do this by:
+<ul>
+<li>Predicting across all of the test dataset, storing the labels and predicted probabilities.</li>
+<li>Sort the predictions by <em>wrong prediction</em> and then <em>descending predicted probabilities</em>, this will give you the wrong predictions with the <em>highest</em> prediction probabilities, in other words, the “most wrong”.</li>
+<li>Plot the top 5 “most wrong” images, why do you think the model got these wrong?</li>
+</ul></li>
+<li>Predict on your own image of pizza/steak/sushi - how does the model go? What happens if you predict on an image that isn’t pizza/steak/sushi?</li>
+<li>Train the model from section 4 above for longer (10 epochs should do), what happens to the performance?</li>
+<li>Train the model from section 4 above with more data, say 20% of the images from Food101 of Pizza, Steak and Sushi images.
+<ul>
+<li>You can find the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/data/pizza_steak_sushi_20_percent.zip">20% Pizza, Steak, Sushi dataset</a> on the course GitHub. It was created with the notebook <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/04_custom_data_creation.ipynb"><code>extras/04_custom_data_creation.ipynb</code></a>.</li>
+</ul></li>
+<li>Try a different model from <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a> on the Pizza, Steak, Sushi data, how does this model perform?
+<ul>
+<li>You’ll have to change the size of the classifier layer to suit our problem.</li>
+<li>You may want to try an EfficientNet with a higher number than our B0, perhaps <code>torchvision.models.efficientnet_b2()</code>?</li>
+</ul></li>
+</ol>
+</section>
+<section id="extra-curriculum" class="level2" data-number="8.15">
+<h2 data-number="8.15" class="anchored" data-anchor-id="extra-curriculum"><span class="header-section-number">8.15</span> Extra-curriculum</h2>
+<ul>
+<li>Look up what “model fine-tuning” is and spend 30-minutes researching different methods to perform it with PyTorch. How would we change our code to fine-tine? Tip: fine-tuning usually works best if you have <em>lots</em> of custom data, where as, feature extraction is typically better if you have less custom data.</li>
+<li>Check out the new/upcoming <a href="https://pytorch.org/blog/introducing-torchvision-new-multi-weight-support-api/">PyTorch multi-weights API</a> (still in beta at time of writing, May 2022), it’s a new way to perform transfer learning in PyTorch. What changes to our code would need to made to use the new API?</li>
+<li>Try to create your own classifier on two classes of images, for example, you could collect 10 photos of your dog and your friends dog and train a model to classify the two dogs. This would be a good way to practice creating a dataset as well as building a model on that dataset.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05_pytorch_going_modular.html" class="pagination-link" aria-label="05 - PyTorch 모듈화">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07_pytorch_experiment_tracking.html" class="pagination-link" aria-label="07 - PyTorch 실험 추적">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

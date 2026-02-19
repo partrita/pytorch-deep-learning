@@ -1,0 +1,2080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; 01 - PyTorch 워크플로우 – 파이토치 딥러닝 입문</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02_pytorch_classification.html" rel="next">
+<link href="./00_pytorch_fundamentals.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-803ae4f7a8810f475153517dc3c4ebae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_pytorch_workflow.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">파이토치 딥러닝 입문</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">00 - PyTorch 기초</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">02 - PyTorch 신경망 분류</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-were-going-to-cover" id="toc-what-were-going-to-cover" class="nav-link active" data-scroll-target="#what-were-going-to-cover"><span class="header-section-number">3.1</span> What we’re going to cover</a></li>
+  <li><a href="#where-can-can-you-get-help" id="toc-where-can-can-you-get-help" class="nav-link" data-scroll-target="#where-can-can-you-get-help"><span class="header-section-number">3.2</span> Where can can you get help?</a></li>
+  <li><a href="#data-preparing-and-loading" id="toc-data-preparing-and-loading" class="nav-link" data-scroll-target="#data-preparing-and-loading"><span class="header-section-number">3.3</span> 1. Data (preparing and loading)</a>
+  <ul class="collapse">
+  <li><a href="#split-data-into-training-and-test-sets" id="toc-split-data-into-training-and-test-sets" class="nav-link" data-scroll-target="#split-data-into-training-and-test-sets"><span class="header-section-number">3.3.1</span> Split data into training and test sets</a></li>
+  </ul></li>
+  <li><a href="#build-model" id="toc-build-model" class="nav-link" data-scroll-target="#build-model"><span class="header-section-number">3.4</span> 2. Build model</a>
+  <ul class="collapse">
+  <li><a href="#pytorch-model-building-essentials" id="toc-pytorch-model-building-essentials" class="nav-link" data-scroll-target="#pytorch-model-building-essentials"><span class="header-section-number">3.4.1</span> PyTorch model building essentials</a></li>
+  <li><a href="#checking-the-contents-of-a-pytorch-model" id="toc-checking-the-contents-of-a-pytorch-model" class="nav-link" data-scroll-target="#checking-the-contents-of-a-pytorch-model"><span class="header-section-number">3.4.2</span> Checking the contents of a PyTorch model</a></li>
+  <li><a href="#making-predictions-using-torch.inference_mode" id="toc-making-predictions-using-torch.inference_mode" class="nav-link" data-scroll-target="#making-predictions-using-torch.inference_mode"><span class="header-section-number">3.4.3</span> Making predictions using <code>torch.inference_mode()</code></a></li>
+  </ul></li>
+  <li><a href="#train-model" id="toc-train-model" class="nav-link" data-scroll-target="#train-model"><span class="header-section-number">3.5</span> 3. Train model</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-loss-function-and-optimizer-in-pytorch" id="toc-creating-a-loss-function-and-optimizer-in-pytorch" class="nav-link" data-scroll-target="#creating-a-loss-function-and-optimizer-in-pytorch"><span class="header-section-number">3.5.1</span> Creating a loss function and optimizer in PyTorch</a></li>
+  <li><a href="#creating-an-optimization-loop-in-pytorch" id="toc-creating-an-optimization-loop-in-pytorch" class="nav-link" data-scroll-target="#creating-an-optimization-loop-in-pytorch"><span class="header-section-number">3.5.2</span> Creating an optimization loop in PyTorch</a></li>
+  <li><a href="#pytorch-training-loop" id="toc-pytorch-training-loop" class="nav-link" data-scroll-target="#pytorch-training-loop"><span class="header-section-number">3.5.3</span> PyTorch training loop</a></li>
+  <li><a href="#pytorch-testing-loop" id="toc-pytorch-testing-loop" class="nav-link" data-scroll-target="#pytorch-testing-loop"><span class="header-section-number">3.5.4</span> PyTorch testing loop</a></li>
+  </ul></li>
+  <li><a href="#making-predictions-with-a-trained-pytorch-model-inference" id="toc-making-predictions-with-a-trained-pytorch-model-inference" class="nav-link" data-scroll-target="#making-predictions-with-a-trained-pytorch-model-inference"><span class="header-section-number">3.6</span> 4. Making predictions with a trained PyTorch model (inference)</a></li>
+  <li><a href="#saving-and-loading-a-pytorch-model" id="toc-saving-and-loading-a-pytorch-model" class="nav-link" data-scroll-target="#saving-and-loading-a-pytorch-model"><span class="header-section-number">3.7</span> 5. Saving and loading a PyTorch model</a>
+  <ul class="collapse">
+  <li><a href="#saving-a-pytorch-models-state_dict" id="toc-saving-a-pytorch-models-state_dict" class="nav-link" data-scroll-target="#saving-a-pytorch-models-state_dict"><span class="header-section-number">3.7.1</span> Saving a PyTorch model’s <code>state_dict()</code></a></li>
+  <li><a href="#loading-a-saved-pytorch-models-state_dict" id="toc-loading-a-saved-pytorch-models-state_dict" class="nav-link" data-scroll-target="#loading-a-saved-pytorch-models-state_dict"><span class="header-section-number">3.7.2</span> Loading a saved PyTorch model’s <code>state_dict()</code></a></li>
+  </ul></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together"><span class="header-section-number">3.8</span> 6. Putting it all together</a>
+  <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">3.8.1</span> 6.1 Data</a></li>
+  <li><a href="#building-a-pytorch-linear-model" id="toc-building-a-pytorch-linear-model" class="nav-link" data-scroll-target="#building-a-pytorch-linear-model"><span class="header-section-number">3.8.2</span> 6.2 Building a PyTorch linear model</a></li>
+  <li><a href="#training" id="toc-training" class="nav-link" data-scroll-target="#training"><span class="header-section-number">3.8.3</span> 6.3 Training</a></li>
+  <li><a href="#making-predictions" id="toc-making-predictions" class="nav-link" data-scroll-target="#making-predictions"><span class="header-section-number">3.8.4</span> 6.4 Making predictions</a></li>
+  <li><a href="#saving-and-loading-a-model" id="toc-saving-and-loading-a-model" class="nav-link" data-scroll-target="#saving-and-loading-a-model"><span class="header-section-number">3.8.5</span> 6.5 Saving and loading a model</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.9</span> Exercises</a></li>
+  <li><a href="#extra-curriculum" id="toc-extra-curriculum" class="nav-link" data-scroll-target="#extra-curriculum"><span class="header-section-number">3.10</span> Extra-curriculum</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/mrdbourke/pytorch-deep-learning/blob/main/01_pytorch_workflow.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p>The essence of machine learning and deep learning is to take some data from the past, build an algorithm (like a neural network) to discover patterns in it and use the discoverd patterns to predict the future.</p>
+<p>There are many ways to do this and many new ways are being discovered all the time.</p>
+<p>But let’s start small.</p>
+<p>How about we start with a straight line?</p>
+<p>And we see if we can build a model with PyTorch to that straight line.</p>
+<section id="what-were-going-to-cover" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="what-were-going-to-cover"><span class="header-section-number">3.1</span> What we’re going to cover</h2>
+<p>In this module we’re going to cover a standard PyTorch workflow (it can be chopped and changed as necessary but it covers the main outline of steps).</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01_a_pytorch_workflow.png" width="900" alt="a pytorch workflow flowchat"></p>
+<p>For now, we’ll use this workflow to predict a simple straight line but the workflow steps can be repeated and changed depending on the problem you’re working on.</p>
+<p>Specifically, we’re going to cover:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Topic</strong></th>
+<th><strong>Contents</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Getting data ready</strong></td>
+<td>Data can be almost anything but to get started we’re going to create a simple straight line</td>
+</tr>
+<tr class="even">
+<td><strong>2. Building a model</strong></td>
+<td>Here we’ll create a model to learn patterns in the data, we’ll also choose a <strong>loss function</strong>, <strong>optimizer</strong> and build a <strong>training loop</strong>.</td>
+</tr>
+<tr class="odd">
+<td><strong>3. Fitting the model to data (training)</strong></td>
+<td>We’ve got data and a model, now let’s let the model (try to) find patterns in the (<strong>training</strong>) data.</td>
+</tr>
+<tr class="even">
+<td><strong>4. Making predictions and evaluating a model (inference)</strong></td>
+<td>Our model’s found patterns in the data, let’s compare its findings to the actual (<strong>testing</strong>) data.</td>
+</tr>
+<tr class="odd">
+<td><strong>5. Saving and loading a model</strong></td>
+<td>You may want to use your model elsewhere, or come back to it later, here we’ll cover that.</td>
+</tr>
+<tr class="even">
+<td><strong>6. Putting it all together</strong></td>
+<td>Let’s take all of the above and combine it.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="where-can-can-you-get-help" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="where-can-can-you-get-help"><span class="header-section-number">3.2</span> Where can can you get help?</h2>
+<p>All of the materials for this course are <a href="https://github.com/mrdbourke/pytorch-deep-learning">available on GitHub</a>.</p>
+<p>And if you run into trouble, you can ask a question on the <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">Discussions page</a> there too.</p>
+<p>There’s also the <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
+<p>Let’s start by putting what we’re covering into a dictionary to reference later.</p>
+<div id="cell-4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>what_were_covering <span class="op">=</span> {<span class="dv">1</span>: <span class="st">"data (prepare and load)"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="st">"build model"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="st">"fitting the model to data (training)"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: <span class="st">"making predictions and evaluating a model (inference)"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: <span class="st">"saving and loading a model"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">6</span>: <span class="st">"putting it all together"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>And now let’s import what we’ll need for this module.</p>
+<p>We’re going to get <code>torch</code>, <code>torch.nn</code> (<code>nn</code> stands for neural network and this package contains the building blocks for creating neural networks in PyTorch) and <code>matplotlib</code>.</p>
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:35}}" data-outputid="1f0b19d0-6e96-4cc9-b8e6-7adcb3f1da27" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn <span class="co"># nn contains all of PyTorch's building blocks for neural networks</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check PyTorch version</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>torch.__version__</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'1.11.0'</code></pre>
+</div>
+</div>
+</section>
+<section id="data-preparing-and-loading" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="data-preparing-and-loading"><span class="header-section-number">3.3</span> 1. Data (preparing and loading)</h2>
+<p>I want to stress that “data” in machine learning can be almost anything you can imagine. A table of numbers (like a big Excel spreadsheet), images of any kind, videos (YouTube has lots of data!), audio files like songs or podcasts, protein structures, text and more.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01-machine-learning-a-game-of-two-parts.png" class="img-fluid figure-img"></p>
+<figcaption>machine learning is a game of two parts: 1. turn your data into a representative set of numbers and 2. build or pick a model to learn the representation as best as possible</figcaption>
+</figure>
+</div>
+<p>Machine learning is a game of two parts: 1. Turn your data, whatever it is, into numbers (a representation). 2. Pick or build a model to learn the representation as best as possible.</p>
+<p>Sometimes one and two can be done at the same time.</p>
+<p>But what if you don’t have data?</p>
+<p>Well, that’s where we’re at now.</p>
+<p>No data.</p>
+<p>But we can create some.</p>
+<p>Let’s create our data as a straight line.</p>
+<p>We’ll use <a href="https://en.wikipedia.org/wiki/Linear_regression">linear regression</a> to create the data with known <strong>parameters</strong> (things that can be learned by a model) and then we’ll use PyTorch to see if we can build model to estimate these parameters using <a href="https://en.wikipedia.org/wiki/Gradient_descent"><strong>gradient descent</strong></a>.</p>
+<p>Don’t worry if the terms above don’t mean much now, we’ll see them in action and I’ll put extra resources below where you can learn more.</p>
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ef7c9d50-31d6-47b6-add9-2cd51694298f" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create *known* parameters</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>weight <span class="op">=</span> <span class="fl">0.7</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>step <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.arange(start, end, step).unsqueeze(dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> weight <span class="op">*</span> X <span class="op">+</span> bias</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>X[:<span class="dv">10</span>], y[:<span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>(tensor([[0.0000],
+         [0.0200],
+         [0.0400],
+         [0.0600],
+         [0.0800],
+         [0.1000],
+         [0.1200],
+         [0.1400],
+         [0.1600],
+         [0.1800]]),
+ tensor([[0.3000],
+         [0.3140],
+         [0.3280],
+         [0.3420],
+         [0.3560],
+         [0.3700],
+         [0.3840],
+         [0.3980],
+         [0.4120],
+         [0.4260]]))</code></pre>
+</div>
+</div>
+<p>Beautiful! Now we’re going to move towards building a model that can learn the relationship between <code>X</code> (<strong>features</strong>) and <code>y</code> (<strong>labels</strong>).</p>
+<section id="split-data-into-training-and-test-sets" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="split-data-into-training-and-test-sets"><span class="header-section-number">3.3.1</span> Split data into training and test sets</h3>
+<p>We’ve got some data.</p>
+<p>But before we build a model we need to split it up.</p>
+<p>One of most important steps in a machine learning project is creating a training and test set (and when required, a validation set).</p>
+<p>Each split of the dataset serves a specific purpose:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Split</th>
+<th>Purpose</th>
+<th>Amount of total data</th>
+<th>How often is it used?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Training set</strong></td>
+<td>The model learns from this data (like the course materials you study during the semester).</td>
+<td>~60-80%</td>
+<td>Always</td>
+</tr>
+<tr class="even">
+<td><strong>Validation set</strong></td>
+<td>The model gets tuned on this data (like the practice exam you take before the final exam).</td>
+<td>~10-20%</td>
+<td>Often but not always</td>
+</tr>
+<tr class="odd">
+<td><strong>Testing set</strong></td>
+<td>The model gets evaluated on this data to test what it has learned (like the final exam you take at the end of the semester).</td>
+<td>~10-20%</td>
+<td>Always</td>
+</tr>
+</tbody>
+</table>
+<p>For now, we’ll just use a training and test set, this means we’ll have a dataset for our model to learn on as well as be evaluated on.</p>
+<p>We can create them by splitting our <code>X</code> and <code>y</code> tensors.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> When dealing with real-world data, this step is typically done right at the start of a project (the test set should always be kept separate from all other data). We want our model to learn on training data and then evaluate it on test data to get an indication of how well it <strong>generalizes</strong> to unseen examples.</p>
+</blockquote>
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a859f5c1-37ed-4a9a-b139-20a1107077ed" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create train/test split</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>train_split <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.8</span> <span class="op">*</span> <span class="bu">len</span>(X)) <span class="co"># 80% of data used for training set, 20% for testing </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X[:train_split], y[:train_split]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> X[train_split:], y[train_split:]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(X_train), <span class="bu">len</span>(y_train), <span class="bu">len</span>(X_test), <span class="bu">len</span>(y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>(40, 40, 10, 10)</code></pre>
+</div>
+</div>
+<p>Wonderful, we’ve got 40 samples for training (<code>X_train</code> &amp; <code>y_train</code>) and 10 samples for testing (<code>X_test</code> &amp; <code>y_test</code>).</p>
+<p>The model we create is going to try and learn the relationship between <code>X_train</code> &amp; <code>y_train</code> and then we will evaluate what it learns on <code>X_test</code> and <code>y_test</code>.</p>
+<p>But right now our data is just numbers on a page.</p>
+<p>Let’s create a function to visualize it.</p>
+<div id="cell-13" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_predictions(train_data<span class="op">=</span>X_train, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                     train_labels<span class="op">=</span>y_train, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                     test_data<span class="op">=</span>X_test, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                     test_labels<span class="op">=</span>y_test, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                     predictions<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">  Plots training data, test data and compares predictions.</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">  """</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">7</span>))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot training data in blue</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  plt.scatter(train_data, train_labels, c<span class="op">=</span><span class="st">"b"</span>, s<span class="op">=</span><span class="dv">4</span>, label<span class="op">=</span><span class="st">"Training data"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot test data in green</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  plt.scatter(test_data, test_labels, c<span class="op">=</span><span class="st">"g"</span>, s<span class="op">=</span><span class="dv">4</span>, label<span class="op">=</span><span class="st">"Testing data"</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> predictions <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the predictions in red (predictions were made on the test data)</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    plt.scatter(test_data, predictions, c<span class="op">=</span><span class="st">"r"</span>, s<span class="op">=</span><span class="dv">4</span>, label<span class="op">=</span><span class="st">"Predictions"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Show the legend</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  plt.legend(prop<span class="op">=</span>{<span class="st">"size"</span>: <span class="dv">14</span>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="0d02d134-f6de-4e6f-c904-b081c7d6b8b1" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_predictions()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_pytorch_workflow_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Epic!</p>
+<p>Now instead of just being numbers on a page, our data is a straight line.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Now’s a good time to introduce you to the data explorer’s motto… “visualize, visualize, visualize!”</p>
+<p>Think of this whenever you’re working with data and turning it into numbers, if you can visualize something, it can do wonders for understanding.</p>
+<p>Machines love numbers and we humans like numbers too but we also like to look at things.</p>
+</blockquote>
+</section>
+</section>
+<section id="build-model" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="build-model"><span class="header-section-number">3.4</span> 2. Build model</h2>
+<p>Now we’ve got some data, let’s build a model to use the blue dots to predict the green dots.</p>
+<p>We’re going to jump right in.</p>
+<p>We’ll write the code first and then explain everything.</p>
+<p>Let’s replicate a standard linear regression model using pure PyTorch.</p>
+<div id="cell-17" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Linear Regression model class</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinearRegressionModel(nn.Module): <span class="co"># &lt;- almost everything in PyTorch is a nn.Module (think of this as neural network lego blocks)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> nn.Parameter(torch.randn(<span class="dv">1</span>, <span class="co"># &lt;- start with random weights (this will get adjusted as the model learns)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>            requires_grad<span class="op">=</span><span class="va">True</span>, <span class="co"># &lt;- can we update this value with gradient descent?</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            dtype<span class="op">=</span>torch.<span class="bu">float</span> <span class="co"># &lt;- PyTorch loves float32 by default</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        ))</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.bias <span class="op">=</span> nn.Parameter(torch.randn(<span class="dv">1</span>, <span class="co"># &lt;- start with random bias (this will get adjusted as the model learns)</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            requires_grad<span class="op">=</span><span class="va">True</span>, <span class="co"># &lt;- can we update this value with gradient descent?</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>            dtype<span class="op">=</span>torch.<span class="bu">float</span> <span class="co"># &lt;- PyTorch loves float32 by default</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        ))</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Forward defines the computation in the model</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x: torch.Tensor) <span class="op">-&gt;</span> torch.Tensor: <span class="co"># &lt;- "x" is the input data (e.g. training/testing features)</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.weights <span class="op">*</span> x <span class="op">+</span> <span class="va">self</span>.bias <span class="co"># &lt;- this is the linear regression formula (y = m*x + b)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Alright there’s a fair bit going on above but let’s break it down bit by bit.</p>
+<blockquote class="blockquote">
+<p><strong>Resource:</strong> We’ll be using Python classes to create bits and pieces for building neural networks. If you’re unfamiliar with Python class notation, I’d recommend reading <a href="https://realpython.com/python3-object-oriented-programming/">Real Python’s Object Orientating programming in Python 3 guide</a> a few times.</p>
+</blockquote>
+<section id="pytorch-model-building-essentials" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="pytorch-model-building-essentials"><span class="header-section-number">3.4.1</span> PyTorch model building essentials</h3>
+<p>PyTorch has four (give or take) essential modules you can use to create almost any kind of neural network you can imagine.</p>
+<p>They are <a href="https://pytorch.org/docs/stable/nn.html"><code>torch.nn</code></a>, <a href="https://pytorch.org/docs/stable/optim.html"><code>torch.optim</code></a>, <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Dataset"><code>torch.utils.data.Dataset</code></a> and <a href="https://pytorch.org/docs/stable/data.html"><code>torch.utils.data.DataLoader</code></a>. For now, we’ll focus on the first two and get to the other two later (though you may be able to guess what they do).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>PyTorch module</th>
+<th>What does it do?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://pytorch.org/docs/stable/nn.html"><code>torch.nn</code></a></td>
+<td>Contains all of the building blocks for computational graphs (essentially a series of computations executed in a particular way).</td>
+</tr>
+<tr class="even">
+<td><a href="https://pytorch.org/docs/stable/generated/torch.nn.parameter.Parameter.html#parameter"><code>torch.nn.Parameter</code></a></td>
+<td>Stores tensors that can be used with <code>nn.Module</code>. If <code>requires_grad=True</code> gradients (used for updating model parameters via <a href="https://ml-cheatsheet.readthedocs.io/en/latest/gradient_descent.html"><strong>gradient descent</strong></a>) are calculated automatically, this is often referred to as “autograd”.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module"><code>torch.nn.Module</code></a></td>
+<td>The base class for all neural network modules, all the building blocks for neural networks are subclasses. If you’re building a neural network in PyTorch, your models should subclass <code>nn.Module</code>. Requires a <code>forward()</code> method be implemented.</td>
+</tr>
+<tr class="even">
+<td><a href="https://pytorch.org/docs/stable/optim.html"><code>torch.optim</code></a></td>
+<td>Contains various optimization algorithms (these tell the model parameters stored in <code>nn.Parameter</code> how to best change to improve gradient descent and in turn reduce the loss).</td>
+</tr>
+<tr class="odd">
+<td><code>def forward()</code></td>
+<td>All <code>nn.Module</code> subclasses require a <code>forward()</code> method, this defines the computation that will take place on the data passed to the particular <code>nn.Module</code> (e.g.&nbsp;the linear regression formula above).</td>
+</tr>
+</tbody>
+</table>
+<p>If the above sounds complex, think of like this, almost everything in a PyTorch neural network comes from <code>torch.nn</code>, * <code>nn.Module</code> contains the larger building blocks (layers) * <code>nn.Parameter</code> contains the smaller parameters like weights and biases (put these together to make <code>nn.Module</code>(s)) * <code>foward()</code> tells the larger blocks how to make calculations on inputs (tensors full of data) within <code>nn.Module</code>(s) * <code>torch.optim</code> contains optimization methods on how to improve the parameters within <code>nn.Parameter</code> to better represent input data</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01-pytorch-linear-model-annotated.png" class="img-fluid" alt="a pytorch linear model with annotations"> <em>Basic building blocks of creating a PyTorch model by subclassing <code>nn.Module</code>. For ojbects that subclass <code>nn.Module</code>, the <code>forward()</code> method must be defined.</em></p>
+<blockquote class="blockquote">
+<p><strong>Resource:</strong> See more of these essential modules and their uses cases in the <a href="https://pytorch.org/tutorials/beginner/ptcheat.html">PyTorch Cheat Sheet</a>.</p>
+</blockquote>
+</section>
+<section id="checking-the-contents-of-a-pytorch-model" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="checking-the-contents-of-a-pytorch-model"><span class="header-section-number">3.4.2</span> Checking the contents of a PyTorch model</h3>
+<p>Now we’ve got these out of the way, let’s create a model instance with the class we’ve made and check its parameters using <a href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.parameters"><code>.parameters()</code></a>.</p>
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="cd999f12-2efd-4fe7-e449-d51ff98e5242" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set manual seed since nn.Parameter are randomly initialzied</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an instance of the model (this is a subclass of nn.Module that contains nn.Parameter(s))</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>model_0 <span class="op">=</span> LinearRegressionModel()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the nn.Parameter(s) within the nn.Module subclass we created</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(model_0.parameters())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>[Parameter containing:
+ tensor([0.3367], requires_grad=True),
+ Parameter containing:
+ tensor([0.1288], requires_grad=True)]</code></pre>
+</div>
+</div>
+<p>We can also get the state (what the model contains) of the model using <a href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.state_dict"><code>.state_dict()</code></a>.</p>
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7e35b61c-371e-4d28-ae02-c1981afc1bbb" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List named parameters </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>model_0.state_dict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>OrderedDict([('weights', tensor([0.3367])), ('bias', tensor([0.1288]))])</code></pre>
+</div>
+</div>
+<p>Notice how the values for <code>weights</code> and <code>bias</code> from <code>model_0.state_dict()</code> come out as random float tensors?</p>
+<p>This is because we initialized them above using <code>torch.randn()</code>.</p>
+<p>Essentially we want to start from random parameters and get the model to update them towards parameters that fit our data best (the hardcoded <code>weight</code> and <code>bias</code> values we set when creating our straight line data).</p>
+<blockquote class="blockquote">
+<p><strong>Exercise:</strong> Try changing the <code>torch.manual_seed()</code> value two cells above, see what happens to the weights and bias values.</p>
+</blockquote>
+<p>Because our model starts with random values, right now it’ll have poor predictive power.</p>
+</section>
+<section id="making-predictions-using-torch.inference_mode" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="making-predictions-using-torch.inference_mode"><span class="header-section-number">3.4.3</span> Making predictions using <code>torch.inference_mode()</code></h3>
+<p>To check this we can pass it the test data <code>X_test</code> to see how closely it predicts <code>y_test</code>.</p>
+<p>When we pass data to our model, it’ll go through the model’s <code>forward()</code> method and produce a result using the computation we’ve defined.</p>
+<p>Let’s make some predictions.</p>
+<div id="cell-26" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions with model</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode(): </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    y_preds <span class="op">=</span> model_0(X_test)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: in older PyTorch code you might also see torch.no_grad()</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># with torch.no_grad():</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   y_preds = model_0(X_test)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Hmm?</p>
+<p>You probably noticed we used <a href="https://pytorch.org/docs/stable/generated/torch.inference_mode.html"><code>torch.inference_mode()</code></a> as a <a href="https://realpython.com/python-with-statement/">context manager</a> (that’s what the <code>with torch.inference_mode():</code> is) to make the predictions.</p>
+<p>As the name suggests, <code>torch.inference_mode()</code> is used when using a model for inference (making predictions).</p>
+<p><code>torch.inference_mode()</code> turns off a bunch of things (like gradient tracking, which is necessary for training but not for inference) to make <strong>forward-passes</strong> (data going through the <code>forward()</code> method) faster.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> In older PyTorch code, you may also see <code>torch.no_grad()</code> being used for inference. While <code>torch.inference_mode()</code> and <code>torch.no_grad()</code> do similar things, <code>torch.inference_mode()</code> is newer, potentially faster and preferred. See this <a href="https://twitter.com/PyTorch/status/1437838231505096708?s=20">Tweet from PyTorch</a> for more.</p>
+</blockquote>
+<p>We’ve made some predictions, let’s see what they look like.</p>
+<div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2ce37ea3-6bc4-4e50-91ef-dcf53277dde7" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the predictions</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of testing samples: </span><span class="sc">{</span><span class="bu">len</span>(X_test)<span class="sc">}</span><span class="ss">"</span>) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of predictions made: </span><span class="sc">{</span><span class="bu">len</span>(y_preds)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Predicted values:</span><span class="ch">\n</span><span class="sc">{</span>y_preds<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of testing samples: 10
+Number of predictions made: 10
+Predicted values:
+tensor([[0.3982],
+        [0.4049],
+        [0.4116],
+        [0.4184],
+        [0.4251],
+        [0.4318],
+        [0.4386],
+        [0.4453],
+        [0.4520],
+        [0.4588]])</code></pre>
+</div>
+</div>
+<p>Notice how there’s one prediction value per testing sample.</p>
+<p>This is because of the kind of data we’re using. For our straight line, one <code>X</code> value maps to one <code>y</code> value.</p>
+<p>However, machine learning models are very flexible. You could have 100 <code>X</code> values mapping to one, two, three or 10 <code>y</code> values. It all depends on what you’re working on.</p>
+<p>Our predictions are still numbers on a page, let’s visualize them with our <code>plot_predictions()</code> function we created above.</p>
+<div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="56bf8a4d-2365-4539-a8b7-9bfe606f5b93" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_predictions(predictions<span class="op">=</span>y_preds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_pytorch_workflow_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ed29f680-d66f-4bbd-b1b3-b35655ca4fec" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">-</span> y_preds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>tensor([[0.4618],
+        [0.4691],
+        [0.4764],
+        [0.4836],
+        [0.4909],
+        [0.4982],
+        [0.5054],
+        [0.5127],
+        [0.5200],
+        [0.5272]])</code></pre>
+</div>
+</div>
+<p>Woah! Those predictions look pretty bad…</p>
+<p>This make sense though when you remember our model is just using random parameter values to make predictions.</p>
+<p>It hasn’t even looked at the blue dots to try to predict the green dots.</p>
+<p>Time to change that.</p>
+</section>
+</section>
+<section id="train-model" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="train-model"><span class="header-section-number">3.5</span> 3. Train model</h2>
+<p>Right now our model is making predictions using random parameters to make calculations, it’s basically guessing (randomly).</p>
+<p>To fix that, we can update its internal parameters (I also refer to <em>parameters</em> as patterns), the <code>weights</code> and <code>bias</code> values we set randomly using <code>nn.Parameter()</code> and <code>torch.randn()</code> to be something that better represents the data.</p>
+<p>We could hard code this (since we know the default values <code>weight=0.7</code> and <code>bias=0.3</code>) but where’s the fun in that?</p>
+<p>Much of the time you won’t know what the ideal parameters are for a model.</p>
+<p>Instead, it’s much more fun to write code to see if the model can try and figure them out itself.</p>
+<section id="creating-a-loss-function-and-optimizer-in-pytorch" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="creating-a-loss-function-and-optimizer-in-pytorch"><span class="header-section-number">3.5.1</span> Creating a loss function and optimizer in PyTorch</h3>
+<p>For our model to update its parameters on its own, we’ll need to add a few more things to our recipe.</p>
+<p>And that’s a <strong>loss function</strong> as well as an <strong>optimizer</strong>.</p>
+<p>The roles of these are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>What does it do?</th>
+<th>Where does it live in PyTorch?</th>
+<th>Common values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Loss function</strong></td>
+<td>Measures how wrong your models predictions (e.g.&nbsp;<code>y_preds</code>) are compared to the truth labels (e.g.&nbsp;<code>y_test</code>). Lower the better.</td>
+<td>PyTorch has plenty of built-in loss functions in <a href="https://pytorch.org/docs/stable/nn.html#loss-functions"><code>torch.nn</code></a>.</td>
+<td>Mean absolute error (MAE) for regression problems (<a href="https://pytorch.org/docs/stable/generated/torch.nn.L1Loss.html"><code>torch.nn.L1Loss()</code></a>). Binary cross entropy for binary classification problems (<a href="https://pytorch.org/docs/stable/generated/torch.nn.BCELoss.html"><code>torch.nn.BCELoss()</code></a>).</td>
+</tr>
+<tr class="even">
+<td><strong>Optimizer</strong></td>
+<td>Tells your model how to update its internal parameters to best lower the loss.</td>
+<td>You can find various optimization function implementations in <a href="https://pytorch.org/docs/stable/optim.html"><code>torch.optim</code></a>.</td>
+<td>Stochastic gradient descent (<a href="https://pytorch.org/docs/stable/generated/torch.optim.SGD.html#torch.optim.SGD"><code>torch.optim.SGD()</code></a>). Adam optimizer (<a href="https://pytorch.org/docs/stable/generated/torch.optim.Adam.html#torch.optim.Adam"><code>torch.optim.Adam()</code></a>).</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s create a loss function and an optimizer we can use to help improve our model.</p>
+<p>Depending on what kind of problem you’re working on will depend on what loss function and what optimizer you use.</p>
+<p>However, there are some common values, that are known to work well such as the SGD (stochastic gradient descent) or Adam optimizer. And the MAE (mean absolute error) loss function for regression problems (predicting a number) or binary cross entropy loss function for classification problems (predicting one thing or another).</p>
+<p>For our problem, since we’re predicting a number, let’s use MAE (which is under <code>torch.nn.L1Loss()</code>) in PyTorch as our loss function.</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01-mae-loss-annotated.png" class="img-fluid" alt="what MAE loss looks like for our plot data"> <em>Mean absolute error (MAE, in PyTorch: <code>torch.nn.L1Loss</code>) measures the absolute difference between two points (predictions and labels) and then takes the mean across all examples.</em></p>
+<p>And we’ll use SGD, <code>torch.optim.SGD(params, lr)</code> where:</p>
+<ul>
+<li><code>params</code> is the target model parameters you’d like to optimize (e.g.&nbsp;the <code>weights</code> and <code>bias</code> values we randomly set before).</li>
+<li><code>lr</code> is the <strong>learning rate</strong> you’d like the optimizer to update the parameters at, higher means the optimizer will try larger updates (these can sometimes be too large and the optimizer will fail to work), lower means the optimizer will try smaller updates (these can sometimes be too small and the optimizer will take too long to find the ideal values). The learning rate is considered a <strong>hyperparamter</strong> (because it’s set by a machine learning engineer). Common starting values for the learning rate are <code>0.01</code>, <code>0.001</code>, <code>0.0001</code>, however, these can also be adjusted over time (this is called <a href="https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate">learning rate scheduling</a>).</li>
+</ul>
+<p>Woah, that’s a lot, let’s see it in code.</p>
+<div id="cell-35" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the loss function</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> nn.L1Loss() <span class="co"># MAE loss is same as L1Loss</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the optimizer</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.SGD(params<span class="op">=</span>model_0.parameters(), <span class="co"># parameters of target model to optimize</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                            lr<span class="op">=</span><span class="fl">0.01</span>) <span class="co"># learning rate (how much the optimizer should change parameters at each step, higher=more (less stable), lower=less (might take a long time))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="creating-an-optimization-loop-in-pytorch" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="creating-an-optimization-loop-in-pytorch"><span class="header-section-number">3.5.2</span> Creating an optimization loop in PyTorch</h3>
+<p>Woohoo! Now we’ve got a loss function and an optimizer, it’s now time to create a <strong>training loop</strong> (and <strong>testing loop</strong>).</p>
+<p>The training loop involves the model going through the training data and learning the relationships between the <code>features</code> and <code>labels</code>.</p>
+<p>The testing loop involves going through the testing data and evaluating how good the patterns are that the model learned on the training data (the model never see’s the testing data during training).</p>
+<p>Each of these is called a “loop” because we want our model to look (loop through) at each sample in each dataset.</p>
+<p>To create these we’re going to write a Python <code>for</code> loop in the theme of the <a href="https://twitter.com/mrdbourke/status/1450977868406673410?s=20">unofficial PyTorch optimization loop song</a> (there’s a <a href="https://youtu.be/Nutpusq_AFw">video version too</a>).</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01-pytorch-optimization-loop-song.png" class="img-fluid" alt="the unofficial pytorch optimization loop song"> <em>The unoffical PyTorch optimization loops song, a fun way to remember the steps in a PyTorch training (and testing) loop.</em></p>
+<p>There will be a fair bit of code but nothing we can’t handle.</p>
+</section>
+<section id="pytorch-training-loop" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="pytorch-training-loop"><span class="header-section-number">3.5.3</span> PyTorch training loop</h3>
+<p>For the training loop, we’ll build the following steps:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Number</th>
+<th>Step name</th>
+<th>What does it do?</th>
+<th>Code example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Forward pass</td>
+<td>The model goes through all of the training data once, performing its <code>forward()</code> function calculations.</td>
+<td><code>model(x_train)</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Calculate the loss</td>
+<td>The model’s outputs (predictions) are compared to the ground truth and evaluated to see how wrong they are.</td>
+<td><code>loss = loss_fn(y_pred, y_train)</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Zero gradients</td>
+<td>The optimizers gradients are set to zero (they are accumulated by default) so they can be recalculated for the specific training step.</td>
+<td><code>optimizer.zero_grad()</code></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Perform backpropagation on the loss</td>
+<td>Computes the gradient of the loss with respect for every model parameter to be updated (each parameter with <code>requires_grad=True</code>). This is known as <strong>backpropagation</strong>, hence “backwards”.</td>
+<td><code>loss.backward()</code></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Update the optimizer (<strong>gradient descent</strong>)</td>
+<td>Update the parameters with <code>requires_grad=True</code> with respect to the loss gradients in order to improve them.</td>
+<td><code>optimizer.step()</code></td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01-pytorch-training-loop-annotated.png" class="img-fluid figure-img"></p>
+<figcaption>pytorch training loop annotated</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> The above is just one example of how the steps could be ordered or described. With experience you’ll find making PyTorch training loops can be quite flexible.</p>
+<p>And on the ordering of things, the above is a good default order but you may see slightly different orders. Some rules of thumb: * Calculate the loss (<code>loss = ...</code>) <em>before</em> performing backpropagation on it (<code>loss.backward()</code>). * Zero gradients (<code>optimizer.zero_grad()</code>) <em>before</em> computing the gradients of the loss with respect to every model parameter (<code>loss.backward()</code>). * Step the optimizer (<code>optimizer.step()</code>) <em>after</em> performing backpropagation on the loss (<code>loss.backward()</code>).</p>
+</blockquote>
+<p>For resources to help understand what’s happening behind the scenes with backpropagation and gradient descent, see the extra-curriculum section.</p>
+</section>
+<section id="pytorch-testing-loop" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="pytorch-testing-loop"><span class="header-section-number">3.5.4</span> PyTorch testing loop</h3>
+<p>As for the testing loop (evaluating our model), the typical steps include:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Number</th>
+<th>Step name</th>
+<th>What does it do?</th>
+<th>Code example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Forward pass</td>
+<td>The model goes through all of the training data once, performing its <code>forward()</code> function calculations.</td>
+<td><code>model(x_test)</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Calculate the loss</td>
+<td>The model’s outputs (predictions) are compared to the ground truth and evaluated to see how wrong they are.</td>
+<td><code>loss = loss_fn(y_pred, y_test)</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Calulate evaluation metrics (optional)</td>
+<td>Alongisde the loss value you may want to calculate other evaluation metrics such as accuracy on the test set.</td>
+<td>Custom functions</td>
+</tr>
+</tbody>
+</table>
+<p>Notice the testing loop doesn’t contain performing backpropagation (<code>loss.backward()</code>) or stepping the optimizer (<code>optimizer.step()</code>), this is because no parameters in the model are being changed during testing, they’ve already been calculated. For testing, we’re only interested in the output of the forward pass through the model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01-pytorch-testing-loop-annotated.png" class="img-fluid figure-img"></p>
+<figcaption>pytorch annotated testing loop</figcaption>
+</figure>
+</div>
+<p>Let’s put all of the above together and train our model for 100 <strong>epochs</strong> (forward passes through the data) and we’ll evaluate it every 10 epochs.</p>
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="333f9780-c103-4e81-95da-9f721c80b617" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of epochs (how many times the model will pass over the training data)</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create empty loss lists to track values</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>train_loss_values <span class="op">=</span> []</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>test_loss_values <span class="op">=</span> []</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>epoch_count <span class="op">=</span> []</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">### Training</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Put model in training mode (this is the default state of a model)</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    model_0.train()</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Forward pass on train data using the forward() method inside </span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> model_0(X_train)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(y_pred)</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Calculate the loss (how different are our models predictions to the ground truth)</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(y_pred, y_train)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Zero grad of the optimizer</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Loss backwards</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 5. Progress the optimizer</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">### Testing</span></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Put the model in evaluation mode</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>    model_0.<span class="bu">eval</span>()</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 1. Forward pass on test data</span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>      test_pred <span class="op">=</span> model_0(X_test)</span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 2. Caculate loss on test data</span></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>      test_loss <span class="op">=</span> loss_fn(test_pred, y_test.<span class="bu">type</span>(torch.<span class="bu">float</span>)) <span class="co"># predictions come in torch.float datatype, so comparisons need to be done with tensors of the same type</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Print out what's happening</span></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>            epoch_count.append(epoch)</span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>            train_loss_values.append(loss.detach().numpy())</span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>            test_loss_values.append(test_loss.detach().numpy())</span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Epoch: </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> | MAE Train Loss: </span><span class="sc">{</span>loss<span class="sc">}</span><span class="ss"> | MAE Test Loss: </span><span class="sc">{</span>test_loss<span class="sc">}</span><span class="ss"> "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch: 0 | MAE Train Loss: 0.31288138031959534 | MAE Test Loss: 0.48106518387794495 
+Epoch: 10 | MAE Train Loss: 0.1976713240146637 | MAE Test Loss: 0.3463551998138428 
+Epoch: 20 | MAE Train Loss: 0.08908725529909134 | MAE Test Loss: 0.21729660034179688 
+Epoch: 30 | MAE Train Loss: 0.053148526698350906 | MAE Test Loss: 0.14464017748832703 
+Epoch: 40 | MAE Train Loss: 0.04543796554207802 | MAE Test Loss: 0.11360953003168106 
+Epoch: 50 | MAE Train Loss: 0.04167863354086876 | MAE Test Loss: 0.09919948130846024 
+Epoch: 60 | MAE Train Loss: 0.03818932920694351 | MAE Test Loss: 0.08886633068323135 
+Epoch: 70 | MAE Train Loss: 0.03476089984178543 | MAE Test Loss: 0.0805937647819519 
+Epoch: 80 | MAE Train Loss: 0.03132382780313492 | MAE Test Loss: 0.07232122868299484 
+Epoch: 90 | MAE Train Loss: 0.02788739837706089 | MAE Test Loss: 0.06473556160926819 </code></pre>
+</div>
+</div>
+<p>Oh would you look at that! Looks like our loss is going down with every epoch, let’s plot it to find out.</p>
+<div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:295}}" data-outputid="2f6b88b4-4c8e-48ad-eb99-27abd941993d" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the loss curves</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.plot(epoch_count, train_loss_values, label<span class="op">=</span><span class="st">"Train loss"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.plot(epoch_count, test_loss_values, label<span class="op">=</span><span class="st">"Test loss"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Training and test loss curves"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Loss"</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Epochs"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_pytorch_workflow_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Nice! The <strong>loss curves</strong> show the loss going down over time. Remember, loss is the measure of how <em>wrong</em> your model is, so the lower the better.</p>
+<p>But why did the loss go down?</p>
+<p>Well, thanks to our loss function and optimizer, the model’s internal parameters (<code>weights</code> and <code>bias</code>) were updated to better reflect the underlying patterns in the data.</p>
+<p>Let’s inspect our model’s <a href="https://pytorch.org/tutorials/recipes/recipes/what_is_state_dict.html"><code>.state_dict()</code></a> to see see how close our model gets to the original values we set for weights and bias.</p>
+<div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2c27ba8b-e388-484e-c59e-464fdb53d73e" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find our model's learned parameters</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The model learned the following values for weights and bias:"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_0.state_dict())</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">And the original values for weights and bias are:"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"weights: </span><span class="sc">{</span>weight<span class="sc">}</span><span class="ss">, bias: </span><span class="sc">{</span>bias<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The model learned the following values for weights and bias:
+OrderedDict([('weights', tensor([0.5784])), ('bias', tensor([0.3513]))])
+
+And the original values for weights and bias are:
+weights: 0.7, bias: 0.3</code></pre>
+</div>
+</div>
+<p>Wow! How cool is that?</p>
+<p>Our model got very close to calculate the exact original values for <code>weight</code> and <code>bias</code> (and it would probably get even closer if we trained it for longer).</p>
+<blockquote class="blockquote">
+<p><strong>Exercise:</strong> Try changing the <code>epochs</code> value above to 200, what happens to the loss curves and the weights and bias parameter values of the model?</p>
+</blockquote>
+<p>It’d likely never guess them <em>perfectly</em> (especially when using more complicated datasets) but that’s okay, often you can do very cool things with a close approximation.</p>
+<p>This is the whole idea of machine learning and deep learning, <strong>there are some ideal values that describe our data</strong> and rather than figuring them out by hand, <strong>we can train a model to figure them out programmatically</strong>.</p>
+</section>
+</section>
+<section id="making-predictions-with-a-trained-pytorch-model-inference" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="making-predictions-with-a-trained-pytorch-model-inference"><span class="header-section-number">3.6</span> 4. Making predictions with a trained PyTorch model (inference)</h2>
+<p>Once you’ve trained a model, you’ll likely want to make predictions with it.</p>
+<p>We’ve already seen a glimpse of this in the training and testing code above, the steps to do it outside of the training/testing loop are similar.</p>
+<p>There are three things to remember when making predictions (also called performing inference) with a PyTorch model:</p>
+<ol type="1">
+<li>Set the model in evaluation mode (<code>model.eval()</code>).</li>
+<li>Make the predictions using the inference mode context manager (<code>with torch.inference_mode(): ...</code>).</li>
+<li>All predictions should be made with objects on the same device (e.g.&nbsp;data and model on GPU only or data and model on CPU only).</li>
+</ol>
+<p>The first two items make sure all helpful calculations and settings PyTorch uses behind the scenes during training but aren’t necessary for inference are turned off (this results in faster computation). And the third ensures that you won’t run into cross-device errors.</p>
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7a637fab-186e-4269-85a7-6dc28ee690e0" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Set the model in evaluation mode</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>model_0.<span class="bu">eval</span>()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Setup the inference mode context manager</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3. Make sure the calculations are done with the model and data on the same device</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># in our case, we haven't setup device-agnostic code yet so our data and model are</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># on the CPU by default.</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># model_0.to(device)</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># X_test = X_test.to(device)</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  y_preds <span class="op">=</span> model_0(X_test)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>y_preds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>tensor([[0.8141],
+        [0.8256],
+        [0.8372],
+        [0.8488],
+        [0.8603],
+        [0.8719],
+        [0.8835],
+        [0.8950],
+        [0.9066],
+        [0.9182]])</code></pre>
+</div>
+</div>
+<p>Nice! We’ve made some predictions with our trained model, now how do they look?</p>
+<div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="b2e3870b-dfdf-4dbc-877c-a940cb732859" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_predictions(predictions<span class="op">=</span>y_preds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_pytorch_workflow_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Woohoo! Those red dots are looking far closer than they were before!</p>
+<p>Let’s get onto saving an reloading a model in PyTorch.</p>
+</section>
+<section id="saving-and-loading-a-pytorch-model" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="saving-and-loading-a-pytorch-model"><span class="header-section-number">3.7</span> 5. Saving and loading a PyTorch model</h2>
+<p>If you’ve trained a PyTorch model, chances are you’ll want to save it and export it somewhere.</p>
+<p>As in, you might train it on Google Colab or your local machine with a GPU but you’d like to now export it to some sort of application where others can use it.</p>
+<p>Or maybe you’d like to save your progress on a model and come back and load it back later.</p>
+<p>For saving and loading models in PyTorch, there are three main methods you should be aware of (all of below have been taken from the <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html#saving-loading-model-for-inference">PyTorch saving and loading models guide</a>):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>PyTorch method</th>
+<th>What does it do?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://pytorch.org/docs/stable/torch.html?highlight=save#torch.save"><code>torch.save</code></a></td>
+<td>Saves a serialzed object to disk using Python’s <a href="https://docs.python.org/3/library/pickle.html"><code>pickle</code></a> utility. Models, tensors and various other Python objects like dictionaries can be saved using <code>torch.save</code>.</td>
+</tr>
+<tr class="even">
+<td><a href="https://pytorch.org/docs/stable/torch.html?highlight=torch%20load#torch.load"><code>torch.load</code></a></td>
+<td>Uses <code>pickle</code>’s unpickling features to deserialize and load pickled Python object files (like models, tensors or dictionaries) into memory. You can also set which device to load the object to (CPU, GPU etc).</td>
+</tr>
+<tr class="odd">
+<td><a href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html?highlight=load_state_dict#torch.nn.Module.load_state_dict"><code>torch.nn.Module.load_state_dict</code></a></td>
+<td>Loads a model’s parameter dictionary (<code>model.state_dict()</code>) using a saved <code>state_dict()</code> object.</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> As stated in <a href="https://docs.python.org/3/library/pickle.html">Python’s <code>pickle</code> documentation</a>, the <code>pickle</code> module <strong>is not secure</strong>. That means you should only ever unpickle (load) data you trust. That goes for loading PyTorch models as well. Only ever use saved PyTorch models from sources you trust.</p>
+</blockquote>
+<section id="saving-a-pytorch-models-state_dict" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="saving-a-pytorch-models-state_dict"><span class="header-section-number">3.7.1</span> Saving a PyTorch model’s <code>state_dict()</code></h3>
+<p>The <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html#saving-loading-model-for-inference">recommended way</a> for saving and loading a model for inference (making preditions) is by saving and loading a model’s <code>state_dict()</code>.</p>
+<p>Let’s see how we can do that in a few steps:</p>
+<ol type="1">
+<li>We’ll create a directory for saving models to called <code>models</code> using Python’s <code>pathlib</code> module.</li>
+<li>We’ll create a file path to save the model to.</li>
+<li>We’ll call <code>torch.save(obj, f)</code> where <code>obj</code> is the target model’s <code>state_dict()</code> and <code>f</code> is the filename of where to save the model.</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> It’s common convention for PyTorch saved models or objects to end with <code>.pt</code> or <code>.pth</code>, like <code>saved_model_01.pth</code>.</p>
+</blockquote>
+<div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a897070c-a843-4a7c-a06e-e6406206412c" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create models directory </span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>MODEL_PATH <span class="op">=</span> Path(<span class="st">"models"</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>MODEL_PATH.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create model save path </span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>MODEL_NAME <span class="op">=</span> <span class="st">"01_pytorch_workflow_model_0.pth"</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>MODEL_SAVE_PATH <span class="op">=</span> MODEL_PATH <span class="op">/</span> MODEL_NAME</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Save the model state dict </span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Saving model to: </span><span class="sc">{</span>MODEL_SAVE_PATH<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>torch.save(obj<span class="op">=</span>model_0.state_dict(), <span class="co"># only saving the state_dict() only saves the models learned parameters</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>           f<span class="op">=</span>MODEL_SAVE_PATH) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Saving model to: models/01_pytorch_workflow_model_0.pth</code></pre>
+</div>
+</div>
+<div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="50e1b51b-1b98-41f1-ca36-ce9cb5682064" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the saved file path</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>l models<span class="op">/</span><span class="dv">0</span><span class="er">1_pytorch_workflow_model_0</span>.pth</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-rw-rw-r-- 1 daniel daniel 1063 May 10 10:26 models/01_pytorch_workflow_model_0.pth</code></pre>
+</div>
+</div>
+</section>
+<section id="loading-a-saved-pytorch-models-state_dict" class="level3" data-number="3.7.2">
+<h3 data-number="3.7.2" class="anchored" data-anchor-id="loading-a-saved-pytorch-models-state_dict"><span class="header-section-number">3.7.2</span> Loading a saved PyTorch model’s <code>state_dict()</code></h3>
+<p>Since we’ve now got a saved model <code>state_dict()</code> at <code>models/01_pytorch_workflow_model_0.pth</code> we can now load it in using <code>torch.nn.Module.load_state_dict(torch.load(f))</code> where <code>f</code> is the filepath of our saved model <code>state_dict()</code>.</p>
+<p>Why call <code>torch.load()</code> inside <code>torch.nn.Module.load_state_dict()</code>?</p>
+<p>Because we only saved the model’s <code>state_dict()</code> which is a dictionary of learned parameters and not the <em>entire</em> model, we first have to load the <code>state_dict()</code> with <code>torch.load()</code> and then pass that <code>state_dict()</code> to a new instance of our model (which is a subclass of <code>nn.Module</code>).</p>
+<p>Why not save the entire model?</p>
+<p><a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html#save-load-entire-model">Saving the entire model</a> rather than just the <code>state_dict()</code> is more intuitive, however, to quote the PyTorch documentation (italics mine):</p>
+<blockquote class="blockquote">
+<p>The disadvantage of this approach <em>(saving the whole model)</em> is that the serialized data is bound to the specific classes and the exact directory structure used when the model is saved…</p>
+<p>Because of this, your code can break in various ways when used in other projects or after refactors.</p>
+</blockquote>
+<p>So instead, we’re using the flexible method of saving and loading just the <code>state_dict()</code>, which again is basically a dictionary of model parameters.</p>
+<p>Let’s test it out by created another instance of <code>LinearRegressionModel()</code>, which is a subclass of <code>torch.nn.Module</code> and will hence have the in-built method <code>load_state_dict()</code>.</p>
+<div id="cell-55" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7ef66bf8-122e-476a-ee86-b1c388d6167c" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a new instance of our model (this will be instantiated with random weights)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>loaded_model_0 <span class="op">=</span> LinearRegressionModel()</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the state_dict of our saved model (this will update the new instance of our model with trained weights)</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>loaded_model_0.load_state_dict(torch.load(f<span class="op">=</span>MODEL_SAVE_PATH))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>&lt;All keys matched successfully&gt;</code></pre>
+</div>
+</div>
+<p>Excellent! It looks like things matched up.</p>
+<p>Now to test our loaded model, let’s perform inference with it (make predictions) on the test data.</p>
+<p>Remember the rules for performing inference with PyTorch models?</p>
+<p>If not, here’s a refresher:</p>
+<details>
+<summary>
+PyTorch inference rules
+</summary>
+<ol>
+<li>
+Set the model in evaluation mode (<code>model.eval()</code>).
+</li>
+<li>
+Make the predictions using the inference mode context manager (<code>with torch.inference_mode(): …</code>).
+</li>
+<li>
+All predictions should be made with objects on the same device (e.g.&nbsp;data and model on GPU only or data and model on CPU only).
+</li>
+</ol>
+</details>
+<div id="cell-57" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Put the loaded model into evaluation mode</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>loaded_model_0.<span class="bu">eval</span>()</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Use the inference mode context manager to make predictions</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    loaded_model_preds <span class="op">=</span> loaded_model_0(X_test) <span class="co"># perform a forward pass on the test data with the loaded model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now we’ve made some predictions with the loaded model, let’s see if they’re the same as the previous predictions.</p>
+<div id="cell-59" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="56210de9-9888-4e90-d2e7-6cd0de47f823" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare previous model predictions with loaded model predictions (these should be the same)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>y_preds <span class="op">==</span> loaded_model_preds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>tensor([[True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True]])</code></pre>
+</div>
+</div>
+<p>Nice!</p>
+<p>It looks like the loaded model predictions are the same as the previous model predictions (predictions made prior to saving). This indicates our model is saving and loading as expected.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> There are more methods to save and load PyTorch models but I’ll leave these for extra-curriculum and further reading. See the <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html#saving-and-loading-models">PyTorch guide for saving and loading models</a> for more.</p>
+</blockquote>
+</section>
+</section>
+<section id="putting-it-all-together" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="putting-it-all-together"><span class="header-section-number">3.8</span> 6. Putting it all together</h2>
+<p>We’ve covered a fair bit of ground so far.</p>
+<p>But once you’ve had some practice, you’ll be performing the above steps like dancing down the street.</p>
+<p>Speaking of practice, let’s put everything we’ve done so far together.</p>
+<p>Except this time we’ll make our code device agnostic (so if there’s a GPU available, it’ll use it and if not, it will default to the CPU).</p>
+<p>There’ll be far less commentary in this section than above since what we’re going to go through has already been covered.</p>
+<p>We’ll start by importing the standard libraries we need.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> If you’re using Google Colab, to setup a GPU, go to Runtime -&gt; Change runtime type -&gt; Hardware acceleration -&gt; GPU. If you do this, it will reset the Colab runtime and you will lose saved variables.</p>
+</blockquote>
+<div id="cell-62" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:35}}" data-outputid="60b4e98b-8d83-4573-cbe2-131df190b223" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import PyTorch and matplotlib</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn <span class="co"># nn contains all of PyTorch's building blocks for neural networks</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check PyTorch version</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>torch.__version__</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>'1.11.0'</code></pre>
+</div>
+</div>
+<p>Now let’s start making our code device agnostic by setting <code>device="cuda"</code> if it’s available, otherwise it’ll default to <code>device="cpu"</code>.</p>
+<div id="cell-64" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="88323445-9070-4b3d-a62a-3d924d8d6898" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup device agnostic code</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Using device: </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using device: cuda</code></pre>
+</div>
+</div>
+<p>If you’ve got access to a GPU, the above should’ve printed out:</p>
+<pre><code>Using device: cuda</code></pre>
+<p>Otherwise, you’ll be using a CPU for the following computations. This is fine for our small dataset but it will take longer for larger datasets.</p>
+<section id="data" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="data"><span class="header-section-number">3.8.1</span> 6.1 Data</h3>
+<p>Let’s create some data just like before.</p>
+<p>First, we’ll hard-code some <code>weight</code> and <code>bias</code> values.</p>
+<p>Then we’ll make a range of numbers between 0 and 1, these will be our <code>X</code> values.</p>
+<p>Finally, we’ll use the <code>X</code> values, as well as the <code>weight</code> and <code>bias</code> values to create <code>y</code> using the linear regression formula (<code>y = weight * X + bias</code>).</p>
+<div id="cell-67" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="62d07f54-bb59-4327-a153-79be9ada83d7" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create weight and bias</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>weight <span class="op">=</span> <span class="fl">0.7</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create range values</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>step <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create X and y (features and labels)</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.arange(start, end, step).unsqueeze(dim<span class="op">=</span><span class="dv">1</span>) <span class="co"># without unsqueeze, errors will happen later on (shapes within linear layers)</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> weight <span class="op">*</span> X <span class="op">+</span> bias </span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>X[:<span class="dv">10</span>], y[:<span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>(tensor([[0.0000],
+         [0.0200],
+         [0.0400],
+         [0.0600],
+         [0.0800],
+         [0.1000],
+         [0.1200],
+         [0.1400],
+         [0.1600],
+         [0.1800]]),
+ tensor([[0.3000],
+         [0.3140],
+         [0.3280],
+         [0.3420],
+         [0.3560],
+         [0.3700],
+         [0.3840],
+         [0.3980],
+         [0.4120],
+         [0.4260]]))</code></pre>
+</div>
+</div>
+<p>Wonderful!</p>
+<p>Now we’ve got some data, let’s split it into training and test sets.</p>
+<p>We’ll use an 80/20 split with 80% training data and 20% testing data.</p>
+<div id="cell-69" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="80c3f9b7-4d1d-4aef-fc19-7abceaf93eb2" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>train_split <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.8</span> <span class="op">*</span> <span class="bu">len</span>(X))</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> X[:train_split], y[:train_split]</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>X_test, y_test <span class="op">=</span> X[train_split:], y[train_split:]</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(X_train), <span class="bu">len</span>(y_train), <span class="bu">len</span>(X_test), <span class="bu">len</span>(y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>(40, 40, 10, 10)</code></pre>
+</div>
+</div>
+<p>Excellent, let’s visualize them to make sure they look okay.</p>
+<div id="cell-71" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="cc3cb921-0d25-4cec-d681-da102547bdb9" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: If you've reset your runtime, this function won't work, </span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you'll have to rerun the cell above where it's instantiated.</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>plot_predictions(X_train, y_train, X_test, y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_pytorch_workflow_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="building-a-pytorch-linear-model" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="building-a-pytorch-linear-model"><span class="header-section-number">3.8.2</span> 6.2 Building a PyTorch linear model</h3>
+<p>We’ve got some data, now it’s time to make a model.</p>
+<p>We’ll create the same style of model as before except this time, instead of defining the weight and bias parameters of our model manually using <code>nn.Parameter()</code>, we’ll use <a href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html"><code>nn.Linear(in_features, out_features)</code></a> to do it for us.</p>
+<p>Where <code>in_features</code> is the number of dimensions your input data has and <code>out_features</code> is the number of dimensions you’d like it to be output to.</p>
+<p>In our case, both of these are <code>1</code> since our data has <code>1</code> input feature (<code>X</code>) per label (<code>y</code>).</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01-pytorch-linear-regression-model-with-nn-Parameter-and-nn-Linear-compared.png" class="img-fluid" alt="comparison of nn.Parameter Linear Regression model and nn.Linear Linear Regression model"> <em>Creating a linear regression model using <code>nn.Parameter</code> versus using <code>nn.Linear</code>. There are plenty more examples of where the <code>torch.nn</code> module has pre-built computations, including many popular and useful neural network layers.</em></p>
+<div id="cell-73" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f7aabd1d-55a7-4f1e-c9b9-9db73d178aef" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subclass nn.Module to make our model</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinearRegressionModelV2(nn.Module):</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Use nn.Linear() for creating the model parameters</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>                                      out_features<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define the forward computation (input data x flows through nn.Linear())</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x: torch.Tensor) <span class="op">-&gt;</span> torch.Tensor:</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.linear_layer(x)</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the manual seed when creating the model (this isn't always need but is used for demonstrative purposes, try commenting it out and seeing what happens)</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>model_1 <span class="op">=</span> LinearRegressionModelV2()</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>model_1, model_1.state_dict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>(LinearRegressionModelV2(
+   (linear_layer): Linear(in_features=1, out_features=1, bias=True)
+ ),
+ OrderedDict([('linear_layer.weight', tensor([[0.7645]])),
+              ('linear_layer.bias', tensor([0.8300]))]))</code></pre>
+</div>
+</div>
+<p>Notice the outputs of <code>model_1.state_dict()</code>, the <code>nn.Linear()</code> layer created a random <code>weight</code> and <code>bias</code> parameter for us.</p>
+<p>Now let’s put our model on the GPU (if it’s available).</p>
+<p>We can change the device our PyTorch objects are on using <code>.to(device)</code>.</p>
+<p>First let’s check the model’s current device.</p>
+<div id="cell-75" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4d0d2c5f-4a9c-44a0-bda5-fd54d16cfa51" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check model device</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span>(model_1.parameters()).device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>device(type='cpu')</code></pre>
+</div>
+</div>
+<p>Wonderful, looks like the model’s on the CPU by default.</p>
+<p>Let’s change it to be on the GPU (if it’s available).</p>
+<div id="cell-77" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b0d331ba-56b9-4f18-f93d-de7965de41dd" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set model to GPU if it's availalble, otherwise it'll default to CPU</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>model_1.to(device) <span class="co"># the device variable was set above to be "cuda" if available or "cpu" if not</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span>(model_1.parameters()).device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>device(type='cuda', index=0)</code></pre>
+</div>
+</div>
+<p>Nice! Because of our device agnostic code, the above cell will work regardless of whether a GPU is available or not.</p>
+<p>If you do have access to a CUDA-enabled GPU, you should see an output of something like:</p>
+<pre><code>device(type='cuda', index=0)</code></pre>
+</section>
+<section id="training" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="training"><span class="header-section-number">3.8.3</span> 6.3 Training</h3>
+<p>Time to build a training and testing loop.</p>
+<p>First we’ll need a loss function and an optimizer.</p>
+<p>Let’s use the same functions we used earlier, <code>nn.L1Loss()</code> and <code>torch.optim.SGD()</code>.</p>
+<p>We’ll have to pass the new model’s parameters (<code>model.parameters()</code>) to the optimizer for it to adjust them during training.</p>
+<p>The learning rate of <code>0.1</code> worked well before too so let’s use that again.</p>
+<div id="cell-81" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create loss function</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> nn.L1Loss()</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create optimizer</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.SGD(params<span class="op">=</span>model_1.parameters(), <span class="co"># optimize newly created model's parameters</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>                            lr<span class="op">=</span><span class="fl">0.01</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Beautiful, loss function and optimizer ready, now let’s train and evaluate our model using a training and testing loop.</p>
+<p>The only different thing we’ll be doing in this step compared to the previous training loop is putting the data on the target <code>device</code>.</p>
+<p>We’ve already put our model on the target <code>device</code> using <code>model_1.to(device)</code>.</p>
+<p>And we can do the same with the data.</p>
+<p>That way if the model is on the GPU, the data is on the GPU (and vice versa).</p>
+<p>Let’s step things up a notch this time and set <code>epochs=1000</code>.</p>
+<p>If you need a reminder of the PyTorch training loop steps, see below.</p>
+<details>
+<summary>
+PyTorch training loop steps
+</summary>
+<ol>
+<li>
+<b>Forward pass</b> - The model goes through all of the training data once, performing its <code>forward()</code> function calculations (<code>model(x_train)</code>).
+</li>
+<li>
+<b>Calculate the loss</b> - The model’s outputs (predictions) are compared to the ground truth and evaluated to see how wrong they are (<code>loss = loss_fn(y_pred, y_train</code>).
+</li>
+<li>
+<b>Zero gradients</b> - The optimizers gradients are set to zero (they are accumulated by default) so they can be recalculated for the specific training step (<code>optimizer.zero_grad()</code>).
+</li>
+<li>
+<b>Perform backpropagation on the loss</b> - Computes the gradient of the loss with respect for every model parameter to be updated (each parameter with <code>requires_grad=True</code>). This is known as <b>backpropagation</b>, hence “backwards” (<code>loss.backward()</code>).
+</li>
+<li>
+<b>Step the optimizer (gradient descent)</b> - Update the parameters with <code>requires_grad=True</code> with respect to the loss gradients in order to improve them (<code>optimizer.step()</code>).
+</li>
+</ol>
+</details>
+<div id="cell-83" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="23ee6dda-7145-463c-e684-d65ba6874757" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of epochs </span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">1000</span> </span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Put data on the available device</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Without this, error will happen (not all model/data on device)</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_train.to(device)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> X_test.to(device)</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> y_train.to(device)</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> y_test.to(device)</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">### Training</span></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>    model_1.train() <span class="co"># train mode is on by default after construction</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Forward pass</span></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> model_1(X_train)</span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Calculate loss</span></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss_fn(y_pred, y_train)</span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Zero grad optimizer</span></span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Loss backward</span></span>
+<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 5. Step the optimizer</span></span>
+<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
+<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">### Testing</span></span>
+<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a>    model_1.<span class="bu">eval</span>() <span class="co"># put the model in evaluation mode for testing (inference)</span></span>
+<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Forward pass</span></span>
+<span id="cb57-35"><a href="#cb57-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb57-36"><a href="#cb57-36" aria-hidden="true" tabindex="-1"></a>        test_pred <span class="op">=</span> model_1(X_test)</span>
+<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 2. Calculate the loss</span></span>
+<span id="cb57-39"><a href="#cb57-39" aria-hidden="true" tabindex="-1"></a>        test_loss <span class="op">=</span> loss_fn(test_pred, y_test)</span>
+<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-41"><a href="#cb57-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch: </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> | Train loss: </span><span class="sc">{</span>loss<span class="sc">}</span><span class="ss"> | Test loss: </span><span class="sc">{</span>test_loss<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch: 0 | Train loss: 0.5551779866218567 | Test loss: 0.5739762187004089
+Epoch: 100 | Train loss: 0.006215683650225401 | Test loss: 0.014086711220443249
+Epoch: 200 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882
+Epoch: 300 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882
+Epoch: 400 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882
+Epoch: 500 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882
+Epoch: 600 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882
+Epoch: 700 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882
+Epoch: 800 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882
+Epoch: 900 | Train loss: 0.0012645035749301314 | Test loss: 0.013801801018416882</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Due to the random nature of machine learning, you will likely get slightly different results (different loss and prediction values) depending on whether your model was trained on CPU or GPU. This is true even if you use the same random seed on either device. If the difference is large, you may want to look for errors, however, if it is small (ideally it is), you can ignore it.</p>
+</blockquote>
+<p>Nice! That loss looks pretty low.</p>
+<p>Let’s check the parameters our model has learned and compare them to the original parameters we hard-coded.</p>
+<div id="cell-85" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="53b6c53a-1bab-4f13-e09a-c9473200af39" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find our model's learned parameters</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint <span class="co"># pprint = pretty print, see: https://docs.python.org/3/library/pprint.html </span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The model learned the following values for weights and bias:"</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>pprint(model_1.state_dict())</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">And the original values for weights and bias are:"</span>)</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"weights: </span><span class="sc">{</span>weight<span class="sc">}</span><span class="ss">, bias: </span><span class="sc">{</span>bias<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The model learned the following values for weights and bias:
+OrderedDict([('linear_layer.weight', tensor([[0.6968]], device='cuda:0')),
+             ('linear_layer.bias', tensor([0.3025], device='cuda:0'))])
+
+And the original values for weights and bias are:
+weights: 0.7, bias: 0.3</code></pre>
+</div>
+</div>
+<p>Ho ho! Now that’s pretty darn close to a perfect model.</p>
+<p>Remember though, in practice, it’s rare that you’ll know the perfect parameters ahead of time.</p>
+<p>And if you knew the parameters your model had to learn ahead of time, what would be the fun of machine learning?</p>
+<p>Plus, in many real-world machine learning problems, the number of parameters can well exceed tens of millions.</p>
+<p>I don’t know about you but I’d rather write code for a computer to figure those out rather than doing it by hand.</p>
+</section>
+<section id="making-predictions" class="level3" data-number="3.8.4">
+<h3 data-number="3.8.4" class="anchored" data-anchor-id="making-predictions"><span class="header-section-number">3.8.4</span> 6.4 Making predictions</h3>
+<p>Now we’ve got a trained model, let’s turn on it’s evaluation mode and make some predictions.</p>
+<div id="cell-88" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a0d4a51f-e1d9-4038-fd8a-0bbf4386f36a" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn model into evaluation mode</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>model_1.<span class="bu">eval</span>()</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the test data</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    y_preds <span class="op">=</span> model_1(X_test)</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>y_preds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>tensor([[0.8600],
+        [0.8739],
+        [0.8878],
+        [0.9018],
+        [0.9157],
+        [0.9296],
+        [0.9436],
+        [0.9575],
+        [0.9714],
+        [0.9854]], device='cuda:0')</code></pre>
+</div>
+</div>
+<p>If you’re making predictions with data on the GPU, you might notice the output of the above has <code>device='cuda:0'</code> towards the end. That means the data is on CUDA device 0 (the first GPU your system has access to due to zero-indexing), if you end up using multiple GPUs in the future, this number may be higher.</p>
+<p>Now let’s plot our model’s predictions.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Many data science libraries such as pandas, matplotlib and NumPy aren’t capable of using data that is stored on GPU. So you might run into some issues when trying to use a function from one of these libraries with tensor data not stored on the CPU. To fix this, you can call <a href="https://pytorch.org/docs/stable/generated/torch.Tensor.cpu.html"><code>.cpu()</code></a> on your target tensor to return a copy of your target tensor on the CPU.</p>
+</blockquote>
+<div id="cell-90" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="dd68d5a7-1733-4385-c1cb-7d7b44085813" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_predictions(predictions=y_preds) # -&gt; won't work... data not on CPU</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Put data on the CPU and plot it</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>plot_predictions(predictions<span class="op">=</span>y_preds.cpu())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_pytorch_workflow_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Woah! Look at those red dots, they line up almost perfectly with the green dots. I guess the extra epochs helped.</p>
+</section>
+<section id="saving-and-loading-a-model" class="level3" data-number="3.8.5">
+<h3 data-number="3.8.5" class="anchored" data-anchor-id="saving-and-loading-a-model"><span class="header-section-number">3.8.5</span> 6.5 Saving and loading a model</h3>
+<p>We’re happy with our models predictions, so let’s save it to file so it can be used later.</p>
+<div id="cell-93" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e43ada0c-c074-4b50-9207-fa01581b1d5f" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create models directory </span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>MODEL_PATH <span class="op">=</span> Path(<span class="st">"models"</span>)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>MODEL_PATH.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create model save path </span></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>MODEL_NAME <span class="op">=</span> <span class="st">"01_pytorch_workflow_model_1.pth"</span></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>MODEL_SAVE_PATH <span class="op">=</span> MODEL_PATH <span class="op">/</span> MODEL_NAME</span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Save the model state dict </span></span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Saving model to: </span><span class="sc">{</span>MODEL_SAVE_PATH<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>torch.save(obj<span class="op">=</span>model_1.state_dict(), <span class="co"># only saving the state_dict() only saves the models learned parameters</span></span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a>           f<span class="op">=</span>MODEL_SAVE_PATH) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Saving model to: models/01_pytorch_workflow_model_1.pth</code></pre>
+</div>
+</div>
+<p>And just to make sure everything worked well, let’s load it back in.</p>
+<p>We’ll: * Create a new instance of the <code>LinearRegressionModelV2()</code> class * Load in the model state dict using <code>torch.nn.Module.load_state_dict()</code> * Send the new instance of the model to the target device (to ensure our code is device-agnostic)</p>
+<div id="cell-95" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="76f10046-cd42-4b39-a372-aa95227828e8" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a fresh instance of LinearRegressionModelV2</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>loaded_model_1 <span class="op">=</span> LinearRegressionModelV2()</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load model state dict </span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>loaded_model_1.load_state_dict(torch.load(MODEL_SAVE_PATH))</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Put model to target device (if your data is on GPU, model will have to be on GPU to make predictions)</span></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>loaded_model_1.to(device)</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Loaded model:</span><span class="ch">\n</span><span class="sc">{</span>loaded_model_1<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Model on device:</span><span class="ch">\n</span><span class="sc">{</span><span class="bu">next</span>(loaded_model_1.parameters())<span class="sc">.</span>device<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Loaded model:
+LinearRegressionModelV2(
+  (linear_layer): Linear(in_features=1, out_features=1, bias=True)
+)
+Model on device:
+cuda:0</code></pre>
+</div>
+</div>
+<p>Now we can evaluate the loaded model to see if its predictions line up with the predictions made prior to saving.</p>
+<div id="cell-97" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c8184cd1-595a-43e4-8155-89dcecc4d0b0" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate loaded model</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>loaded_model_1.<span class="bu">eval</span>()</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>    loaded_model_1_preds <span class="op">=</span> loaded_model_1(X_test)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>y_preds <span class="op">==</span> loaded_model_1_preds</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>tensor([[True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True],
+        [True]], device='cuda:0')</code></pre>
+</div>
+</div>
+<p>Everything adds up! Nice!</p>
+<p>Well, we’ve come a long way. You’ve now built and trained your first two neural network models in PyTorch!</p>
+<p>Time to practice your skills.</p>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.9</span> Exercises</h2>
+<p>All exercises have been inspired from code throughout the notebook.</p>
+<p>There is one exercise per major section.</p>
+<p>You should be able to complete them by referencing their specific section.</p>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> For all exercises, your code should be device agnostic (meaning it could run on CPU or GPU if it’s available).</p>
+</blockquote>
+<ol type="1">
+<li>Create a straight line dataset using the linear regression formula (<code>weight * X + bias</code>).</li>
+</ol>
+<ul>
+<li>Set <code>weight=0.3</code> and <code>bias=0.9</code> there should be at least 100 datapoints total.</li>
+<li>Split the data into 80% training, 20% testing.</li>
+<li>Plot the training and testing data so it becomes visual.</li>
+</ul>
+<ol start="2" type="1">
+<li>Build a PyTorch model by subclassing <code>nn.Module</code>.</li>
+</ol>
+<ul>
+<li>Inside should be a randomly initialized <code>nn.Parameter()</code> with <code>requires_grad=True</code>, one for <code>weights</code> and one for <code>bias</code>.</li>
+<li>Implement the <code>forward()</code> method to compute the linear regression function you used to create the dataset in 1.</li>
+<li>Once you’ve constructed the model, make an instance of it and check its <code>state_dict()</code>.</li>
+<li><strong>Note:</strong> If you’d like to use <code>nn.Linear()</code> instead of <code>nn.Parameter()</code> you can.</li>
+</ul>
+<ol start="3" type="1">
+<li>Create a loss function and optimizer using <code>nn.L1Loss()</code> and <code>torch.optim.SGD(params, lr)</code> respectively.</li>
+</ol>
+<ul>
+<li>Set the learning rate of the optimizer to be 0.01 and the parameters to optimize should be the model parameters from the model you created in 2.</li>
+<li>Write a training loop to perform the appropriate training steps for 300 epochs.</li>
+<li>The training loop should test the model on the test dataset every 20 epochs.</li>
+</ul>
+<ol start="4" type="1">
+<li>Make predictions with the trained model on the test data.</li>
+</ol>
+<ul>
+<li>Visualize these predictions against the original training and testing data (<strong>note:</strong> you may need to make sure the predictions are <em>not</em> on the GPU if you want to use non-CUDA-enabled libraries such as matplotlib to plot).</li>
+</ul>
+<ol start="5" type="1">
+<li>Save your trained model’s <code>state_dict()</code> to file.</li>
+</ol>
+<ul>
+<li>Create a new instance of your model class you made in 2. and load in the <code>state_dict()</code> you just saved to it.</li>
+<li>Perform predictions on your test data with the loaded model and confirm they match the original model predictions from 4.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Resource:</strong> See the <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/extras/exercises">exercises notebooks templates</a> and <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/extras/solutions">solutions</a> on the course GitHub.</p>
+</blockquote>
+</section>
+<section id="extra-curriculum" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="extra-curriculum"><span class="header-section-number">3.10</span> Extra-curriculum</h2>
+<ul>
+<li>Listen to <a href="https://youtu.be/Nutpusq_AFw">The Unofficial PyTorch Optimization Loop Song</a> (to help remember the steps in a PyTorch training/testing loop).</li>
+<li>Read <a href="https://pytorch.org/tutorials/beginner/nn_tutorial.html">What is <code>torch.nn</code>, really?</a> by Jeremy Howard for a deeper understanding of how one of the most important modules in PyTorch works.</li>
+<li>Spend 10-minutes scrolling through and checking out the <a href="https://pytorch.org/tutorials/beginner/ptcheat.html">PyTorch documentation cheatsheet</a> for all of the different PyTorch modules you might come across.</li>
+<li>Spend 10-minutes reading the <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html">loading and saving documentation on the PyTorch website</a> to become more familiar with the different saving and loading options in PyTorch.</li>
+<li>Spend 1-2 hours read/watching the following for an overview of the internals of gradient descent and backpropagation, the two main algorithms that have been working in the background to help our model learn.</li>
+<li><a href="https://en.wikipedia.org/wiki/Gradient_descent">Wikipedia page for gradient descent</a></li>
+<li><a href="https://towardsdatascience.com/gradient-descent-algorithm-a-deep-dive-cf04e8115f21">Gradient Descent Algorithm — a deep dive</a> by Robert Kwiatkowski</li>
+<li><a href="https://youtu.be/IHZwWFHWa-w">Gradient descent, how neural networks learn video</a> by 3Blue1Brown</li>
+<li><a href="https://youtu.be/Ilg3gGewQ5U">What is backpropagation really doing?</a> video by 3Blue1Brown</li>
+<li><a href="https://en.wikipedia.org/wiki/Backpropagation">Backpropagation Wikipedia Page</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./00_pytorch_fundamentals.html" class="pagination-link" aria-label="00 - PyTorch 기초">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">00 - PyTorch 기초</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./02_pytorch_classification.html" class="pagination-link" aria-label="02 - PyTorch 신경망 분류">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">02 - PyTorch 신경망 분류</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
