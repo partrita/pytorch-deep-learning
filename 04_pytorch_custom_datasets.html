@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-a-custom-dataset" id="toc-what-is-a-custom-dataset" class="nav-link active" data-scroll-target="#what-is-a-custom-dataset">What is a custom dataset?</a></li>
+  <li><a href="#사용자-정의-데이터셋이란-무엇인가요" id="toc-사용자-정의-데이터셋이란-무엇인가요" class="nav-link active" data-scroll-target="#사용자-정의-데이터셋이란-무엇인가요">사용자 정의 데이터셋이란 무엇인가요?</a></li>
   <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용">이번 장에서 다룰 내용</a></li>
   <li><a href="#도움을-받을-수-있는-곳" id="toc-도움을-받을-수-있는-곳" class="nav-link" data-scroll-target="#도움을-받을-수-있는-곳">도움을 받을 수 있는 곳</a></li>
   <li><a href="#importing-pytorch-and-setting-up-device-agnostic-code" id="toc-importing-pytorch-and-setting-up-device-agnostic-code" class="nav-link" data-scroll-target="#importing-pytorch-and-setting-up-device-agnostic-code">0. Importing PyTorch and setting up device-agnostic code</a></li>
@@ -257,13 +257,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-should-an-ideal-loss-curve-look-like" id="toc-what-should-an-ideal-loss-curve-look-like" class="nav-link" data-scroll-target="#what-should-an-ideal-loss-curve-look-like">8. What should an ideal loss curve look like?</a>
   <ul class="collapse">
   <li><a href="#how-to-deal-with-overfitting" id="toc-how-to-deal-with-overfitting" class="nav-link" data-scroll-target="#how-to-deal-with-overfitting">8.1 How to deal with overfitting</a></li>
-  <li><a href="#how-to-deal-with-underfitting" id="toc-how-to-deal-with-underfitting" class="nav-link" data-scroll-target="#how-to-deal-with-underfitting">8.2 How to deal with underfitting</a></li>
-  <li><a href="#the-balance-between-overfitting-and-underfitting" id="toc-the-balance-between-overfitting-and-underfitting" class="nav-link" data-scroll-target="#the-balance-between-overfitting-and-underfitting">8.3 The balance between overfitting and underfitting</a></li>
+  <li><a href="#과소적합-해결-방법" id="toc-과소적합-해결-방법" class="nav-link" data-scroll-target="#과소적합-해결-방법">8.2 과소적합 해결 방법</a></li>
+  <li><a href="#과적합과-과소적합-사이의-균형" id="toc-과적합과-과소적합-사이의-균형" class="nav-link" data-scroll-target="#과적합과-과소적합-사이의-균형">8.3 과적합과 과소적합 사이의 균형</a></li>
   </ul></li>
-  <li><a href="#model-1-tinyvgg-with-data-augmentation" id="toc-model-1-tinyvgg-with-data-augmentation" class="nav-link" data-scroll-target="#model-1-tinyvgg-with-data-augmentation">9. Model 1: TinyVGG with Data Augmentation</a>
+  <li><a href="#모델-1-데이터-증강을-포함한-tinyvgg" id="toc-모델-1-데이터-증강을-포함한-tinyvgg" class="nav-link" data-scroll-target="#모델-1-데이터-증강을-포함한-tinyvgg">9. 모델 1: 데이터 증강을 포함한 TinyVGG</a>
   <ul class="collapse">
-  <li><a href="#create-transform-with-data-augmentation" id="toc-create-transform-with-data-augmentation" class="nav-link" data-scroll-target="#create-transform-with-data-augmentation">9.1 Create transform with data augmentation</a></li>
-  <li><a href="#create-train-and-test-datasets-and-dataloaders" id="toc-create-train-and-test-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-train-and-test-datasets-and-dataloaders">9.2 Create train and test <code>Dataset</code>’s and <code>DataLoader</code>’s</a></li>
+  <li><a href="#데이터-증강을-포함한-변환-생성" id="toc-데이터-증강을-포함한-변환-생성" class="nav-link" data-scroll-target="#데이터-증강을-포함한-변환-생성">9.1 데이터 증강을 포함한 변환 생성</a></li>
+  <li><a href="#훈련-및-테스트용-dataset-및-dataloader-생성" id="toc-훈련-및-테스트용-dataset-및-dataloader-생성" class="nav-link" data-scroll-target="#훈련-및-테스트용-dataset-및-dataloader-생성">9.2 훈련 및 테스트용 <code>Dataset</code> 및 <code>DataLoader</code> 생성</a></li>
   <li><a href="#construct-and-train-model-1" id="toc-construct-and-train-model-1" class="nav-link" data-scroll-target="#construct-and-train-model-1">9.3 Construct and train Model 1</a></li>
   <li><a href="#plot-the-loss-curves-of-model-1" id="toc-plot-the-loss-curves-of-model-1" class="nav-link" data-scroll-target="#plot-the-loss-curves-of-model-1">9.4 Plot the loss curves of Model 1</a></li>
   </ul></li>
@@ -303,31 +303,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><a href="https://colab.research.google.com/github/mrdbourke/pytorch-deep-learning/blob/main/04_pytorch_custom_datasets.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<p>In the last notebook, <a href="https://www.learnpytorch.io/03_pytorch_computer_vision/">notebook 03</a>, we looked at how to build computer vision models on an in-built dataset in PyTorch (FashionMNIST).</p>
-<p>The steps we took are similar across many different problems in machine learning.</p>
-<p>Find a dataset, turn the dataset into numbers, build a model (or find an existing model) to find patterns in those numbers that can be used for prediction.</p>
-<p>PyTorch has many built-in datasets used for a wide number of machine learning benchmarks, however, you’ll often want to use your own <strong>custom dataset</strong>.</p>
-<section id="what-is-a-custom-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-custom-dataset">What is a custom dataset?</h2>
-<p>A <strong>custom dataset</strong> is a collection of data relating to a specific problem you’re working on.</p>
-<p>In essence, a <strong>custom dataset</strong> can be comprised of almost anything.</p>
-<p>For example, if we were building a food image classification app like <a href="https://nutrify.app">Nutrify</a>, our custom dataset might be images of food.</p>
-<p>Or if we were trying to build a model to classify whether or not a text-based review on a website was positive or negative, our custom dataset might be examples of existing customer reviews and their ratings.</p>
-<p>Or if we were trying to build a sound classification app, our custom dataset might be sound samples alongside their sample labels.</p>
-<p>Or if we were trying to build a recommendation system for customers purchasing things on our website, our custom dataset might be examples of products other people have bought.</p>
-<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/04-pytorch-domain-libraries.png" alt="different pytorch domain libraries can be used for specific PyTorch problems" width="1000/"></p>
-<p><em>PyTorch includes many existing functions to load in various custom datasets in the <a href="https://pytorch.org/vision/stable/index.html"><code>TorchVision</code></a>, <a href="https://pytorch.org/text/stable/index.html"><code>TorchText</code></a>, <a href="https://pytorch.org/audio/stable/index.html"><code>TorchAudio</code></a> and <a href="https://pytorch.org/torchrec/"><code>TorchRec</code></a> domain libraries.</em></p>
-<p>But sometimes these existing functions may not be enough.</p>
-<p>In that case, we can always subclass <code>torch.utils.data.Dataset</code> and customize it to our liking.</p>
+<p>이전 노트북인 <a href="https://www.learnpytorch.io/03_pytorch_computer_vision/">노트북 03</a>에서는 PyTorch의 내장 데이터셋(FashionMNIST)을 사용하여 컴퓨터 비전 모델을 구축하는 방법을 살펴보았습니다.</p>
+<p>우리가 수행한 단계는 머신러닝의 다양한 문제에 걸쳐 유사합니다.</p>
+<p>데이터셋을 찾고, 데이터를 숫자로 변환하고, 모델을 구축(또는 기존 모델을 탐색)하여 예측에 사용할 수 있는 패턴을 해당 숫자에서 찾는 것입니다.</p>
+<p>PyTorch에는 많은 머신러닝 벤치마크에 사용되는 많은 내장 데이터셋이 있지만, 종종 자신만의 <strong>사용자 정의 데이터셋(custom dataset)</strong>을 사용하고 싶을 것입니다.</p>
+<section id="사용자-정의-데이터셋이란-무엇인가요" class="level2">
+<h2 class="anchored" data-anchor-id="사용자-정의-데이터셋이란-무엇인가요">사용자 정의 데이터셋이란 무엇인가요?</h2>
+<p><strong>사용자 정의 데이터셋</strong>은 작업 중인 특정 문제와 관련된 데이터 모음입니다.</p>
+<p>본질적으로 <strong>사용자 정의 데이터셋</strong>은 거의 모든 것으로 구성될 수 있습니다.</p>
+<p>예를 들어, <a href="https://nutrify.app">Nutrify</a>와 같은 음식 이미지 분류 앱을 구축한다면 사용자 정의 데이터셋은 음식 이미지가 될 것입니다.</p>
+<p>또는 웹사이트의 텍스트 기반 리뷰가 긍정적인지 부정적인지 분류하는 모델을 구축하려는 경우, 사용자 정의 데이터셋은 기존 고객 리뷰와 해당 평점의 예시가 될 것입니다.</p>
+<p>또는 소리 분류 앱을 구축하려는 경우, 사용자 정의 데이터셋은 소리 샘플과 해당 샘플 레이블이 될 것입니다.</p>
+<p>또는 웹사이트에서 물건을 구매하는 고객을 위한 추천 시스템을 구축하려는 경우, 사용자 정의 데이터셋은 다른 사람들이 구매한 제품의 예시가 될 것입니다.</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/04-pytorch-domain-libraries.png" alt="서로 다른 PyTorch 도메인 라이브러리는 특정 PyTorch 문제에 사용될 수 있습니다." width="1000/"></p>
+<p><em>PyTorch에는 <a href="https://pytorch.org/vision/stable/index.html"><code>TorchVision</code></a>, <a href="https://pytorch.org/text/stable/index.html"><code>TorchText</code></a>, <a href="https://pytorch.org/audio/stable/index.html"><code>TorchAudio</code></a> 및 <a href="https://pytorch.org/torchrec/"><code>TorchRec</code></a> 도메인 라이브러리에 다양한 사용자 정의 데이터셋을 로드하기 위한 많은 기존 함수가 포함되어 있습니다.</em></p>
+<p>하지만 때로는 이러한 기존 함수만으로는 충분하지 않을 수 있습니다.</p>
+<p>이러한 경우 항상 <code>torch.utils.data.Dataset</code>을 상속받아 원하는 대로 커스터마이징할 수 있습니다.</p>
 </section>
 <section id="이번-장에서-다룰-내용" class="level2">
 <h2 class="anchored" data-anchor-id="이번-장에서-다룰-내용">이번 장에서 다룰 내용</h2>
-<p>We’re going to be applying the PyTorch Workflow we covered in <a href="https://www.learnpytorch.io/01_pytorch_workflow/">notebook 01</a> and <a href="https://www.learnpytorch.io/02_pytorch_classification/">notebook 02</a> to a computer vision problem.</p>
-<p>But instead of using an in-built PyTorch dataset, we’re going to be using our own dataset of pizza, steak and sushi images.</p>
-<p>The goal will be to load these images and then build a model to train and predict on them.</p>
-<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/04-pytorch-food-vision-layout.png" alt="building a pipeline to load in food images and then building a pytorch model to classify those food images" width="800"></p>
-<p><em>What we’re going to build. We’ll use <code>torchvision.datasets</code> as well as our own custom <code>Dataset</code> class to load in images of food and then we’ll build a PyTorch computer vision model to hopefully be able to classify them.</em></p>
-<p>Specifically, we’re going to cover:</p>
+<p><a href="https://www.learnpytorch.io/01_pytorch_workflow/">노트북 01</a>과 <a href="https://www.learnpytorch.io/02_pytorch_classification/">노트북 02</a>에서 다루었던 PyTorch 워크플로우를 컴퓨터 비전 문제에 적용해 보겠습니다.</p>
+<p>하지만 PyTorch 내장 데이터셋을 사용하는 대신, 피자, 스테이크, 스시 이미지로 구성된 우리만의 데이터셋을 사용할 것입니다.</p>
+<p>목표는 이러한 이미지를 로드한 다음 훈련 및 예측을 위한 모델을 구축하는 것입니다.</p>
+<p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/04-pytorch-food-vision-layout.png" alt="음식 이미지를 로드하는 파이프라인을 구축하고 해당 음식 이미지를 분류하기 위한 PyTorch 모델을 구축합니다." width="800"></p>
+<p><em>우리가 구축할 내용입니다. <code>torchvision.datasets</code> 뿐만 아니라 자체 사용자 정의 <code>Dataset</code> 클래스를 사용하여 음식 이미지를 로드한 다음, 이를 분류할 수 있는 PyTorch 컴퓨터 비전 모델을 구축할 것입니다.</em></p>
+<p>구체적으로 다음 내용을 다룹니다:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -335,71 +335,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th><strong>Topic</strong></th>
-<th><strong>Contents</strong></th>
+<th><strong>주제</strong></th>
+<th><strong>내용</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>0. Importing PyTorch and setting up device-agnostic code</strong></td>
-<td>Let’s get PyTorch loaded and then follow best practice to setup our code to be device-agnostic.</td>
+<td><strong>0. PyTorch 임포트 및 장치 중립적 코드 설정</strong></td>
+<td>PyTorch를 로드하고 장치 중립적인 코드를 설정하기 위한 권장 사항을 따릅니다.</td>
 </tr>
 <tr class="even">
-<td><strong>1. Get data</strong></td>
-<td>We’re going to be using our own <strong>custom dataset</strong> of pizza, steak and sushi images.</td>
+<td><strong>1. 데이터 가져오기</strong></td>
+<td>피자, 스테이크, 스시 이미지로 구성된 우리만의 <strong>사용자 정의 데이터셋</strong>을 사용할 것입니다.</td>
 </tr>
 <tr class="odd">
-<td><strong>2. Become one with the data (data preparation)</strong></td>
-<td>At the beginning of any new machine learning problem, it’s paramount to understand the data you’re working with. Here we’ll take some steps to figure out what data we have.</td>
+<td><strong>2. 데이터와 하나 되기 (데이터 준비)</strong></td>
+<td>새로운 머신러닝 문제를 시작할 때, 다루고 있는 데이터를 이해하는 것이 가장 중요합니다. 여기서는 우리가 가진 데이터를 파악하기 위한 몇 가지 단계를 거칩니다.</td>
 </tr>
 <tr class="even">
-<td><strong>3. Transforming data</strong></td>
-<td>Often, the data you get won’t be 100% ready to use with a machine learning model, here we’ll look at some steps we can take to <em>transform</em> our images so they’re ready to be used with a model.</td>
+<td><strong>3. 데이터 변환</strong></td>
+<td>가져온 데이터가 머신러닝 모델에 바로 사용할 수 있는 상태가 아닌 경우가 많습니다. 여기서는 이미지를 모델에 사용할 수 있도록 <em>변환</em>하는 몇 가지 단계를 살펴봅니다.</td>
 </tr>
 <tr class="odd">
-<td><strong>4. Loading data with <code>ImageFolder</code> (option 1)</strong></td>
-<td>PyTorch has many in-built data loading functions for common types of data. <code>ImageFolder</code> is helpful if our images are in standard image classification format.</td>
+<td><strong>4. <code>ImageFolder</code>를 사용하여 데이터 로드 (옵션 1)</strong></td>
+<td>PyTorch에는 일반적인 데이터 유형을 위한 많은 내장 데이터 로딩 함수가 있습니다. <code>ImageFolder</code>는 이미지가 표준 이미지 분류 형식으로 되어 있을 때 유용합니다.</td>
 </tr>
 <tr class="even">
-<td><strong>5. Loading image data with a custom <code>Dataset</code></strong></td>
-<td>What if PyTorch didn’t have an in-built function to load data with? This is where we can build our own custom subclass of <code>torch.utils.data.Dataset</code>.</td>
+<td><strong>5. 사용자 정의 <code>Dataset</code>으로 이미지 데이터 로드</strong></td>
+<td>PyTorch에 내장된 데이터 로딩 함수가 없다면 어떻게 해야 할까요? 여기서 <code>torch.utils.data.Dataset</code>의 자체 사용자 정의 서브클래스를 구축할 수 있습니다.</td>
 </tr>
 <tr class="odd">
-<td><strong>6. Other forms of transforms (data augmentation)</strong></td>
-<td>Data augmentation is a common technique for expanding the diversity of your training data. Here we’ll explore some of <code>torchvision</code>’s in-built data augmentation functions.</td>
+<td><strong>6. 다른 형태의 변환 (데이터 증강)</strong></td>
+<td>데이터 증강(Data augmentation)은 훈련 데이터의 다양성을 확장하기 위한 일반적인 기술입니다. 여기서는 <code>torchvision</code>의 내장 데이터 증강 함수 중 일부를 살펴봅니다.</td>
 </tr>
 <tr class="even">
-<td><strong>7. Model 0: TinyVGG without data augmentation</strong></td>
-<td>By this stage, we’ll have our data ready, let’s build a model capable of fitting it. We’ll also create some training and testing functions for training and evaluating our model.</td>
+<td><strong>7. 모델 0: 데이터 증강이 없는 TinyVGG</strong></td>
+<td>이 단계에서는 데이터가 준비될 것이며, 이를 학습할 수 있는 모델을 구축해 봅니다. 또한 모델을 훈련하고 평가하기 위한 훈련 및 테스트 함수를 만듭니다.</td>
 </tr>
 <tr class="odd">
-<td><strong>8. Exploring loss curves</strong></td>
-<td>Loss curves are a great way to see how your model is training/improving over time. They’re also a good way to see if your model is <strong>underfitting</strong> or <strong>overfitting</strong>.</td>
+<td><strong>8. 손실 곡선 탐색</strong></td>
+<td>손실 곡선은 모델이 시간이 지남에 따라 어떻게 훈련/개선되고 있는지 확인하는 좋은 방법입니다. 또한 모델이 <strong>과소적합(underfitting)</strong> 또는 <strong>과적합(overfitting)</strong> 상태인지 확인하는 좋은 방법이기도 합니다.</td>
 </tr>
 <tr class="even">
-<td><strong>9. Model 1: TinyVGG with data augmentation</strong></td>
-<td>By now, we’ve tried a model <em>without</em>, how about we try one <em>with</em> data augmentation?</td>
+<td><strong>9. 모델 1: 데이터 증강이 있는 TinyVGG</strong></td>
+<td>이제 데이터 증강 <em>없이</em> 모델을 시도해 보았으니, 데이터 증강이 <em>있는</em> 모델을 시도해 보면 어떨까요?</td>
 </tr>
 <tr class="odd">
-<td><strong>10. Compare model results</strong></td>
-<td>Let’s compare our different models’ loss curves and see which performed better and discuss some options for improving performance.</td>
+<td><strong>10. 모델 결과 비교</strong></td>
+<td>서로 다른 모델의 손실 곡선을 비교하여 어떤 모델이 더 성능이 좋은지 확인하고 성능 향상을 위한 몇 가지 옵션에 대해 논의합니다.</td>
 </tr>
 <tr class="even">
-<td><strong>11. Making a prediction on a custom image</strong></td>
-<td>Our model is trained to on a dataset of pizza, steak and sushi images. In this section we’ll cover how to use our trained model to predict on an image <em>outside</em> of our existing dataset.</td>
+<td><strong>11. 사용자 정의 이미지에 대해 예측 수행</strong></td>
+<td>우리 모델은 피자, 스테이크, 스시 이미지 데이터셋으로 훈련되었습니다. 이 섹션에서는 훈련된 모델을 사용하여 기존 데이터셋 <em>외부</em>의 이미지에 대해 예측하는 방법을 다룹니다.</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="도움을-받을-수-있는-곳" class="level2">
 <h2 class="anchored" data-anchor-id="도움을-받을-수-있는-곳">도움을 받을 수 있는 곳</h2>
-<p>All of the materials for this course <a href="https://github.com/mrdbourke/pytorch-deep-learning">live on GitHub</a>.</p>
-<p>If you run into trouble, you can ask a question on the course <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">GitHub Discussions page</a> there too.</p>
-<p>And of course, there’s the <a href="https://pytorch.org/docs/stable/index.html">PyTorch documentation</a> and <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
+<p>이 과정의 모든 자료는 <a href="https://github.com/mrdbourke/pytorch-deep-learning">GitHub</a>에 있습니다.</p>
+<p>문제가 발생하면 해당 페이지의 <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">Discussions 페이지</a>에서 질문할 수 있습니다.</p>
+<p>또한 PyTorch와 관련된 모든 것에 대해 매우 도움이 되는 장소인 <a href="https://pytorch.org/docs/stable/index.html">PyTorch 문서</a>와 <a href="https://discuss.pytorch.org/">PyTorch 개발자 포럼</a>도 있습니다.</p>
 </section>
 <section id="importing-pytorch-and-setting-up-device-agnostic-code" class="level2">
 <h2 class="anchored" data-anchor-id="importing-pytorch-and-setting-up-device-agnostic-code">0. Importing PyTorch and setting up device-agnostic code</h2>
-<div id="cell-6" class="cell" data-execution_count="2">
+<div id="cell-5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -413,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>참고:</strong> If you’re using Google Colab, and you don’t have a GPU turned on yet, it’s now time to turn one on via <code>Runtime -&gt; Change runtime type -&gt; Hardware accelerator -&gt; GPU</code>. If you do this, your runtime will likely reset and you’ll have to run all of the cells above by going <code>Runtime -&gt; Run before</code>.</p>
 </blockquote>
-<div id="cell-8" class="cell" data-execution_count="3">
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup device-agnostic code</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -443,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>참고:</strong> The dataset we’re about to use has been pre-formatted for what we’d like to use it for. However, you’ll often have to format your own datasets for whatever problem you’re working on. This is a regular practice in the machine learning world.</p>
 </blockquote>
-<div id="cell-10" class="cell" data-execution_count="2">
+<div id="cell-9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zipfile</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>We can inspect what’s in our data directory by writing a small helper function to walk through each of the subdirectories and count the files present.</p>
 <p>To do so, we’ll use Python’s in-built <a href="https://docs.python.org/3/library/os.html#os.walk"><code>os.walk()</code></a>.</p>
-<div id="cell-12" class="cell" data-execution_count="5">
+<div id="cell-11" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> walk_through_dir(dir_path):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""</span></span>
@@ -537,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> dirpath, dirnames, filenames <span class="kw">in</span> os.walk(dir_path):</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(dirnames)<span class="sc">}</span><span class="ss"> directories and </span><span class="sc">{</span><span class="bu">len</span>(filenames)<span class="sc">}</span><span class="ss"> images in '</span><span class="sc">{</span>dirpath<span class="sc">}</span><span class="ss">'."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="6">
+<div id="cell-12" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>walk_through_dir(image_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>There are 2 directories and 0 images in 'data\pizza_steak_sushi'.
@@ -557,7 +557,7 @@ There are 0 directories and 72 images in 'data\pizza_steak_sushi\train\sushi'.</
 <p>Remember, these images are subsets of the original Food101 dataset.</p>
 <p>You can see how they were created in the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/04_custom_data_creation.ipynb">data creation notebook</a>.</p>
 <p>While we’re at it, let’s setup our training and testing paths.</p>
-<div id="cell-15" class="cell" data-execution_count="7">
+<div id="cell-14" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup train and testing paths</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>train_dir <span class="op">=</span> image_path <span class="op">/</span> <span class="st">"train"</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>test_dir <span class="op">=</span> image_path <span class="op">/</span> <span class="st">"test"</span></span>
@@ -573,7 +573,7 @@ There are 0 directories and 72 images in 'data\pizza_steak_sushi\train\sushi'.</
 <p>Okay, we’ve seen how our directory structure is formatted.</p>
 <p>Now in the spirit of the data explorer, it’s time to <em>visualize, visualize, visualize!</em></p>
 <p>Let’s write some code to: 1. Get all of the image paths using <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob"><code>pathlib.Path.glob()</code></a> to find all of the files ending in <code>.jpg</code>. 2. Pick a random image path using Python’s <a href="https://docs.python.org/3/library/random.html#random.choice"><code>random.choice()</code></a>. 3. Get the image class name using <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PurePath.parent"><code>pathlib.Path.parent.stem</code></a>. 4. And since we’re working with images, we’ll open the random image path using <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open"><code>PIL.Image.open()</code></a> (PIL stands for Python Image Library). 5. We’ll then show the image and print some metadata.</p>
-<div id="cell-17" class="cell" data-execution_count="8">
+<div id="cell-16" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -613,7 +613,7 @@ Image width: 512</code></pre>
 </div>
 </div>
 <p>We can do the same with <a href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.imshow.html"><code>matplotlib.pyplot.imshow()</code></a>, except we have to convert the image to a NumPy array first.</p>
-<div id="cell-19" class="cell" data-execution_count="9">
+<div id="cell-18" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -672,7 +672,7 @@ Image width: 512</code></pre>
 </table>
 <p>Since we’re working with a vision problem, we’ll be looking at <code>torchvision.datasets</code> for our data loading functions as well as <a href="https://pytorch.org/vision/stable/transforms.html"><code>torchvision.transforms</code></a> for preparing our data.</p>
 <p>Let’s import some base libraries.</p>
-<div id="cell-21" class="cell" data-execution_count="10">
+<div id="cell-20" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets, transforms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -684,7 +684,7 @@ Image width: 512</code></pre>
 <p><code>torchvision.transforms</code> contains many pre-built methods for formatting images, turning them into tensors and even manipulating them for <strong>data augmentation</strong> (the practice of altering data to make it harder for a model to learn, we’ll see this later on) purposes .</p>
 <p>To get experience with <code>torchvision.transforms</code>, let’s write a series of transform steps that: 1. Resize the images using <a href="https://pytorch.org/vision/stable/generated/torchvision.transforms.Resize.html#torchvision.transforms.Resize"><code>transforms.Resize()</code></a> (from about 512x512 to 64x64, the same shape as the images on the <a href="https://poloclub.github.io/cnn-explainer/">CNN Explainer website</a>). 2. Flip our images randomly on the horizontal using <a href="https://pytorch.org/vision/stable/generated/torchvision.transforms.RandomHorizontalFlip.html#torchvision.transforms.RandomHorizontalFlip"><code>transforms.RandomHorizontalFlip()</code></a> (this could be considered a form of data augmentation because it will artificially change our image data). 3. Turn our images from a PIL image to a PyTorch tensor using <a href="https://pytorch.org/vision/stable/generated/torchvision.transforms.ToTensor.html#torchvision.transforms.ToTensor"><code>transforms.ToTensor()</code></a>.</p>
 <p>We can compile all of these steps using <a href="https://pytorch.org/vision/stable/generated/torchvision.transforms.Compose.html#torchvision.transforms.Compose"><code>torchvision.transforms.Compose()</code></a>.</p>
-<div id="cell-23" class="cell" data-execution_count="11">
+<div id="cell-22" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write transform for image</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>data_transform <span class="op">=</span> transforms.Compose([</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Resize the images to 64x64</span></span>
@@ -696,7 +696,7 @@ Image width: 512</code></pre>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we’ve got a composition of transforms, let’s write a function to try them out on various images.</p>
-<div id="cell-25" class="cell" data-execution_count="12">
+<div id="cell-24" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_transformed_images(image_paths, transform, n<span class="op">=</span><span class="dv">3</span>, seed<span class="op">=</span><span class="dv">42</span>):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Plots a series of random images from image_paths.</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -770,7 +770,7 @@ Image width: 512</code></pre>
 <p>Since our data is in standard image classification format, we can use the class <a href="https://pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html#torchvision.datasets.ImageFolder"><code>torchvision.datasets.ImageFolder</code></a>.</p>
 <p>Where we can pass it the file path of a target image directory as well as a series of transforms we’d like to perform on our images.</p>
 <p>Let’s test it out on our data folders <code>train_dir</code> and <code>test_dir</code> passing in <code>transform=data_transform</code> to turn our images into tensors.</p>
-<div id="cell-28" class="cell" data-execution_count="13">
+<div id="cell-27" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use ImageFolder to create dataset(s)</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>train_data <span class="op">=</span> datasets.ImageFolder(root<span class="op">=</span>train_dir, <span class="co"># target folder of images</span></span>
@@ -807,7 +807,7 @@ Transform: Compose(
 <p>Beautiful!</p>
 <p>It looks like PyTorch has registered our <code>Dataset</code>’s.</p>
 <p>Let’s inspect them by checking out the <code>classes</code> and <code>class_to_idx</code> attributes as well as the lengths of our training and test sets.</p>
-<div id="cell-30" class="cell" data-execution_count="14">
+<div id="cell-29" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get class names as a list</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>class_names <span class="op">=</span> train_data.classes</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>class_names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -815,7 +815,7 @@ Transform: Compose(
 <pre><code>['pizza', 'steak', 'sushi']</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="15">
+<div id="cell-30" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Can also get class names as a dict</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>class_dict <span class="op">=</span> train_data.class_to_idx</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>class_dict</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -823,7 +823,7 @@ Transform: Compose(
 <pre><code>{'pizza': 0, 'steak': 1, 'sushi': 2}</code></pre>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="16">
+<div id="cell-31" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the lengths</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(train_data), <span class="bu">len</span>(test_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
@@ -834,7 +834,7 @@ Transform: Compose(
 <p>How about our images and labels?</p>
 <p>How do they look?</p>
 <p>We can index on our <code>train_data</code> and <code>test_data</code> <code>Dataset</code>’s to find samples and their target labels.</p>
-<div id="cell-34" class="cell" data-execution_count="17">
+<div id="cell-33" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>img, label <span class="op">=</span> train_data[<span class="dv">0</span>][<span class="dv">0</span>], train_data[<span class="dv">0</span>][<span class="dv">1</span>]</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Image tensor:</span><span class="ch">\n</span><span class="sc">{</span>img<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Image shape: </span><span class="sc">{</span>img<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -876,7 +876,7 @@ Label datatype: &lt;class 'int'&gt;</code></pre>
 <p>How about we plot a single image tensor using <code>matplotlib</code>?</p>
 <p>We’ll first have to to permute (rearrange the order of its dimensions) so it’s compatible.</p>
 <p>Right now our image dimensions are in the format <code>CHW</code> (color channels, height, width) but <code>matplotlib</code> prefers <code>HWC</code> (height, width, color channels).</p>
-<div id="cell-36" class="cell" data-execution_count="18">
+<div id="cell-35" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rearrange the order of dimensions</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>img_permute <span class="op">=</span> img.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -919,7 +919,7 @@ Image permute shape: torch.Size([64, 64, 3]) -&gt; [height, width, color_channel
 <blockquote class="blockquote">
 <p><strong>참고:</strong> There are more parameters you can get familiar with using <code>torch.utils.data.DataLoader</code> in the <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader">PyTorch documentation</a>.</p>
 </blockquote>
-<div id="cell-39" class="cell" data-execution_count="19">
+<div id="cell-38" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn train and test Datasets into DataLoaders</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>train_dataloader <span class="op">=</span> DataLoader(dataset<span class="op">=</span>train_data, </span>
@@ -941,7 +941,7 @@ Image permute shape: torch.Size([64, 64, 3]) -&gt; [height, width, color_channel
 <p>Wonderful!</p>
 <p>Now our data is iterable.</p>
 <p>Let’s try it out and check the shapes.</p>
-<div id="cell-41" class="cell" data-execution_count="20">
+<div id="cell-40" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>img, label <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader))</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Batch size will now be 1, try changing the batch_size parameter above and see what happens</span></span>
@@ -989,7 +989,7 @@ Label shape: torch.Size([1])</code></pre>
 <blockquote class="blockquote">
 <p><strong>참고:</strong> You can customize the following steps for your own dataset. The premise remains: write code to load your data in the format you’d like it.</p>
 </blockquote>
-<div id="cell-44" class="cell" data-execution_count="21">
+<div id="cell-43" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathlib</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
@@ -1000,7 +1000,7 @@ Label shape: torch.Size([1])</code></pre>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Tuple, Dict, List</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember how our instances of <code>torchvision.datasets.ImageFolder()</code> allowed us to use the <code>classes</code> and <code>class_to_idx</code> attributes?</p>
-<div id="cell-46" class="cell" data-execution_count="22">
+<div id="cell-45" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instance of torchvision.datasets.ImageFolder()</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>train_data.classes, train_data.class_to_idx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -1012,7 +1012,7 @@ Label shape: torch.Size([1])</code></pre>
 <p>Let’s write a helper function capable of creating a list of class names and a dictionary of class names and their indexes given a directory path.</p>
 <p>To do so, we’ll: 1. Get the class names using <code>os.scandir()</code> to traverse a target directory (ideally the directory is in standard image classification format). 2. Raise an error if the class names aren’t found (if this happens, there might be something wrong with the directory structure). 3. Turn the class names into a dictionary of numerical labels, one for each class.</p>
 <p>Let’s see a small example of step 1 before we write the full function.</p>
-<div id="cell-48" class="cell" data-execution_count="23">
+<div id="cell-47" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup path for target directory</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>target_directory <span class="op">=</span> train_dir</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Target directory: </span><span class="sc">{</span>target_directory<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1027,7 +1027,7 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 </div>
 <p>Excellent!</p>
 <p>How about we turn it into a full function?</p>
-<div id="cell-50" class="cell" data-execution_count="24">
+<div id="cell-49" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make function to find classes in target directory</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_classes(directory: <span class="bu">str</span>) <span class="op">-&gt;</span> Tuple[List[<span class="bu">str</span>], Dict[<span class="bu">str</span>, <span class="bu">int</span>]]:</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Finds the class folder names in a target directory.</span></span>
@@ -1057,7 +1057,7 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 </div>
 <p>Looking good!</p>
 <p>Now let’s test out our <code>find_classes()</code> function.</p>
-<div id="cell-52" class="cell" data-execution_count="25">
+<div id="cell-51" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>find_classes(train_dir)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>(['pizza', 'steak', 'sushi'], {'pizza': 0, 'steak': 1, 'sushi': 2})</code></pre>
@@ -1073,7 +1073,7 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 <p>It’ll be a fair bit of a code… but nothing we can’t handle!</p>
 <p>Let’s break it down: 1. Subclass <code>torch.utils.data.Dataset</code>. 2. Initialize our subclass with a <code>targ_dir</code> parameter (the target data directory) and <code>transform</code> parameter (so we have the option to transform our data if needed). 3. Create several attributes for <code>paths</code> (the paths of our target images), <code>transform</code> (the transforms we might like to use, this can be <code>None</code>), <code>classes</code> and <code>class_to_idx</code> (from our <code>find_classes()</code> function). 4. Create a function to load images from file and return them, this could be using <code>PIL</code> or <a href="https://pytorch.org/vision/stable/io.html#image"><code>torchvision.io</code></a> (for input/output of vision data). 5. Overwrite the <code>__len__</code> method of <code>torch.utils.data.Dataset</code> to return the number of samples in the <code>Dataset</code>, this is recommended but not required. This is so you can call <code>len(Dataset)</code>. 6. Overwrite the <code>__getitem__</code> method of <code>torch.utils.data.Dataset</code> to return a single sample from the <code>Dataset</code>, this is required.</p>
 <p>Let’s do it!</p>
-<div id="cell-55" class="cell" data-execution_count="26">
+<div id="cell-54" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a custom dataset class (inherits from torch.utils.data.Dataset)</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1119,7 +1119,7 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 <p>This is one of the downsides of creating your own custom <code>Dataset</code>’s.</p>
 <p>However, now we’ve written it once, we could move it into a <code>.py</code> file such as <code>data_loader.py</code> along with some other helpful data functions and reuse it later on.</p>
 <p>Before we test out our new <code>ImageFolderCustom</code> class, let’s create some transforms to prepare our images.</p>
-<div id="cell-57" class="cell" data-execution_count="27">
+<div id="cell-56" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Augment train data</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>train_transforms <span class="op">=</span> transforms.Compose([</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    transforms.Resize((<span class="dv">64</span>, <span class="dv">64</span>)),</span>
@@ -1135,7 +1135,7 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 </div>
 <p>Now comes the moment of truth!</p>
 <p>Let’s turn our training images (contained in <code>train_dir</code>) and our testing images (contained in <code>test_dir</code>) into <code>Dataset</code>’s using our own <code>ImageFolderCustom</code> class.</p>
-<div id="cell-59" class="cell" data-execution_count="28">
+<div id="cell-58" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>train_data_custom <span class="op">=</span> ImageFolderCustom(targ_dir<span class="op">=</span>train_dir, </span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>                                      transform<span class="op">=</span>train_transforms)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>test_data_custom <span class="op">=</span> ImageFolderCustom(targ_dir<span class="op">=</span>test_dir, </span>
@@ -1148,19 +1148,19 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 </div>
 <p>Hmm… no errors, did it work?</p>
 <p>Let’s try calling <code>len()</code> on our new <code>Dataset</code>’s and find the <code>classes</code> and <code>class_to_idx</code> attributes.</p>
-<div id="cell-61" class="cell" data-execution_count="29">
+<div id="cell-60" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(train_data_custom), <span class="bu">len</span>(test_data_custom)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>(225, 75)</code></pre>
 </div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="30">
+<div id="cell-61" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>train_data_custom.classes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>['pizza', 'steak', 'sushi']</code></pre>
 </div>
 </div>
-<div id="cell-63" class="cell" data-execution_count="31">
+<div id="cell-62" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>train_data_custom.class_to_idx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>{'pizza': 0, 'steak': 1, 'sushi': 2}</code></pre>
@@ -1169,7 +1169,7 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 <p><code>len(test_data_custom) == len(test_data)</code> and <code>len(test_data_custom) == len(test_data)</code> Yes!!!</p>
 <p>It looks like it worked.</p>
 <p>We could check for equality with the <code>Dataset</code>’s made by the <code>torchvision.datasets.ImageFolder()</code> class too.</p>
-<div id="cell-65" class="cell" data-execution_count="32">
+<div id="cell-64" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for equality amongst our custom Dataset and ImageFolder Dataset</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="bu">len</span>(train_data_custom) <span class="op">==</span> <span class="bu">len</span>(train_data)) <span class="op">&amp;</span> (<span class="bu">len</span>(test_data_custom) <span class="op">==</span> <span class="bu">len</span>(test_data)))</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(train_data_custom.classes <span class="op">==</span> train_data.classes)</span>
@@ -1192,7 +1192,7 @@ True</code></pre>
 <p>Time to put on our data explorer’s hat and <em>visualize, visualize, visualize!</em></p>
 <p>Let’s create a helper function called <code>display_random_images()</code> that helps us visualize images in our <code>Dataset'</code>s.</p>
 <p>Specifically, it’ll: 1. Take in a <code>Dataset</code> and a number of other parameters such as <code>classes</code> (the names of our target classes), the number of images to display (<code>n</code>) and a random seed. 2. To prevent the display getting out of hand, we’ll cap <code>n</code> at 10 images. 3. Set the random seed for reproducible plots (if <code>seed</code> is set). 4. Get a list of random sample indexes (we can use Python’s <code>random.sample()</code> for this) to plot. 5. Setup a <code>matplotlib</code> plot. 6. Loop through the random sample indexes found in step 4 and plot them with <code>matplotlib</code>. 7. Make sure the sample images are of shape <code>HWC</code> (height, width, color channels) so we can plot them.</p>
-<div id="cell-68" class="cell" data-execution_count="33">
+<div id="cell-67" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Take in a Dataset as well as a list of class names</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> display_random_images(dataset: torch.utils.data.dataset.Dataset,</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                          classes: List[<span class="bu">str</span>] <span class="op">=</span> <span class="va">None</span>,</span>
@@ -1235,7 +1235,7 @@ True</code></pre>
 </div>
 <p>What a good looking function!</p>
 <p>Let’s test it out first with the <code>Dataset</code> we created with <code>torchvision.datasets.ImageFolder()</code>.</p>
-<div id="cell-70" class="cell" data-execution_count="34">
+<div id="cell-69" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display random images from ImageFolder created Dataset</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>display_random_images(train_data, </span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                      n<span class="op">=</span><span class="dv">5</span>, </span>
@@ -1250,7 +1250,7 @@ True</code></pre>
 </div>
 </div>
 <p>And now with the <code>Dataset</code> we created with our own <code>ImageFolderCustom</code>.</p>
-<div id="cell-72" class="cell" data-execution_count="35">
+<div id="cell-71" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display random images from ImageFolderCustom Dataset</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>display_random_images(train_data_custom, </span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                      n<span class="op">=</span><span class="dv">12</span>, </span>
@@ -1277,7 +1277,7 @@ True</code></pre>
 <p>If you guessed by using <code>torch.utils.data.DataLoader()</code>, you’d be right!</p>
 <p>Because our custom <code>Dataset</code>’s subclass <code>torch.utils.data.Dataset</code>, we can use them directly with <code>torch.utils.data.DataLoader()</code>.</p>
 <p>And we can do using very similar steps to before except this time we’ll be using our custom created <code>Dataset</code>’s.</p>
-<div id="cell-75" class="cell" data-execution_count="39">
+<div id="cell-74" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn train and test custom Dataset's into DataLoader's</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>train_dataloader_custom <span class="op">=</span> DataLoader(dataset<span class="op">=</span>train_data_custom, <span class="co"># use custom created train Dataset</span></span>
@@ -1297,7 +1297,7 @@ True</code></pre>
 </div>
 </div>
 <p>Do the shapes of the samples look the same?</p>
-<div id="cell-77" class="cell" data-execution_count="40">
+<div id="cell-76" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get image and label from custom DataLoader</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>img_custom, label_custom <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader_custom))</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1340,7 +1340,7 @@ Label shape: torch.Size([1])</code></pre>
 <p>The main parameter to pay attention to in <code>transforms.TrivialAugmentWide()</code> is <code>num_magnitude_bins=31</code>.</p>
 <p>It defines how much of a range an intensity value will be picked to apply a certain transform, <code>0</code> being no range and <code>31</code> being maximum range (highest chance for highest intensity).</p>
 <p>We can incorporate <code>transforms.TrivialAugmentWide()</code> into <code>transforms.Compose()</code>.</p>
-<div id="cell-80" class="cell" data-execution_count="41">
+<div id="cell-79" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> transforms</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>train_transforms <span class="op">=</span> transforms.Compose([</span>
@@ -1361,7 +1361,7 @@ Label shape: torch.Size([1])</code></pre>
 </blockquote>
 <p>Beautiful, now we’ve got a training transform (with data augmentation) and test transform (without data augmentation).</p>
 <p>Let’s test our data augmentation out!</p>
-<div id="cell-82" class="cell" data-execution_count="42">
+<div id="cell-81" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all image paths</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>image_path_list <span class="op">=</span> <span class="bu">list</span>(image_path.glob(<span class="st">"*/*/*.jpg"</span>))</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1403,7 +1403,7 @@ Label shape: torch.Size([1])</code></pre>
 <p>To begin, we’ll start with a simple transform, only resizing the images to <code>(64, 64)</code> and turning them into tensors.</p>
 <section id="creating-transforms-and-loading-data-for-model-0" class="level3">
 <h3 class="anchored" data-anchor-id="creating-transforms-and-loading-data-for-model-0">7.1 Creating transforms and loading data for Model 0</h3>
-<div id="cell-86" class="cell" data-execution_count="43">
+<div id="cell-85" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create simple transform</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>simple_transform <span class="op">=</span> transforms.Compose([ </span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    transforms.Resize((<span class="dv">64</span>, <span class="dv">64</span>)),</span>
@@ -1411,7 +1411,7 @@ Label shape: torch.Size([1])</code></pre>
 <span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Excellent, now we’ve got a simple transform, let’s: 1. Load the data, turning each of our training and test folders first into a <code>Dataset</code> with <code>torchvision.datasets.ImageFolder()</code> 2. Then into a <code>DataLoader</code> using <code>torch.utils.data.DataLoader()</code>. * We’ll set the <code>batch_size=32</code> and <code>num_workers</code> to as many CPUs on our machine (this will depend on what machine you’re using).</p>
-<div id="cell-88" class="cell" data-execution_count="44">
+<div id="cell-87" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load and transform data</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>train_data_simple <span class="op">=</span> datasets.ImageFolder(root<span class="op">=</span>train_dir, transform<span class="op">=</span>simple_transform)</span>
@@ -1453,7 +1453,7 @@ Label shape: torch.Size([1])</code></pre>
 <h3 class="anchored" data-anchor-id="create-tinyvgg-model-class">7.2 Create TinyVGG model class</h3>
 <p>In <a href="https://www.learnpytorch.io/03_pytorch_computer_vision/#7-model-2-building-a-convolutional-neural-network-cnn">notebook 03</a>, we used the TinyVGG model from the <a href="https://poloclub.github.io/cnn-explainer/">CNN Explainer website</a>.</p>
 <p>Let’s recreate the same model, except this time we’ll be using color images instead of grayscale (<code>in_channels=3</code> instead of <code>in_channels=1</code> for RGB pixels).</p>
-<div id="cell-91" class="cell" data-execution_count="45">
+<div id="cell-90" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TinyVGG(nn.Module):</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Model architecture copying TinyVGG from: </span></span>
@@ -1544,7 +1544,7 @@ Label shape: torch.Size([1])</code></pre>
 <p>A good way to test a model is to do a forward pass on a single piece of data.</p>
 <p>It’s also handy way to test the input and output shapes of our different layers.</p>
 <p>To do a forward pass on a single image, let’s: 1. Get a batch of images and labels from the <code>DataLoader</code>. 2. Get a single image from the batch and <code>unsqueeze()</code> the image so it has a batch size of <code>1</code> (so its shape fits the model). 3. Perform inference on a single image (making sure to send the image to the target <code>device</code>). 4. Print out what’s happening and convert the model’s raw output logits to prediction probabilities with <code>torch.softmax()</code> (since we’re working with multi-class data) and convert the prediction probabilities to prediction labels with <code>torch.argmax()</code>.</p>
-<div id="cell-94" class="cell" data-execution_count="46">
+<div id="cell-93" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Get a batch of images and labels from the DataLoader</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>img_batch, label_batch <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader_simple))</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1592,7 +1592,7 @@ Actual label:
 <blockquote class="blockquote">
 <p><strong>참고:</strong> If you’re using Google Colab, you’ll need to install <code>torchinfo</code>.</p>
 </blockquote>
-<div id="cell-97" class="cell" data-execution_count="47">
+<div id="cell-96" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install torchinfo if it's not available, import it if it is</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>: </span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> torchinfo</span>
@@ -1660,7 +1660,7 @@ Estimated Total Size (MB): 0.91
 </blockquote>
 <p>Let’s start by building <code>train_step()</code>.</p>
 <p>Because we’re dealing with batches in the <code>DataLoader</code>’s, we’ll accumulate the model loss and accuracy values during training (by adding them up for each batch) and then adjust them at the end before we return them.</p>
-<div id="cell-100" class="cell" data-execution_count="48">
+<div id="cell-99" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_step(model: torch.nn.Module, </span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>               dataloader: torch.utils.data.DataLoader, </span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>               loss_fn: torch.nn.Module, </span>
@@ -1705,7 +1705,7 @@ Estimated Total Size (MB): 0.91
 <p>Now let’s do the same for the <code>test_step()</code> function.</p>
 <p>The main difference here will be the <code>test_step()</code> won’t take in an optimizer and therefore won’t perform gradient descent.</p>
 <p>But since we’ll be doing inference, we’ll make sure to turn on the <code>torch.inference_mode()</code> context manager for making predictions.</p>
-<div id="cell-102" class="cell" data-execution_count="49">
+<div id="cell-101" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_step(model: torch.nn.Module, </span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>              dataloader: torch.utils.data.DataLoader, </span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>              loss_fn: torch.nn.Module):</span>
@@ -1747,7 +1747,7 @@ Estimated Total Size (MB): 0.91
 <p>This function will train the model as well as evaluate it.</p>
 <p>Specificially, it’ll: 1. Take in a model, a <code>DataLoader</code> for training and test sets, an optimizer, a loss function and how many epochs to perform each train and test step for. 2. Create an empty results dictionary for <code>train_loss</code>, <code>train_acc</code>, <code>test_loss</code> and <code>test_acc</code> values (we can fill this up as training goes on). 3. Loop through the training and test step functions for a number of epochs. 4. Print out what’s happening at the end of each epoch. 5. Update the empty results dictionary with the updated metrics each epoch. 6. Return the filled</p>
 <p>To keep track of the number of epochs we’ve been through, let’s import <code>tqdm</code> from <code>tqdm.auto</code> (<a href="https://github.com/tqdm/tqdm"><code>tqdm</code></a> is one of the most popular progress bar libraries for Python and <code>tqdm.auto</code> automatically decides what kind of progress bar is best for your computing environment, e.g.&nbsp;Jupyter Notebook vs.&nbsp;Python script).</p>
-<div id="cell-105" class="cell" data-execution_count="50">
+<div id="cell-104" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.auto <span class="im">import</span> tqdm</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Take in various parameters required for training and test steps</span></span>
@@ -1802,7 +1802,7 @@ Estimated Total Size (MB): 0.91
 <p>To keep our experiments quick, we’ll train our model for <strong>5 epochs</strong> (though you could increase this if you want).</p>
 <p>As for an <strong>optimizer</strong> and <strong>loss function</strong>, we’ll use <code>torch.nn.CrossEntropyLoss()</code> (since we’re working with multi-class classification data) and <code>torch.optim.Adam()</code> with a learning rate of <code>1e-3</code> respecitvely.</p>
 <p>To see how long things take, we’ll import Python’s <a href="https://docs.python.org/3/library/timeit.html#timeit.default_timer"><code>timeit.default_timer()</code></a> method to calculate the training time.</p>
-<div id="cell-107" class="cell" data-execution_count="51">
+<div id="cell-106" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seeds</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>) </span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>torch.cuda.manual_seed(<span class="dv">42</span>)</span>
@@ -1863,7 +1863,7 @@ Total training time: 65.122 seconds</code></pre>
 <p><strong>Loss curves</strong> show the model’s results over time.</p>
 <p>And they’re a great way to see how your model performs on different datasets (e.g.&nbsp;training and test).</p>
 <p>Let’s create a function to plot the values in our <code>model_0_results</code> dictionary.</p>
-<div id="cell-110" class="cell" data-execution_count="52">
+<div id="cell-109" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the model_0_results keys</span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>model_0_results.keys()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
@@ -1871,7 +1871,7 @@ Total training time: 65.122 seconds</code></pre>
 </div>
 </div>
 <p>We’ll need to extract each of these keys and turn them into a plot.</p>
-<div id="cell-112" class="cell" data-execution_count="53">
+<div id="cell-111" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_loss_curves(results: Dict[<span class="bu">str</span>, List[<span class="bu">float</span>]]):</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Plots training curves of a results dictionary.</span></span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1914,7 +1914,7 @@ Total training time: 65.122 seconds</code></pre>
 <span id="cb83-40"><a href="#cb83-40" aria-hidden="true" tabindex="-1"></a>    plt.legend()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Okay, let’s test our <code>plot_loss_curves()</code> function out.</p>
-<div id="cell-114" class="cell" data-execution_count="54">
+<div id="cell-113" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>plot_loss_curves(model_0_results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1987,13 +1987,13 @@ Total training time: 65.122 seconds</code></pre>
 <p>There are more methods for dealing with overfitting but these are some of the main ones.</p>
 <p>As you start to build more and more deep models, you’ll find because deep learnings are <em>so good</em> at learning patterns in data, dealing with overfitting is one of the primary problems of deep learning.</p>
 </section>
-<section id="how-to-deal-with-underfitting" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-deal-with-underfitting">8.2 How to deal with underfitting</h3>
-<p>When a model is <a href="https://developers.google.com/machine-learning/glossary#underfitting"><strong>underfitting</strong></a> it is considered to have poor predictive power on the training and test sets.</p>
-<p>In essence, an underfitting model will fail to reduce the loss values to a desired level.</p>
-<p>Right now, looking at our current loss curves, I’d considered our <code>TinyVGG</code> model, <code>model_0</code>, to be underfitting the data.</p>
-<p>The main idea behind dealing with underfitting is to <em>increase</em> your model’s predictive power.</p>
-<p>There are several ways to do this.</p>
+<section id="과소적합-해결-방법" class="level3">
+<h3 class="anchored" data-anchor-id="과소적합-해결-방법">8.2 과소적합 해결 방법</h3>
+<p>모델이 <a href="https://developers.google.com/machine-learning/glossary#underfitting"><strong>과소적합(underfitting)</strong></a> 상태라면 훈련 및 테스트 세트에서 예측 능력이 떨어지는 것으로 간주됩니다.</p>
+<p>본질적으로 과소적합 모델은 손실 값을 원하는 수준으로 줄이는 데 실패합니다.</p>
+<p>현재 손실 곡선을 보았을 때, 우리의 <code>TinyVGG</code> 모델인 <code>model_0</code>은 데이터에 과소적합된 것으로 보입니다.</p>
+<p>과소적합을 처리하는 주요 아이디어는 모델의 예측 능력을 <em>높이는</em> 것입니다.</p>
+<p>이를 위한 몇 가지 방법이 있습니다.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -2001,75 +2001,75 @@ Total training time: 65.122 seconds</code></pre>
 </colgroup>
 <thead>
 <tr class="header">
-<th><strong>Method to prevent underfitting</strong></th>
-<th><strong>What is it?</strong></th>
+<th><strong>과소적합 방지 방법</strong></th>
+<th><strong>설명</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Add more layers/units to your model</strong></td>
-<td>If your model is underfitting, it may not have enough capability to <em>learn</em> the required patterns/weights/representations of the data to be predictive. One way to add more predictive power to your model is to increase the number of hidden layers/units within those layers.</td>
+<td><strong>모델에 더 많은 레이어/유닛 추가</strong></td>
+<td>모델이 과소적합 상태라면, 예측력을 갖추기 위해 필요한 데이터의 패턴/가중치/표현을 <em>학습</em>할 능력이 부족할 수 있습니다. 모델에 더 많은 예측 능력을 추가하는 한 가지 방법은 은닉 레이어의 수나 해당 레이어 내의 유닛 수를 늘리는 것입니다.</td>
 </tr>
 <tr class="even">
-<td><strong>Tweak the learning rate</strong></td>
-<td>Perhaps your model’s learning rate is too high to begin with. And it’s trying to update its weights each epoch too much, in turn not learning anything. In this case, you might lower the learning rate and see what happens.</td>
+<td><strong>학습률 조정</strong></td>
+<td>아마 모델의 학습률이 처음부터 너무 높을 수 있습니다. 그래서 에포크마다 가중치를 너무 많이 업데이트하려고 시도하여 결국 아무것도 배우지 못하게 됩니다. 이 경우 학습률을 낮추고 어떤 일이 일어나는지 지켜볼 수 있습니다.</td>
 </tr>
 <tr class="odd">
-<td><strong>Use transfer learning</strong></td>
-<td>Transfer learning is capable of preventing overfitting and underfitting. It involves using the patterns from a previously working model and adjusting them to your own problem.</td>
+<td><strong>전이 학습 사용</strong></td>
+<td>전이 학습은 과적합과 과소적합 모두를 방지할 수 있습니다. 이미 작동하는 모델의 패턴을 가져와 자신의 문제에 맞게 조정하는 것입니다.</td>
 </tr>
 <tr class="even">
-<td><strong>Train for longer</strong></td>
-<td>Sometimes a model just needs more time to learn representations of data. If you find in your smaller experiments your model isn’t learning anything, perhaps leaving it train for a more epochs may result in better performance.</td>
+<td><strong>더 오래 훈련</strong></td>
+<td>때로는 모델이 데이터의 표현을 학습하는 데 더 많은 시간이 필요할 수 있습니다. 소규모 실험에서 모델이 아무것도 학습하지 못한다면, 더 많은 에포크 동안 훈련시키는 것이 더 나은 성능으로 이어질 수 있습니다.</td>
 </tr>
 <tr class="odd">
-<td><strong>Use less regularization</strong></td>
-<td>Perhaps your model is underfitting because you’re trying to prevent overfitting too much. Holding back on regularization techniques can help your model fit the data better.</td>
+<td><strong>정규화 줄이기</strong></td>
+<td>과적합을 너무 많이 방지하려고 노력하다 보니 모델이 과소적합되었을 수 있습니다. 정규화 기술을 조금 줄이면 모델이 데이터에 더 잘 맞도록 도울 수 있습니다.</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="the-balance-between-overfitting-and-underfitting" class="level3">
-<h3 class="anchored" data-anchor-id="the-balance-between-overfitting-and-underfitting">8.3 The balance between overfitting and underfitting</h3>
-<p>None of the methods discussed above are silver bullets, meaning, they don’t always work.</p>
-<p>And preventing overfitting and underfitting is possibly the most active area of machine learning research.</p>
-<p>Since everone wants their models to fit better (less underfitting) but not so good they don’t generalize well and perform in the real world (less overfitting).</p>
-<p>There’s a fine line between overfitting and underfitting.</p>
-<p>Because too much of each can cause the other.</p>
-<p>Transfer learning is perhaps one of the most powerful techniques when it comes to dealing with both overfitting and underfitting on your own problems.</p>
-<p>Rather than handcraft different overfitting and underfitting techniques, transfer learning enables you to take an already working model in a similar problem space to yours (say one from <a href="https://paperswithcode.com/sota">paperswithcode.com/sota</a> or <a href="https://huggingface.co/models">Hugging Face models</a>) and apply it to your own dataset.</p>
-<p>We’ll see the power of transfer learning in a later notebook.</p>
+<section id="과적합과-과소적합-사이의-균형" class="level3">
+<h3 class="anchored" data-anchor-id="과적합과-과소적합-사이의-균형">8.3 과적합과 과소적합 사이의 균형</h3>
+<p>위에서 논의한 방법 중 어떤 것도 만능 해결책은 아니며, 항상 작동하는 것은 아닙니다.</p>
+<p>과적합과 과소적합을 방지하는 것은 머신러닝 연구에서 아마도 가장 활발한 분야일 것입니다.</p>
+<p>모든 사람이 자신의 모델이 더 잘 맞기를 원하지만(과소적합 감소), 실세계에서 일반화되지 못할 정도로 잘 맞기를 원하지는 않기 때문입니다(과적합 감소).</p>
+<p>과적합과 과소적합 사이에는 미세한 경계가 있습니다.</p>
+<p>각각이 너무 지나치면 다른 쪽을 유발할 수 있기 때문입니다.</p>
+<p>전이 학습은 자신의 문제에 대한 과적합과 과소적합 문제를 모두 다룰 때 가장 강력한 기술 중 하나일 것입니다.</p>
+<p>서로 다른 과적합 및 과소적합 기술을 직접 하나하나 만들 필요 없이, 전이 학습을 사용하면 자신의 문제 공간과 유사한 문제 공간에서 이미 작동하는 모델(예: <a href="https://paperswithcode.com/sota">paperswithcode.com/sota</a> 또는 <a href="https://huggingface.co/models">Hugging Face 모델</a>에서 제공하는 모델)을 가져와 자신의 데이터셋에 적용할 수 있습니다.</p>
+<p>나중 노트북에서 전이 학습의 위력을 보게 될 것입니다.</p>
 </section>
 </section>
-<section id="model-1-tinyvgg-with-data-augmentation" class="level2">
-<h2 class="anchored" data-anchor-id="model-1-tinyvgg-with-data-augmentation">9. Model 1: TinyVGG with Data Augmentation</h2>
-<p>Time to try out another model!</p>
-<p>This time, let’s load in the data and use <strong>data augmentation</strong> to see if it improves our results in anyway.</p>
-<p>First, we’ll compose a training transform to include <code>transforms.TrivialAugmentWide()</code> as well as resize and turn our images into tensors.</p>
-<p>We’ll do the same for a testing transform except without the data augmentation.</p>
-<section id="create-transform-with-data-augmentation" class="level3">
-<h3 class="anchored" data-anchor-id="create-transform-with-data-augmentation">9.1 Create transform with data augmentation</h3>
-<div id="cell-121" class="cell" data-execution_count="55">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create training transform with TrivialAugment</span></span>
+<section id="모델-1-데이터-증강을-포함한-tinyvgg" class="level2">
+<h2 class="anchored" data-anchor-id="모델-1-데이터-증강을-포함한-tinyvgg">9. 모델 1: 데이터 증강을 포함한 TinyVGG</h2>
+<p>이제 다른 모델을 시도해 볼 시간입니다!</p>
+<p>이번에는 데이터를 로드하고 <strong>데이터 증강</strong>을 사용하여 결과가 개선되는지 확인해 보겠습니다.</p>
+<p>먼저 <code>transforms.TrivialAugmentWide()</code> 뿐만 아니라 이미지 크기 조정 및 텐서 변환을 포함하도록 훈련용 변환을 구성하겠습니다.</p>
+<p>테스트용 변환도 데이터 증강만 제외하고 동일하게 수행하겠습니다.</p>
+<section id="데이터-증강을-포함한-변환-생성" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-증강을-포함한-변환-생성">9.1 데이터 증강을 포함한 변환 생성</h3>
+<div id="cell-120" class="cell" data-execution_count="55">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TrivialAugment를 포함한 훈련 변환 생성</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>train_transform_trivial_augment <span class="op">=</span> transforms.Compose([</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>    transforms.Resize((<span class="dv">64</span>, <span class="dv">64</span>)),</span>
 <span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>    transforms.TrivialAugmentWide(num_magnitude_bins<span class="op">=</span><span class="dv">31</span>),</span>
 <span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>    transforms.ToTensor() </span>
 <span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>])</span>
 <span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create testing transform (no data augmentation)</span></span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 테스트 변환 생성 (데이터 증강 미포함)</span></span>
 <span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a>test_transform <span class="op">=</span> transforms.Compose([</span>
 <span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a>    transforms.Resize((<span class="dv">64</span>, <span class="dv">64</span>)),</span>
 <span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a>    transforms.ToTensor()</span>
 <span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Wonderful!</p>
-<p>Now let’s turn our images into <code>Dataset</code>’s using <code>torchvision.datasets.ImageFolder()</code> and then into <code>DataLoader</code>’s with <code>torch.utils.data.DataLoader()</code>.</p>
+<p>멋지네요!</p>
+<p>이제 <code>torchvision.datasets.ImageFolder()</code>를 사용하여 이미지를 <code>Dataset</code>으로 변환한 다음, <code>torch.utils.data.DataLoader()</code>를 사용하여 <code>DataLoader</code>로 변환하겠습니다.</p>
 </section>
-<section id="create-train-and-test-datasets-and-dataloaders" class="level3">
-<h3 class="anchored" data-anchor-id="create-train-and-test-datasets-and-dataloaders">9.2 Create train and test <code>Dataset</code>’s and <code>DataLoader</code>’s</h3>
-<p>We’ll make sure the train <code>Dataset</code> uses the <code>train_transform_trivial_augment</code> and the test <code>Dataset</code> uses the <code>test_transform</code>.</p>
-<div id="cell-123" class="cell" data-execution_count="56">
+<section id="훈련-및-테스트용-dataset-및-dataloader-생성" class="level3">
+<h3 class="anchored" data-anchor-id="훈련-및-테스트용-dataset-및-dataloader-생성">9.2 훈련 및 테스트용 <code>Dataset</code> 및 <code>DataLoader</code> 생성</h3>
+<p>훈련용 <code>Dataset</code>은 <code>train_transform_trivial_augment</code>를 사용하고 테스트용 <code>Dataset</code>은 <code>test_transform</code>을 사용하도록 하겠습니다.</p>
+<div id="cell-122" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn image folders into Datasets</span></span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>train_data_augmented <span class="op">=</span> datasets.ImageFolder(train_dir, transform<span class="op">=</span>train_transform_trivial_augment)</span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>test_data_simple <span class="op">=</span> datasets.ImageFolder(test_dir, transform<span class="op">=</span>test_transform)</span>
@@ -2096,7 +2096,7 @@ Total training time: 65.122 seconds</code></pre>
 </div>
 </div>
 <p>And we’ll make <code>DataLoader</code>’s with a <code>batch_size=32</code> and with <code>num_workers</code> set to the number of CPUs available on our machine (we can get this using Python’s <code>os.cpu_count()</code>).</p>
-<div id="cell-125" class="cell" data-execution_count="57">
+<div id="cell-124" class="cell" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn Datasets into DataLoader's</span></span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>BATCH_SIZE <span class="op">=</span> <span class="dv">32</span></span>
@@ -2125,7 +2125,7 @@ Total training time: 65.122 seconds</code></pre>
 <p>Data loaded!</p>
 <p>Now to build our next model, <code>model_1</code>, we can reuse our <code>TinyVGG</code> class from before.</p>
 <p>We’ll make sure to send it to the target device.</p>
-<div id="cell-127" class="cell" data-execution_count="58">
+<div id="cell-126" class="cell" data-execution_count="58">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create model_1 and send it to the target device</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>model_1 <span class="op">=</span> TinyVGG(</span>
@@ -2160,7 +2160,7 @@ Total training time: 65.122 seconds</code></pre>
 <p>Time to train!</p>
 <p>Since we’ve already got functions for the training loop (<code>train_step()</code>) and testing loop (<code>test_step()</code>) and a function to put them together in <code>train()</code>, let’s reuse those.</p>
 <p>We’ll use the same setup as <code>model_0</code> with only the <code>train_dataloader</code> parameter varying: * Train for 5 epochs. * Use <code>train_dataloader=train_dataloader_augmented</code> as the training data in <code>train()</code>. * Use <code>torch.nn.CrossEntropyLoss()</code> as the loss function (since we’re working with multi-class classification). * Use <code>torch.optim.Adam()</code> with <code>lr=0.001</code> as the learning rate as the optimizer.</p>
-<div id="cell-129" class="cell" data-execution_count="59">
+<div id="cell-128" class="cell" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seeds</span></span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>) </span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>torch.cuda.manual_seed(<span class="dv">42</span>)</span>
@@ -2208,7 +2208,7 @@ Total training time: 67.543 seconds</code></pre>
 <section id="plot-the-loss-curves-of-model-1" class="level3">
 <h3 class="anchored" data-anchor-id="plot-the-loss-curves-of-model-1">9.4 Plot the loss curves of Model 1</h3>
 <p>Since we’ve got the results of <code>model_1</code> saved in a results dictionary, <code>model_1_results</code>, we can plot them using <code>plot_loss_curves()</code>.</p>
-<div id="cell-132" class="cell" data-execution_count="60">
+<div id="cell-131" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>plot_loss_curves(model_1_results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -2230,7 +2230,7 @@ Total training time: 67.543 seconds</code></pre>
 <h2 class="anchored" data-anchor-id="compare-model-results">10. Compare model results</h2>
 <p>Even though our models our performing quite poorly, we can still write code to compare them.</p>
 <p>Let’s first turn our model results in pandas DataFrames.</p>
-<div id="cell-135" class="cell" data-execution_count="61">
+<div id="cell-134" class="cell" data-execution_count="61">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>model_0_df <span class="op">=</span> pd.DataFrame(model_0_results)</span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>model_1_df <span class="op">=</span> pd.DataFrame(model_1_results)</span>
@@ -2291,8 +2291,8 @@ Total training time: 67.543 seconds</code></pre>
 </div>
 </div>
 </div>
-<p>And now we can write some plotting code using <code>matplotlib</code> to visualize the results of <code>model_0</code> and <code>model_1</code> together.</p>
-<div id="cell-137" class="cell" data-execution_count="62">
+<p>이제 <code>matplotlib</code>을 사용하여 <code>model_0</code>과 <code>model_1</code>의 결과를 함께 시각화하는 플로팅 코드를 작성해 보겠습니다.</p>
+<div id="cell-136" class="cell" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup a plot </span></span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2353,7 +2353,7 @@ Total training time: 67.543 seconds</code></pre>
 <blockquote class="blockquote">
 <p><strong>참고:</strong> If you’re using Google Colab, you can also upload an image to the current session by going to the left hand side menu -&gt; Files -&gt; Upload to session storage. Beware though, this image will delete when your Google Colab session ends.</p>
 </blockquote>
-<div id="cell-140" class="cell" data-execution_count="63">
+<div id="cell-139" class="cell" data-execution_count="63">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download custom image</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2382,7 +2382,7 @@ Total training time: 67.543 seconds</code></pre>
 <p>Since we want to load in an image, we’ll use <a href="https://pytorch.org/vision/stable/generated/torchvision.io.read_image.html#torchvision.io.read_image"><code>torchvision.io.read_image()</code></a>.</p>
 <p>This method will read a JPEG or PNG image and turn it into a 3 dimensional RGB or grayscale <code>torch.Tensor</code> with values of datatype <code>uint8</code> in range <code>[0, 255]</code>.</p>
 <p>Let’s try it out.</p>
-<div id="cell-142" class="cell" data-execution_count="64">
+<div id="cell-141" class="cell" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchvision</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in custom image</span></span>
@@ -2428,7 +2428,7 @@ Custom image dtype: torch.uint8</code></pre>
 <p>But our model takes image tensors of datatype <code>torch.float32</code> and with values between <code>[0, 1]</code>.</p>
 <p>So before we use our custom image with our model, <strong>we’ll need to convert it to the same format as the data our model is trained on</strong>.</p>
 <p>If we don’t do this, our model will error.</p>
-<div id="cell-144" class="cell" data-execution_count="65">
+<div id="cell-143" class="cell" data-execution_count="65">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to make a prediction on image in uint8 format (this will error)</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>model_1.<span class="bu">eval</span>()</span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
@@ -2502,7 +2502,7 @@ File <span class="ansi-green-fg ansi-bold">~\mambaforge\envs\ds\lib\site-package
 <p><code>RuntimeError: Input type (torch.cuda.ByteTensor) and weight type (torch.cuda.FloatTensor) should be the same</code></p>
 </blockquote>
 <p>Let’s fix this by converting our custom image to the same datatype as what our model was trained on (<code>torch.float32</code>).</p>
-<div id="cell-146" class="cell" data-execution_count="66">
+<div id="cell-145" class="cell" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load in custom image and convert the tensor values to float32</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>custom_image <span class="op">=</span> torchvision.io.read_image(<span class="bu">str</span>(custom_image_path)).<span class="bu">type</span>(torch.float32)</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2554,7 +2554,7 @@ Custom image dtype: torch.float32</code></pre>
 <p>How could we make sure our custom image is the same shape as the images our model was trained on?</p>
 <p>Are there any <code>torchvision.transforms</code> that could help?</p>
 <p>Before we answer that question, let’s plot the image with <code>matplotlib</code> to make sure it looks okay, remember we’ll have to permute the dimensions from <code>CHW</code> to <code>HWC</code> to suit <code>matplotlib</code>’s requirements.</p>
-<div id="cell-148" class="cell" data-execution_count="67">
+<div id="cell-147" class="cell" data-execution_count="67">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot custom image</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(custom_image.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>)) <span class="co"># need to permute image dimensions from CHW -&gt; HWC otherwise matplotlib will error</span></span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Image shape: </span><span class="sc">{</span>custom_image<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -2571,7 +2571,7 @@ Custom image dtype: torch.float32</code></pre>
 <p>Now how could we get our image to be the same size as the images our model was trained on?</p>
 <p>One way to do so is with <code>torchvision.transforms.Resize()</code>.</p>
 <p>Let’s compose a transform pipeline to do so.</p>
-<div id="cell-150" class="cell" data-execution_count="68">
+<div id="cell-149" class="cell" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create transform pipleine to resize image</span></span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>custom_image_transform <span class="op">=</span> transforms.Compose([</span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>    transforms.Resize((<span class="dv">64</span>, <span class="dv">64</span>)),</span>
@@ -2590,7 +2590,7 @@ New shape: torch.Size([3, 64, 64])</code></pre>
 </div>
 <p>Woohoo!</p>
 <p>Let’s finally make a prediction on our own custom image.</p>
-<div id="cell-152" class="cell" data-execution_count="69">
+<div id="cell-151" class="cell" data-execution_count="69">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>model_1.<span class="bu">eval</span>()</span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>    custom_image_pred <span class="op">=</span> model_1(custom_image_transformed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2665,7 +2665,7 @@ File <span class="ansi-green-fg ansi-bold">~\mambaforge\envs\ds\lib\site-package
 <p><code>RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:0! (when checking argument for argument weight in method wrapper___slow_conv2d_forward)</code></p>
 </blockquote>
 <p>Let’s fix that by putting our <code>custom_image_transformed</code> on the target device.</p>
-<div id="cell-154" class="cell" data-execution_count="70">
+<div id="cell-153" class="cell" data-execution_count="70">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>model_1.<span class="bu">eval</span>()</span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
 <span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>    custom_image_pred <span class="op">=</span> model_1(custom_image_transformed.to(device))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2737,7 +2737,7 @@ File <span class="ansi-green-fg ansi-bold">~\mambaforge\envs\ds\lib\site-package
 <p>Except our custom image is currently only <code>CHW</code>.</p>
 <p>We can add a batch size dimension using <code>torch.unsqueeze(dim=0)</code> to add an extra dimension our image and <em>finally</em> make a prediction.</p>
 <p>Essentially we’ll be telling our model to predict on a single image (an image with a <code>batch_size</code> of 1).</p>
-<div id="cell-156" class="cell" data-execution_count="71">
+<div id="cell-155" class="cell" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>model_1.<span class="bu">eval</span>()</span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
 <span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add an extra dimension to image</span></span>
@@ -2762,7 +2762,7 @@ Unsqueezed custom image shape: torch.Size([1, 3, 64, 64])</code></pre>
 <p>They will be present with almost every kind of data type (text, audio, structured data) and problem you work with.</p>
 </blockquote>
 <p>Now let’s take a look at our model’s predictions.</p>
-<div id="cell-158" class="cell" data-execution_count="72">
+<div id="cell-157" class="cell" data-execution_count="72">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>custom_image_pred</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>tensor([[ 0.1161,  0.0213, -0.1422]], device='cuda:0')</code></pre>
@@ -2770,7 +2770,7 @@ Unsqueezed custom image shape: torch.Size([1, 3, 64, 64])</code></pre>
 </div>
 <p>Alright, these are still in <em>logit form</em> (the raw outputs of a model are called logits).</p>
 <p>Let’s convert them from logits -&gt; prediction probabilities -&gt; prediction labels.</p>
-<div id="cell-160" class="cell" data-execution_count="73">
+<div id="cell-159" class="cell" data-execution_count="73">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out prediction logits</span></span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Prediction logits: </span><span class="sc">{</span>custom_image_pred<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2791,7 +2791,7 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 <p>Looking good.</p>
 <p>But of course our prediction label is still in index/tensor form.</p>
 <p>We can convert it to a string class name prediction by indexing on the <code>class_names</code> list.</p>
-<div id="cell-162" class="cell" data-execution_count="74">
+<div id="cell-161" class="cell" data-execution_count="74">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the predicted label</span></span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>custom_image_pred_class <span class="op">=</span> class_names[custom_image_pred_label.cpu()] <span class="co"># put pred label to CPU, otherwise will error</span></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>custom_image_pred_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2805,7 +2805,7 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 <p><strong>참고:</strong> The model in its current form will predict “pizza”, “steak” or “sushi” no matter what image it’s given. If you wanted your model to predict on a different class, you’d have to train it to do so.</p>
 </blockquote>
 <p>But if we check the <code>custom_image_pred_probs</code>, we’ll notice that the model gives almost equal weight (the values are similar) to every class.</p>
-<div id="cell-164" class="cell" data-execution_count="75">
+<div id="cell-163" class="cell" data-execution_count="75">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The values of the prediction probabilities are quite similar</span></span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>custom_image_pred_probs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
@@ -2821,7 +2821,7 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 <p>So let’s put them all together in a function we can easily use over and over again.</p>
 <p>Specifically, let’s make a function that: 1. Takes in a target image path and converts to the right datatype for our model (<code>torch.float32</code>). 2. Makes sure the target image pixel values are in the range <code>[0, 1]</code>. 3. Transforms the target image if necessary. 4. Makes sure the model is on the target device. 5. Makes a prediction on the target image with a trained model (ensuring the image is the right size and on the same device as the model). 6. Converts the model’s output logits to prediction probabilities. 7. Converts the prediction probabilities to prediction labels. 8. Plots the target image alongside the model prediction and prediction probability.</p>
 <p>A fair few steps but we’ve got this!</p>
-<div id="cell-167" class="cell" data-execution_count="76">
+<div id="cell-166" class="cell" data-execution_count="76">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pred_and_plot_image(model: torch.nn.Module, </span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>                        image_path: <span class="bu">str</span>, </span>
 <span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>                        class_names: List[<span class="bu">str</span>] <span class="op">=</span> <span class="va">None</span>, </span>
@@ -2867,7 +2867,7 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 <span id="cb119-43"><a href="#cb119-43" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="va">False</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>What a nice looking function, let’s test it out.</p>
-<div id="cell-169" class="cell" data-execution_count="77">
+<div id="cell-168" class="cell" data-execution_count="77">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pred on our custom image</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>pred_and_plot_image(model<span class="op">=</span>model_1,</span>
 <span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>                    image_path<span class="op">=</span>custom_image_path,</span>
