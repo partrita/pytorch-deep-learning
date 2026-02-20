@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; 06 - PyTorch 전이 학습 – 파이토치 딥러닝 입문</title>
+<title>06 - PyTorch 전이 학습 – 파이토치 딥러닝 입문</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-803ae4f7a8810f475153517dc3c4ebae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-841b73d05e5bc75123d26cb7b2f11c52.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_pytorch_transfer_learning.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_pytorch_transfer_learning.html"><span class="chapter-title">06 - PyTorch 전이 학습</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,68 +149,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">00 - PyTorch 기초</span></span></a>
+  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">00 - PyTorch 기초</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></span></a>
+  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">01 - PyTorch 워크플로우</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">02 - PyTorch 신경망 분류</span></span></a>
+  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02 - PyTorch 신경망 분류</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span></a>
+  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></span></a>
+  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span></a>
+  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">05 - PyTorch 모듈화</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></span></a>
+  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">06 - PyTorch 전이 학습</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span></a>
+  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">07 - PyTorch 실험 추적</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span></a>
+  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">08 - PyTorch 논문 복제</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></span></a>
+  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">09 - PyTorch 모델 배포</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -229,34 +218,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-transfer-learning" id="toc-what-is-transfer-learning" class="nav-link active" data-scroll-target="#what-is-transfer-learning"><span class="header-section-number">8.1</span> What is transfer learning?</a></li>
-  <li><a href="#why-use-transfer-learning" id="toc-why-use-transfer-learning" class="nav-link" data-scroll-target="#why-use-transfer-learning"><span class="header-section-number">8.2</span> Why use transfer learning?</a></li>
-  <li><a href="#where-to-find-pretrained-models" id="toc-where-to-find-pretrained-models" class="nav-link" data-scroll-target="#where-to-find-pretrained-models"><span class="header-section-number">8.3</span> Where to find pretrained models</a></li>
-  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용"><span class="header-section-number">8.4</span> 이번 장에서 다룰 내용</a></li>
-  <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help"><span class="header-section-number">8.5</span> Where can you get help?</a></li>
-  <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup"><span class="header-section-number">8.6</span> 0. Getting setup</a></li>
-  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">8.7</span> 1. Get data</a></li>
-  <li><a href="#create-datasets-and-dataloaders" id="toc-create-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-datasets-and-dataloaders"><span class="header-section-number">8.8</span> 2. Create Datasets and DataLoaders</a>
+  <li><a href="#what-is-transfer-learning" id="toc-what-is-transfer-learning" class="nav-link active" data-scroll-target="#what-is-transfer-learning">What is transfer learning?</a></li>
+  <li><a href="#why-use-transfer-learning" id="toc-why-use-transfer-learning" class="nav-link" data-scroll-target="#why-use-transfer-learning">Why use transfer learning?</a></li>
+  <li><a href="#where-to-find-pretrained-models" id="toc-where-to-find-pretrained-models" class="nav-link" data-scroll-target="#where-to-find-pretrained-models">Where to find pretrained models</a></li>
+  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용">이번 장에서 다룰 내용</a></li>
+  <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help">Where can you get help?</a></li>
+  <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup">0. Getting setup</a></li>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data">1. Get data</a></li>
+  <li><a href="#create-datasets-and-dataloaders" id="toc-create-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-datasets-and-dataloaders">2. Create Datasets and DataLoaders</a>
   <ul class="collapse">
-  <li><a href="#creating-a-transform-for-torchvision.models-manual-creation" id="toc-creating-a-transform-for-torchvision.models-manual-creation" class="nav-link" data-scroll-target="#creating-a-transform-for-torchvision.models-manual-creation"><span class="header-section-number">8.8.1</span> 2.1 Creating a transform for <code>torchvision.models</code> (manual creation)</a></li>
-  <li><a href="#creating-a-transform-for-torchvision.models-auto-creation" id="toc-creating-a-transform-for-torchvision.models-auto-creation" class="nav-link" data-scroll-target="#creating-a-transform-for-torchvision.models-auto-creation"><span class="header-section-number">8.8.2</span> 2.2 Creating a transform for <code>torchvision.models</code> (auto creation)</a></li>
+  <li><a href="#creating-a-transform-for-torchvision.models-manual-creation" id="toc-creating-a-transform-for-torchvision.models-manual-creation" class="nav-link" data-scroll-target="#creating-a-transform-for-torchvision.models-manual-creation">2.1 Creating a transform for <code>torchvision.models</code> (manual creation)</a></li>
+  <li><a href="#creating-a-transform-for-torchvision.models-auto-creation" id="toc-creating-a-transform-for-torchvision.models-auto-creation" class="nav-link" data-scroll-target="#creating-a-transform-for-torchvision.models-auto-creation">2.2 Creating a transform for <code>torchvision.models</code> (auto creation)</a></li>
   </ul></li>
-  <li><a href="#getting-a-pretrained-model" id="toc-getting-a-pretrained-model" class="nav-link" data-scroll-target="#getting-a-pretrained-model"><span class="header-section-number">8.9</span> 3. Getting a pretrained model</a>
+  <li><a href="#getting-a-pretrained-model" id="toc-getting-a-pretrained-model" class="nav-link" data-scroll-target="#getting-a-pretrained-model">3. Getting a pretrained model</a>
   <ul class="collapse">
-  <li><a href="#which-pretrained-model-should-you-use" id="toc-which-pretrained-model-should-you-use" class="nav-link" data-scroll-target="#which-pretrained-model-should-you-use"><span class="header-section-number">8.9.1</span> 3.1 Which pretrained model should you use?</a></li>
-  <li><a href="#setting-up-a-pretrained-model" id="toc-setting-up-a-pretrained-model" class="nav-link" data-scroll-target="#setting-up-a-pretrained-model"><span class="header-section-number">8.9.2</span> 3.2 Setting up a pretrained model</a></li>
-  <li><a href="#getting-a-summary-of-our-model-with-torchinfo.summary" id="toc-getting-a-summary-of-our-model-with-torchinfo.summary" class="nav-link" data-scroll-target="#getting-a-summary-of-our-model-with-torchinfo.summary"><span class="header-section-number">8.9.3</span> 3.3 Getting a summary of our model with <code>torchinfo.summary()</code></a></li>
-  <li><a href="#freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" id="toc-freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" class="nav-link" data-scroll-target="#freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs"><span class="header-section-number">8.9.4</span> 3.4 Freezing the base model and changing the output layer to suit our needs</a></li>
+  <li><a href="#which-pretrained-model-should-you-use" id="toc-which-pretrained-model-should-you-use" class="nav-link" data-scroll-target="#which-pretrained-model-should-you-use">3.1 Which pretrained model should you use?</a></li>
+  <li><a href="#setting-up-a-pretrained-model" id="toc-setting-up-a-pretrained-model" class="nav-link" data-scroll-target="#setting-up-a-pretrained-model">3.2 Setting up a pretrained model</a></li>
+  <li><a href="#getting-a-summary-of-our-model-with-torchinfo.summary" id="toc-getting-a-summary-of-our-model-with-torchinfo.summary" class="nav-link" data-scroll-target="#getting-a-summary-of-our-model-with-torchinfo.summary">3.3 Getting a summary of our model with <code>torchinfo.summary()</code></a></li>
+  <li><a href="#freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" id="toc-freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" class="nav-link" data-scroll-target="#freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs">3.4 Freezing the base model and changing the output layer to suit our needs</a></li>
   </ul></li>
-  <li><a href="#train-model" id="toc-train-model" class="nav-link" data-scroll-target="#train-model"><span class="header-section-number">8.10</span> 4. Train model</a></li>
-  <li><a href="#evaluate-model-by-plotting-loss-curves" id="toc-evaluate-model-by-plotting-loss-curves" class="nav-link" data-scroll-target="#evaluate-model-by-plotting-loss-curves"><span class="header-section-number">8.11</span> 5. Evaluate model by plotting loss curves</a></li>
-  <li><a href="#make-predictions-on-images-from-the-test-set" id="toc-make-predictions-on-images-from-the-test-set" class="nav-link" data-scroll-target="#make-predictions-on-images-from-the-test-set"><span class="header-section-number">8.12</span> 6. Make predictions on images from the test set</a>
+  <li><a href="#train-model" id="toc-train-model" class="nav-link" data-scroll-target="#train-model">4. Train model</a></li>
+  <li><a href="#evaluate-model-by-plotting-loss-curves" id="toc-evaluate-model-by-plotting-loss-curves" class="nav-link" data-scroll-target="#evaluate-model-by-plotting-loss-curves">5. Evaluate model by plotting loss curves</a></li>
+  <li><a href="#make-predictions-on-images-from-the-test-set" id="toc-make-predictions-on-images-from-the-test-set" class="nav-link" data-scroll-target="#make-predictions-on-images-from-the-test-set">6. Make predictions on images from the test set</a>
   <ul class="collapse">
-  <li><a href="#making-predictions-on-a-custom-image" id="toc-making-predictions-on-a-custom-image" class="nav-link" data-scroll-target="#making-predictions-on-a-custom-image"><span class="header-section-number">8.12.1</span> 6.1 Making predictions on a custom image</a></li>
+  <li><a href="#making-predictions-on-a-custom-image" id="toc-making-predictions-on-a-custom-image" class="nav-link" data-scroll-target="#making-predictions-on-a-custom-image">6.1 Making predictions on a custom image</a></li>
   </ul></li>
-  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways"><span class="header-section-number">8.13</span> Main takeaways</a></li>
-  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제"><span class="header-section-number">8.14</span> 연습 문제</a></li>
-  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료"><span class="header-section-number">8.15</span> 추가 학습 자료</a></li>
+  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways">Main takeaways</a></li>
+  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제">연습 문제</a></li>
+  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료">추가 학습 자료</a></li>
   </ul>
 </nav>
     </div>
@@ -265,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></h1>
+<h1 class="title"><span class="chapter-title">06 - PyTorch 전이 학습</span></h1>
 </div>
 
 
@@ -292,8 +281,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You might be thinking, <strong>is there a well-performing model that already exists for our problem?</strong></p>
 <p>And in the world of deep learning, the answer is often <em>yes</em>.</p>
 <p>We’ll see how by using a powerful technique called <a href="https://developers.google.com/machine-learning/glossary#transfer-learning"><strong>transfer learning</strong></a>.</p>
-<section id="what-is-transfer-learning" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="what-is-transfer-learning"><span class="header-section-number">8.1</span> What is transfer learning?</h2>
+<section id="what-is-transfer-learning" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-transfer-learning">What is transfer learning?</h2>
 <p><strong>Transfer learning</strong> allows us to take the patterns (also called weights) another model has learned from another problem and use them for our own problem.</p>
 <p>For example, we can take the patterns a computer vision model has learned from datasets such as <a href="https://www.image-net.org/">ImageNet</a> (millions of images of different objects) and use them to power our FoodVision Mini model.</p>
 <p>Or we could take the patterns from a <a href="https://developers.google.com/machine-learning/glossary#masked-language-model">language model</a> (a model that’s been through large amounts of text to learn a representation of language) and use them as the basis of a model to classify different text samples.</p>
@@ -301,8 +290,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-transfer-learning-example-overview.png" alt="transfer learning overview on different problems" width="900/"></p>
 <p><em>Example of transfer learning being applied to computer vision and natural language processing (NLP). In the case of computer vision, a computer vision model might learn patterns on millions of images in ImageNet and then use those patterns to infer on another problem. And for NLP, a language model may learn the structure of language by reading all of Wikipedia (and perhaps more) and then apply that knowledge to a different problem.</em></p>
 </section>
-<section id="why-use-transfer-learning" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="why-use-transfer-learning"><span class="header-section-number">8.2</span> Why use transfer learning?</h2>
+<section id="why-use-transfer-learning" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-transfer-learning">Why use transfer learning?</h2>
 <p>There are two main benefits to using transfer learning:</p>
 <ol type="1">
 <li>Can leverage an existing model (usually a neural network architecture) proven to work on problems similar to our own.</li>
@@ -319,8 +308,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The things that really make a difference (transfer learning), if we can do better at transfer learning, it’s this world changing thing. Suddenly lots more people can do world-class work with less resources and less data. — <a href="https://youtu.be/Bi7f1JSSlh8?t=72">Jeremy Howard on the Lex Fridman Podcast</a></p>
 </blockquote>
 </section>
-<section id="where-to-find-pretrained-models" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="where-to-find-pretrained-models"><span class="header-section-number">8.3</span> Where to find pretrained models</h2>
+<section id="where-to-find-pretrained-models" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-find-pretrained-models">Where to find pretrained models</h2>
 <p>The world of deep learning is an amazing place.</p>
 <p>So amazing that many people around the world share their work.</p>
 <p>Often, code and pretrained models for the latest state-of-the-art research is released within a few days of publishing.</p>
@@ -362,8 +351,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Exercise:</strong> Spend 5-minutes going through <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a> as well as the <a href="https://huggingface.co/models">HuggingFace Hub Models page</a>, what do you find? (there’s no right answers here, it’s just to practice exploring)</p>
 </blockquote>
 </section>
-<section id="이번-장에서-다룰-내용" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="이번-장에서-다룰-내용"><span class="header-section-number">8.4</span> 이번 장에서 다룰 내용</h2>
+<section id="이번-장에서-다룰-내용" class="level2">
+<h2 class="anchored" data-anchor-id="이번-장에서-다룰-내용">이번 장에서 다룰 내용</h2>
 <p>We’re going to take a pretrained model from <code>torchvision.models</code> and customise it to work on (and hopefully improve) our FoodVision Mini problem.</p>
 <table class="caption-top table">
 <colgroup>
@@ -408,14 +397,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="where-can-you-get-help" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="where-can-you-get-help"><span class="header-section-number">8.5</span> Where can you get help?</h2>
+<section id="where-can-you-get-help" class="level2">
+<h2 class="anchored" data-anchor-id="where-can-you-get-help">Where can you get help?</h2>
 <p>All of the materials for this course <a href="https://github.com/mrdbourke/pytorch-deep-learning">are available on GitHub</a>.</p>
 <p>If you run into trouble, you can ask a question on the course <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">GitHub Discussions page</a>.</p>
 <p>And of course, there’s the <a href="https://pytorch.org/docs/stable/index.html">PyTorch documentation</a> and <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
 </section>
-<section id="getting-setup" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="getting-setup"><span class="header-section-number">8.6</span> 0. Getting setup</h2>
+<section id="getting-setup" class="level2">
+<h2 class="anchored" data-anchor-id="getting-setup">0. Getting setup</h2>
 <p>Let’s get started by importing/downloading the required modules for this section.</p>
 <p>To save us writing extra code, we’re going to be leveraging some of the Python scripts (such as <code>data_setup.py</code> and <code>engine.py</code>) we created in the previous section, <a href="https://www.learnpytorch.io/05_pytorch_going_modular/">05. PyTorch Going Modular</a>.</p>
 <p>Specifically, we’re going to download the <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/going_modular"><code>going_modular</code></a> directory from the <code>pytorch-deep-learning</code> repository (if we don’t already have it).</p>
@@ -486,8 +475,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 </div>
 </section>
-<section id="get-data" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="get-data"><span class="header-section-number">8.7</span> 1. Get data</h2>
+<section id="get-data" class="level2">
+<h2 class="anchored" data-anchor-id="get-data">1. Get data</h2>
 <p>Before we can start to use <strong>transfer learning</strong>, we’ll need a dataset.</p>
 <p>To see how transfer learning compares to our previous attempts at model building, we’ll download the same dataset we’ve been using for FoodVision Mini.</p>
 <p>Let’s write some code to download the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/data/pizza_steak_sushi.zip"><code>pizza_steak_sushi.zip</code></a> dataset from the course GitHub and then unzip it.</p>
@@ -537,12 +526,12 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>test_dir <span class="op">=</span> image_path <span class="op">/</span> <span class="st">"test"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="create-datasets-and-dataloaders" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="create-datasets-and-dataloaders"><span class="header-section-number">8.8</span> 2. Create Datasets and DataLoaders</h2>
+<section id="create-datasets-and-dataloaders" class="level2">
+<h2 class="anchored" data-anchor-id="create-datasets-and-dataloaders">2. Create Datasets and DataLoaders</h2>
 <p>Since we’ve downloaded the <code>going_modular</code> directory, we can use the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/data_setup.py"><code>data_setup.py</code></a> script we created in section <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#2-create-datasets-and-dataloaders-data_setuppy">05. PyTorch Going Modular</a> to prepare and setup our DataLoaders.</p>
 <p>But since we’ll be using a pretrained model from <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a>, there’s a specific transform we need to prepare our images first.</p>
-<section id="creating-a-transform-for-torchvision.models-manual-creation" class="level3" data-number="8.8.1">
-<h3 data-number="8.8.1" class="anchored" data-anchor-id="creating-a-transform-for-torchvision.models-manual-creation"><span class="header-section-number">8.8.1</span> 2.1 Creating a transform for <code>torchvision.models</code> (manual creation)</h3>
+<section id="creating-a-transform-for-torchvision.models-manual-creation" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-transform-for-torchvision.models-manual-creation">2.1 Creating a transform for <code>torchvision.models</code> (manual creation)</h3>
 <blockquote class="blockquote">
 <p><strong>참고:</strong> As of <code>torchvision</code> v0.13+, there’s an update to how data transforms can be created using <code>torchvision.models</code>. I’ve called the previous method “manual creation” and the new method “auto creation”. This notebook showcases both.</p>
 </blockquote>
@@ -633,8 +622,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 </div>
 </section>
-<section id="creating-a-transform-for-torchvision.models-auto-creation" class="level3" data-number="8.8.2">
-<h3 data-number="8.8.2" class="anchored" data-anchor-id="creating-a-transform-for-torchvision.models-auto-creation"><span class="header-section-number">8.8.2</span> 2.2 Creating a transform for <code>torchvision.models</code> (auto creation)</h3>
+<section id="creating-a-transform-for-torchvision.models-auto-creation" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-transform-for-torchvision.models-auto-creation">2.2 Creating a transform for <code>torchvision.models</code> (auto creation)</h3>
 <p>As previously stated, when using a pretrained model, it’s important that <strong>your custom data going into the model is prepared in the same way as the original training data that went into the model</strong>.</p>
 <p>Above we saw how to manually create a transform for a pretrained model.</p>
 <p>But as of <code>torchvision</code> v0.13+, an automatic transform creation feature has been added.</p>
@@ -686,8 +675,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 </section>
 </section>
-<section id="getting-a-pretrained-model" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="getting-a-pretrained-model"><span class="header-section-number">8.9</span> 3. Getting a pretrained model</h2>
+<section id="getting-a-pretrained-model" class="level2">
+<h2 class="anchored" data-anchor-id="getting-a-pretrained-model">3. Getting a pretrained model</h2>
 <p>Alright, here comes the fun part!</p>
 <p>Over the past few notebooks we’ve been building PyTorch neural networks from scratch.</p>
 <p>And while that’s a good skill to have, our models haven’t been performing as well as we’d like.</p>
@@ -729,8 +718,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </tr>
 </tbody>
 </table>
-<section id="which-pretrained-model-should-you-use" class="level3" data-number="8.9.1">
-<h3 data-number="8.9.1" class="anchored" data-anchor-id="which-pretrained-model-should-you-use"><span class="header-section-number">8.9.1</span> 3.1 Which pretrained model should you use?</h3>
+<section id="which-pretrained-model-should-you-use" class="level3">
+<h3 class="anchored" data-anchor-id="which-pretrained-model-should-you-use">3.1 Which pretrained model should you use?</h3>
 <p>It depends on your problem/the device you’re working with.</p>
 <p>Generally, the higher number in the model name (e.g.&nbsp;<code>efficientnet_b0()</code> -&gt; <code>efficientnet_b1()</code> -&gt; <code>efficientnet_b7()</code>) means <em>better performance</em> but a <em>larger</em> model.</p>
 <p>You might think better performance is <em>always better</em>, right?</p>
@@ -745,8 +734,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <p><strong>참고:</strong> Even though we’re using <code>efficientnet_bX</code>, it’s important not to get too attached to any one architecture, as they are always changing as new research gets released. Best to experiment, experiment, experiment and see what works for your problem.</p>
 </blockquote>
 </section>
-<section id="setting-up-a-pretrained-model" class="level3" data-number="8.9.2">
-<h3 data-number="8.9.2" class="anchored" data-anchor-id="setting-up-a-pretrained-model"><span class="header-section-number">8.9.2</span> 3.2 Setting up a pretrained model</h3>
+<section id="setting-up-a-pretrained-model" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-a-pretrained-model">3.2 Setting up a pretrained model</h3>
 <p>The pretrained model we’re going to be using is <a href="https://pytorch.org/vision/stable/generated/torchvision.models.efficientnet_b0.html#torchvision.models.efficientnet_b0"><code>torchvision.models.efficientnet_b0()</code></a>.</p>
 <p>The architecture is from the paper <em><a href="https://arxiv.org/abs/1905.11946">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</a></em>.</p>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-effnet-b0-feature-extractor.png" alt="efficienet_b0 from PyTorch torchvision feature extraction model" width="900/"></p>
@@ -780,8 +769,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <p>This is one of the benefits of transfer learning, taking an existing model, that’s been crafted by some of the best engineers in the world and applying to your own problem.</p>
 <p>Our <code>efficientnet_b0</code> comes in three main parts: 1. <code>features</code> - A collection of convolutional layers and other various activation layers to learn a base representation of vision data (this base representation/collection of layers is often referred to as <strong>features</strong> or <strong>feature extractor</strong>, “the base layers of the model learn the different <strong>features</strong> of images”). 2. <code>avgpool</code> - Takes the average of the output of the <code>features</code> layer(s) and turns it into a <strong>feature vector</strong>. 3. <code>classifier</code> - Turns the <strong>feature vector</strong> into a vector with the same dimensionality as the number of required output classes (since <code>efficientnet_b0</code> is pretrained on ImageNet and because ImageNet has 1000 classes, <code>out_features=1000</code> is the default).</p>
 </section>
-<section id="getting-a-summary-of-our-model-with-torchinfo.summary" class="level3" data-number="8.9.3">
-<h3 data-number="8.9.3" class="anchored" data-anchor-id="getting-a-summary-of-our-model-with-torchinfo.summary"><span class="header-section-number">8.9.3</span> 3.3 Getting a summary of our model with <code>torchinfo.summary()</code></h3>
+<section id="getting-a-summary-of-our-model-with-torchinfo.summary" class="level3">
+<h3 class="anchored" data-anchor-id="getting-a-summary-of-our-model-with-torchinfo.summary">3.3 Getting a summary of our model with <code>torchinfo.summary()</code></h3>
 <p>To learn more about our model, let’s use <code>torchinfo</code>’s <a href="https://github.com/TylerYep/torchinfo#documentation"><code>summary()</code> method</a>.</p>
 <p>To do so, we’ll pass in: * <code>model</code> - the model we’d like to get a summary of. * <code>input_size</code> - the shape of the data we’d like to pass to our model, for the case of <code>efficientnet_b0</code>, the input size is <code>(batch_size, 3, 224, 224)</code>, though <a href="https://github.com/pytorch/vision/blob/d2bfd639e46e1c5dc3c177f889dc7750c8d137c7/references/classification/train.py#L92-L93">other variants of <code>efficientnet_bX</code> have different input sizes</a>. * <strong>참고:</strong> Many modern models can handle input images of varying sizes thanks to <a href="https://pytorch.org/docs/stable/generated/torch.nn.AdaptiveAvgPool2d.html"><code>torch.nn.AdaptiveAvgPool2d()</code></a>, this layer adaptively adjusts the <code>output_size</code> of a given input as required. You can try this out by passing different size input images to <code>summary()</code> or your models. * <code>col_names</code> - the various information columns we’d like to see about our model. * <code>col_width</code> - how wide the columns should be for the summary. * <code>row_settings</code> - what features to show in a row.</p>
 <div id="524020c6-09d3-4ecf-b791-dbd71ed389e3" class="cell" data-execution_count="12">
@@ -855,8 +844,8 @@ Estimated Total Size (MB): 3492.77
 <p>For reference, our model from previous sections, <strong>TinyVGG had 8,083 parameters vs.&nbsp;5,288,548 parameters for <code>efficientnet_b0</code>, an increase of ~654x</strong>!</p>
 <p>What do you think, will this mean better performance?</p>
 </section>
-<section id="freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" class="level3" data-number="8.9.4">
-<h3 data-number="8.9.4" class="anchored" data-anchor-id="freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs"><span class="header-section-number">8.9.4</span> 3.4 Freezing the base model and changing the output layer to suit our needs</h3>
+<section id="freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs" class="level3">
+<h3 class="anchored" data-anchor-id="freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs">3.4 Freezing the base model and changing the output layer to suit our needs</h3>
 <p>The process of transfer learning usually goes: freeze some base layers of a pretrained model (typically the <code>features</code> section) and then adjust the output layers (also called head/classifier layers) to suit your needs.</p>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/06-v2-effnet-changing-the-classifier-head.png" alt="changing the efficientnet classifier head to a custom number of outputs" width="900/"></p>
 <p><em>You can customise the outputs of a pretrained model by changing the output layer(s) to suit your problem. The original <code>torchvision.models.efficientnet_b0()</code> comes with <code>out_features=1000</code> because there are 1000 classes in ImageNet, the dataset it was trained on. However, for our problem, classifying images of pizza, steak and sushi we only need <code>out_features=3</code>.</em></p>
@@ -975,8 +964,8 @@ Estimated Total Size (MB): 3487.41
 </blockquote>
 </section>
 </section>
-<section id="train-model" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="train-model"><span class="header-section-number">8.10</span> 4. Train model</h2>
+<section id="train-model" class="level2">
+<h2 class="anchored" data-anchor-id="train-model">4. Train model</h2>
 <p>Now we’ve got a pretraiend model that’s semi-frozen and has a customised <code>classifier</code>, how about we see transfer learning in action?</p>
 <p>To begin training, let’s create a loss function and an optimizer.</p>
 <p>Because we’re still working with multi-class classification, we’ll use <code>nn.CrossEntropyLoss()</code> for the loss function.</p>
@@ -1034,8 +1023,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <p>With an <code>efficientnet_b0</code> backbone, our model achieves almost 85%+ accuracy on the test dataset, almost <em>double</em> what we were able to achieve with TinyVGG.</p>
 <p>Not bad for a model we downloaded with a few lines of code.</p>
 </section>
-<section id="evaluate-model-by-plotting-loss-curves" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="evaluate-model-by-plotting-loss-curves"><span class="header-section-number">8.11</span> 5. Evaluate model by plotting loss curves</h2>
+<section id="evaluate-model-by-plotting-loss-curves" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate-model-by-plotting-loss-curves">5. Evaluate model by plotting loss curves</h2>
 <p>Our model looks like it’s performing pretty well.</p>
 <p>Let’s plot it’s loss curves to see what the training looks like over time.</p>
 <p>We can plot the loss curves using the function <code>plot_loss_curves()</code> we created in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#78-plot-the-loss-curves-of-model-0">04. PyTorch Custom Datasets section 7.8</a>.</p>
@@ -1071,8 +1060,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <p><strong>Question:</strong> Looking at the loss curves, does our model look like it’s overfitting or underfitting? Or perhaps neither? Hint: Check out notebook <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#8-what-should-an-ideal-loss-curve-look-like">04. PyTorch Custom Datasets part 8. What should an ideal loss curve look like?</a> for ideas.</p>
 </blockquote>
 </section>
-<section id="make-predictions-on-images-from-the-test-set" class="level2" data-number="8.12">
-<h2 data-number="8.12" class="anchored" data-anchor-id="make-predictions-on-images-from-the-test-set"><span class="header-section-number">8.12</span> 6. Make predictions on images from the test set</h2>
+<section id="make-predictions-on-images-from-the-test-set" class="level2">
+<h2 class="anchored" data-anchor-id="make-predictions-on-images-from-the-test-set">6. Make predictions on images from the test set</h2>
 <p>It looks like our model performs well quantitatively but how about qualitatively?</p>
 <p>Let’s find out by making some predictions with our model on images from the test set (these aren’t seen during training) and plotting them.</p>
 <p><em>Visualize, visualize, visualize!</em></p>
@@ -1194,8 +1183,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 </div>
 <p>Woohoo!</p>
 <p>Those predictions look far better than the ones our TinyVGG model was previously making.</p>
-<section id="making-predictions-on-a-custom-image" class="level3" data-number="8.12.1">
-<h3 data-number="8.12.1" class="anchored" data-anchor-id="making-predictions-on-a-custom-image"><span class="header-section-number">8.12.1</span> 6.1 Making predictions on a custom image</h3>
+<section id="making-predictions-on-a-custom-image" class="level3">
+<h3 class="anchored" data-anchor-id="making-predictions-on-a-custom-image">6.1 Making predictions on a custom image</h3>
 <p>It looks like our model does well qualitatively on data from the test set.</p>
 <p>But how about on our own custom image?</p>
 <p>That’s where the real fun of machine learning is!</p>
@@ -1240,8 +1229,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <p>This indicates our <code>efficientnet_b0</code> model is <em>more</em> confident in its prediction where as our TinyVGG model was par with just guessing.</p>
 </section>
 </section>
-<section id="main-takeaways" class="level2" data-number="8.13">
-<h2 data-number="8.13" class="anchored" data-anchor-id="main-takeaways"><span class="header-section-number">8.13</span> Main takeaways</h2>
+<section id="main-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="main-takeaways">Main takeaways</h2>
 <ul>
 <li><strong>Transfer learning</strong> often allows to you get good results with a relatively small amount of custom data.</li>
 <li>Knowing the power of transfer learning, it’s a good idea to ask at the start of every problem, “does an existing well-performing model exist for my problem?”</li>
@@ -1250,8 +1239,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <li>There are <a href="https://www.learnpytorch.io/06_pytorch_transfer_learning/#where-to-find-pretrained-models">several different places to find pretrained models</a> from the PyTorch domain libraries, HuggingFace Hub and libraries such as <code>timm</code> (PyTorch Image Models).</li>
 </ul>
 </section>
-<section id="연습-문제" class="level2" data-number="8.14">
-<h2 data-number="8.14" class="anchored" data-anchor-id="연습-문제"><span class="header-section-number">8.14</span> 연습 문제</h2>
+<section id="연습-문제" class="level2">
+<h2 class="anchored" data-anchor-id="연습-문제">연습 문제</h2>
 <p>All of the exercises are focused on practicing the code above.</p>
 <p>You should be able to complete them by referencing each section or by following the resource(s) linked.</p>
 <p>All exercises should be completed using <a href="https://pytorch.org/docs/stable/notes/cuda.html#device-agnostic-code">device-agnostic code</a>.</p>
@@ -1277,8 +1266,8 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 </ul></li>
 </ol>
 </section>
-<section id="추가-학습-자료" class="level2" data-number="8.15">
-<h2 data-number="8.15" class="anchored" data-anchor-id="추가-학습-자료"><span class="header-section-number">8.15</span> 추가 학습 자료</h2>
+<section id="추가-학습-자료" class="level2">
+<h2 class="anchored" data-anchor-id="추가-학습-자료">추가 학습 자료</h2>
 <ul>
 <li>Look up what “model fine-tuning” is and spend 30-minutes researching different methods to perform it with PyTorch. How would we change our code to fine-tine? Tip: fine-tuning usually works best if you have <em>lots</em> of custom data, where as, feature extraction is typically better if you have less custom data.</li>
 <li>Check out the new/upcoming <a href="https://pytorch.org/blog/introducing-torchvision-new-multi-weight-support-api/">PyTorch multi-weights API</a> (still in beta at time of writing, May 2022), it’s a new way to perform transfer learning in PyTorch. What changes to our code would need to made to use the new API?</li>
@@ -1692,12 +1681,12 @@ Epoch: 5 | train_loss: 0.6254 | train_acc: 0.7852 | test_loss: 0.6260 | test_acc
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./05_pytorch_going_modular.html" class="pagination-link" aria-label="05 - PyTorch 모듈화">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">05 - PyTorch 모듈화</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./07_pytorch_experiment_tracking.html" class="pagination-link" aria-label="07 - PyTorch 실험 추적">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-title">07 - PyTorch 실험 추적</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

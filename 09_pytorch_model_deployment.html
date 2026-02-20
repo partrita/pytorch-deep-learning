@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; 09 - PyTorch 모델 배포 – 파이토치 딥러닝 입문</title>
+<title>09 - PyTorch 모델 배포 – 파이토치 딥러닝 입문</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-803ae4f7a8810f475153517dc3c4ebae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-841b73d05e5bc75123d26cb7b2f11c52.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_pytorch_model_deployment.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_pytorch_model_deployment.html"><span class="chapter-title">09 - PyTorch 모델 배포</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,68 +149,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">00 - PyTorch 기초</span></span></a>
+  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">00 - PyTorch 기초</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></span></a>
+  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">01 - PyTorch 워크플로우</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">02 - PyTorch 신경망 분류</span></span></a>
+  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02 - PyTorch 신경망 분류</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span></a>
+  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></span></a>
+  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span></a>
+  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">05 - PyTorch 모듈화</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></span></a>
+  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">06 - PyTorch 전이 학습</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span></a>
+  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">07 - PyTorch 실험 추적</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span></a>
+  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">08 - PyTorch 논문 복제</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></span></a>
+  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">09 - PyTorch 모델 배포</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -229,96 +218,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-machine-learning-model-deployment" id="toc-what-is-machine-learning-model-deployment" class="nav-link active" data-scroll-target="#what-is-machine-learning-model-deployment"><span class="header-section-number">11.1</span> What is machine learning model deployment?</a></li>
-  <li><a href="#why-deploy-a-machine-learning-model" id="toc-why-deploy-a-machine-learning-model" class="nav-link" data-scroll-target="#why-deploy-a-machine-learning-model"><span class="header-section-number">11.2</span> Why deploy a machine learning model?</a></li>
-  <li><a href="#different-types-of-machine-learning-model-deployment" id="toc-different-types-of-machine-learning-model-deployment" class="nav-link" data-scroll-target="#different-types-of-machine-learning-model-deployment"><span class="header-section-number">11.3</span> Different types of machine learning model deployment</a>
+  <li><a href="#what-is-machine-learning-model-deployment" id="toc-what-is-machine-learning-model-deployment" class="nav-link active" data-scroll-target="#what-is-machine-learning-model-deployment">What is machine learning model deployment?</a></li>
+  <li><a href="#why-deploy-a-machine-learning-model" id="toc-why-deploy-a-machine-learning-model" class="nav-link" data-scroll-target="#why-deploy-a-machine-learning-model">Why deploy a machine learning model?</a></li>
+  <li><a href="#different-types-of-machine-learning-model-deployment" id="toc-different-types-of-machine-learning-model-deployment" class="nav-link" data-scroll-target="#different-types-of-machine-learning-model-deployment">Different types of machine learning model deployment</a>
   <ul class="collapse">
-  <li><a href="#wheres-it-going-to-go" id="toc-wheres-it-going-to-go" class="nav-link" data-scroll-target="#wheres-it-going-to-go"><span class="header-section-number">11.3.1</span> Where’s it going to go?</a></li>
-  <li><a href="#hows-it-going-to-function" id="toc-hows-it-going-to-function" class="nav-link" data-scroll-target="#hows-it-going-to-function"><span class="header-section-number">11.3.2</span> How’s it going to function?</a></li>
-  <li><a href="#ways-to-deploy-a-machine-learning-model" id="toc-ways-to-deploy-a-machine-learning-model" class="nav-link" data-scroll-target="#ways-to-deploy-a-machine-learning-model"><span class="header-section-number">11.3.3</span> Ways to deploy a machine learning model</a></li>
+  <li><a href="#wheres-it-going-to-go" id="toc-wheres-it-going-to-go" class="nav-link" data-scroll-target="#wheres-it-going-to-go">Where’s it going to go?</a></li>
+  <li><a href="#hows-it-going-to-function" id="toc-hows-it-going-to-function" class="nav-link" data-scroll-target="#hows-it-going-to-function">How’s it going to function?</a></li>
+  <li><a href="#ways-to-deploy-a-machine-learning-model" id="toc-ways-to-deploy-a-machine-learning-model" class="nav-link" data-scroll-target="#ways-to-deploy-a-machine-learning-model">Ways to deploy a machine learning model</a></li>
   </ul></li>
-  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용"><span class="header-section-number">11.4</span> 이번 장에서 다룰 내용</a></li>
-  <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help"><span class="header-section-number">11.5</span> Where can you get help?</a></li>
-  <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup"><span class="header-section-number">11.6</span> 0. Getting setup</a></li>
-  <li><a href="#getting-data" id="toc-getting-data" class="nav-link" data-scroll-target="#getting-data"><span class="header-section-number">11.7</span> 1. Getting data</a></li>
-  <li><a href="#foodvision-mini-model-deployment-experiment-outline" id="toc-foodvision-mini-model-deployment-experiment-outline" class="nav-link" data-scroll-target="#foodvision-mini-model-deployment-experiment-outline"><span class="header-section-number">11.8</span> 2. FoodVision Mini model deployment experiment outline</a></li>
-  <li><a href="#creating-an-effnetb2-feature-extractor" id="toc-creating-an-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#creating-an-effnetb2-feature-extractor"><span class="header-section-number">11.9</span> 3. Creating an EffNetB2 feature extractor</a>
+  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용">이번 장에서 다룰 내용</a></li>
+  <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help">Where can you get help?</a></li>
+  <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup">0. Getting setup</a></li>
+  <li><a href="#getting-data" id="toc-getting-data" class="nav-link" data-scroll-target="#getting-data">1. Getting data</a></li>
+  <li><a href="#foodvision-mini-model-deployment-experiment-outline" id="toc-foodvision-mini-model-deployment-experiment-outline" class="nav-link" data-scroll-target="#foodvision-mini-model-deployment-experiment-outline">2. FoodVision Mini model deployment experiment outline</a></li>
+  <li><a href="#creating-an-effnetb2-feature-extractor" id="toc-creating-an-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#creating-an-effnetb2-feature-extractor">3. Creating an EffNetB2 feature extractor</a>
   <ul class="collapse">
-  <li><a href="#creating-a-function-to-make-an-effnetb2-feature-extractor" id="toc-creating-a-function-to-make-an-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#creating-a-function-to-make-an-effnetb2-feature-extractor"><span class="header-section-number">11.9.1</span> 3.1 Creating a function to make an EffNetB2 feature extractor</a></li>
-  <li><a href="#creating-dataloaders-for-effnetb2" id="toc-creating-dataloaders-for-effnetb2" class="nav-link" data-scroll-target="#creating-dataloaders-for-effnetb2"><span class="header-section-number">11.9.2</span> 3.2 Creating DataLoaders for EffNetB2</a></li>
-  <li><a href="#training-effnetb2-feature-extractor" id="toc-training-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#training-effnetb2-feature-extractor"><span class="header-section-number">11.9.3</span> 3.3 Training EffNetB2 feature extractor</a></li>
-  <li><a href="#inspecting-effnetb2-loss-curves" id="toc-inspecting-effnetb2-loss-curves" class="nav-link" data-scroll-target="#inspecting-effnetb2-loss-curves"><span class="header-section-number">11.9.4</span> 3.4 Inspecting EffNetB2 loss curves</a></li>
-  <li><a href="#saving-effnetb2-feature-extractor" id="toc-saving-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#saving-effnetb2-feature-extractor"><span class="header-section-number">11.9.5</span> 3.5 Saving EffNetB2 feature extractor</a></li>
-  <li><a href="#checking-the-size-of-effnetb2-feature-extractor" id="toc-checking-the-size-of-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#checking-the-size-of-effnetb2-feature-extractor"><span class="header-section-number">11.9.6</span> 3.6 Checking the size of EffNetB2 feature extractor</a></li>
-  <li><a href="#collecting-effnetb2-feature-extractor-stats" id="toc-collecting-effnetb2-feature-extractor-stats" class="nav-link" data-scroll-target="#collecting-effnetb2-feature-extractor-stats"><span class="header-section-number">11.9.7</span> 3.7 Collecting EffNetB2 feature extractor stats</a></li>
+  <li><a href="#creating-a-function-to-make-an-effnetb2-feature-extractor" id="toc-creating-a-function-to-make-an-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#creating-a-function-to-make-an-effnetb2-feature-extractor">3.1 Creating a function to make an EffNetB2 feature extractor</a></li>
+  <li><a href="#creating-dataloaders-for-effnetb2" id="toc-creating-dataloaders-for-effnetb2" class="nav-link" data-scroll-target="#creating-dataloaders-for-effnetb2">3.2 Creating DataLoaders for EffNetB2</a></li>
+  <li><a href="#training-effnetb2-feature-extractor" id="toc-training-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#training-effnetb2-feature-extractor">3.3 Training EffNetB2 feature extractor</a></li>
+  <li><a href="#inspecting-effnetb2-loss-curves" id="toc-inspecting-effnetb2-loss-curves" class="nav-link" data-scroll-target="#inspecting-effnetb2-loss-curves">3.4 Inspecting EffNetB2 loss curves</a></li>
+  <li><a href="#saving-effnetb2-feature-extractor" id="toc-saving-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#saving-effnetb2-feature-extractor">3.5 Saving EffNetB2 feature extractor</a></li>
+  <li><a href="#checking-the-size-of-effnetb2-feature-extractor" id="toc-checking-the-size-of-effnetb2-feature-extractor" class="nav-link" data-scroll-target="#checking-the-size-of-effnetb2-feature-extractor">3.6 Checking the size of EffNetB2 feature extractor</a></li>
+  <li><a href="#collecting-effnetb2-feature-extractor-stats" id="toc-collecting-effnetb2-feature-extractor-stats" class="nav-link" data-scroll-target="#collecting-effnetb2-feature-extractor-stats">3.7 Collecting EffNetB2 feature extractor stats</a></li>
   </ul></li>
-  <li><a href="#creating-a-vit-feature-extractor" id="toc-creating-a-vit-feature-extractor" class="nav-link" data-scroll-target="#creating-a-vit-feature-extractor"><span class="header-section-number">11.10</span> 4. Creating a ViT feature extractor</a>
+  <li><a href="#creating-a-vit-feature-extractor" id="toc-creating-a-vit-feature-extractor" class="nav-link" data-scroll-target="#creating-a-vit-feature-extractor">4. Creating a ViT feature extractor</a>
   <ul class="collapse">
-  <li><a href="#create-dataloaders-for-vit" id="toc-create-dataloaders-for-vit" class="nav-link" data-scroll-target="#create-dataloaders-for-vit"><span class="header-section-number">11.10.1</span> 4.1 Create DataLoaders for ViT</a></li>
-  <li><a href="#training-vit-feature-extractor" id="toc-training-vit-feature-extractor" class="nav-link" data-scroll-target="#training-vit-feature-extractor"><span class="header-section-number">11.10.2</span> 4.2 Training ViT feature extractor</a></li>
-  <li><a href="#inspecting-vit-loss-curves" id="toc-inspecting-vit-loss-curves" class="nav-link" data-scroll-target="#inspecting-vit-loss-curves"><span class="header-section-number">11.10.3</span> 4.3 Inspecting ViT loss curves</a></li>
-  <li><a href="#saving-vit-feature-extractor" id="toc-saving-vit-feature-extractor" class="nav-link" data-scroll-target="#saving-vit-feature-extractor"><span class="header-section-number">11.10.4</span> 4.4 Saving ViT feature extractor</a></li>
-  <li><a href="#checking-the-size-of-vit-feature-extractor" id="toc-checking-the-size-of-vit-feature-extractor" class="nav-link" data-scroll-target="#checking-the-size-of-vit-feature-extractor"><span class="header-section-number">11.10.5</span> 4.5 Checking the size of ViT feature extractor</a></li>
-  <li><a href="#collecting-vit-feature-extractor-stats" id="toc-collecting-vit-feature-extractor-stats" class="nav-link" data-scroll-target="#collecting-vit-feature-extractor-stats"><span class="header-section-number">11.10.6</span> 4.6 Collecting ViT feature extractor stats</a></li>
+  <li><a href="#create-dataloaders-for-vit" id="toc-create-dataloaders-for-vit" class="nav-link" data-scroll-target="#create-dataloaders-for-vit">4.1 Create DataLoaders for ViT</a></li>
+  <li><a href="#training-vit-feature-extractor" id="toc-training-vit-feature-extractor" class="nav-link" data-scroll-target="#training-vit-feature-extractor">4.2 Training ViT feature extractor</a></li>
+  <li><a href="#inspecting-vit-loss-curves" id="toc-inspecting-vit-loss-curves" class="nav-link" data-scroll-target="#inspecting-vit-loss-curves">4.3 Inspecting ViT loss curves</a></li>
+  <li><a href="#saving-vit-feature-extractor" id="toc-saving-vit-feature-extractor" class="nav-link" data-scroll-target="#saving-vit-feature-extractor">4.4 Saving ViT feature extractor</a></li>
+  <li><a href="#checking-the-size-of-vit-feature-extractor" id="toc-checking-the-size-of-vit-feature-extractor" class="nav-link" data-scroll-target="#checking-the-size-of-vit-feature-extractor">4.5 Checking the size of ViT feature extractor</a></li>
+  <li><a href="#collecting-vit-feature-extractor-stats" id="toc-collecting-vit-feature-extractor-stats" class="nav-link" data-scroll-target="#collecting-vit-feature-extractor-stats">4.6 Collecting ViT feature extractor stats</a></li>
   </ul></li>
-  <li><a href="#making-predictions-with-our-trained-models-and-timing-them" id="toc-making-predictions-with-our-trained-models-and-timing-them" class="nav-link" data-scroll-target="#making-predictions-with-our-trained-models-and-timing-them"><span class="header-section-number">11.11</span> 5. Making predictions with our trained models and timing them</a>
+  <li><a href="#making-predictions-with-our-trained-models-and-timing-them" id="toc-making-predictions-with-our-trained-models-and-timing-them" class="nav-link" data-scroll-target="#making-predictions-with-our-trained-models-and-timing-them">5. Making predictions with our trained models and timing them</a>
   <ul class="collapse">
-  <li><a href="#creating-a-function-to-make-predictions-across-the-test-dataset" id="toc-creating-a-function-to-make-predictions-across-the-test-dataset" class="nav-link" data-scroll-target="#creating-a-function-to-make-predictions-across-the-test-dataset"><span class="header-section-number">11.11.1</span> 5.1 Creating a function to make predictions across the test dataset</a></li>
-  <li><a href="#making-and-timing-predictions-with-effnetb2" id="toc-making-and-timing-predictions-with-effnetb2" class="nav-link" data-scroll-target="#making-and-timing-predictions-with-effnetb2"><span class="header-section-number">11.11.2</span> 5.2 Making and timing predictions with EffNetB2</a></li>
-  <li><a href="#making-and-timing-predictions-with-vit" id="toc-making-and-timing-predictions-with-vit" class="nav-link" data-scroll-target="#making-and-timing-predictions-with-vit"><span class="header-section-number">11.11.3</span> 5.3 Making and timing predictions with ViT</a></li>
+  <li><a href="#creating-a-function-to-make-predictions-across-the-test-dataset" id="toc-creating-a-function-to-make-predictions-across-the-test-dataset" class="nav-link" data-scroll-target="#creating-a-function-to-make-predictions-across-the-test-dataset">5.1 Creating a function to make predictions across the test dataset</a></li>
+  <li><a href="#making-and-timing-predictions-with-effnetb2" id="toc-making-and-timing-predictions-with-effnetb2" class="nav-link" data-scroll-target="#making-and-timing-predictions-with-effnetb2">5.2 Making and timing predictions with EffNetB2</a></li>
+  <li><a href="#making-and-timing-predictions-with-vit" id="toc-making-and-timing-predictions-with-vit" class="nav-link" data-scroll-target="#making-and-timing-predictions-with-vit">5.3 Making and timing predictions with ViT</a></li>
   </ul></li>
-  <li><a href="#comparing-model-results-prediction-times-and-size" id="toc-comparing-model-results-prediction-times-and-size" class="nav-link" data-scroll-target="#comparing-model-results-prediction-times-and-size"><span class="header-section-number">11.12</span> 6. Comparing model results, prediction times and size</a>
+  <li><a href="#comparing-model-results-prediction-times-and-size" id="toc-comparing-model-results-prediction-times-and-size" class="nav-link" data-scroll-target="#comparing-model-results-prediction-times-and-size">6. Comparing model results, prediction times and size</a>
   <ul class="collapse">
-  <li><a href="#visualizing-the-speed-vs.-performance-tradeoff" id="toc-visualizing-the-speed-vs.-performance-tradeoff" class="nav-link" data-scroll-target="#visualizing-the-speed-vs.-performance-tradeoff"><span class="header-section-number">11.12.1</span> 6.1 Visualizing the speed vs.&nbsp;performance tradeoff</a></li>
+  <li><a href="#visualizing-the-speed-vs.-performance-tradeoff" id="toc-visualizing-the-speed-vs.-performance-tradeoff" class="nav-link" data-scroll-target="#visualizing-the-speed-vs.-performance-tradeoff">6.1 Visualizing the speed vs.&nbsp;performance tradeoff</a></li>
   </ul></li>
-  <li><a href="#bringing-foodvision-mini-to-life-by-creating-a-gradio-demo" id="toc-bringing-foodvision-mini-to-life-by-creating-a-gradio-demo" class="nav-link" data-scroll-target="#bringing-foodvision-mini-to-life-by-creating-a-gradio-demo"><span class="header-section-number">11.13</span> 7. Bringing FoodVision Mini to life by creating a Gradio demo</a>
+  <li><a href="#bringing-foodvision-mini-to-life-by-creating-a-gradio-demo" id="toc-bringing-foodvision-mini-to-life-by-creating-a-gradio-demo" class="nav-link" data-scroll-target="#bringing-foodvision-mini-to-life-by-creating-a-gradio-demo">7. Bringing FoodVision Mini to life by creating a Gradio demo</a>
   <ul class="collapse">
-  <li><a href="#gradio-overview" id="toc-gradio-overview" class="nav-link" data-scroll-target="#gradio-overview"><span class="header-section-number">11.13.1</span> 7.1 Gradio overview</a></li>
-  <li><a href="#creating-a-function-to-map-our-inputs-and-outputs" id="toc-creating-a-function-to-map-our-inputs-and-outputs" class="nav-link" data-scroll-target="#creating-a-function-to-map-our-inputs-and-outputs"><span class="header-section-number">11.13.2</span> 7.2 Creating a function to map our inputs and outputs</a></li>
-  <li><a href="#creating-a-list-of-example-images" id="toc-creating-a-list-of-example-images" class="nav-link" data-scroll-target="#creating-a-list-of-example-images"><span class="header-section-number">11.13.3</span> 7.3 Creating a list of example images</a></li>
-  <li><a href="#building-a-gradio-interface" id="toc-building-a-gradio-interface" class="nav-link" data-scroll-target="#building-a-gradio-interface"><span class="header-section-number">11.13.4</span> 7.4 Building a Gradio interface</a></li>
+  <li><a href="#gradio-overview" id="toc-gradio-overview" class="nav-link" data-scroll-target="#gradio-overview">7.1 Gradio overview</a></li>
+  <li><a href="#creating-a-function-to-map-our-inputs-and-outputs" id="toc-creating-a-function-to-map-our-inputs-and-outputs" class="nav-link" data-scroll-target="#creating-a-function-to-map-our-inputs-and-outputs">7.2 Creating a function to map our inputs and outputs</a></li>
+  <li><a href="#creating-a-list-of-example-images" id="toc-creating-a-list-of-example-images" class="nav-link" data-scroll-target="#creating-a-list-of-example-images">7.3 Creating a list of example images</a></li>
+  <li><a href="#building-a-gradio-interface" id="toc-building-a-gradio-interface" class="nav-link" data-scroll-target="#building-a-gradio-interface">7.4 Building a Gradio interface</a></li>
   </ul></li>
-  <li><a href="#turning-our-foodvision-mini-gradio-demo-into-a-deployable-app" id="toc-turning-our-foodvision-mini-gradio-demo-into-a-deployable-app" class="nav-link" data-scroll-target="#turning-our-foodvision-mini-gradio-demo-into-a-deployable-app"><span class="header-section-number">11.14</span> 8. Turning our FoodVision Mini Gradio Demo into a deployable app</a>
+  <li><a href="#turning-our-foodvision-mini-gradio-demo-into-a-deployable-app" id="toc-turning-our-foodvision-mini-gradio-demo-into-a-deployable-app" class="nav-link" data-scroll-target="#turning-our-foodvision-mini-gradio-demo-into-a-deployable-app">8. Turning our FoodVision Mini Gradio Demo into a deployable app</a>
   <ul class="collapse">
-  <li><a href="#what-is-hugging-face-spaces" id="toc-what-is-hugging-face-spaces" class="nav-link" data-scroll-target="#what-is-hugging-face-spaces"><span class="header-section-number">11.14.1</span> 8.1 What is Hugging Face Spaces?</a></li>
-  <li><a href="#deployed-gradio-app-structure" id="toc-deployed-gradio-app-structure" class="nav-link" data-scroll-target="#deployed-gradio-app-structure"><span class="header-section-number">11.14.2</span> 8.2 Deployed Gradio app structure</a></li>
-  <li><a href="#creating-a-demos-folder-to-store-our-foodvision-mini-app-files" id="toc-creating-a-demos-folder-to-store-our-foodvision-mini-app-files" class="nav-link" data-scroll-target="#creating-a-demos-folder-to-store-our-foodvision-mini-app-files"><span class="header-section-number">11.14.3</span> 8.3 Creating a <code>demos</code> folder to store our FoodVision Mini app files</a></li>
-  <li><a href="#creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo" id="toc-creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo" class="nav-link" data-scroll-target="#creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo"><span class="header-section-number">11.14.4</span> 8.4 Creating a folder of example images to use with our FoodVision Mini demo</a></li>
-  <li><a href="#moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory" id="toc-moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory" class="nav-link" data-scroll-target="#moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory"><span class="header-section-number">11.14.5</span> 8.5 Moving our trained EffNetB2 model to our FoodVision Mini demo directory</a></li>
-  <li><a href="#turning-our-effnetb2-model-into-a-python-script-model.py" id="toc-turning-our-effnetb2-model-into-a-python-script-model.py" class="nav-link" data-scroll-target="#turning-our-effnetb2-model-into-a-python-script-model.py"><span class="header-section-number">11.14.6</span> 8.6 Turning our EffNetB2 model into a Python script (<code>model.py</code>)</a></li>
-  <li><a href="#turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py" id="toc-turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py" class="nav-link" data-scroll-target="#turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py"><span class="header-section-number">11.14.7</span> 8.7 Turning our FoodVision Mini Gradio app into a Python script (<code>app.py</code>)</a></li>
-  <li><a href="#creating-a-requirements-file-for-foodvision-mini-requirements.txt" id="toc-creating-a-requirements-file-for-foodvision-mini-requirements.txt" class="nav-link" data-scroll-target="#creating-a-requirements-file-for-foodvision-mini-requirements.txt"><span class="header-section-number">11.14.8</span> 8.8 Creating a requirements file for FoodVision Mini (<code>requirements.txt</code>)</a></li>
+  <li><a href="#what-is-hugging-face-spaces" id="toc-what-is-hugging-face-spaces" class="nav-link" data-scroll-target="#what-is-hugging-face-spaces">8.1 What is Hugging Face Spaces?</a></li>
+  <li><a href="#deployed-gradio-app-structure" id="toc-deployed-gradio-app-structure" class="nav-link" data-scroll-target="#deployed-gradio-app-structure">8.2 Deployed Gradio app structure</a></li>
+  <li><a href="#creating-a-demos-folder-to-store-our-foodvision-mini-app-files" id="toc-creating-a-demos-folder-to-store-our-foodvision-mini-app-files" class="nav-link" data-scroll-target="#creating-a-demos-folder-to-store-our-foodvision-mini-app-files">8.3 Creating a <code>demos</code> folder to store our FoodVision Mini app files</a></li>
+  <li><a href="#creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo" id="toc-creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo" class="nav-link" data-scroll-target="#creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo">8.4 Creating a folder of example images to use with our FoodVision Mini demo</a></li>
+  <li><a href="#moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory" id="toc-moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory" class="nav-link" data-scroll-target="#moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory">8.5 Moving our trained EffNetB2 model to our FoodVision Mini demo directory</a></li>
+  <li><a href="#turning-our-effnetb2-model-into-a-python-script-model.py" id="toc-turning-our-effnetb2-model-into-a-python-script-model.py" class="nav-link" data-scroll-target="#turning-our-effnetb2-model-into-a-python-script-model.py">8.6 Turning our EffNetB2 model into a Python script (<code>model.py</code>)</a></li>
+  <li><a href="#turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py" id="toc-turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py" class="nav-link" data-scroll-target="#turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py">8.7 Turning our FoodVision Mini Gradio app into a Python script (<code>app.py</code>)</a></li>
+  <li><a href="#creating-a-requirements-file-for-foodvision-mini-requirements.txt" id="toc-creating-a-requirements-file-for-foodvision-mini-requirements.txt" class="nav-link" data-scroll-target="#creating-a-requirements-file-for-foodvision-mini-requirements.txt">8.8 Creating a requirements file for FoodVision Mini (<code>requirements.txt</code>)</a></li>
   </ul></li>
-  <li><a href="#deploying-our-foodvision-mini-app-to-huggingface-spaces" id="toc-deploying-our-foodvision-mini-app-to-huggingface-spaces" class="nav-link" data-scroll-target="#deploying-our-foodvision-mini-app-to-huggingface-spaces"><span class="header-section-number">11.15</span> 9. Deploying our FoodVision Mini app to HuggingFace Spaces</a>
+  <li><a href="#deploying-our-foodvision-mini-app-to-huggingface-spaces" id="toc-deploying-our-foodvision-mini-app-to-huggingface-spaces" class="nav-link" data-scroll-target="#deploying-our-foodvision-mini-app-to-huggingface-spaces">9. Deploying our FoodVision Mini app to HuggingFace Spaces</a>
   <ul class="collapse">
-  <li><a href="#downloading-our-foodvision-mini-app-files" id="toc-downloading-our-foodvision-mini-app-files" class="nav-link" data-scroll-target="#downloading-our-foodvision-mini-app-files"><span class="header-section-number">11.15.1</span> 9.1 Downloading our FoodVision Mini app files</a></li>
-  <li><a href="#running-our-foodvision-mini-demo-locally" id="toc-running-our-foodvision-mini-demo-locally" class="nav-link" data-scroll-target="#running-our-foodvision-mini-demo-locally"><span class="header-section-number">11.15.2</span> 9.2 Running our FoodVision Mini demo locally</a></li>
-  <li><a href="#uploading-to-hugging-face" id="toc-uploading-to-hugging-face" class="nav-link" data-scroll-target="#uploading-to-hugging-face"><span class="header-section-number">11.15.3</span> 9.3 Uploading to Hugging Face</a></li>
+  <li><a href="#downloading-our-foodvision-mini-app-files" id="toc-downloading-our-foodvision-mini-app-files" class="nav-link" data-scroll-target="#downloading-our-foodvision-mini-app-files">9.1 Downloading our FoodVision Mini app files</a></li>
+  <li><a href="#running-our-foodvision-mini-demo-locally" id="toc-running-our-foodvision-mini-demo-locally" class="nav-link" data-scroll-target="#running-our-foodvision-mini-demo-locally">9.2 Running our FoodVision Mini demo locally</a></li>
+  <li><a href="#uploading-to-hugging-face" id="toc-uploading-to-hugging-face" class="nav-link" data-scroll-target="#uploading-to-hugging-face">9.3 Uploading to Hugging Face</a></li>
   </ul></li>
-  <li><a href="#creating-foodvision-big" id="toc-creating-foodvision-big" class="nav-link" data-scroll-target="#creating-foodvision-big"><span class="header-section-number">11.16</span> 10. Creating FoodVision Big</a>
+  <li><a href="#creating-foodvision-big" id="toc-creating-foodvision-big" class="nav-link" data-scroll-target="#creating-foodvision-big">10. Creating FoodVision Big</a>
   <ul class="collapse">
-  <li><a href="#creating-a-model-and-transforms-for-foodvision-big" id="toc-creating-a-model-and-transforms-for-foodvision-big" class="nav-link" data-scroll-target="#creating-a-model-and-transforms-for-foodvision-big"><span class="header-section-number">11.16.1</span> 10.1 Creating a model and transforms for FoodVision Big</a></li>
-  <li><a href="#getting-data-for-foodvision-big" id="toc-getting-data-for-foodvision-big" class="nav-link" data-scroll-target="#getting-data-for-foodvision-big"><span class="header-section-number">11.16.2</span> 10.2 Getting data for FoodVision Big</a></li>
-  <li><a href="#creating-a-subset-of-the-food101-dataset-for-faster-experimenting" id="toc-creating-a-subset-of-the-food101-dataset-for-faster-experimenting" class="nav-link" data-scroll-target="#creating-a-subset-of-the-food101-dataset-for-faster-experimenting"><span class="header-section-number">11.16.3</span> 10.3 Creating a subset of the Food101 dataset for faster experimenting</a></li>
-  <li><a href="#turning-our-food101-datasets-into-dataloaders" id="toc-turning-our-food101-datasets-into-dataloaders" class="nav-link" data-scroll-target="#turning-our-food101-datasets-into-dataloaders"><span class="header-section-number">11.16.4</span> 10.4 Turning our Food101 datasets into <code>DataLoader</code>s</a></li>
-  <li><a href="#training-foodvision-big-model" id="toc-training-foodvision-big-model" class="nav-link" data-scroll-target="#training-foodvision-big-model"><span class="header-section-number">11.16.5</span> 10.5 Training FoodVision Big model</a></li>
-  <li><a href="#inspecting-loss-curves-of-foodvision-big-model" id="toc-inspecting-loss-curves-of-foodvision-big-model" class="nav-link" data-scroll-target="#inspecting-loss-curves-of-foodvision-big-model"><span class="header-section-number">11.16.6</span> 10.6 Inspecting loss curves of FoodVision Big model</a></li>
-  <li><a href="#saving-and-loading-foodvision-big" id="toc-saving-and-loading-foodvision-big" class="nav-link" data-scroll-target="#saving-and-loading-foodvision-big"><span class="header-section-number">11.16.7</span> 10.7 Saving and loading FoodVision Big</a></li>
-  <li><a href="#checking-foodvision-big-model-size" id="toc-checking-foodvision-big-model-size" class="nav-link" data-scroll-target="#checking-foodvision-big-model-size"><span class="header-section-number">11.16.8</span> 10.8 Checking FoodVision Big model size</a></li>
+  <li><a href="#creating-a-model-and-transforms-for-foodvision-big" id="toc-creating-a-model-and-transforms-for-foodvision-big" class="nav-link" data-scroll-target="#creating-a-model-and-transforms-for-foodvision-big">10.1 Creating a model and transforms for FoodVision Big</a></li>
+  <li><a href="#getting-data-for-foodvision-big" id="toc-getting-data-for-foodvision-big" class="nav-link" data-scroll-target="#getting-data-for-foodvision-big">10.2 Getting data for FoodVision Big</a></li>
+  <li><a href="#creating-a-subset-of-the-food101-dataset-for-faster-experimenting" id="toc-creating-a-subset-of-the-food101-dataset-for-faster-experimenting" class="nav-link" data-scroll-target="#creating-a-subset-of-the-food101-dataset-for-faster-experimenting">10.3 Creating a subset of the Food101 dataset for faster experimenting</a></li>
+  <li><a href="#turning-our-food101-datasets-into-dataloaders" id="toc-turning-our-food101-datasets-into-dataloaders" class="nav-link" data-scroll-target="#turning-our-food101-datasets-into-dataloaders">10.4 Turning our Food101 datasets into <code>DataLoader</code>s</a></li>
+  <li><a href="#training-foodvision-big-model" id="toc-training-foodvision-big-model" class="nav-link" data-scroll-target="#training-foodvision-big-model">10.5 Training FoodVision Big model</a></li>
+  <li><a href="#inspecting-loss-curves-of-foodvision-big-model" id="toc-inspecting-loss-curves-of-foodvision-big-model" class="nav-link" data-scroll-target="#inspecting-loss-curves-of-foodvision-big-model">10.6 Inspecting loss curves of FoodVision Big model</a></li>
+  <li><a href="#saving-and-loading-foodvision-big" id="toc-saving-and-loading-foodvision-big" class="nav-link" data-scroll-target="#saving-and-loading-foodvision-big">10.7 Saving and loading FoodVision Big</a></li>
+  <li><a href="#checking-foodvision-big-model-size" id="toc-checking-foodvision-big-model-size" class="nav-link" data-scroll-target="#checking-foodvision-big-model-size">10.8 Checking FoodVision Big model size</a></li>
   </ul></li>
-  <li><a href="#turning-our-foodvision-big-model-into-a-deployable-app" id="toc-turning-our-foodvision-big-model-into-a-deployable-app" class="nav-link" data-scroll-target="#turning-our-foodvision-big-model-into-a-deployable-app"><span class="header-section-number">11.17</span> 11. Turning our FoodVision Big model into a deployable app</a>
+  <li><a href="#turning-our-foodvision-big-model-into-a-deployable-app" id="toc-turning-our-foodvision-big-model-into-a-deployable-app" class="nav-link" data-scroll-target="#turning-our-foodvision-big-model-into-a-deployable-app">11. Turning our FoodVision Big model into a deployable app</a>
   <ul class="collapse">
-  <li><a href="#downloading-an-example-image-and-moving-it-to-the-examples-directory" id="toc-downloading-an-example-image-and-moving-it-to-the-examples-directory" class="nav-link" data-scroll-target="#downloading-an-example-image-and-moving-it-to-the-examples-directory"><span class="header-section-number">11.17.1</span> 11.1 Downloading an example image and moving it to the <code>examples</code> directory</a></li>
-  <li><a href="#saving-food101-class-names-to-file-class_names.txt" id="toc-saving-food101-class-names-to-file-class_names.txt" class="nav-link" data-scroll-target="#saving-food101-class-names-to-file-class_names.txt"><span class="header-section-number">11.17.2</span> 11.2 Saving Food101 class names to file (<code>class_names.txt</code>)</a></li>
-  <li><a href="#turning-our-foodvision-big-model-into-a-python-script-model.py" id="toc-turning-our-foodvision-big-model-into-a-python-script-model.py" class="nav-link" data-scroll-target="#turning-our-foodvision-big-model-into-a-python-script-model.py"><span class="header-section-number">11.17.3</span> 11.3 Turning our FoodVision Big model into a Python script (<code>model.py</code>)</a></li>
-  <li><a href="#turning-our-foodvision-big-gradio-app-into-a-python-script-app.py" id="toc-turning-our-foodvision-big-gradio-app-into-a-python-script-app.py" class="nav-link" data-scroll-target="#turning-our-foodvision-big-gradio-app-into-a-python-script-app.py"><span class="header-section-number">11.17.4</span> 11.4 Turning our FoodVision Big Gradio app into a Python script (<code>app.py</code>)</a></li>
-  <li><a href="#creating-a-requirements-file-for-foodvision-big-requirements.txt" id="toc-creating-a-requirements-file-for-foodvision-big-requirements.txt" class="nav-link" data-scroll-target="#creating-a-requirements-file-for-foodvision-big-requirements.txt"><span class="header-section-number">11.17.5</span> 11.5 Creating a requirements file for FoodVision Big (<code>requirements.txt</code>)</a></li>
-  <li><a href="#downloading-our-foodvision-big-app-files" id="toc-downloading-our-foodvision-big-app-files" class="nav-link" data-scroll-target="#downloading-our-foodvision-big-app-files"><span class="header-section-number">11.17.6</span> 11.6 Downloading our FoodVision Big app files</a></li>
-  <li><a href="#deploying-our-foodvision-big-app-to-huggingface-spaces" id="toc-deploying-our-foodvision-big-app-to-huggingface-spaces" class="nav-link" data-scroll-target="#deploying-our-foodvision-big-app-to-huggingface-spaces"><span class="header-section-number">11.17.7</span> 11.7 Deploying our FoodVision Big app to HuggingFace Spaces</a></li>
+  <li><a href="#downloading-an-example-image-and-moving-it-to-the-examples-directory" id="toc-downloading-an-example-image-and-moving-it-to-the-examples-directory" class="nav-link" data-scroll-target="#downloading-an-example-image-and-moving-it-to-the-examples-directory">11.1 Downloading an example image and moving it to the <code>examples</code> directory</a></li>
+  <li><a href="#saving-food101-class-names-to-file-class_names.txt" id="toc-saving-food101-class-names-to-file-class_names.txt" class="nav-link" data-scroll-target="#saving-food101-class-names-to-file-class_names.txt">11.2 Saving Food101 class names to file (<code>class_names.txt</code>)</a></li>
+  <li><a href="#turning-our-foodvision-big-model-into-a-python-script-model.py" id="toc-turning-our-foodvision-big-model-into-a-python-script-model.py" class="nav-link" data-scroll-target="#turning-our-foodvision-big-model-into-a-python-script-model.py">11.3 Turning our FoodVision Big model into a Python script (<code>model.py</code>)</a></li>
+  <li><a href="#turning-our-foodvision-big-gradio-app-into-a-python-script-app.py" id="toc-turning-our-foodvision-big-gradio-app-into-a-python-script-app.py" class="nav-link" data-scroll-target="#turning-our-foodvision-big-gradio-app-into-a-python-script-app.py">11.4 Turning our FoodVision Big Gradio app into a Python script (<code>app.py</code>)</a></li>
+  <li><a href="#creating-a-requirements-file-for-foodvision-big-requirements.txt" id="toc-creating-a-requirements-file-for-foodvision-big-requirements.txt" class="nav-link" data-scroll-target="#creating-a-requirements-file-for-foodvision-big-requirements.txt">11.5 Creating a requirements file for FoodVision Big (<code>requirements.txt</code>)</a></li>
+  <li><a href="#downloading-our-foodvision-big-app-files" id="toc-downloading-our-foodvision-big-app-files" class="nav-link" data-scroll-target="#downloading-our-foodvision-big-app-files">11.6 Downloading our FoodVision Big app files</a></li>
+  <li><a href="#deploying-our-foodvision-big-app-to-huggingface-spaces" id="toc-deploying-our-foodvision-big-app-to-huggingface-spaces" class="nav-link" data-scroll-target="#deploying-our-foodvision-big-app-to-huggingface-spaces">11.7 Deploying our FoodVision Big app to HuggingFace Spaces</a></li>
   </ul></li>
-  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways"><span class="header-section-number">11.18</span> Main takeaways</a></li>
-  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제"><span class="header-section-number">11.19</span> 연습 문제</a></li>
-  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료"><span class="header-section-number">11.20</span> 추가 학습 자료</a></li>
+  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways">Main takeaways</a></li>
+  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제">연습 문제</a></li>
+  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료">추가 학습 자료</a></li>
   </ul>
 </nav>
     </div>
@@ -327,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></h1>
+<h1 class="title"><span class="chapter-title">09 - PyTorch 모델 배포</span></h1>
 </div>
 
 
@@ -353,8 +342,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In other words, <strong>we’re going to deploy our FoodVision Mini model to the internet as a usable app!</strong></p>
 <p><img src="images/09-model-deployment-what-were-doing-demo-trimmed-cropped-small.png" alt="demo of foodvision mini computer vision model being used on a mobile device to predict on an image of sushi and getting it right" width="900/"></p>
 <p><em>Trying out the <a href="https://huggingface.co/spaces/mrdbourke/foodvision_mini">deployed version of FoodVision Mini</a> (what we’re going to build) on my lunch. The model got it right too 🍣!</em></p>
-<section id="what-is-machine-learning-model-deployment" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="what-is-machine-learning-model-deployment"><span class="header-section-number">11.1</span> What is machine learning model deployment?</h2>
+<section id="what-is-machine-learning-model-deployment" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-machine-learning-model-deployment">What is machine learning model deployment?</h2>
 <p><strong>Machine learning model deployment</strong> is the process of making your machine learning model accessible to someone or something else.</p>
 <p>Someone else being a person who can interact with your model in some way.</p>
 <p>For example, someone taking a photo on their smartphone of food and then having our FoodVision Mini model classify it into pizza, steak or sushi.</p>
@@ -366,8 +355,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-what-is-model-deployment-someone-or-something-else.png" width="900" alt="two use cases for model deployment, making your model available to someone else, for example, someone using it in an app, or making it available to something else such as another program or model"></p>
 <p><em>Machine learning model deployment involves making your model available to someone or something else. For example, someone might use your model as part of a food recognition app (such as FoodVision Mini or <a href="https://nutrify.app">Nutrify</a>). And something else might be another model or program using your model such as a banking system using a machine learning model to detect if a transaction is fraud or not.</em></p>
 </section>
-<section id="why-deploy-a-machine-learning-model" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="why-deploy-a-machine-learning-model"><span class="header-section-number">11.2</span> Why deploy a machine learning model?</h2>
+<section id="why-deploy-a-machine-learning-model" class="level2">
+<h2 class="anchored" data-anchor-id="why-deploy-a-machine-learning-model">Why deploy a machine learning model?</h2>
 <p>One of the most important philosophical questions in machine learning is:</p>
 <div data-align="center">
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-does-it-exist.jpeg" alt="curious dinosaur often referred to as philosoraptor asking the question if a machine learning model never leaves a notebook, does it exist?" width="300/"></p>
@@ -386,8 +375,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-pytorch-workflow-with-deployment.png" alt="A PyTorch workflow with added model deployment and monitoring step" width="900/"></p>
 <p><em>We covered a PyTorch workflow back in <a href="https://www.learnpytorch.io/01_pytorch_workflow/">01. PyTorch Workflow</a>. But once you’ve got a good model, deployment is a good next step. Monitoring involves seeing how your model goes on the most important data split: data from the real world. For more resources on deployment and monitoring see <a href="https://www.learnpytorch.io/pytorch_extra_resources/#resources-for-machine-learning-and-deep-learning-engineering">PyTorch Extra Resources</a>.</em></p>
 </section>
-<section id="different-types-of-machine-learning-model-deployment" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="different-types-of-machine-learning-model-deployment"><span class="header-section-number">11.3</span> Different types of machine learning model deployment</h2>
+<section id="different-types-of-machine-learning-model-deployment" class="level2">
+<h2 class="anchored" data-anchor-id="different-types-of-machine-learning-model-deployment">Different types of machine learning model deployment</h2>
 <p>Whole books could be written on the different types of machine learning model deployment (and many good ones are listed in <a href="https://www.learnpytorch.io/pytorch_extra_resources/#resources-for-machine-learning-and-deep-learning-engineering">PyTorch Extra Resources</a>).</p>
 <p>And the field is still developing in terms of best practices.</p>
 <p>But I like to start with the question:</p>
@@ -415,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-deployment-questions-to-ask.png" alt="some questions to ask when starting to deploy machine learning models, what's the model ideal use case, then work backwards and ask where's my model going to go and how's my model going to function" width="900/"></p>
 <p><em>When starting to deploy machine learning models, it’s helpful to start by asking what’s the most ideal use case and then work backwards from there, asking where the model’s going to go and then how it’s going to function.</em></p>
-<section id="wheres-it-going-to-go" class="level3" data-number="11.3.1">
-<h3 data-number="11.3.1" class="anchored" data-anchor-id="wheres-it-going-to-go"><span class="header-section-number">11.3.1</span> Where’s it going to go?</h3>
+<section id="wheres-it-going-to-go" class="level3">
+<h3 class="anchored" data-anchor-id="wheres-it-going-to-go">Where’s it going to go?</h3>
 <p>When you deploy your machine learning model, where does it live?</p>
 <p>The main debate here is usually on-device (also called edge/in the browser) or on the cloud (a computer/server that isn’t the <em>actual</em> device someone/something calls the model from).</p>
 <p>Both have their pros and cons.</p>
@@ -489,8 +478,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>참고:</strong> For a full example of seeing what it’s like to deploy a PyTorch model to an edge device, see the <a href="https://pytorch.org/tutorials/intermediate/realtime_rpi.html">PyTorch tutorial on achieving real-time inference (30fps+)</a> with a computer vision model on a Raspberry Pi.</p>
 </blockquote>
 </section>
-<section id="hows-it-going-to-function" class="level3" data-number="11.3.2">
-<h3 data-number="11.3.2" class="anchored" data-anchor-id="hows-it-going-to-function"><span class="header-section-number">11.3.2</span> How’s it going to function?</h3>
+<section id="hows-it-going-to-function" class="level3">
+<h3 class="anchored" data-anchor-id="hows-it-going-to-function">How’s it going to function?</h3>
 <p>Back to the ideal use case, when you deploy your machine learning model, how should it work?</p>
 <p>As in, would you like predictions returned immediately?</p>
 <p>Or is it okay for them to happen later?</p>
@@ -508,8 +497,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the case of FoodVision Mini, we’d want our inference pipeline to happen online (real-time), so when someone uploads an image of pizza, steak or sushi, the prediction results are returned immediately (any slower than real-time would make a boring experience).</p>
 <p>But for our training pipeline, it’s okay for it to happen in a batch (offline) fashion, which is what we’ve been doing throughout the previous chapters.</p>
 </section>
-<section id="ways-to-deploy-a-machine-learning-model" class="level3" data-number="11.3.3">
-<h3 data-number="11.3.3" class="anchored" data-anchor-id="ways-to-deploy-a-machine-learning-model"><span class="header-section-number">11.3.3</span> Ways to deploy a machine learning model</h3>
+<section id="ways-to-deploy-a-machine-learning-model" class="level3">
+<h3 class="anchored" data-anchor-id="ways-to-deploy-a-machine-learning-model">Ways to deploy a machine learning model</h3>
 <p>We’ve discussed a couple of options for deploying machine learning models (on-device and cloud).</p>
 <p>And each of these will have their specific requirements:</p>
 <table class="caption-top table">
@@ -574,8 +563,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>A handful of places and tools to host and deploy machine learning models. There are plenty I’ve missed so if you’d like to add more, please leave a <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">discussion on GitHub</a>.</em></p>
 </section>
 </section>
-<section id="이번-장에서-다룰-내용" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="이번-장에서-다룰-내용"><span class="header-section-number">11.4</span> 이번 장에서 다룰 내용</h2>
+<section id="이번-장에서-다룰-내용" class="level2">
+<h2 class="anchored" data-anchor-id="이번-장에서-다룰-내용">이번 장에서 다룰 내용</h2>
 <p>Enough talking about deploying a machine learning model.</p>
 <p>Let’s become machine learning engineers and actually deploy one.</p>
 <p>Our goal is to deploy our FoodVision Model via a demo Gradio app with the following metrics: 1. <strong>Performance:</strong> 95%+ accuracy. 2. <strong>Speed:</strong> real-time inference of 30FPS+ (each prediction has a latency of lower than ~0.03s).</p>
@@ -641,14 +630,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="where-can-you-get-help" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="where-can-you-get-help"><span class="header-section-number">11.5</span> Where can you get help?</h2>
+<section id="where-can-you-get-help" class="level2">
+<h2 class="anchored" data-anchor-id="where-can-you-get-help">Where can you get help?</h2>
 <p>All of the materials for this course <a href="https://github.com/mrdbourke/pytorch-deep-learning">are available on GitHub</a>.</p>
 <p>If you run into trouble, you can ask a question on the course <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">GitHub Discussions page</a>.</p>
 <p>And of course, there’s the <a href="https://pytorch.org/docs/stable/index.html">PyTorch documentation</a> and <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
 </section>
-<section id="getting-setup" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="getting-setup"><span class="header-section-number">11.6</span> 0. Getting setup</h2>
+<section id="getting-setup" class="level2">
+<h2 class="anchored" data-anchor-id="getting-setup">0. Getting setup</h2>
 <p>As we’ve done previously, let’s make sure we’ve got all of the modules we’ll need for this section.</p>
 <p>We’ll import the Python scripts (such as <code>data_setup.py</code> and <code>engine.py</code>) we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/">05. PyTorch Going Modular</a>.</p>
 <p>To do so, we’ll download <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/going_modular"><code>going_modular</code></a> directory from the <a href="https://github.com/mrdbourke/pytorch-deep-learning"><code>pytorch-deep-learning</code> repository</a> (if we don’t already have it).</p>
@@ -727,8 +716,8 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 </div>
 </div>
 </section>
-<section id="getting-data" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="getting-data"><span class="header-section-number">11.7</span> 1. Getting data</h2>
+<section id="getting-data" class="level2">
+<h2 class="anchored" data-anchor-id="getting-data">1. Getting data</h2>
 <p>We left off in <a href="https://www.learnpytorch.io/08_pytorch_paper_replicating/#106-save-feature-extractor-vit-model-and-check-file-size">08. PyTorch Paper Replicating</a> comparing our own Vision Transformer (ViT) feature extractor model to the EfficientNetB2 (EffNetB2) feature extractor model we created in <a href="https://www.learnpytorch.io/07_pytorch_experiment_tracking/#9-load-in-the-best-model-and-make-predictions-with-it">07. PyTorch Experiment Tracking</a>.</p>
 <p>And we found that there was a slight difference in the comparison.</p>
 <p>The EffNetB2 model was trained on 20% of the pizza, steak and sushi data from Food101 where as the ViT model was trained on 10%.</p>
@@ -759,8 +748,8 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>test_dir <span class="op">=</span> data_20_percent_path <span class="op">/</span> <span class="st">"test"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="foodvision-mini-model-deployment-experiment-outline" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="foodvision-mini-model-deployment-experiment-outline"><span class="header-section-number">11.8</span> 2. FoodVision Mini model deployment experiment outline</h2>
+<section id="foodvision-mini-model-deployment-experiment-outline" class="level2">
+<h2 class="anchored" data-anchor-id="foodvision-mini-model-deployment-experiment-outline">2. FoodVision Mini model deployment experiment outline</h2>
 <p>The ideal deployed model FoodVision Mini performs well and fast.</p>
 <p>We’d like our model to perform as close to real-time as possible.</p>
 <p>Real-time in this case being ~30FPS (frames per second) because that’s <a href="https://www.healthline.com/health/human-eye-fps">about how fast the human eye can see</a> (there is debate on this but let’s just use ~30FPS as our benchmark).</p>
@@ -787,8 +776,8 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 <p><strong>참고:</strong> A “feature extractor model” often starts with a model that has been pretrained on a dataset similar to your own problem. The pretrained model’s base layers are often left frozen (the pretrained patterns/weights stay the same) whilst some of the top (or classifier/classification head) layers get customized to your own problem by training on your own data. We covered the concept of a feature extractor model in <a href="https://www.learnpytorch.io/06_pytorch_transfer_learning/#34-freezing-the-base-model-and-changing-the-output-layer-to-suit-our-needs">06. PyTorch Transfer Learning section 3.4</a>.</p>
 </blockquote>
 </section>
-<section id="creating-an-effnetb2-feature-extractor" class="level2" data-number="11.9">
-<h2 data-number="11.9" class="anchored" data-anchor-id="creating-an-effnetb2-feature-extractor"><span class="header-section-number">11.9</span> 3. Creating an EffNetB2 feature extractor</h2>
+<section id="creating-an-effnetb2-feature-extractor" class="level2">
+<h2 class="anchored" data-anchor-id="creating-an-effnetb2-feature-extractor">3. Creating an EffNetB2 feature extractor</h2>
 <p>We first created an EffNetB2 feature extractor model in <a href="https://www.learnpytorch.io/07_pytorch_experiment_tracking/#75-create-feature-extractor-models">07. PyTorch Experiment Tracking section 7.5</a>.</p>
 <p>And by the end of that section we saw it performed very well.</p>
 <p>So let’s now recreate it here so we can compare its results to a ViT feature extractor trained on the same data.</p>
@@ -830,8 +819,8 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>              out_features<span class="op">=</span><span class="dv">3</span>)) <span class="co"># change out_features to suit our number of classes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Beautiful!</p>
-<section id="creating-a-function-to-make-an-effnetb2-feature-extractor" class="level3" data-number="11.9.1">
-<h3 data-number="11.9.1" class="anchored" data-anchor-id="creating-a-function-to-make-an-effnetb2-feature-extractor"><span class="header-section-number">11.9.1</span> 3.1 Creating a function to make an EffNetB2 feature extractor</h3>
+<section id="creating-a-function-to-make-an-effnetb2-feature-extractor" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-function-to-make-an-effnetb2-feature-extractor">3.1 Creating a function to make an EffNetB2 feature extractor</h3>
 <p>Looks like our EffNetB2 feature extractor is ready to go, however, since there’s quite a few steps involved here, how about we turn the code above into a function we can re-use later?</p>
 <p>We’ll call it <code>create_effnetb2_model()</code> and it’ll take a customizable number of classes and a random seed parameter for reproducibility.</p>
 <p>Ideally, it will return an EffNetB2 feature extractor along with its associated transforms.</p>
@@ -886,8 +875,8 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-effnetb2-feature-extractor.png" alt="effnetb2 feature extractor model summary" width="900/"></p>
 <p>Base layers frozen, top layers trainable and customized!</p>
 </section>
-<section id="creating-dataloaders-for-effnetb2" class="level3" data-number="11.9.2">
-<h3 data-number="11.9.2" class="anchored" data-anchor-id="creating-dataloaders-for-effnetb2"><span class="header-section-number">11.9.2</span> 3.2 Creating DataLoaders for EffNetB2</h3>
+<section id="creating-dataloaders-for-effnetb2" class="level3">
+<h3 class="anchored" data-anchor-id="creating-dataloaders-for-effnetb2">3.2 Creating DataLoaders for EffNetB2</h3>
 <p>Our EffNetB2 feature extractor is ready, time to create some <code>DataLoader</code>s.</p>
 <p>We can do this by using the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/data_setup.py"><code>data_setup.create_dataloaders()</code></a> function we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#2-create-datasets-and-dataloaders-data_setuppy">05. PyTorch Going Modular section 2</a>.</p>
 <p>We’ll use a <code>batch_size</code> of 32 and transform our images using the <code>effnetb2_transforms</code> so they’re in the same format that our <code>effnetb2</code> model was trained on.</p>
@@ -900,8 +889,8 @@ torchvision version: 0.14.0.dev20220824+cu113</code></pre>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                                                                                                 batch_size<span class="op">=</span><span class="dv">32</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="training-effnetb2-feature-extractor" class="level3" data-number="11.9.3">
-<h3 data-number="11.9.3" class="anchored" data-anchor-id="training-effnetb2-feature-extractor"><span class="header-section-number">11.9.3</span> 3.3 Training EffNetB2 feature extractor</h3>
+<section id="training-effnetb2-feature-extractor" class="level3">
+<h3 class="anchored" data-anchor-id="training-effnetb2-feature-extractor">3.3 Training EffNetB2 feature extractor</h3>
 <p>Model ready, <code>DataLoader</code>s ready, let’s train!</p>
 <p>Just like in <a href="https://www.learnpytorch.io/07_pytorch_experiment_tracking/#76-create-experiments-and-set-up-training-code">07. PyTorch Experiment Tracking section 7.6</a>, ten epochs should be enough to get good results.</p>
 <p>We can do so by creating an optimizer (we’ll use <a href="https://pytorch.org/docs/stable/generated/torch.optim.Adam.html#torch.optim.Adam"><code>torch.optim.Adam()</code></a> with a learning rate of <code>1e-3</code>), a loss function (we’ll use <a href="https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html"><code>torch.nn.CrossEntropyLoss()</code></a> for multi-class classification) and then passing these as well as our <code>DataLoader</code>s to the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/engine.py"><code>engine.train()</code></a> function we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#4-creating-train_step-and-test_step-functions-and-train-to-combine-them">05. PyTorch Going Modular section 4</a>.</p>
@@ -942,8 +931,8 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 </div>
 </div>
 </section>
-<section id="inspecting-effnetb2-loss-curves" class="level3" data-number="11.9.4">
-<h3 data-number="11.9.4" class="anchored" data-anchor-id="inspecting-effnetb2-loss-curves"><span class="header-section-number">11.9.4</span> 3.4 Inspecting EffNetB2 loss curves</h3>
+<section id="inspecting-effnetb2-loss-curves" class="level3">
+<h3 class="anchored" data-anchor-id="inspecting-effnetb2-loss-curves">3.4 Inspecting EffNetB2 loss curves</h3>
 <p>Nice!</p>
 <p>As we saw in 07. PyTorch Experiment Tracking, the EffNetB2 feature extractor model works quite well on our data.</p>
 <p>Let’s turn its results into loss curves to inspect them further.</p>
@@ -966,8 +955,8 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 <p>Those are some nice looking loss curves.</p>
 <p>It looks like our model is performing quite well and perhaps would benefit from a little longer training and potentially some <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#6-other-forms-of-transforms-data-augmentation">data augmentation</a> (to help prevent potential overfitting occurring from longer training).</p>
 </section>
-<section id="saving-effnetb2-feature-extractor" class="level3" data-number="11.9.5">
-<h3 data-number="11.9.5" class="anchored" data-anchor-id="saving-effnetb2-feature-extractor"><span class="header-section-number">11.9.5</span> 3.5 Saving EffNetB2 feature extractor</h3>
+<section id="saving-effnetb2-feature-extractor" class="level3">
+<h3 class="anchored" data-anchor-id="saving-effnetb2-feature-extractor">3.5 Saving EffNetB2 feature extractor</h3>
 <p>Now we’ve got a well-performing trained model, let’s save it to file so we can import and use it later.</p>
 <p>To save our model we can use the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/utils.py"><code>utils.save_model()</code></a> function we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#5-creating-a-function-to-save-the-model-utilspy">05. PyTorch Going Modular section 5</a>.</p>
 <p>We’ll set the <code>target_dir</code> to <code>"models"</code> and the <code>model_name</code> to <code>"09_pretrained_effnetb2_feature_extractor_pizza_steak_sushi_20_percent.pth"</code> (a little comprehensive but at least we know what’s going on).</p>
@@ -983,8 +972,8 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 </div>
 </div>
 </section>
-<section id="checking-the-size-of-effnetb2-feature-extractor" class="level3" data-number="11.9.6">
-<h3 data-number="11.9.6" class="anchored" data-anchor-id="checking-the-size-of-effnetb2-feature-extractor"><span class="header-section-number">11.9.6</span> 3.6 Checking the size of EffNetB2 feature extractor</h3>
+<section id="checking-the-size-of-effnetb2-feature-extractor" class="level3">
+<h3 class="anchored" data-anchor-id="checking-the-size-of-effnetb2-feature-extractor">3.6 Checking the size of EffNetB2 feature extractor</h3>
 <p>Since one of our criteria for deploying a model to power FoodVision Mini is <strong>speed</strong> (~30FPS or better), let’s check the size of our model.</p>
 <p>Why check the size?</p>
 <p>Well, while not always the case, the size of a model can influence its inference speed.</p>
@@ -1002,8 +991,8 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 </div>
 </div>
 </section>
-<section id="collecting-effnetb2-feature-extractor-stats" class="level3" data-number="11.9.7">
-<h3 data-number="11.9.7" class="anchored" data-anchor-id="collecting-effnetb2-feature-extractor-stats"><span class="header-section-number">11.9.7</span> 3.7 Collecting EffNetB2 feature extractor stats</h3>
+<section id="collecting-effnetb2-feature-extractor-stats" class="level3">
+<h3 class="anchored" data-anchor-id="collecting-effnetb2-feature-extractor-stats">3.7 Collecting EffNetB2 feature extractor stats</h3>
 <p>We’ve got a few statistics about our EffNetB2 feature extractor model such as test loss, test accuracy and model size, how about we collect them all in a dictionary so we can compare them to the upcoming ViT feature extractor.</p>
 <p>And we’ll calculate an extra one for fun, total number of parameters.</p>
 <p>We can do so by counting the number of elements (or patterns/weights) in <code>effnetb2.parameters()</code>. We’ll access the number of elements in each parameter using the <a href="https://pytorch.org/docs/stable/generated/torch.numel.html"><code>torch.numel()</code></a> (short for “number of elements”) method.</p>
@@ -1036,8 +1025,8 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 <p>Criteria number 1: perform at 95%+ accuracy, tick!</p>
 </section>
 </section>
-<section id="creating-a-vit-feature-extractor" class="level2" data-number="11.10">
-<h2 data-number="11.10" class="anchored" data-anchor-id="creating-a-vit-feature-extractor"><span class="header-section-number">11.10</span> 4. Creating a ViT feature extractor</h2>
+<section id="creating-a-vit-feature-extractor" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-vit-feature-extractor">4. Creating a ViT feature extractor</h2>
 <p>Time to continue with our FoodVision Mini modelling experiments.</p>
 <p>This time we’re going to create a ViT feature extractor.</p>
 <p>And we’ll do it in much the same way as the EffNetB2 feature extractor except this time with <a href="https://pytorch.org/vision/stable/models/generated/torchvision.models.vit_b_16.html#torchvision.models.vit_b_16"><code>torchvision.models.vit_b_16()</code></a> instead of <code>torchvision.models.efficientnet_b2()</code>.</p>
@@ -1106,8 +1095,8 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 <p>Just like our EffNetB2 feature extractor model, our ViT model’s base layers are frozen and the output layer is customized to our needs!</p>
 <p>Do you notice the big difference though?</p>
 <p>Our ViT model has <em>far</em> more parameters than our EffNetB2 model. Perhaps this will come into play when we compare our models across speed and performance later on.</p>
-<section id="create-dataloaders-for-vit" class="level3" data-number="11.10.1">
-<h3 data-number="11.10.1" class="anchored" data-anchor-id="create-dataloaders-for-vit"><span class="header-section-number">11.10.1</span> 4.1 Create DataLoaders for ViT</h3>
+<section id="create-dataloaders-for-vit" class="level3">
+<h3 class="anchored" data-anchor-id="create-dataloaders-for-vit">4.1 Create DataLoaders for ViT</h3>
 <p>We’ve got our ViT model ready, now let’s create some <code>DataLoader</code>s for it.</p>
 <p>We’ll do this in the same way we did for EffNetB2 except we’ll use <code>vit_transforms</code> to transform our images into the same format the ViT model was trained on.</p>
 <div id="cell-61" class="cell" data-execution_count="23">
@@ -1119,8 +1108,8 @@ Epoch: 10 | train_loss: 0.3757 | train_acc: 0.8604 | test_loss: 0.2813 | test_ac
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                                                                                       batch_size<span class="op">=</span><span class="dv">32</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="training-vit-feature-extractor" class="level3" data-number="11.10.2">
-<h3 data-number="11.10.2" class="anchored" data-anchor-id="training-vit-feature-extractor"><span class="header-section-number">11.10.2</span> 4.2 Training ViT feature extractor</h3>
+<section id="training-vit-feature-extractor" class="level3">
+<h3 class="anchored" data-anchor-id="training-vit-feature-extractor">4.2 Training ViT feature extractor</h3>
 <p>You know what time it is…</p>
 <p>…it’s traininggggggg time (sung in the same tune as the song <a href="https://youtu.be/xGytDsqkQY8">Closing Time</a>).</p>
 <p>Let’s train our ViT feature extractor model for 10 epochs using our <code>engine.train()</code> function with <code>torch.optim.Adam()</code> and a learning rate of <code>1e-3</code> as our optimizer and <code>torch.nn.CrossEntropyLoss()</code> as our loss function.</p>
@@ -1162,8 +1151,8 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 </div>
 </div>
 </section>
-<section id="inspecting-vit-loss-curves" class="level3" data-number="11.10.3">
-<h3 data-number="11.10.3" class="anchored" data-anchor-id="inspecting-vit-loss-curves"><span class="header-section-number">11.10.3</span> 4.3 Inspecting ViT loss curves</h3>
+<section id="inspecting-vit-loss-curves" class="level3">
+<h3 class="anchored" data-anchor-id="inspecting-vit-loss-curves">4.3 Inspecting ViT loss curves</h3>
 <p>Alright, alright, alright, ViT model trained, let’s get visual and see some loss curves.</p>
 <blockquote class="blockquote">
 <p><strong>참고:</strong> Don’t forget you can see what an ideal set of loss curves should look like in <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#8-what-should-an-ideal-loss-curve-look-like">04. PyTorch Custom Datasets section 8</a>.</p>
@@ -1183,8 +1172,8 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 <p>Ohh yeah!</p>
 <p>Those are some nice looking loss curves. Just like our EffNetB2 feature extractor model, it looks our ViT model might benefit from a little longer training time and perhaps some <a href="https://www.learnpytorch.io/04_pytorch_custom_datasets/#6-other-forms-of-transforms-data-augmentation">data augmentation</a> (to help prevent overfitting).</p>
 </section>
-<section id="saving-vit-feature-extractor" class="level3" data-number="11.10.4">
-<h3 data-number="11.10.4" class="anchored" data-anchor-id="saving-vit-feature-extractor"><span class="header-section-number">11.10.4</span> 4.4 Saving ViT feature extractor</h3>
+<section id="saving-vit-feature-extractor" class="level3">
+<h3 class="anchored" data-anchor-id="saving-vit-feature-extractor">4.4 Saving ViT feature extractor</h3>
 <p>Our ViT model is performing outstanding!</p>
 <p>So let’s save it to file so we can import it and use it later if we wish.</p>
 <p>We can do so using the <code>utils.save_model()</code> function we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#5-creating-a-function-to-save-the-model-utilspy">05. PyTorch Going Modular section 5</a>.</p>
@@ -1200,8 +1189,8 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 </div>
 </div>
 </section>
-<section id="checking-the-size-of-vit-feature-extractor" class="level3" data-number="11.10.5">
-<h3 data-number="11.10.5" class="anchored" data-anchor-id="checking-the-size-of-vit-feature-extractor"><span class="header-section-number">11.10.5</span> 4.5 Checking the size of ViT feature extractor</h3>
+<section id="checking-the-size-of-vit-feature-extractor" class="level3">
+<h3 class="anchored" data-anchor-id="checking-the-size-of-vit-feature-extractor">4.5 Checking the size of ViT feature extractor</h3>
 <p>And since we want to compare our EffNetB2 model to our ViT model across a number of characteristics, let’s find out its size.</p>
 <p>To check our model’s size in bytes, we can use Python’s <code>pathlib.Path.stat("path_to_model").st_size</code> and then we can convert it (roughly) to megabytes by dividing it by <code>(1024*1024)</code>.</p>
 <div id="cell-70" class="cell" data-execution_count="27">
@@ -1217,8 +1206,8 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 <p>Hmm, how does the ViT feature extractor model size compare to our EffNetB2 model size?</p>
 <p>We’ll find this out shortly when we compare all of our model’s characteristics.</p>
 </section>
-<section id="collecting-vit-feature-extractor-stats" class="level3" data-number="11.10.6">
-<h3 data-number="11.10.6" class="anchored" data-anchor-id="collecting-vit-feature-extractor-stats"><span class="header-section-number">11.10.6</span> 4.6 Collecting ViT feature extractor stats</h3>
+<section id="collecting-vit-feature-extractor-stats" class="level3">
+<h3 class="anchored" data-anchor-id="collecting-vit-feature-extractor-stats">4.6 Collecting ViT feature extractor stats</h3>
 <p>Let’s put together all of our ViT feature extractor model statistics.</p>
 <p>We saw it in the summary output above but we’ll calculate its total number of parameters.</p>
 <div id="cell-73" class="cell" data-execution_count="28">
@@ -1252,8 +1241,8 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 <p>Nice! Looks like our ViT model achieves over 95% accuracy too.</p>
 </section>
 </section>
-<section id="making-predictions-with-our-trained-models-and-timing-them" class="level2" data-number="11.11">
-<h2 data-number="11.11" class="anchored" data-anchor-id="making-predictions-with-our-trained-models-and-timing-them"><span class="header-section-number">11.11</span> 5. Making predictions with our trained models and timing them</h2>
+<section id="making-predictions-with-our-trained-models-and-timing-them" class="level2">
+<h2 class="anchored" data-anchor-id="making-predictions-with-our-trained-models-and-timing-them">5. Making predictions with our trained models and timing them</h2>
 <p>We’ve got a couple of trained models, both performing pretty well.</p>
 <p>Now how about we test them out doing what we’d like them to do?</p>
 <p>As in, let’s see how they go making predictions (performing inference).</p>
@@ -1285,8 +1274,8 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
  PosixPath('data/pizza_steak_sushi_20_percent/test/steak/730464.jpg')]</code></pre>
 </div>
 </div>
-<section id="creating-a-function-to-make-predictions-across-the-test-dataset" class="level3" data-number="11.11.1">
-<h3 data-number="11.11.1" class="anchored" data-anchor-id="creating-a-function-to-make-predictions-across-the-test-dataset"><span class="header-section-number">11.11.1</span> 5.1 Creating a function to make predictions across the test dataset</h3>
+<section id="creating-a-function-to-make-predictions-across-the-test-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-function-to-make-predictions-across-the-test-dataset">5.1 Creating a function to make predictions across the test dataset</h3>
 <p>Now we’ve got a list of our test image paths, let’s get to work on our <code>pred_and_store()</code> function:</p>
 <ol type="1">
 <li>Create a function that takes a list of paths, a trained PyTorch model, a series of transforms (to prepare images), a list of target class names and a target device.</li>
@@ -1378,8 +1367,8 @@ Epoch: 10 | train_loss: 0.0662 | train_acc: 0.9833 | test_loss: 0.0642 | test_ac
 <p>What a good looking function!</p>
 <p>And you know what, since our <code>pred_and_store()</code> is a pretty good utility function for making and storing predictions, it could be stored to <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/going_modular/going_modular/predictions.py"><code>going_modular.going_modular.predictions.py</code></a> for later use. That might be an extension you’d like to try, check out <a href="https://www.learnpytorch.io/05_pytorch_going_modular/">05. PyTorch Going Modular</a> for ideas.</p>
 </section>
-<section id="making-and-timing-predictions-with-effnetb2" class="level3" data-number="11.11.2">
-<h3 data-number="11.11.2" class="anchored" data-anchor-id="making-and-timing-predictions-with-effnetb2"><span class="header-section-number">11.11.2</span> 5.2 Making and timing predictions with EffNetB2</h3>
+<section id="making-and-timing-predictions-with-effnetb2" class="level3">
+<h3 class="anchored" data-anchor-id="making-and-timing-predictions-with-effnetb2">5.2 Making and timing predictions with EffNetB2</h3>
 <p>Time to test out our <code>pred_and_store()</code> function!</p>
 <p>Let’s start by using it to make predictions across the test dataset with our EffNetB2 model, paying attention to two details:</p>
 <ol type="1">
@@ -1539,8 +1528,8 @@ Name: correct, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="making-and-timing-predictions-with-vit" class="level3" data-number="11.11.3">
-<h3 data-number="11.11.3" class="anchored" data-anchor-id="making-and-timing-predictions-with-vit"><span class="header-section-number">11.11.3</span> 5.3 Making and timing predictions with ViT</h3>
+<section id="making-and-timing-predictions-with-vit" class="level3">
+<h3 class="anchored" data-anchor-id="making-and-timing-predictions-with-vit">5.3 Making and timing predictions with ViT</h3>
 <p>We’ve made predictions with our EffNetB2 model, now let’s do the same for our ViT model.</p>
 <p>To do so, we can use the <code>pred_and_store()</code> function we created above except this time we’ll pass in our <code>vit</code> model as well as the <code>vit_transforms</code>.</p>
 <p>And we’ll keep the predictions on the CPU via <code>device="cpu"</code> (a natural extension here would be to test the prediction times on CPU and on GPU).</p>
@@ -1693,8 +1682,8 @@ Name: correct, dtype: int64</code></pre>
 </div>
 </section>
 </section>
-<section id="comparing-model-results-prediction-times-and-size" class="level2" data-number="11.12">
-<h2 data-number="11.12" class="anchored" data-anchor-id="comparing-model-results-prediction-times-and-size"><span class="header-section-number">11.12</span> 6. Comparing model results, prediction times and size</h2>
+<section id="comparing-model-results-prediction-times-and-size" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-model-results-prediction-times-and-size">6. Comparing model results, prediction times and size</h2>
 <p>Our two best model contenders have been trained and evaluated.</p>
 <p>Now let’s put them head to head and compare across their different statistics.</p>
 <p>To do so, let’s turn our <code>effnetb2_stats</code> and <code>vit_stats</code> dictionaries into a pandas DataFrame.</p>
@@ -1792,8 +1781,8 @@ Name: correct, dtype: int64</code></pre>
 <p>It seems our ViT model outperforms the EffNetB2 model across the performance metrics (test loss, where lower is better and test accuracy, where higher is better) but at the expense of having: * 11x+ the number of parameters. * 11x+ the model size. * 2.5x+ the prediction time per image.</p>
 <p>Are these tradeoffs worth it?</p>
 <p>Perhaps if we had unlimited compute power but for our use case of deploying the FoodVision Mini model to a smaller device (e.g.&nbsp;a mobile phone), we’d likely start out with the EffNetB2 model for faster predictions at a slightly reduced performance but dramatically smaller size.</p>
-<section id="visualizing-the-speed-vs.-performance-tradeoff" class="level3" data-number="11.12.1">
-<h3 data-number="11.12.1" class="anchored" data-anchor-id="visualizing-the-speed-vs.-performance-tradeoff"><span class="header-section-number">11.12.1</span> 6.1 Visualizing the speed vs.&nbsp;performance tradeoff</h3>
+<section id="visualizing-the-speed-vs.-performance-tradeoff" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-the-speed-vs.-performance-tradeoff">6.1 Visualizing the speed vs.&nbsp;performance tradeoff</h3>
 <p>We’ve seen that our ViT model outperforms our EffNetB2 model in terms of performance metrics such as test loss and test accuracy.</p>
 <p>However, our EffNetB2 model performs predictions faster and has a much smaller model size.</p>
 <blockquote class="blockquote">
@@ -1856,8 +1845,8 @@ Name: correct, dtype: int64</code></pre>
 </blockquote>
 </section>
 </section>
-<section id="bringing-foodvision-mini-to-life-by-creating-a-gradio-demo" class="level2" data-number="11.13">
-<h2 data-number="11.13" class="anchored" data-anchor-id="bringing-foodvision-mini-to-life-by-creating-a-gradio-demo"><span class="header-section-number">11.13</span> 7. Bringing FoodVision Mini to life by creating a Gradio demo</h2>
+<section id="bringing-foodvision-mini-to-life-by-creating-a-gradio-demo" class="level2">
+<h2 class="anchored" data-anchor-id="bringing-foodvision-mini-to-life-by-creating-a-gradio-demo">7. Bringing FoodVision Mini to life by creating a Gradio demo</h2>
 <p>We’ve decided we’d like to deploy the EffNetB2 model (to begin with, this could always be changed later).</p>
 <p>So how can we do that?</p>
 <p>There are several ways to deploy a machine learning model each with specific use cases (as discussed above).</p>
@@ -1887,8 +1876,8 @@ Name: correct, dtype: int64</code></pre>
 </div>
 <p>Gradio ready!</p>
 <p>Let’s turn FoodVision Mini into a demo application.</p>
-<section id="gradio-overview" class="level3" data-number="11.13.1">
-<h3 data-number="11.13.1" class="anchored" data-anchor-id="gradio-overview"><span class="header-section-number">11.13.1</span> 7.1 Gradio overview</h3>
+<section id="gradio-overview" class="level3">
+<h3 class="anchored" data-anchor-id="gradio-overview">7.1 Gradio overview</h3>
 <p>The overall premise of Gradio is very similar to what we’ve been repeating throughout the course.</p>
 <p>What are our <strong>inputs</strong> and <strong>outputs</strong>?</p>
 <p>And how should we get there?</p>
@@ -1908,8 +1897,8 @@ Name: correct, dtype: int64</code></pre>
 <p><strong>참고:</strong> Gradio has a vast number of possible <code>inputs</code> and <code>outputs</code> options known as “Components” from images to text to numbers to audio to videos and more. You can see all of these in the <a href="https://gradio.app/docs/#components">Gradio Components documentation</a>.</p>
 </blockquote>
 </section>
-<section id="creating-a-function-to-map-our-inputs-and-outputs" class="level3" data-number="11.13.2">
-<h3 data-number="11.13.2" class="anchored" data-anchor-id="creating-a-function-to-map-our-inputs-and-outputs"><span class="header-section-number">11.13.2</span> 7.2 Creating a function to map our inputs and outputs</h3>
+<section id="creating-a-function-to-map-our-inputs-and-outputs" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-function-to-map-our-inputs-and-outputs">7.2 Creating a function to map our inputs and outputs</h3>
 <p>To create our FoodVision Mini demo with Gradio, we’ll need a function to map our inputs to our outputs.</p>
 <p>We created a function earlier called <code>pred_and_store()</code> to make predictions with a given model across a list of target files and store them in a list of dictionaries.</p>
 <p>How about we create a similar function but this time focusing on making a prediction on a single image with our EffNetB2 model?</p>
@@ -1990,8 +1979,8 @@ Prediction time: 0.027 seconds</code></pre>
 <p>Nice!</p>
 <p>Running the cell above a few times we can see different prediction probabilities for each label from our EffNetB2 model as well as the time it took per prediction.</p>
 </section>
-<section id="creating-a-list-of-example-images" class="level3" data-number="11.13.3">
-<h3 data-number="11.13.3" class="anchored" data-anchor-id="creating-a-list-of-example-images"><span class="header-section-number">11.13.3</span> 7.3 Creating a list of example images</h3>
+<section id="creating-a-list-of-example-images" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-list-of-example-images">7.3 Creating a list of example images</h3>
 <p>Our <code>predict()</code> function enables us to go from inputs -&gt; transform -&gt; ML model -&gt; outputs.</p>
 <p>Which is exactly what we need for our Graido demo.</p>
 <p>But before we create the demo, let’s create one more thing: a list of examples.</p>
@@ -2012,8 +2001,8 @@ Prediction time: 0.027 seconds</code></pre>
 <p>Perfect!</p>
 <p>Our Gradio demo will showcase these as example inputs to our demo so people can try it out and see what it does without uploading any of their own data.</p>
 </section>
-<section id="building-a-gradio-interface" class="level3" data-number="11.13.4">
-<h3 data-number="11.13.4" class="anchored" data-anchor-id="building-a-gradio-interface"><span class="header-section-number">11.13.4</span> 7.4 Building a Gradio interface</h3>
+<section id="building-a-gradio-interface" class="level3">
+<h3 class="anchored" data-anchor-id="building-a-gradio-interface">7.4 Building a Gradio interface</h3>
 <p>Time to put everything together and bring our FoodVision Mini demo to life!</p>
 <p>Let’s create a Gradio interface to replicate the workflow:</p>
 <pre><code>input: image -&gt; transform -&gt; predict with EffNetB2 -&gt; output: pred, pred prob, time taken</code></pre>
@@ -2065,14 +2054,14 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <p>For more permanent hosting, you can upload your Gradio app to <a href="https://huggingface.co/spaces">Hugging Face Spaces</a> or anywhere that runs Python code.</p>
 </section>
 </section>
-<section id="turning-our-foodvision-mini-gradio-demo-into-a-deployable-app" class="level2" data-number="11.14">
-<h2 data-number="11.14" class="anchored" data-anchor-id="turning-our-foodvision-mini-gradio-demo-into-a-deployable-app"><span class="header-section-number">11.14</span> 8. Turning our FoodVision Mini Gradio Demo into a deployable app</h2>
+<section id="turning-our-foodvision-mini-gradio-demo-into-a-deployable-app" class="level2">
+<h2 class="anchored" data-anchor-id="turning-our-foodvision-mini-gradio-demo-into-a-deployable-app">8. Turning our FoodVision Mini Gradio Demo into a deployable app</h2>
 <p>We’ve seen our FoodVision Mini model come to life through a Gradio demo.</p>
 <p>But what if we wanted to share it with our friends?</p>
 <p>Well, we could use the provided Gradio link, however, the shared link only lasts for 72-hours.</p>
 <p>To make our FoodVision Mini demo more permanent, we can package it into an app and upload it to <a href="https://huggingface.co/spaces/launch">Hugging Face Spaces</a>.</p>
-<section id="what-is-hugging-face-spaces" class="level3" data-number="11.14.1">
-<h3 data-number="11.14.1" class="anchored" data-anchor-id="what-is-hugging-face-spaces"><span class="header-section-number">11.14.1</span> 8.1 What is Hugging Face Spaces?</h3>
+<section id="what-is-hugging-face-spaces" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-hugging-face-spaces">8.1 What is Hugging Face Spaces?</h3>
 <p>Hugging Face Spaces is a resource that allows you to host and share machine learning apps.</p>
 <p>Building a demo is one of the best ways to showcase and test what you’ve done.</p>
 <p>And Spaces allows you to do just that.</p>
@@ -2082,8 +2071,8 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <p><strong>참고:</strong> There are many other places we could upload and host our Gradio app such as, Google Cloud, AWS (Amazon Web Services) or other cloud vendors, however, we’re going to use Hugging Face Spaces due to the ease of use and wide adoption by the machine learning community.</p>
 </blockquote>
 </section>
-<section id="deployed-gradio-app-structure" class="level3" data-number="11.14.2">
-<h3 data-number="11.14.2" class="anchored" data-anchor-id="deployed-gradio-app-structure"><span class="header-section-number">11.14.2</span> 8.2 Deployed Gradio app structure</h3>
+<section id="deployed-gradio-app-structure" class="level3">
+<h3 class="anchored" data-anchor-id="deployed-gradio-app-structure">8.2 Deployed Gradio app structure</h3>
 <p>To upload our demo Gradio app, we’ll want to put everything relating to it into a single directory.</p>
 <p>For example, our demo might live at the path <code>demos/foodvision_mini/</code> with the file structure:</p>
 <pre><code>demos/
@@ -2103,8 +2092,8 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <p>The quicker we can run smaller experiments, the better our bigger ones will be.</p>
 <p>We’re going to work towards recreating the structure above but you can see a live demo app running on Hugging Face Spaces as well as the file structure: * <a href="https://huggingface.co/spaces/mrdbourke/foodvision_mini">Live Gradio demo of FoodVision Mini 🍕🥩🍣</a>. * <a href="https://huggingface.co/spaces/mrdbourke/foodvision_mini/tree/main">FoodVision Mini file structure on Hugging Face Spaces</a>.</p>
 </section>
-<section id="creating-a-demos-folder-to-store-our-foodvision-mini-app-files" class="level3" data-number="11.14.3">
-<h3 data-number="11.14.3" class="anchored" data-anchor-id="creating-a-demos-folder-to-store-our-foodvision-mini-app-files"><span class="header-section-number">11.14.3</span> 8.3 Creating a <code>demos</code> folder to store our FoodVision Mini app files</h3>
+<section id="creating-a-demos-folder-to-store-our-foodvision-mini-app-files" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-demos-folder-to-store-our-foodvision-mini-app-files">8.3 Creating a <code>demos</code> folder to store our FoodVision Mini app files</h3>
 <p>To begin, let’s first create a <code>demos/</code> directory to store all of our FoodVision Mini app files.</p>
 <p>We can do with Python’s <a href="https://docs.python.org/3/library/pathlib.html#basic-use"><code>pathlib.Path("path_to_dir")</code></a> to establish the directory path and <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir"><code>pathlib.Path("path_to_dir").mkdir()</code></a> to create it.</p>
 <div id="cell-135" class="cell" data-execution_count="53">
@@ -2125,8 +2114,8 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <span id="cb91-15"><a href="#cb91-15" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls demos<span class="op">/</span>foodvision_mini<span class="op">/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo" class="level3" data-number="11.14.4">
-<h3 data-number="11.14.4" class="anchored" data-anchor-id="creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo"><span class="header-section-number">11.14.4</span> 8.4 Creating a folder of example images to use with our FoodVision Mini demo</h3>
+<section id="creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-folder-of-example-images-to-use-with-our-foodvision-mini-demo">8.4 Creating a folder of example images to use with our FoodVision Mini demo</h3>
 <p>Now we’ve got a directory to store our FoodVision Mini demo files, let’s add some examples to it.</p>
 <p>Three example images from the test dataset should be enough.</p>
 <p>To do so we’ll: 1. Create an <code>examples/</code> directory within the <code>demos/foodvision_mini</code> directory. 2. Choose three random images from the test dataset and collect their filepaths in a list. 3. Copy the three random images from the test dataset to the <code>demos/foodvision_mini/examples/</code> directory.</p>
@@ -2166,8 +2155,8 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 </div>
 </div>
 </section>
-<section id="moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory" class="level3" data-number="11.14.5">
-<h3 data-number="11.14.5" class="anchored" data-anchor-id="moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory"><span class="header-section-number">11.14.5</span> 8.5 Moving our trained EffNetB2 model to our FoodVision Mini demo directory</h3>
+<section id="moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory" class="level3">
+<h3 class="anchored" data-anchor-id="moving-our-trained-effnetb2-model-to-our-foodvision-mini-demo-directory">8.5 Moving our trained EffNetB2 model to our FoodVision Mini demo directory</h3>
 <p>We previously saved our FoodVision Mini EffNetB2 feature extractor model under <code>models/09_pretrained_effnetb2_feature_extractor_pizza_steak_sushi_20_percent.pth</code>.</p>
 <p>And rather double up on saved model files, let’s move our model to our <code>demos/foodvision_mini</code> directory.</p>
 <p>We can do so using Python’s <a href="https://docs.python.org/3/library/shutil.html#shutil.move"><code>shutil.move()</code></a> method and passing in <code>src</code> (the source path of the target file) and <code>dst</code> (the destination path of the target file to be moved to) parameters.</p>
@@ -2200,8 +2189,8 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 </div>
 </div>
 </section>
-<section id="turning-our-effnetb2-model-into-a-python-script-model.py" class="level3" data-number="11.14.6">
-<h3 data-number="11.14.6" class="anchored" data-anchor-id="turning-our-effnetb2-model-into-a-python-script-model.py"><span class="header-section-number">11.14.6</span> 8.6 Turning our EffNetB2 model into a Python script (<code>model.py</code>)</h3>
+<section id="turning-our-effnetb2-model-into-a-python-script-model.py" class="level3">
+<h3 class="anchored" data-anchor-id="turning-our-effnetb2-model-into-a-python-script-model.py">8.6 Turning our EffNetB2 model into a Python script (<code>model.py</code>)</h3>
 <p>Our current model’s <code>state_dict</code> is saved to <code>demos/foodvision_mini/09_pretrained_effnetb2_feature_extractor_pizza_steak_sushi_20_percent.pth</code>.</p>
 <p>To load it in we can use <code>model.load_state_dict()</code> along with <code>torch.load()</code>.</p>
 <blockquote class="blockquote">
@@ -2254,8 +2243,8 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 </div>
 </div>
 </section>
-<section id="turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py" class="level3" data-number="11.14.7">
-<h3 data-number="11.14.7" class="anchored" data-anchor-id="turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py"><span class="header-section-number">11.14.7</span> 8.7 Turning our FoodVision Mini Gradio app into a Python script (<code>app.py</code>)</h3>
+<section id="turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py" class="level3">
+<h3 class="anchored" data-anchor-id="turning-our-foodvision-mini-gradio-app-into-a-python-script-app.py">8.7 Turning our FoodVision Mini Gradio app into a Python script (<code>app.py</code>)</h3>
 <p>We’ve now got a <code>model.py</code> script as well as a path to a saved model <code>state_dict</code> that we can load in.</p>
 <p>Time to construct <code>app.py</code>.</p>
 <p>We call it <code>app.py</code> because by default when you create a HuggingFace Space, it looks for a file called <code>app.py</code> to run and host (though you can change this in settings).</p>
@@ -2353,8 +2342,8 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 </div>
 </div>
 </section>
-<section id="creating-a-requirements-file-for-foodvision-mini-requirements.txt" class="level3" data-number="11.14.8">
-<h3 data-number="11.14.8" class="anchored" data-anchor-id="creating-a-requirements-file-for-foodvision-mini-requirements.txt"><span class="header-section-number">11.14.8</span> 8.8 Creating a requirements file for FoodVision Mini (<code>requirements.txt</code>)</h3>
+<section id="creating-a-requirements-file-for-foodvision-mini-requirements.txt" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-requirements-file-for-foodvision-mini-requirements.txt">8.8 Creating a requirements file for FoodVision Mini (<code>requirements.txt</code>)</h3>
 <p>The last file we need to create for our FoodVision Mini app is a <a href="https://learnpython.com/blog/python-requirements-file/"><code>requirements.txt</code> file</a>.</p>
 <p>This will be a text file containing all of the required dependencies for our demo.</p>
 <p>When we deploy our demo app to Hugging Face Spaces, it will search through this file and install the dependencies we define so our app can run.</p>
@@ -2379,16 +2368,16 @@ This share link expires in 72 hours. For free permanent hosting, check out Space
 <p>We’ve officially got all the files we need to deploy our FoodVision Mini demo!</p>
 </section>
 </section>
-<section id="deploying-our-foodvision-mini-app-to-huggingface-spaces" class="level2" data-number="11.15">
-<h2 data-number="11.15" class="anchored" data-anchor-id="deploying-our-foodvision-mini-app-to-huggingface-spaces"><span class="header-section-number">11.15</span> 9. Deploying our FoodVision Mini app to HuggingFace Spaces</h2>
+<section id="deploying-our-foodvision-mini-app-to-huggingface-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-our-foodvision-mini-app-to-huggingface-spaces">9. Deploying our FoodVision Mini app to HuggingFace Spaces</h2>
 <p>We’ve got a file containing our FoodVision Mini demo, now how do we get it to run on Hugging Face Spaces?</p>
 <p>There are two main options for uploading to a Hugging Face Space (also called a <a href="https://huggingface.co/docs/hub/repositories-getting-started#getting-started-with-repositories">Hugging Face Repository</a>, similar to a git repository): 1. <a href="https://huggingface.co/docs/hub/repositories-getting-started#adding-files-to-a-repository-web-ui">Uploading via the Hugging Face Web interface (easiest)</a>. 2. <a href="https://huggingface.co/docs/hub/repositories-getting-started#terminal">Uploading via the command line or terminal</a>. * <strong>Bonus:</strong> You can also use the <a href="https://huggingface.co/docs/huggingface_hub/index"><code>huggingface_hub</code> library</a> to interact with Hugging Face, this would be a good extension to the above two options.</p>
 <p>Feel free to read the documentation on both options but we’re going to go with option two.</p>
 <blockquote class="blockquote">
 <p><strong>참고:</strong> To host anything on Hugging Face, you will need to <a href="https://huggingface.co/join">sign up for a free Hugging Face account</a>.</p>
 </blockquote>
-<section id="downloading-our-foodvision-mini-app-files" class="level3" data-number="11.15.1">
-<h3 data-number="11.15.1" class="anchored" data-anchor-id="downloading-our-foodvision-mini-app-files"><span class="header-section-number">11.15.1</span> 9.1 Downloading our FoodVision Mini app files</h3>
+<section id="downloading-our-foodvision-mini-app-files" class="level3">
+<h3 class="anchored" data-anchor-id="downloading-our-foodvision-mini-app-files">9.1 Downloading our FoodVision Mini app files</h3>
 <p>Let’s check out the demo files we’ve got inside <code>demos/foodvision_mini</code>.</p>
 <p>To do so we can use the <code>!ls</code> command followed by the target filepath.</p>
 <p><code>ls</code> stands for “list” and the <code>!</code> means we want to execute the command at the shell level.</p>
@@ -2436,8 +2425,8 @@ Not running in Google Colab, can't use google.colab.files.download(), please man
 <p>If you’re running this notebook in Google Colab, you should see a file start to download in your browser.</p>
 <p>Otherwise, you can see the <code>foodvision_mini.zip</code> folder (and more) on the <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/demos">course GitHub under the <code>demos/</code> directory</a>.</p>
 </section>
-<section id="running-our-foodvision-mini-demo-locally" class="level3" data-number="11.15.2">
-<h3 data-number="11.15.2" class="anchored" data-anchor-id="running-our-foodvision-mini-demo-locally"><span class="header-section-number">11.15.2</span> 9.2 Running our FoodVision Mini demo locally</h3>
+<section id="running-our-foodvision-mini-demo-locally" class="level3">
+<h3 class="anchored" data-anchor-id="running-our-foodvision-mini-demo-locally">9.2 Running our FoodVision Mini demo locally</h3>
 <p>If you download the <code>foodvision_mini.zip</code> file, you can test it locally by: 1. Unzipping the file. 2. Opening terminal or a command line prompt. 3. Changing into the <code>foodvision_mini</code> directory (<code>cd foodvision_mini</code>). 4. Creating an environment (<code>python3 -m venv env</code>). 5. Activating the environment (<code>source env/bin/activate</code>). 5. Installing the requirements (<code>pip install -r requirements.txt</code>, the “<code>-r</code>” is for recursive). * <strong>참고:</strong> This step may take 5-10 minutes depending on your internet connection. And if you’re facing errors, you may need to upgrade <code>pip</code> first: <code>pip install --upgrade pip</code>. 6. Run the app (<code>python3 app.py</code>).</p>
 <p>This should result in a Gradio demo just like the one we built above running locally on your machine at a URL such as <code>http://127.0.0.1:7860/</code>.</p>
 <blockquote class="blockquote">
@@ -2446,8 +2435,8 @@ Not running in Google Colab, can't use google.colab.files.download(), please man
 <p>For more on flagging in Gradio, see the <a href="https://gradio.app/docs/#flagging">flagging documentation</a>.</p>
 </blockquote>
 </section>
-<section id="uploading-to-hugging-face" class="level3" data-number="11.15.3">
-<h3 data-number="11.15.3" class="anchored" data-anchor-id="uploading-to-hugging-face"><span class="header-section-number">11.15.3</span> 9.3 Uploading to Hugging Face</h3>
+<section id="uploading-to-hugging-face" class="level3">
+<h3 class="anchored" data-anchor-id="uploading-to-hugging-face">9.3 Uploading to Hugging Face</h3>
 <p>We’ve verified our FoodVision Mini app works locally, however, the fun of creating a machine learning demo is to show it to other people and allow them to use it.</p>
 <p>To do so, we’re going to upload our FoodVision Mini demo to Hugging Face.</p>
 <blockquote class="blockquote">
@@ -2509,8 +2498,8 @@ Not running in Google Colab, can't use google.colab.files.download(), please man
 </div>
 </section>
 </section>
-<section id="creating-foodvision-big" class="level2" data-number="11.16">
-<h2 data-number="11.16" class="anchored" data-anchor-id="creating-foodvision-big"><span class="header-section-number">11.16</span> 10. Creating FoodVision Big</h2>
+<section id="creating-foodvision-big" class="level2">
+<h2 class="anchored" data-anchor-id="creating-foodvision-big">10. Creating FoodVision Big</h2>
 <p>We’ve spent the past few sections and chapters working on bringing FoodVision Mini to life.</p>
 <p>And now we’ve seen it working in a live demo, how about we step things up a notch?</p>
 <p>How?</p>
@@ -2523,8 +2512,8 @@ Not running in Google Colab, can't use google.colab.files.download(), please man
 <p>To finish Milestone Project 3, let’s recreate a Gradio demo similar to FoodVision Mini (three classes) but for FoodVision Big (101 classes).</p>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/09-model-deployment-foodvision-mini-to-foodvision-big.png" alt="foodvision mini model on three classes: pizza, steak, sushi and foodvision big on all of the 101 classes in the food101 dataset" width="900/"></p>
 <p><em>FoodVision Mini works with three food classes: pizza, steak and sushi. And FoodVision Big steps it up a notch to work across 101 food classes: all of the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/food101_class_names.txt">classes in the Food101 dataset</a>.</em></p>
-<section id="creating-a-model-and-transforms-for-foodvision-big" class="level3" data-number="11.16.1">
-<h3 data-number="11.16.1" class="anchored" data-anchor-id="creating-a-model-and-transforms-for-foodvision-big"><span class="header-section-number">11.16.1</span> 10.1 Creating a model and transforms for FoodVision Big</h3>
+<section id="creating-a-model-and-transforms-for-foodvision-big" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-model-and-transforms-for-foodvision-big">10.1 Creating a model and transforms for FoodVision Big</h3>
 <p>When creating FoodVision Mini we saw that the EffNetB2 model was a good tradeoff between speed and performance (it performed well with a fast speed).</p>
 <p>So we’ll continue using the same model for FoodVision Big.</p>
 <p>We can create an EffNetB2 feature extractor for Food101 by using our <code>create_effnetb2_model()</code> function we created above, in <a href="https://www.learnpytorch.io/09_pytorch_model_deployment/#31-creating-a-function-to-make-an-effnetb2-feature-extractor">section 3.1</a>, and passing it the parameter <code>num_classes=101</code> (since Food101 has 101 classes).</p>
@@ -2588,8 +2577,8 @@ ImageClassification(
 </div>
 </div>
 </section>
-<section id="getting-data-for-foodvision-big" class="level3" data-number="11.16.2">
-<h3 data-number="11.16.2" class="anchored" data-anchor-id="getting-data-for-foodvision-big"><span class="header-section-number">11.16.2</span> 10.2 Getting data for FoodVision Big</h3>
+<section id="getting-data-for-foodvision-big" class="level3">
+<h3 class="anchored" data-anchor-id="getting-data-for-foodvision-big">10.2 Getting data for FoodVision Big</h3>
 <p>For FoodVision Mini, we made our own <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/04_custom_data_creation.ipynb">custom data splits</a> of the entire Food101 dataset.</p>
 <p>To get the whole Food101 dataset, we can use <a href="https://pytorch.org/vision/main/generated/torchvision.datasets.Food101.html"><code>torchvision.datasets.Food101()</code></a>.</p>
 <p>We’ll first setup a path to directory <code>data/</code> to store the images.</p>
@@ -2641,8 +2630,8 @@ ImageClassification(
 <p>Ho ho! Those are some delicious sounding foods (although I’ve never heard of “beignets”… update: after a quick Google search, beignets also look delicious).</p>
 <p>You can see a full list of the Food101 class names on the course GitHub under <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/food101_class_names.txt"><code>extras/food101_class_names.txt</code></a>.</p>
 </section>
-<section id="creating-a-subset-of-the-food101-dataset-for-faster-experimenting" class="level3" data-number="11.16.3">
-<h3 data-number="11.16.3" class="anchored" data-anchor-id="creating-a-subset-of-the-food101-dataset-for-faster-experimenting"><span class="header-section-number">11.16.3</span> 10.3 Creating a subset of the Food101 dataset for faster experimenting</h3>
+<section id="creating-a-subset-of-the-food101-dataset-for-faster-experimenting" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-subset-of-the-food101-dataset-for-faster-experimenting">10.3 Creating a subset of the Food101 dataset for faster experimenting</h3>
 <p>This is optional.</p>
 <p>We don’t <em>need</em> to create another subset of the Food101 dataset, we could train and evaluate a model across the whole 101,000 images.</p>
 <p>But to keep training fast, let’s create a 20% split of the training and test datasets.</p>
@@ -2762,8 +2751,8 @@ ImageClassification(
 </div>
 <p>Excellent!</p>
 </section>
-<section id="turning-our-food101-datasets-into-dataloaders" class="level3" data-number="11.16.4">
-<h3 data-number="11.16.4" class="anchored" data-anchor-id="turning-our-food101-datasets-into-dataloaders"><span class="header-section-number">11.16.4</span> 10.4 Turning our Food101 datasets into <code>DataLoader</code>s</h3>
+<section id="turning-our-food101-datasets-into-dataloaders" class="level3">
+<h3 class="anchored" data-anchor-id="turning-our-food101-datasets-into-dataloaders">10.4 Turning our Food101 datasets into <code>DataLoader</code>s</h3>
 <p>Now let’s turn our Food101 20% dataset splits into <code>DataLoader</code>’s using <code>torch.utils.data.DataLoader()</code>.</p>
 <p>We’ll set <code>shuffle=True</code> for the training data only and the batch size to <code>32</code> for both datasets.</p>
 <p>And we’ll set <code>num_workers</code> to <code>4</code> if the CPU count is available or <code>2</code> if it’s not (though the value of <code>num_workers</code> is very experimental and will depend on the hardware you’re using, there’s an <a href="https://discuss.pytorch.org/t/guidelines-for-assigning-num-workers-to-dataloader/813">active discussion thread about this on the PyTorch forums</a>).</p>
@@ -2786,8 +2775,8 @@ ImageClassification(
 <span id="cb122-16"><a href="#cb122-16" aria-hidden="true" tabindex="-1"></a>                                                                 num_workers<span class="op">=</span>NUM_WORKERS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="training-foodvision-big-model" class="level3" data-number="11.16.5">
-<h3 data-number="11.16.5" class="anchored" data-anchor-id="training-foodvision-big-model"><span class="header-section-number">11.16.5</span> 10.5 Training FoodVision Big model</h3>
+<section id="training-foodvision-big-model" class="level3">
+<h3 class="anchored" data-anchor-id="training-foodvision-big-model">10.5 Training FoodVision Big model</h3>
 <p>FoodVision Big model and <code>DataLoader</code>s ready!</p>
 <p>Time for training.</p>
 <p>We’ll create an optimizer using <code>torch.optim.Adam()</code> and a learning rate of <code>1e-3</code>.</p>
@@ -2841,8 +2830,8 @@ Epoch: 5 | train_loss: 2.5006 | train_acc: 0.5239 | test_loss: 2.2805 | test_acc
 <p>Looks like we beat the original Food101 paper’s results of 56.4% accuracy with only 20% of the training data (though we only evaluated on 20% of the testing data too, to fully replicate the results, we could evaluate on 100% of the testing data).</p>
 <p>That’s the power of transfer learning!</p>
 </section>
-<section id="inspecting-loss-curves-of-foodvision-big-model" class="level3" data-number="11.16.6">
-<h3 data-number="11.16.6" class="anchored" data-anchor-id="inspecting-loss-curves-of-foodvision-big-model"><span class="header-section-number">11.16.6</span> 10.6 Inspecting loss curves of FoodVision Big model</h3>
+<section id="inspecting-loss-curves-of-foodvision-big-model" class="level3">
+<h3 class="anchored" data-anchor-id="inspecting-loss-curves-of-foodvision-big-model">10.6 Inspecting loss curves of FoodVision Big model</h3>
 <p>Let’s make our FoodVision Big loss curves visual.</p>
 <p>We can do so with the <code>plot_loss_curves()</code> function from <code>helper_functions.py</code>.</p>
 <div id="cell-183" class="cell" data-execution_count="73">
@@ -2861,8 +2850,8 @@ Epoch: 5 | train_loss: 2.5006 | train_acc: 0.5239 | test_loss: 2.2805 | test_acc
 <p>Nice!!!</p>
 <p>It looks like our regularization techniques (data augmentation and label smoothing) helped prevent our model from overfitting (the training loss is still higher than the test loss) this indicates our model has a bit more capacity to learn and could improve with further training.</p>
 </section>
-<section id="saving-and-loading-foodvision-big" class="level3" data-number="11.16.7">
-<h3 data-number="11.16.7" class="anchored" data-anchor-id="saving-and-loading-foodvision-big"><span class="header-section-number">11.16.7</span> 10.7 Saving and loading FoodVision Big</h3>
+<section id="saving-and-loading-foodvision-big" class="level3">
+<h3 class="anchored" data-anchor-id="saving-and-loading-foodvision-big">10.7 Saving and loading FoodVision Big</h3>
 <p>Now we’ve trained our biggest model yet, let’s save it so we can load it back in later.</p>
 <div id="cell-186" class="cell" data-execution_count="74">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> going_modular.going_modular <span class="im">import</span> utils</span>
@@ -2893,8 +2882,8 @@ Epoch: 5 | train_loss: 2.5006 | train_acc: 0.5239 | test_loss: 2.2805 | test_acc
 </div>
 </div>
 </section>
-<section id="checking-foodvision-big-model-size" class="level3" data-number="11.16.8">
-<h3 data-number="11.16.8" class="anchored" data-anchor-id="checking-foodvision-big-model-size"><span class="header-section-number">11.16.8</span> 10.8 Checking FoodVision Big model size</h3>
+<section id="checking-foodvision-big-model-size" class="level3">
+<h3 class="anchored" data-anchor-id="checking-foodvision-big-model-size">10.8 Checking FoodVision Big model size</h3>
 <p>Our FoodVision Big model is capable of classifying 101 classes versus FoodVision Mini’s 3 classes, a 33.6x increase!</p>
 <p>How does this affect the model size?</p>
 <p>Let’s find out.</p>
@@ -2948,8 +2937,8 @@ Epoch: 5 | train_loss: 2.5006 | train_acc: 0.5239 | test_loss: 2.2805 | test_acc
 </table>
 </section>
 </section>
-<section id="turning-our-foodvision-big-model-into-a-deployable-app" class="level2" data-number="11.17">
-<h2 data-number="11.17" class="anchored" data-anchor-id="turning-our-foodvision-big-model-into-a-deployable-app"><span class="header-section-number">11.17</span> 11. Turning our FoodVision Big model into a deployable app</h2>
+<section id="turning-our-foodvision-big-model-into-a-deployable-app" class="level2">
+<h2 class="anchored" data-anchor-id="turning-our-foodvision-big-model-into-a-deployable-app">11. Turning our FoodVision Big model into a deployable app</h2>
 <p>We’ve got a trained and saved EffNetB2 model on 20% of the Food101 dataset.</p>
 <p>And instead of letting our model live in a folder all its life, let’s deploy it!</p>
 <p>We’ll deploy our FoodVision Big model in the same way we deployed our FoodVision Mini model, as a Gradio demo on Hugging Face Spaces.</p>
@@ -2977,8 +2966,8 @@ Epoch: 5 | train_loss: 2.5006 | train_acc: 0.5239 | test_loss: 2.2805 | test_acc
 <span id="cb135-9"><a href="#cb135-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Make FoodVision Big demo examples directory</span></span>
 <span id="cb135-10"><a href="#cb135-10" aria-hidden="true" tabindex="-1"></a>(foodvision_big_demo_path <span class="op">/</span> <span class="st">"examples"</span>).mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="downloading-an-example-image-and-moving-it-to-the-examples-directory" class="level3" data-number="11.17.1">
-<h3 data-number="11.17.1" class="anchored" data-anchor-id="downloading-an-example-image-and-moving-it-to-the-examples-directory"><span class="header-section-number">11.17.1</span> 11.1 Downloading an example image and moving it to the <code>examples</code> directory</h3>
+<section id="downloading-an-example-image-and-moving-it-to-the-examples-directory" class="level3">
+<h3 class="anchored" data-anchor-id="downloading-an-example-image-and-moving-it-to-the-examples-directory">11.1 Downloading an example image and moving it to the <code>examples</code> directory</h3>
 <p>For our example image, we’re going to use the faithful <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/images/04-pizza-dad.jpeg"><code>pizza-dad</code> image</a> (a photo of my dad eating pizza).</p>
 <p>So let’s download it from the course GitHub via the <code>!wget</code> command and then we can move it to <code>demos/foodvision_big/examples</code> with the <code>!mv</code> command (short for “move”).</p>
 <p>While we’re here we’ll move our trained Food101 EffNetB2 model from <code>models/09_pretrained_effnetb2_feature_extractor_food101_20_percent.pth</code> to <code>demos/foodvision_big</code> as well.</p>
@@ -3004,8 +2993,8 @@ Saving to: '04-pizza-dad.jpeg’
 </div>
 </div>
 </section>
-<section id="saving-food101-class-names-to-file-class_names.txt" class="level3" data-number="11.17.2">
-<h3 data-number="11.17.2" class="anchored" data-anchor-id="saving-food101-class-names-to-file-class_names.txt"><span class="header-section-number">11.17.2</span> 11.2 Saving Food101 class names to file (<code>class_names.txt</code>)</h3>
+<section id="saving-food101-class-names-to-file-class_names.txt" class="level3">
+<h3 class="anchored" data-anchor-id="saving-food101-class-names-to-file-class_names.txt">11.2 Saving Food101 class names to file (<code>class_names.txt</code>)</h3>
 <p>Because there are so many classes in the Food101 dataset, instead of storing them as a list in our <code>app.py</code> file, let’s save them to a <code>.txt</code> file and read them in when necessary instead.</p>
 <p>We’ll just remind ourselves what they look like first by checking out <code>food101_class_names</code>.</p>
 <div id="cell-197" class="cell" data-execution_count="79">
@@ -3059,8 +3048,8 @@ beef_tartare
 </div>
 </div>
 </section>
-<section id="turning-our-foodvision-big-model-into-a-python-script-model.py" class="level3" data-number="11.17.3">
-<h3 data-number="11.17.3" class="anchored" data-anchor-id="turning-our-foodvision-big-model-into-a-python-script-model.py"><span class="header-section-number">11.17.3</span> 11.3 Turning our FoodVision Big model into a Python script (<code>model.py</code>)</h3>
+<section id="turning-our-foodvision-big-model-into-a-python-script-model.py" class="level3">
+<h3 class="anchored" data-anchor-id="turning-our-foodvision-big-model-into-a-python-script-model.py">11.3 Turning our FoodVision Big model into a Python script (<code>model.py</code>)</h3>
 <p>Just like the FoodVision Mini demo, let’s create a script that’s capable of instantiating an EffNetB2 feature extractor model along with its necessary transforms.</p>
 <div id="cell-203" class="cell" data-execution_count="82">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>writefile demos<span class="op">/</span>foodvision_big<span class="op">/</span>model.py</span>
@@ -3105,8 +3094,8 @@ beef_tartare
 </div>
 </div>
 </section>
-<section id="turning-our-foodvision-big-gradio-app-into-a-python-script-app.py" class="level3" data-number="11.17.4">
-<h3 data-number="11.17.4" class="anchored" data-anchor-id="turning-our-foodvision-big-gradio-app-into-a-python-script-app.py"><span class="header-section-number">11.17.4</span> 11.4 Turning our FoodVision Big Gradio app into a Python script (<code>app.py</code>)</h3>
+<section id="turning-our-foodvision-big-gradio-app-into-a-python-script-app.py" class="level3">
+<h3 class="anchored" data-anchor-id="turning-our-foodvision-big-gradio-app-into-a-python-script-app.py">11.4 Turning our FoodVision Big Gradio app into a Python script (<code>app.py</code>)</h3>
 <p>We’ve got a FoodVision Big <code>model.py</code> script, now let’s create a FoodVision Big <code>app.py</code> script.</p>
 <p>This will again mostly be the same as the FoodVision Mini <code>app.py</code> script except we’ll change:</p>
 <ol type="1">
@@ -3204,8 +3193,8 @@ beef_tartare
 </div>
 </div>
 </section>
-<section id="creating-a-requirements-file-for-foodvision-big-requirements.txt" class="level3" data-number="11.17.5">
-<h3 data-number="11.17.5" class="anchored" data-anchor-id="creating-a-requirements-file-for-foodvision-big-requirements.txt"><span class="header-section-number">11.17.5</span> 11.5 Creating a requirements file for FoodVision Big (<code>requirements.txt</code>)</h3>
+<section id="creating-a-requirements-file-for-foodvision-big-requirements.txt" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-requirements-file-for-foodvision-big-requirements.txt">11.5 Creating a requirements file for FoodVision Big (<code>requirements.txt</code>)</h3>
 <p>Now all we need is a <code>requirements.txt</code> file to tell our Hugging Face Space what dependencies our FoodVision Big app requires.</p>
 <div id="cell-207" class="cell" data-execution_count="84">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>writefile demos<span class="op">/</span>foodvision_big<span class="op">/</span>requirements.txt</span>
@@ -3217,8 +3206,8 @@ beef_tartare
 </div>
 </div>
 </section>
-<section id="downloading-our-foodvision-big-app-files" class="level3" data-number="11.17.6">
-<h3 data-number="11.17.6" class="anchored" data-anchor-id="downloading-our-foodvision-big-app-files"><span class="header-section-number">11.17.6</span> 11.6 Downloading our FoodVision Big app files</h3>
+<section id="downloading-our-foodvision-big-app-files" class="level3">
+<h3 class="anchored" data-anchor-id="downloading-our-foodvision-big-app-files">11.6 Downloading our FoodVision Big app files</h3>
 <p>We’ve got all the files we need to deploy our FoodVision Big app on Hugging Face, let’s now zip them together and download them.</p>
 <p>We’ll use the same process we used for the FoodVision Mini app above in <a href="https://www.learnpytorch.io/09_pytorch_model_deployment/#91-downloading-our-foodvision-mini-app-files">section 9.1: <em>Downloading our Foodvision Mini app files</em></a>.</p>
 <div id="cell-209" class="cell" data-execution_count="85">
@@ -3244,8 +3233,8 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 </div>
 </div>
 </section>
-<section id="deploying-our-foodvision-big-app-to-huggingface-spaces" class="level3" data-number="11.17.7">
-<h3 data-number="11.17.7" class="anchored" data-anchor-id="deploying-our-foodvision-big-app-to-huggingface-spaces"><span class="header-section-number">11.17.7</span> 11.7 Deploying our FoodVision Big app to HuggingFace Spaces</h3>
+<section id="deploying-our-foodvision-big-app-to-huggingface-spaces" class="level3">
+<h3 class="anchored" data-anchor-id="deploying-our-foodvision-big-app-to-huggingface-spaces">11.7 Deploying our FoodVision Big app to HuggingFace Spaces</h3>
 <p>B, E, A, Utiful!</p>
 <p>Time to bring our biggest model of the whole course to life!</p>
 <p>Let’s deploy our FoodVision Big Gradio demo to Hugging Face Spaces so we can test it interactively and let others experience the magic of our machine learning efforts!</p>
@@ -3313,8 +3302,8 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 <p>We’ve come a long way from building PyTorch models to predict a straight line… now we’re building computer vision models accessible to people all around the world!</p>
 </section>
 </section>
-<section id="main-takeaways" class="level2" data-number="11.18">
-<h2 data-number="11.18" class="anchored" data-anchor-id="main-takeaways"><span class="header-section-number">11.18</span> Main takeaways</h2>
+<section id="main-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="main-takeaways">Main takeaways</h2>
 <ul>
 <li><strong>Deployment is as important as training.</strong> Once you’ve got a good working model, your first question should be: how can I deploy this and make it accessible to others? Deployment allows you to test your model in the real world rather than on private training and test sets.</li>
 <li><strong>Three questions for machine learning model deployment:</strong>
@@ -3331,8 +3320,8 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 <li><strong>Machine learning model deployment is part of the engineering practice of MLOps (machine learning operations).</strong> MLOps is an extension of DevOps (development operations) and involves all the engineering parts around training a model: data collection and storage, data preprocessing, model deployment, model monitoring, versioning and more. It’s a rapidly evolving field but there are some solid resources out there to learn more, many of which are in <a href="https://www.learnpytorch.io/pytorch_extra_resources/#resources-for-machine-learning-and-deep-learning-engineering">PyTorch Extra Resources</a>.</li>
 </ul>
 </section>
-<section id="연습-문제" class="level2" data-number="11.19">
-<h2 data-number="11.19" class="anchored" data-anchor-id="연습-문제"><span class="header-section-number">11.19</span> 연습 문제</h2>
+<section id="연습-문제" class="level2">
+<h2 class="anchored" data-anchor-id="연습-문제">연습 문제</h2>
 <p>All of the exercises are focused on practicing the code above.</p>
 <p>You should be able to complete them by referencing each section or by following the resource(s) linked.</p>
 <p><strong>Resources:</strong></p>
@@ -3376,8 +3365,8 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 </ul></li>
 </ol>
 </section>
-<section id="추가-학습-자료" class="level2" data-number="11.20">
-<h2 data-number="11.20" class="anchored" data-anchor-id="추가-학습-자료"><span class="header-section-number">11.20</span> 추가 학습 자료</h2>
+<section id="추가-학습-자료" class="level2">
+<h2 class="anchored" data-anchor-id="추가-학습-자료">추가 학습 자료</h2>
 <ul>
 <li>Machine learning model deployment is generally an engineering challenge rather than a pure machine learning challenge, see the <a href="https://www.learnpytorch.io/pytorch_extra_resources/#resources-for-machine-learning-and-deep-learning-engineering">PyTorch Extra Resources machine learning engineering section</a> for resources on learning more.
 <ul>
@@ -3807,7 +3796,7 @@ Not running in Google Colab, can't use google.colab.files.download()</code></pre
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./08_pytorch_paper_replicating.html" class="pagination-link" aria-label="08 - PyTorch 논문 복제">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">08 - PyTorch 논문 복제</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; 07 - PyTorch 실험 추적 – 파이토치 딥러닝 입문</title>
+<title>07 - PyTorch 실험 추적 – 파이토치 딥러닝 입문</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-803ae4f7a8810f475153517dc3c4ebae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-841b73d05e5bc75123d26cb7b2f11c52.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_pytorch_experiment_tracking.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_pytorch_experiment_tracking.html"><span class="chapter-title">07 - PyTorch 실험 추적</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,68 +149,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">00 - PyTorch 기초</span></span></a>
+  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">00 - PyTorch 기초</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></span></a>
+  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">01 - PyTorch 워크플로우</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">02 - PyTorch 신경망 분류</span></span></a>
+  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02 - PyTorch 신경망 분류</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span></a>
+  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></span></a>
+  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span></a>
+  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">05 - PyTorch 모듈화</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></span></a>
+  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">06 - PyTorch 전이 학습</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span></a>
+  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">07 - PyTorch 실험 추적</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span></a>
+  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">08 - PyTorch 논문 복제</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></span></a>
+  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">09 - PyTorch 모델 배포</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -229,48 +218,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-experiment-tracking" id="toc-what-is-experiment-tracking" class="nav-link active" data-scroll-target="#what-is-experiment-tracking"><span class="header-section-number">9.1</span> What is experiment tracking?</a></li>
-  <li><a href="#why-track-experiments" id="toc-why-track-experiments" class="nav-link" data-scroll-target="#why-track-experiments"><span class="header-section-number">9.2</span> Why track experiments?</a></li>
-  <li><a href="#different-ways-to-track-machine-learning-experiments" id="toc-different-ways-to-track-machine-learning-experiments" class="nav-link" data-scroll-target="#different-ways-to-track-machine-learning-experiments"><span class="header-section-number">9.3</span> Different ways to track machine learning experiments</a></li>
-  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용"><span class="header-section-number">9.4</span> 이번 장에서 다룰 내용</a></li>
-  <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help"><span class="header-section-number">9.5</span> Where can you get help?</a></li>
-  <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup"><span class="header-section-number">9.6</span> 0. Getting setup</a>
+  <li><a href="#what-is-experiment-tracking" id="toc-what-is-experiment-tracking" class="nav-link active" data-scroll-target="#what-is-experiment-tracking">What is experiment tracking?</a></li>
+  <li><a href="#why-track-experiments" id="toc-why-track-experiments" class="nav-link" data-scroll-target="#why-track-experiments">Why track experiments?</a></li>
+  <li><a href="#different-ways-to-track-machine-learning-experiments" id="toc-different-ways-to-track-machine-learning-experiments" class="nav-link" data-scroll-target="#different-ways-to-track-machine-learning-experiments">Different ways to track machine learning experiments</a></li>
+  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용">이번 장에서 다룰 내용</a></li>
+  <li><a href="#where-can-you-get-help" id="toc-where-can-you-get-help" class="nav-link" data-scroll-target="#where-can-you-get-help">Where can you get help?</a></li>
+  <li><a href="#getting-setup" id="toc-getting-setup" class="nav-link" data-scroll-target="#getting-setup">0. Getting setup</a>
   <ul class="collapse">
-  <li><a href="#create-a-helper-function-to-set-seeds" id="toc-create-a-helper-function-to-set-seeds" class="nav-link" data-scroll-target="#create-a-helper-function-to-set-seeds"><span class="header-section-number">9.6.1</span> Create a helper function to set seeds</a></li>
+  <li><a href="#create-a-helper-function-to-set-seeds" id="toc-create-a-helper-function-to-set-seeds" class="nav-link" data-scroll-target="#create-a-helper-function-to-set-seeds">Create a helper function to set seeds</a></li>
   </ul></li>
-  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">9.7</span> 1. Get data</a></li>
-  <li><a href="#create-datasets-and-dataloaders" id="toc-create-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-datasets-and-dataloaders"><span class="header-section-number">9.8</span> 2. Create Datasets and DataLoaders</a>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data">1. Get data</a></li>
+  <li><a href="#create-datasets-and-dataloaders" id="toc-create-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-datasets-and-dataloaders">2. Create Datasets and DataLoaders</a>
   <ul class="collapse">
-  <li><a href="#create-dataloaders-using-manually-created-transforms" id="toc-create-dataloaders-using-manually-created-transforms" class="nav-link" data-scroll-target="#create-dataloaders-using-manually-created-transforms"><span class="header-section-number">9.8.1</span> 2.1 Create DataLoaders using manually created transforms</a></li>
-  <li><a href="#create-dataloaders-using-automatically-created-transforms" id="toc-create-dataloaders-using-automatically-created-transforms" class="nav-link" data-scroll-target="#create-dataloaders-using-automatically-created-transforms"><span class="header-section-number">9.8.2</span> 2.2 Create DataLoaders using automatically created transforms</a></li>
+  <li><a href="#create-dataloaders-using-manually-created-transforms" id="toc-create-dataloaders-using-manually-created-transforms" class="nav-link" data-scroll-target="#create-dataloaders-using-manually-created-transforms">2.1 Create DataLoaders using manually created transforms</a></li>
+  <li><a href="#create-dataloaders-using-automatically-created-transforms" id="toc-create-dataloaders-using-automatically-created-transforms" class="nav-link" data-scroll-target="#create-dataloaders-using-automatically-created-transforms">2.2 Create DataLoaders using automatically created transforms</a></li>
   </ul></li>
-  <li><a href="#getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head" id="toc-getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head" class="nav-link" data-scroll-target="#getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head"><span class="header-section-number">9.9</span> 3. Getting a pretrained model, freezing the base layers and changing the classifier head</a></li>
-  <li><a href="#train-model-and-track-results" id="toc-train-model-and-track-results" class="nav-link" data-scroll-target="#train-model-and-track-results"><span class="header-section-number">9.10</span> 4. Train model and track results</a>
+  <li><a href="#getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head" id="toc-getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head" class="nav-link" data-scroll-target="#getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head">3. Getting a pretrained model, freezing the base layers and changing the classifier head</a></li>
+  <li><a href="#train-model-and-track-results" id="toc-train-model-and-track-results" class="nav-link" data-scroll-target="#train-model-and-track-results">4. Train model and track results</a>
   <ul class="collapse">
-  <li><a href="#adjust-train-function-to-track-results-with-summarywriter" id="toc-adjust-train-function-to-track-results-with-summarywriter" class="nav-link" data-scroll-target="#adjust-train-function-to-track-results-with-summarywriter"><span class="header-section-number">9.10.1</span> Adjust <code>train()</code> function to track results with <code>SummaryWriter()</code></a></li>
+  <li><a href="#adjust-train-function-to-track-results-with-summarywriter" id="toc-adjust-train-function-to-track-results-with-summarywriter" class="nav-link" data-scroll-target="#adjust-train-function-to-track-results-with-summarywriter">Adjust <code>train()</code> function to track results with <code>SummaryWriter()</code></a></li>
   </ul></li>
-  <li><a href="#view-our-models-results-in-tensorboard" id="toc-view-our-models-results-in-tensorboard" class="nav-link" data-scroll-target="#view-our-models-results-in-tensorboard"><span class="header-section-number">9.11</span> 5. View our model’s results in TensorBoard</a></li>
-  <li><a href="#create-a-helper-function-to-build-summarywriter-instances" id="toc-create-a-helper-function-to-build-summarywriter-instances" class="nav-link" data-scroll-target="#create-a-helper-function-to-build-summarywriter-instances"><span class="header-section-number">9.12</span> 6. Create a helper function to build <code>SummaryWriter()</code> instances</a>
+  <li><a href="#view-our-models-results-in-tensorboard" id="toc-view-our-models-results-in-tensorboard" class="nav-link" data-scroll-target="#view-our-models-results-in-tensorboard">5. View our model’s results in TensorBoard</a></li>
+  <li><a href="#create-a-helper-function-to-build-summarywriter-instances" id="toc-create-a-helper-function-to-build-summarywriter-instances" class="nav-link" data-scroll-target="#create-a-helper-function-to-build-summarywriter-instances">6. Create a helper function to build <code>SummaryWriter()</code> instances</a>
   <ul class="collapse">
-  <li><a href="#update-the-train-function-to-include-a-writer-parameter" id="toc-update-the-train-function-to-include-a-writer-parameter" class="nav-link" data-scroll-target="#update-the-train-function-to-include-a-writer-parameter"><span class="header-section-number">9.12.1</span> 6.1 Update the <code>train()</code> function to include a <code>writer</code> parameter</a></li>
+  <li><a href="#update-the-train-function-to-include-a-writer-parameter" id="toc-update-the-train-function-to-include-a-writer-parameter" class="nav-link" data-scroll-target="#update-the-train-function-to-include-a-writer-parameter">6.1 Update the <code>train()</code> function to include a <code>writer</code> parameter</a></li>
   </ul></li>
-  <li><a href="#setting-up-a-series-of-modelling-experiments" id="toc-setting-up-a-series-of-modelling-experiments" class="nav-link" data-scroll-target="#setting-up-a-series-of-modelling-experiments"><span class="header-section-number">9.13</span> 7. Setting up a series of modelling experiments</a>
+  <li><a href="#setting-up-a-series-of-modelling-experiments" id="toc-setting-up-a-series-of-modelling-experiments" class="nav-link" data-scroll-target="#setting-up-a-series-of-modelling-experiments">7. Setting up a series of modelling experiments</a>
   <ul class="collapse">
-  <li><a href="#what-kind-of-experiments-should-you-run" id="toc-what-kind-of-experiments-should-you-run" class="nav-link" data-scroll-target="#what-kind-of-experiments-should-you-run"><span class="header-section-number">9.13.1</span> 7.1 What kind of experiments should you run?</a></li>
-  <li><a href="#what-experiments-are-we-going-to-run" id="toc-what-experiments-are-we-going-to-run" class="nav-link" data-scroll-target="#what-experiments-are-we-going-to-run"><span class="header-section-number">9.13.2</span> 7.2 What experiments are we going to run?</a></li>
-  <li><a href="#download-different-datasets" id="toc-download-different-datasets" class="nav-link" data-scroll-target="#download-different-datasets"><span class="header-section-number">9.13.3</span> 7.3 Download different datasets</a></li>
-  <li><a href="#transform-datasets-and-create-dataloaders" id="toc-transform-datasets-and-create-dataloaders" class="nav-link" data-scroll-target="#transform-datasets-and-create-dataloaders"><span class="header-section-number">9.13.4</span> 7.4 Transform Datasets and create DataLoaders</a></li>
-  <li><a href="#create-feature-extractor-models" id="toc-create-feature-extractor-models" class="nav-link" data-scroll-target="#create-feature-extractor-models"><span class="header-section-number">9.13.5</span> 7.5 Create feature extractor models</a></li>
-  <li><a href="#create-experiments-and-set-up-training-code" id="toc-create-experiments-and-set-up-training-code" class="nav-link" data-scroll-target="#create-experiments-and-set-up-training-code"><span class="header-section-number">9.13.6</span> 7.6 Create experiments and set up training code</a></li>
+  <li><a href="#what-kind-of-experiments-should-you-run" id="toc-what-kind-of-experiments-should-you-run" class="nav-link" data-scroll-target="#what-kind-of-experiments-should-you-run">7.1 What kind of experiments should you run?</a></li>
+  <li><a href="#what-experiments-are-we-going-to-run" id="toc-what-experiments-are-we-going-to-run" class="nav-link" data-scroll-target="#what-experiments-are-we-going-to-run">7.2 What experiments are we going to run?</a></li>
+  <li><a href="#download-different-datasets" id="toc-download-different-datasets" class="nav-link" data-scroll-target="#download-different-datasets">7.3 Download different datasets</a></li>
+  <li><a href="#transform-datasets-and-create-dataloaders" id="toc-transform-datasets-and-create-dataloaders" class="nav-link" data-scroll-target="#transform-datasets-and-create-dataloaders">7.4 Transform Datasets and create DataLoaders</a></li>
+  <li><a href="#create-feature-extractor-models" id="toc-create-feature-extractor-models" class="nav-link" data-scroll-target="#create-feature-extractor-models">7.5 Create feature extractor models</a></li>
+  <li><a href="#create-experiments-and-set-up-training-code" id="toc-create-experiments-and-set-up-training-code" class="nav-link" data-scroll-target="#create-experiments-and-set-up-training-code">7.6 Create experiments and set up training code</a></li>
   </ul></li>
-  <li><a href="#view-experiments-in-tensorboard" id="toc-view-experiments-in-tensorboard" class="nav-link" data-scroll-target="#view-experiments-in-tensorboard"><span class="header-section-number">9.14</span> 8. View experiments in TensorBoard</a></li>
-  <li><a href="#load-in-the-best-model-and-make-predictions-with-it" id="toc-load-in-the-best-model-and-make-predictions-with-it" class="nav-link" data-scroll-target="#load-in-the-best-model-and-make-predictions-with-it"><span class="header-section-number">9.15</span> 9. Load in the best model and make predictions with it</a>
+  <li><a href="#view-experiments-in-tensorboard" id="toc-view-experiments-in-tensorboard" class="nav-link" data-scroll-target="#view-experiments-in-tensorboard">8. View experiments in TensorBoard</a></li>
+  <li><a href="#load-in-the-best-model-and-make-predictions-with-it" id="toc-load-in-the-best-model-and-make-predictions-with-it" class="nav-link" data-scroll-target="#load-in-the-best-model-and-make-predictions-with-it">9. Load in the best model and make predictions with it</a>
   <ul class="collapse">
-  <li><a href="#predict-on-a-custom-image-with-the-best-model" id="toc-predict-on-a-custom-image-with-the-best-model" class="nav-link" data-scroll-target="#predict-on-a-custom-image-with-the-best-model"><span class="header-section-number">9.15.1</span> 9.1 Predict on a custom image with the best model</a></li>
+  <li><a href="#predict-on-a-custom-image-with-the-best-model" id="toc-predict-on-a-custom-image-with-the-best-model" class="nav-link" data-scroll-target="#predict-on-a-custom-image-with-the-best-model">9.1 Predict on a custom image with the best model</a></li>
   </ul></li>
-  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways"><span class="header-section-number">9.16</span> Main takeaways</a></li>
-  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제"><span class="header-section-number">9.17</span> 연습 문제</a></li>
-  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료"><span class="header-section-number">9.18</span> 추가 학습 자료</a></li>
+  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways">Main takeaways</a></li>
+  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제">연습 문제</a></li>
+  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료">추가 학습 자료</a></li>
   </ul>
 </nav>
     </div>
@@ -279,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></h1>
+<h1 class="title"><span class="chapter-title">07 - PyTorch 실험 추적</span></h1>
 </div>
 
 
@@ -312,24 +301,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>And since experiment tracking is so important and integral to machine learning, you can consider this notebook your first milestone project.</p>
 <p>So welcome to Milestone Project 1: FoodVision Mini Experiment Tracking.</p>
 <p>We’re going to answer the question: <strong>how do I track my machine learning experiments?</strong></p>
-<section id="what-is-experiment-tracking" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="what-is-experiment-tracking"><span class="header-section-number">9.1</span> What is experiment tracking?</h2>
+<section id="what-is-experiment-tracking" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-experiment-tracking">What is experiment tracking?</h2>
 <p>Machine learning and deep learning are very experimental.</p>
 <p>You have to put on your artist’s beret/chef’s hat to cook up lots of different models.</p>
 <p>And you have to put on your scientist’s coat to track the results of various combinations of data, model architectures and training regimes.</p>
 <p>That’s where <strong>experiment tracking</strong> comes in.</p>
 <p>If you’re running lots of different experiments, <strong>experiment tracking helps you figure out what works and what doesn’t</strong>.</p>
 </section>
-<section id="why-track-experiments" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="why-track-experiments"><span class="header-section-number">9.2</span> Why track experiments?</h2>
+<section id="why-track-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="why-track-experiments">Why track experiments?</h2>
 <p>If you’re only running a handful of models (like we’ve done so far), it might be okay just to track their results in print outs and a few dictionaries.</p>
 <p>However, as the number of experiments you run starts to increase, this naive way of tracking could get out of hand.</p>
 <p>So if you’re following the machine learning practitioner’s motto of <em>experiment, experiment, experiment!</em>, you’ll want a way to track them.</p>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/07-experiment-tracking-can-get-out-of-hand.png" alt="experiment tracking can get out of hand, many different experiments with different names" width="900/"></p>
 <p><em>After building a few models and tracking their results, you’ll start to notice how quickly it can get out of hand.</em></p>
 </section>
-<section id="different-ways-to-track-machine-learning-experiments" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="different-ways-to-track-machine-learning-experiments"><span class="header-section-number">9.3</span> Different ways to track machine learning experiments</h2>
+<section id="different-ways-to-track-machine-learning-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="different-ways-to-track-machine-learning-experiments">Different ways to track machine learning experiments</h2>
 <p>There are as many different ways to track machine learning experiments as there is experiments to run.</p>
 <p>This table covers a few.</p>
 <table class="caption-top table">
@@ -376,8 +365,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/07-different-places-to-track-experiments.png" alt="various places to track machine learning experiments" width="900/"></p>
 <p><em>Various places and techniques you can use to track your machine learning experiments. <strong>참고:</strong> There are various other options similar to Weights &amp; Biases and open-source options similar to MLflow but I’ve left them out for brevity. You can find more by searching “machine learning experiment tracking”.</em></p>
 </section>
-<section id="이번-장에서-다룰-내용" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="이번-장에서-다룰-내용"><span class="header-section-number">9.4</span> 이번 장에서 다룰 내용</h2>
+<section id="이번-장에서-다룰-내용" class="level2">
+<h2 class="anchored" data-anchor-id="이번-장에서-다룰-내용">이번 장에서 다룰 내용</h2>
 <p>We’re going to be running several different modelling experiments with various levels of data, model size and training time to try and improve on FoodVision Mini.</p>
 <p>And due to its tight integration with PyTorch and widespread use, this notebook focuses on using TensorBoard to track our experiments.</p>
 <p>However, the principles we’re going to cover are similar across all of the other tools for experiment tracking.</p>
@@ -436,14 +425,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="where-can-you-get-help" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="where-can-you-get-help"><span class="header-section-number">9.5</span> Where can you get help?</h2>
+<section id="where-can-you-get-help" class="level2">
+<h2 class="anchored" data-anchor-id="where-can-you-get-help">Where can you get help?</h2>
 <p>All of the materials for this course <a href="https://github.com/mrdbourke/pytorch-deep-learning">are available on GitHub</a>.</p>
 <p>If you run into trouble, you can ask a question on the course <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">GitHub Discussions page</a>.</p>
 <p>And of course, there’s the <a href="https://pytorch.org/docs/stable/index.html">PyTorch documentation</a> and <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
 </section>
-<section id="getting-setup" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="getting-setup"><span class="header-section-number">9.6</span> 0. Getting setup</h2>
+<section id="getting-setup" class="level2">
+<h2 class="anchored" data-anchor-id="getting-setup">0. Getting setup</h2>
 <p>Let’s start by downloading all of the modules we’ll need for this section.</p>
 <p>To save us writing extra code, we’re going to be leveraging some of the Python scripts (such as <code>data_setup.py</code> and <code>engine.py</code>) we created in section, <a href="https://www.learnpytorch.io/05_pytorch_going_modular/">05. PyTorch Going Modular</a>.</p>
 <p>Specifically, we’re going to download the <a href="https://github.com/mrdbourke/pytorch-deep-learning/tree/main/going_modular"><code>going_modular</code></a> directory from the <code>pytorch-deep-learning</code> repository (if we don’t already have it).</p>
@@ -513,8 +502,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <pre><code>'cuda'</code></pre>
 </div>
 </div>
-<section id="create-a-helper-function-to-set-seeds" class="level3" data-number="9.6.1">
-<h3 data-number="9.6.1" class="anchored" data-anchor-id="create-a-helper-function-to-set-seeds"><span class="header-section-number">9.6.1</span> Create a helper function to set seeds</h3>
+<section id="create-a-helper-function-to-set-seeds" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-helper-function-to-set-seeds">Create a helper function to set seeds</h3>
 <p>Since we’ve been setting random seeds a whole bunch throughout previous sections, how about we functionize it?</p>
 <p>Let’s create a function to “set the seeds” called <code>set_seeds()</code>.</p>
 <blockquote class="blockquote">
@@ -535,8 +524,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 </section>
 </section>
-<section id="get-data" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="get-data"><span class="header-section-number">9.7</span> 1. Get data</h2>
+<section id="get-data" class="level2">
+<h2 class="anchored" data-anchor-id="get-data">1. Get data</h2>
 <p>As always, before we can run machine learning experiments, we’ll need a dataset.</p>
 <p>We’re going to continue trying to improve upon the results we’ve been getting on FoodVision Mini.</p>
 <p>In the previous section, <a href="https://www.learnpytorch.io/06_pytorch_transfer_learning/">06. PyTorch Transfer Learning</a>, we saw how powerful using a pretrained model and transfer learning could be when classifying images of pizza, steak and sushi.</p>
@@ -609,8 +598,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 <p>Excellent! Looks like we’ve got our pizza, steak and sushi images in standard image classification format ready to go.</p>
 </section>
-<section id="create-datasets-and-dataloaders" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="create-datasets-and-dataloaders"><span class="header-section-number">9.8</span> 2. Create Datasets and DataLoaders</h2>
+<section id="create-datasets-and-dataloaders" class="level2">
+<h2 class="anchored" data-anchor-id="create-datasets-and-dataloaders">2. Create Datasets and DataLoaders</h2>
 <p>Now we’ve got some data, let’s turn it into PyTorch DataLoaders.</p>
 <p>We can do so using the <code>create_dataloaders()</code> function we created in <a href="https://www.learnpytorch.io/05_pytorch_going_modular/#2-create-datasets-and-dataloaders-data_setuppy">05. PyTorch Going Modular part 2</a>.</p>
 <p>And since we’ll be using transfer learning and specifically pretrained models from <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a>, we’ll create a transform to prepare our images correctly.</p>
@@ -621,8 +610,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <p>We can do this with:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>normalize <span class="op">=</span> transforms.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>],</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                 std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="create-dataloaders-using-manually-created-transforms" class="level3" data-number="9.8.1">
-<h3 data-number="9.8.1" class="anchored" data-anchor-id="create-dataloaders-using-manually-created-transforms"><span class="header-section-number">9.8.1</span> 2.1 Create DataLoaders using manually created transforms</h3>
+<section id="create-dataloaders-using-manually-created-transforms" class="level3">
+<h3 class="anchored" data-anchor-id="create-dataloaders-using-manually-created-transforms">2.1 Create DataLoaders using manually created transforms</h3>
 <div id="cell-20" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup directories</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>train_dir <span class="op">=</span> image_path <span class="op">/</span> <span class="st">"train"</span></span>
@@ -663,8 +652,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 </div>
 </section>
-<section id="create-dataloaders-using-automatically-created-transforms" class="level3" data-number="9.8.2">
-<h3 data-number="9.8.2" class="anchored" data-anchor-id="create-dataloaders-using-automatically-created-transforms"><span class="header-section-number">9.8.2</span> 2.2 Create DataLoaders using automatically created transforms</h3>
+<section id="create-dataloaders-using-automatically-created-transforms" class="level3">
+<h3 class="anchored" data-anchor-id="create-dataloaders-using-automatically-created-transforms">2.2 Create DataLoaders using automatically created transforms</h3>
 <p>Data transformed and DataLoaders created!</p>
 <p>Let’s now see what the same transformation pipeline looks like but this time by using automatic transforms.</p>
 <p>We can do this by first instantiating a set of pretrained weights (for example <code>weights = torchvision.models.EfficientNet_B0_Weights.DEFAULT</code>) we’d like to use and calling the <code>transforms()</code> method on it.</p>
@@ -706,8 +695,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 </div>
 </section>
 </section>
-<section id="getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head"><span class="header-section-number">9.9</span> 3. Getting a pretrained model, freezing the base layers and changing the classifier head</h2>
+<section id="getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head" class="level2">
+<h2 class="anchored" data-anchor-id="getting-a-pretrained-model-freezing-the-base-layers-and-changing-the-classifier-head">3. Getting a pretrained model, freezing the base layers and changing the classifier head</h2>
 <p>Before we run and track multiple modelling experiments, let’s see what it’s like to run and track a single one.</p>
 <p>And since our data is ready, the next thing we’ll need is a model.</p>
 <p>Let’s download the pretrained weights for a <code>torchvision.models.efficientnet_b0()</code> model and prepare it for use with our own data.</p>
@@ -762,8 +751,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/07-output-of-torchinfo-summary.png" alt="output of torchinfo.summary() when passed our model when base layers are frozen and classifier head is updated" width="900/"></p>
 <p><em>Output of <code>torchinfo.summary()</code> with our feature extractor EffNetB0 model, notice how the base layers are frozen (not trainable) and the output layers are customized to our own problem.</em></p>
 </section>
-<section id="train-model-and-track-results" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="train-model-and-track-results"><span class="header-section-number">9.10</span> 4. Train model and track results</h2>
+<section id="train-model-and-track-results" class="level2">
+<h2 class="anchored" data-anchor-id="train-model-and-track-results">4. Train model and track results</h2>
 <p>Model ready to go!</p>
 <p>Let’s get ready to train it by creating a loss function and an optimizer.</p>
 <p>Since we’re working with multiple classes, we’ll use <a href="https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html"><code>torch.nn.CrossEntropyLoss()</code></a> as the loss function.</p>
@@ -773,8 +762,8 @@ torchvision version: 0.14.0.dev20220620+cu113</code></pre>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> nn.CrossEntropyLoss()</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.001</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="adjust-train-function-to-track-results-with-summarywriter" class="level3" data-number="9.10.1">
-<h3 data-number="9.10.1" class="anchored" data-anchor-id="adjust-train-function-to-track-results-with-summarywriter"><span class="header-section-number">9.10.1</span> Adjust <code>train()</code> function to track results with <code>SummaryWriter()</code></h3>
+<section id="adjust-train-function-to-track-results-with-summarywriter" class="level3">
+<h3 class="anchored" data-anchor-id="adjust-train-function-to-track-results-with-summarywriter">Adjust <code>train()</code> function to track results with <code>SummaryWriter()</code></h3>
 <p>Beautiful!</p>
 <p>All of the pieces of our training code are starting to come together.</p>
 <p>Let’s now add the final piece to track our experiments.</p>
@@ -978,8 +967,8 @@ Epoch: 5 | train_loss: 0.7065 | train_acc: 0.7188 | test_loss: 0.6746 | test_acc
 <p>There has to be a better way…</p>
 </section>
 </section>
-<section id="view-our-models-results-in-tensorboard" class="level2" data-number="9.11">
-<h2 data-number="9.11" class="anchored" data-anchor-id="view-our-models-results-in-tensorboard"><span class="header-section-number">9.11</span> 5. View our model’s results in TensorBoard</h2>
+<section id="view-our-models-results-in-tensorboard" class="level2">
+<h2 class="anchored" data-anchor-id="view-our-models-results-in-tensorboard">5. View our model’s results in TensorBoard</h2>
 <p>The <code>SummaryWriter()</code> class stores our model’s results in a directory called <code>runs/</code> in TensorBoard format by default.</p>
 <p>TensorBoard is a visualization program created by the TensorFlow team to view and inspect information about models and data.</p>
 <p>You know what that means?</p>
@@ -1022,8 +1011,8 @@ Epoch: 5 | train_loss: 0.7065 | train_acc: 0.7188 | test_loss: 0.6746 | test_acc
 <p><strong>참고:</strong> For more information on running TensorBoard in notebooks or in other locations, see the following: * <a href="https://www.tensorflow.org/tensorboard/tensorboard_in_notebooks">Using TensorBoard in Notebooks guide by TensorFlow</a> * <a href="https://tensorboard.dev/#get-started">Get started with TensorBoard.dev</a> (helpful for uploading your TensorBoard logs to a shareable link)</p>
 </blockquote>
 </section>
-<section id="create-a-helper-function-to-build-summarywriter-instances" class="level2" data-number="9.12">
-<h2 data-number="9.12" class="anchored" data-anchor-id="create-a-helper-function-to-build-summarywriter-instances"><span class="header-section-number">9.12</span> 6. Create a helper function to build <code>SummaryWriter()</code> instances</h2>
+<section id="create-a-helper-function-to-build-summarywriter-instances" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-helper-function-to-build-summarywriter-instances">6. Create a helper function to build <code>SummaryWriter()</code> instances</h2>
 <p>The <code>SummaryWriter()</code> class logs various information to a directory specified by the <code>log_dir</code> parameter.</p>
 <p>How about we make a helper function to create a custom directory per experiment?</p>
 <p>In essence, each experiment gets its own logs directory.</p>
@@ -1086,8 +1075,8 @@ Epoch: 5 | train_loss: 0.7065 | train_acc: 0.7188 | test_loss: 0.6746 | test_acc
 </div>
 </div>
 <p>Looking good, now we’ve got a way to log and trace back our various experiments.</p>
-<section id="update-the-train-function-to-include-a-writer-parameter" class="level3" data-number="9.12.1">
-<h3 data-number="9.12.1" class="anchored" data-anchor-id="update-the-train-function-to-include-a-writer-parameter"><span class="header-section-number">9.12.1</span> 6.1 Update the <code>train()</code> function to include a <code>writer</code> parameter</h3>
+<section id="update-the-train-function-to-include-a-writer-parameter" class="level3">
+<h3 class="anchored" data-anchor-id="update-the-train-function-to-include-a-writer-parameter">6.1 Update the <code>train()</code> function to include a <code>writer</code> parameter</h3>
 <p>Our <code>create_writer()</code> function works fantastic.</p>
 <p>How about we give our <code>train()</code> function the ability to take in a <code>writer</code> parameter so we actively update the <code>SummaryWriter()</code> instance we’re using each time we call <code>train()</code>.</p>
 <p>For example, say we’re running a series of experiments, calling <code>train()</code> multiple times for multiple different models, it would be good if each experiment used a different <code>writer</code>.</p>
@@ -1200,15 +1189,15 @@ Epoch: 5 | train_loss: 0.7065 | train_acc: 0.7188 | test_loss: 0.6746 | test_acc
 </div>
 </section>
 </section>
-<section id="setting-up-a-series-of-modelling-experiments" class="level2" data-number="9.13">
-<h2 data-number="9.13" class="anchored" data-anchor-id="setting-up-a-series-of-modelling-experiments"><span class="header-section-number">9.13</span> 7. Setting up a series of modelling experiments</h2>
+<section id="setting-up-a-series-of-modelling-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-a-series-of-modelling-experiments">7. Setting up a series of modelling experiments</h2>
 <p>It’s to step things up a notch.</p>
 <p>Previously we’ve been running various experiments and inspecting the results one by one.</p>
 <p>But what if we could run multiple experiments and then inspect the results all together?</p>
 <p>You in?</p>
 <p>C’mon, let’s go.</p>
-<section id="what-kind-of-experiments-should-you-run" class="level3" data-number="9.13.1">
-<h3 data-number="9.13.1" class="anchored" data-anchor-id="what-kind-of-experiments-should-you-run"><span class="header-section-number">9.13.1</span> 7.1 What kind of experiments should you run?</h3>
+<section id="what-kind-of-experiments-should-you-run" class="level3">
+<h3 class="anchored" data-anchor-id="what-kind-of-experiments-should-you-run">7.1 What kind of experiments should you run?</h3>
 <p>That’s the million dollar question in machine learning.</p>
 <p>Because there’s really no limit to the experiments you can run.</p>
 <p>Such a freedom is why machine learning is so exciting and terrifying at the same time.</p>
@@ -1221,8 +1210,8 @@ Epoch: 5 | train_loss: 0.7065 | train_acc: 0.7188 | test_loss: 0.6746 | test_acc
 <p>Your first batch of experiments should take no longer than a few seconds to a few minutes to run.</p>
 <p>The quicker you can experiment, the faster you can work out what <em>doesn’t</em> work, in turn, the faster you can work out what <em>does</em> work.</p>
 </section>
-<section id="what-experiments-are-we-going-to-run" class="level3" data-number="9.13.2">
-<h3 data-number="9.13.2" class="anchored" data-anchor-id="what-experiments-are-we-going-to-run"><span class="header-section-number">9.13.2</span> 7.2 What experiments are we going to run?</h3>
+<section id="what-experiments-are-we-going-to-run" class="level3">
+<h3 class="anchored" data-anchor-id="what-experiments-are-we-going-to-run">7.2 What experiments are we going to run?</h3>
 <p>Our goal is to improve the model powering FoodVision Mini without it getting too big.</p>
 <p>In essence, our ideal model achieves a high level of test set accuracy (90%+) but doesn’t take too long to train/perform inference (make predictions).</p>
 <p>We’ve got plenty of options but how about we keep things simple?</p>
@@ -1302,8 +1291,8 @@ Epoch: 5 | train_loss: 0.7065 | train_acc: 0.7188 | test_loss: 0.6746 | test_acc
 <p>And as a reminder, the datasets we’re using are a subset of the <a href="https://pytorch.org/vision/stable/generated/torchvision.datasets.Food101.html#torchvision.datasets.Food101">Food101 dataset</a> (3 classes, pizza, steak, suhsi, instead of 101) and 10% and 20% of the images rather than 100%. If our experiments work, we could start to run more on more data (though this will take longer to compute). You can see how the datasets were created via the <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/extras/04_custom_data_creation.ipynb"><code>04_custom_data_creation.ipynb</code> notebook</a>.</p>
 </blockquote>
 </section>
-<section id="download-different-datasets" class="level3" data-number="9.13.3">
-<h3 data-number="9.13.3" class="anchored" data-anchor-id="download-different-datasets"><span class="header-section-number">9.13.3</span> 7.3 Download different datasets</h3>
+<section id="download-different-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="download-different-datasets">7.3 Download different datasets</h3>
 <p>Before we start running our series of experiments, we need to make sure our datasets are ready.</p>
 <p>We’ll need two forms of a training set: 1. A training set with <strong>10% of the data</strong> of Food101 pizza, steak, sushi images (we’ve already created this above but we’ll do it again for completeness). 2. A training set with <strong>20% of the data</strong> of Food101 pizza, steak, sushi images.</p>
 <p>For consistency, all experiments will use the same testing dataset (the one from the 10% data split).</p>
@@ -1343,8 +1332,8 @@ Testing directory: data/pizza_steak_sushi/test</code></pre>
 </div>
 </div>
 </section>
-<section id="transform-datasets-and-create-dataloaders" class="level3" data-number="9.13.4">
-<h3 data-number="9.13.4" class="anchored" data-anchor-id="transform-datasets-and-create-dataloaders"><span class="header-section-number">9.13.4</span> 7.4 Transform Datasets and create DataLoaders</h3>
+<section id="transform-datasets-and-create-dataloaders" class="level3">
+<h3 class="anchored" data-anchor-id="transform-datasets-and-create-dataloaders">7.4 Transform Datasets and create DataLoaders</h3>
 <p>Next we’ll create a series of transforms to prepare our images for our model(s).</p>
 <p>To keep things consistent, we’ll manually create a transform (just like we did above) and use the same transform across all of the datasets.</p>
 <p>The transform will: 1. Resize all the images (we’ll start with 224, 224 but this could be changed). 2. Turn them into tensors with values between 0 &amp; 1. 3. Normalize them in way so their distributions are inline with the ImageNet dataset (we do this because our models from <a href="https://pytorch.org/vision/stable/models.html"><code>torchvision.models</code></a> have been pretrained on ImageNet).</p>
@@ -1396,8 +1385,8 @@ Number of classes: 3, class names: ['pizza', 'steak', 'sushi']</code></pre>
 </div>
 </div>
 </section>
-<section id="create-feature-extractor-models" class="level3" data-number="9.13.5">
-<h3 data-number="9.13.5" class="anchored" data-anchor-id="create-feature-extractor-models"><span class="header-section-number">9.13.5</span> 7.5 Create feature extractor models</h3>
+<section id="create-feature-extractor-models" class="level3">
+<h3 class="anchored" data-anchor-id="create-feature-extractor-models">7.5 Create feature extractor models</h3>
 <p>Time to start building our models.</p>
 <p>We’re going to create two feature extractor models:</p>
 <ol type="1">
@@ -1572,8 +1561,8 @@ Number of classes: 3, class names: ['pizza', 'steak', 'sushi']</code></pre>
 <p><strong>참고:</strong> In the spirit of experimenting, you really could try almost any model from <code>torchvision.models</code> in a similar fashion to what we’re doing here. I’ve only chosen EffNetB0 and EffNetB2 as examples. Perhaps you might want to throw something like <code>torchvision.models.convnext_tiny()</code> or <code>torchvision.models.convnext_small()</code> into the mix.</p>
 </blockquote>
 </section>
-<section id="create-experiments-and-set-up-training-code" class="level3" data-number="9.13.6">
-<h3 data-number="9.13.6" class="anchored" data-anchor-id="create-experiments-and-set-up-training-code"><span class="header-section-number">9.13.6</span> 7.6 Create experiments and set up training code</h3>
+<section id="create-experiments-and-set-up-training-code" class="level3">
+<h3 class="anchored" data-anchor-id="create-experiments-and-set-up-training-code">7.6 Create experiments and set up training code</h3>
 <p>We’ve prepared our data and prepared our models, the time has come to setup some experiments!</p>
 <p>We’ll start by creating two lists and a dictionary: 1. A list of the number of epochs we’d like to test (<code>[5, 10]</code>) 2. A list of the models we’d like to test (<code>["effnetb0", "effnetb2"]</code>) 3. A dictionary of the different training DataLoaders</p>
 <div id="cell-73" class="cell" data-execution_count="28">
@@ -1842,8 +1831,8 @@ Wall time: 2min 33s</code></pre>
 </div>
 </section>
 </section>
-<section id="view-experiments-in-tensorboard" class="level2" data-number="9.14">
-<h2 data-number="9.14" class="anchored" data-anchor-id="view-experiments-in-tensorboard"><span class="header-section-number">9.14</span> 8. View experiments in TensorBoard</h2>
+<section id="view-experiments-in-tensorboard" class="level2">
+<h2 class="anchored" data-anchor-id="view-experiments-in-tensorboard">8. View experiments in TensorBoard</h2>
 <p>Ho, ho!</p>
 <p>Look at us go!</p>
 <p>Training eight models in one go?</p>
@@ -1874,8 +1863,8 @@ Wall time: 2min 33s</code></pre>
 <p><strong>참고:</strong> Beware that anything you upload to tensorboard.dev is publically available for anyone to see. So if you do upload your experiments, be careful they don’t contain sensitive information.</p>
 </blockquote>
 </section>
-<section id="load-in-the-best-model-and-make-predictions-with-it" class="level2" data-number="9.15">
-<h2 data-number="9.15" class="anchored" data-anchor-id="load-in-the-best-model-and-make-predictions-with-it"><span class="header-section-number">9.15</span> 9. Load in the best model and make predictions with it</h2>
+<section id="load-in-the-best-model-and-make-predictions-with-it" class="level2">
+<h2 class="anchored" data-anchor-id="load-in-the-best-model-and-make-predictions-with-it">9. Load in the best model and make predictions with it</h2>
 <p>Looking at the TensorBoard logs for our eight experiments, it seems experiment number eight achieved the best overall results (highest test accuracy, second lowest test loss).</p>
 <p>This is the experiment that used: * EffNetB2 (double the parameters of EffNetB0) * 20% pizza, steak, sushi training data (double the original training data) * 10 epochs (double the original training time)</p>
 <p>In essence, our biggest model achieved the best results.</p>
@@ -1965,8 +1954,8 @@ Wall time: 2min 33s</code></pre>
 <p>Nice!</p>
 <p>Running the cell above a few times we can see our model performs quite well and often has higher prediction probabilities than previous models we’ve built.</p>
 <p>This suggests the model is more confident in the decisions it’s making.</p>
-<section id="predict-on-a-custom-image-with-the-best-model" class="level3" data-number="9.15.1">
-<h3 data-number="9.15.1" class="anchored" data-anchor-id="predict-on-a-custom-image-with-the-best-model"><span class="header-section-number">9.15.1</span> 9.1 Predict on a custom image with the best model</h3>
+<section id="predict-on-a-custom-image-with-the-best-model" class="level3">
+<h3 class="anchored" data-anchor-id="predict-on-a-custom-image-with-the-best-model">9.1 Predict on a custom image with the best model</h3>
 <p>Making predictions on the test dataset is cool but the real magic of machine learning is making predictions on custom images of your own.</p>
 <p>So let’s import the trusty <a href="https://github.com/mrdbourke/pytorch-deep-learning/blob/main/images/04-pizza-dad.jpeg">pizza dad image</a> (a photo of my dad in front of a pizza) we’ve been using for the past couple of sections and see how our model performs on it.</p>
 <div id="cell-89" class="cell" data-execution_count="35">
@@ -2009,8 +1998,8 @@ Wall time: 2min 33s</code></pre>
 <p>I’ll leave that as a challenge for you to investigate.</p>
 </section>
 </section>
-<section id="main-takeaways" class="level2" data-number="9.16">
-<h2 data-number="9.16" class="anchored" data-anchor-id="main-takeaways"><span class="header-section-number">9.16</span> Main takeaways</h2>
+<section id="main-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="main-takeaways">Main takeaways</h2>
 <p>We’ve now gone full circle on the PyTorch workflow introduced in <a href="https://www.learnpytorch.io/01_pytorch_workflow/">01. PyTorch Workflow Fundamentals</a>, we’ve gotten data ready, we’ve built and picked a pretrained model, we’ve used our various helper functions to train and evaluate the model and in this notebook we’ve improved our FoodVision Mini model by running and tracking a series of experiments.</p>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/01_a_pytorch_workflow.png" width="900" alt="a pytorch workflow flowchat"></p>
 <p>You should be proud of yourself, this is no small feat!</p>
@@ -2026,8 +2015,8 @@ Wall time: 2min 33s</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="연습-문제" class="level2" data-number="9.17">
-<h2 data-number="9.17" class="anchored" data-anchor-id="연습-문제"><span class="header-section-number">9.17</span> 연습 문제</h2>
+<section id="연습-문제" class="level2">
+<h2 class="anchored" data-anchor-id="연습-문제">연습 문제</h2>
 <blockquote class="blockquote">
 <p><strong>참고:</strong> These exercises expect the use of <code>torchvision</code> v0.13+ (currently in beta as of June 2022). You can install the nightly version via the PyTorch getting started page.</p>
 </blockquote>
@@ -2123,8 +2112,8 @@ Wall time: 2min 33s</code></pre>
 </ul></li>
 </ol>
 </section>
-<section id="추가-학습-자료" class="level2" data-number="9.18">
-<h2 data-number="9.18" class="anchored" data-anchor-id="추가-학습-자료"><span class="header-section-number">9.18</span> 추가 학습 자료</h2>
+<section id="추가-학습-자료" class="level2">
+<h2 class="anchored" data-anchor-id="추가-학습-자료">추가 학습 자료</h2>
 <ul>
 <li>Read <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">The Bitter Lesson</a> blog post by Richard Sutton to get an idea of how many of the latest advancements in AI have come from increased scale (bigger datasets and bigger models) and more general (less meticulously crafted) methods.</li>
 <li>Go through the <a href="https://pytorch.org/tutorials/beginner/introyt/tensorboardyt_tutorial.html">PyTorch YouTube/code tutorial</a> for TensorBoard for 20-minutes and see how it compares to the code we’ve written in this notebook.</li>
@@ -2541,12 +2530,12 @@ Wall time: 2min 33s</code></pre>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./06_pytorch_transfer_learning.html" class="pagination-link" aria-label="06 - PyTorch 전이 학습">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">06 - PyTorch 전이 학습</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./08_pytorch_paper_replicating.html" class="pagination-link" aria-label="08 - PyTorch 논문 복제">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-title">08 - PyTorch 논문 복제</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

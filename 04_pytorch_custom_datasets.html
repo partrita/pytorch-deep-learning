@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; 04 - PyTorch 사용자 정의 데이터셋 – 파이토치 딥러닝 입문</title>
+<title>04 - PyTorch 사용자 정의 데이터셋 – 파이토치 딥러닝 입문</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-803ae4f7a8810f475153517dc3c4ebae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-841b73d05e5bc75123d26cb7b2f11c52.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_pytorch_custom_datasets.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_pytorch_custom_datasets.html"><span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,68 +149,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">딥러닝을 위한 PyTorch 배우기</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">00 - PyTorch 기초</span></span></a>
+  <a href="./00_pytorch_fundamentals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">00 - PyTorch 기초</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">01 - PyTorch 워크플로우</span></span></a>
+  <a href="./01_pytorch_workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">01 - PyTorch 워크플로우</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">02 - PyTorch 신경망 분류</span></span></a>
+  <a href="./02_pytorch_classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02 - PyTorch 신경망 분류</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span></a>
+  <a href="./03_pytorch_computer_vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></span></a>
+  <a href="./04_pytorch_custom_datasets.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span></a>
+  <a href="./05_pytorch_going_modular.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">05 - PyTorch 모듈화</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">06 - PyTorch 전이 학습</span></span></a>
+  <a href="./06_pytorch_transfer_learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">06 - PyTorch 전이 학습</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">07 - PyTorch 실험 추적</span></span></a>
+  <a href="./07_pytorch_experiment_tracking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">07 - PyTorch 실험 추적</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">08 - PyTorch 논문 복제</span></span></a>
+  <a href="./08_pytorch_paper_replicating.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">08 - PyTorch 논문 복제</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">09 - PyTorch 모델 배포</span></span></a>
+  <a href="./09_pytorch_model_deployment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">09 - PyTorch 모델 배포</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -229,65 +218,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-a-custom-dataset" id="toc-what-is-a-custom-dataset" class="nav-link active" data-scroll-target="#what-is-a-custom-dataset"><span class="header-section-number">6.1</span> What is a custom dataset?</a></li>
-  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용"><span class="header-section-number">6.2</span> 이번 장에서 다룰 내용</a></li>
-  <li><a href="#도움을-받을-수-있는-곳" id="toc-도움을-받을-수-있는-곳" class="nav-link" data-scroll-target="#도움을-받을-수-있는-곳"><span class="header-section-number">6.3</span> 도움을 받을 수 있는 곳</a></li>
-  <li><a href="#importing-pytorch-and-setting-up-device-agnostic-code" id="toc-importing-pytorch-and-setting-up-device-agnostic-code" class="nav-link" data-scroll-target="#importing-pytorch-and-setting-up-device-agnostic-code"><span class="header-section-number">6.4</span> 0. Importing PyTorch and setting up device-agnostic code</a></li>
-  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data"><span class="header-section-number">6.5</span> 1. Get data</a></li>
-  <li><a href="#become-one-with-the-data-data-preparation" id="toc-become-one-with-the-data-data-preparation" class="nav-link" data-scroll-target="#become-one-with-the-data-data-preparation"><span class="header-section-number">6.6</span> 2. Become one with the data (data preparation)</a>
+  <li><a href="#what-is-a-custom-dataset" id="toc-what-is-a-custom-dataset" class="nav-link active" data-scroll-target="#what-is-a-custom-dataset">What is a custom dataset?</a></li>
+  <li><a href="#이번-장에서-다룰-내용" id="toc-이번-장에서-다룰-내용" class="nav-link" data-scroll-target="#이번-장에서-다룰-내용">이번 장에서 다룰 내용</a></li>
+  <li><a href="#도움을-받을-수-있는-곳" id="toc-도움을-받을-수-있는-곳" class="nav-link" data-scroll-target="#도움을-받을-수-있는-곳">도움을 받을 수 있는 곳</a></li>
+  <li><a href="#importing-pytorch-and-setting-up-device-agnostic-code" id="toc-importing-pytorch-and-setting-up-device-agnostic-code" class="nav-link" data-scroll-target="#importing-pytorch-and-setting-up-device-agnostic-code">0. Importing PyTorch and setting up device-agnostic code</a></li>
+  <li><a href="#get-data" id="toc-get-data" class="nav-link" data-scroll-target="#get-data">1. Get data</a></li>
+  <li><a href="#become-one-with-the-data-data-preparation" id="toc-become-one-with-the-data-data-preparation" class="nav-link" data-scroll-target="#become-one-with-the-data-data-preparation">2. Become one with the data (data preparation)</a>
   <ul class="collapse">
-  <li><a href="#visualize-an-image" id="toc-visualize-an-image" class="nav-link" data-scroll-target="#visualize-an-image"><span class="header-section-number">6.6.1</span> 2.1 Visualize an image</a></li>
+  <li><a href="#visualize-an-image" id="toc-visualize-an-image" class="nav-link" data-scroll-target="#visualize-an-image">2.1 Visualize an image</a></li>
   </ul></li>
-  <li><a href="#transforming-data" id="toc-transforming-data" class="nav-link" data-scroll-target="#transforming-data"><span class="header-section-number">6.7</span> 3. Transforming data</a>
+  <li><a href="#transforming-data" id="toc-transforming-data" class="nav-link" data-scroll-target="#transforming-data">3. Transforming data</a>
   <ul class="collapse">
-  <li><a href="#transforming-data-with-torchvision.transforms" id="toc-transforming-data-with-torchvision.transforms" class="nav-link" data-scroll-target="#transforming-data-with-torchvision.transforms"><span class="header-section-number">6.7.1</span> 3.1 Transforming data with <code>torchvision.transforms</code></a></li>
+  <li><a href="#transforming-data-with-torchvision.transforms" id="toc-transforming-data-with-torchvision.transforms" class="nav-link" data-scroll-target="#transforming-data-with-torchvision.transforms">3.1 Transforming data with <code>torchvision.transforms</code></a></li>
   </ul></li>
-  <li><a href="#option-1-loading-image-data-using-imagefolder" id="toc-option-1-loading-image-data-using-imagefolder" class="nav-link" data-scroll-target="#option-1-loading-image-data-using-imagefolder"><span class="header-section-number">6.8</span> 4. Option 1: Loading Image Data Using <code>ImageFolder</code></a>
+  <li><a href="#option-1-loading-image-data-using-imagefolder" id="toc-option-1-loading-image-data-using-imagefolder" class="nav-link" data-scroll-target="#option-1-loading-image-data-using-imagefolder">4. Option 1: Loading Image Data Using <code>ImageFolder</code></a>
   <ul class="collapse">
-  <li><a href="#turn-loaded-images-into-dataloaders" id="toc-turn-loaded-images-into-dataloaders" class="nav-link" data-scroll-target="#turn-loaded-images-into-dataloaders"><span class="header-section-number">6.8.1</span> 4.1 Turn loaded images into <code>DataLoader</code>’s</a></li>
+  <li><a href="#turn-loaded-images-into-dataloaders" id="toc-turn-loaded-images-into-dataloaders" class="nav-link" data-scroll-target="#turn-loaded-images-into-dataloaders">4.1 Turn loaded images into <code>DataLoader</code>’s</a></li>
   </ul></li>
-  <li><a href="#option-2-loading-image-data-with-a-custom-dataset" id="toc-option-2-loading-image-data-with-a-custom-dataset" class="nav-link" data-scroll-target="#option-2-loading-image-data-with-a-custom-dataset"><span class="header-section-number">6.9</span> 5. Option 2: Loading Image Data with a Custom <code>Dataset</code></a>
+  <li><a href="#option-2-loading-image-data-with-a-custom-dataset" id="toc-option-2-loading-image-data-with-a-custom-dataset" class="nav-link" data-scroll-target="#option-2-loading-image-data-with-a-custom-dataset">5. Option 2: Loading Image Data with a Custom <code>Dataset</code></a>
   <ul class="collapse">
-  <li><a href="#creating-a-helper-function-to-get-class-names" id="toc-creating-a-helper-function-to-get-class-names" class="nav-link" data-scroll-target="#creating-a-helper-function-to-get-class-names"><span class="header-section-number">6.9.1</span> 5.1 Creating a helper function to get class names</a></li>
-  <li><a href="#create-a-custom-dataset-to-replicate-imagefolder" id="toc-create-a-custom-dataset-to-replicate-imagefolder" class="nav-link" data-scroll-target="#create-a-custom-dataset-to-replicate-imagefolder"><span class="header-section-number">6.9.2</span> 5.2 Create a custom <code>Dataset</code> to replicate <code>ImageFolder</code></a></li>
-  <li><a href="#create-a-function-to-display-random-images" id="toc-create-a-function-to-display-random-images" class="nav-link" data-scroll-target="#create-a-function-to-display-random-images"><span class="header-section-number">6.9.3</span> 5.3 Create a function to display random images</a></li>
-  <li><a href="#turn-custom-loaded-images-into-dataloaders" id="toc-turn-custom-loaded-images-into-dataloaders" class="nav-link" data-scroll-target="#turn-custom-loaded-images-into-dataloaders"><span class="header-section-number">6.9.4</span> 5.4 Turn custom loaded images into <code>DataLoader</code>’s</a></li>
+  <li><a href="#creating-a-helper-function-to-get-class-names" id="toc-creating-a-helper-function-to-get-class-names" class="nav-link" data-scroll-target="#creating-a-helper-function-to-get-class-names">5.1 Creating a helper function to get class names</a></li>
+  <li><a href="#create-a-custom-dataset-to-replicate-imagefolder" id="toc-create-a-custom-dataset-to-replicate-imagefolder" class="nav-link" data-scroll-target="#create-a-custom-dataset-to-replicate-imagefolder">5.2 Create a custom <code>Dataset</code> to replicate <code>ImageFolder</code></a></li>
+  <li><a href="#create-a-function-to-display-random-images" id="toc-create-a-function-to-display-random-images" class="nav-link" data-scroll-target="#create-a-function-to-display-random-images">5.3 Create a function to display random images</a></li>
+  <li><a href="#turn-custom-loaded-images-into-dataloaders" id="toc-turn-custom-loaded-images-into-dataloaders" class="nav-link" data-scroll-target="#turn-custom-loaded-images-into-dataloaders">5.4 Turn custom loaded images into <code>DataLoader</code>’s</a></li>
   </ul></li>
-  <li><a href="#other-forms-of-transforms-data-augmentation" id="toc-other-forms-of-transforms-data-augmentation" class="nav-link" data-scroll-target="#other-forms-of-transforms-data-augmentation"><span class="header-section-number">6.10</span> 6. Other forms of transforms (data augmentation)</a></li>
-  <li><a href="#model-0-tinyvgg-without-data-augmentation" id="toc-model-0-tinyvgg-without-data-augmentation" class="nav-link" data-scroll-target="#model-0-tinyvgg-without-data-augmentation"><span class="header-section-number">6.11</span> 7. Model 0: TinyVGG without data augmentation</a>
+  <li><a href="#other-forms-of-transforms-data-augmentation" id="toc-other-forms-of-transforms-data-augmentation" class="nav-link" data-scroll-target="#other-forms-of-transforms-data-augmentation">6. Other forms of transforms (data augmentation)</a></li>
+  <li><a href="#model-0-tinyvgg-without-data-augmentation" id="toc-model-0-tinyvgg-without-data-augmentation" class="nav-link" data-scroll-target="#model-0-tinyvgg-without-data-augmentation">7. Model 0: TinyVGG without data augmentation</a>
   <ul class="collapse">
-  <li><a href="#creating-transforms-and-loading-data-for-model-0" id="toc-creating-transforms-and-loading-data-for-model-0" class="nav-link" data-scroll-target="#creating-transforms-and-loading-data-for-model-0"><span class="header-section-number">6.11.1</span> 7.1 Creating transforms and loading data for Model 0</a></li>
-  <li><a href="#create-tinyvgg-model-class" id="toc-create-tinyvgg-model-class" class="nav-link" data-scroll-target="#create-tinyvgg-model-class"><span class="header-section-number">6.11.2</span> 7.2 Create TinyVGG model class</a></li>
-  <li><a href="#try-a-forward-pass-on-a-single-image-to-test-the-model" id="toc-try-a-forward-pass-on-a-single-image-to-test-the-model" class="nav-link" data-scroll-target="#try-a-forward-pass-on-a-single-image-to-test-the-model"><span class="header-section-number">6.11.3</span> 7.3 Try a forward pass on a single image (to test the model)</a></li>
-  <li><a href="#use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model" id="toc-use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model" class="nav-link" data-scroll-target="#use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model"><span class="header-section-number">6.11.4</span> 7.4 Use <code>torchinfo</code> to get an idea of the shapes going through our model</a></li>
-  <li><a href="#create-train-test-loop-functions" id="toc-create-train-test-loop-functions" class="nav-link" data-scroll-target="#create-train-test-loop-functions"><span class="header-section-number">6.11.5</span> 7.5 Create train &amp; test loop functions</a></li>
-  <li><a href="#creating-a-train-function-to-combine-train_step-and-test_step" id="toc-creating-a-train-function-to-combine-train_step-and-test_step" class="nav-link" data-scroll-target="#creating-a-train-function-to-combine-train_step-and-test_step"><span class="header-section-number">6.11.6</span> 7.6 Creating a <code>train()</code> function to combine <code>train_step()</code> and <code>test_step()</code></a></li>
-  <li><a href="#train-and-evaluate-model-0" id="toc-train-and-evaluate-model-0" class="nav-link" data-scroll-target="#train-and-evaluate-model-0"><span class="header-section-number">6.11.7</span> 7.7 Train and Evaluate Model 0</a></li>
-  <li><a href="#plot-the-loss-curves-of-model-0" id="toc-plot-the-loss-curves-of-model-0" class="nav-link" data-scroll-target="#plot-the-loss-curves-of-model-0"><span class="header-section-number">6.11.8</span> 7.8 Plot the loss curves of Model 0</a></li>
+  <li><a href="#creating-transforms-and-loading-data-for-model-0" id="toc-creating-transforms-and-loading-data-for-model-0" class="nav-link" data-scroll-target="#creating-transforms-and-loading-data-for-model-0">7.1 Creating transforms and loading data for Model 0</a></li>
+  <li><a href="#create-tinyvgg-model-class" id="toc-create-tinyvgg-model-class" class="nav-link" data-scroll-target="#create-tinyvgg-model-class">7.2 Create TinyVGG model class</a></li>
+  <li><a href="#try-a-forward-pass-on-a-single-image-to-test-the-model" id="toc-try-a-forward-pass-on-a-single-image-to-test-the-model" class="nav-link" data-scroll-target="#try-a-forward-pass-on-a-single-image-to-test-the-model">7.3 Try a forward pass on a single image (to test the model)</a></li>
+  <li><a href="#use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model" id="toc-use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model" class="nav-link" data-scroll-target="#use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model">7.4 Use <code>torchinfo</code> to get an idea of the shapes going through our model</a></li>
+  <li><a href="#create-train-test-loop-functions" id="toc-create-train-test-loop-functions" class="nav-link" data-scroll-target="#create-train-test-loop-functions">7.5 Create train &amp; test loop functions</a></li>
+  <li><a href="#creating-a-train-function-to-combine-train_step-and-test_step" id="toc-creating-a-train-function-to-combine-train_step-and-test_step" class="nav-link" data-scroll-target="#creating-a-train-function-to-combine-train_step-and-test_step">7.6 Creating a <code>train()</code> function to combine <code>train_step()</code> and <code>test_step()</code></a></li>
+  <li><a href="#train-and-evaluate-model-0" id="toc-train-and-evaluate-model-0" class="nav-link" data-scroll-target="#train-and-evaluate-model-0">7.7 Train and Evaluate Model 0</a></li>
+  <li><a href="#plot-the-loss-curves-of-model-0" id="toc-plot-the-loss-curves-of-model-0" class="nav-link" data-scroll-target="#plot-the-loss-curves-of-model-0">7.8 Plot the loss curves of Model 0</a></li>
   </ul></li>
-  <li><a href="#what-should-an-ideal-loss-curve-look-like" id="toc-what-should-an-ideal-loss-curve-look-like" class="nav-link" data-scroll-target="#what-should-an-ideal-loss-curve-look-like"><span class="header-section-number">6.12</span> 8. What should an ideal loss curve look like?</a>
+  <li><a href="#what-should-an-ideal-loss-curve-look-like" id="toc-what-should-an-ideal-loss-curve-look-like" class="nav-link" data-scroll-target="#what-should-an-ideal-loss-curve-look-like">8. What should an ideal loss curve look like?</a>
   <ul class="collapse">
-  <li><a href="#how-to-deal-with-overfitting" id="toc-how-to-deal-with-overfitting" class="nav-link" data-scroll-target="#how-to-deal-with-overfitting"><span class="header-section-number">6.12.1</span> 8.1 How to deal with overfitting</a></li>
-  <li><a href="#how-to-deal-with-underfitting" id="toc-how-to-deal-with-underfitting" class="nav-link" data-scroll-target="#how-to-deal-with-underfitting"><span class="header-section-number">6.12.2</span> 8.2 How to deal with underfitting</a></li>
-  <li><a href="#the-balance-between-overfitting-and-underfitting" id="toc-the-balance-between-overfitting-and-underfitting" class="nav-link" data-scroll-target="#the-balance-between-overfitting-and-underfitting"><span class="header-section-number">6.12.3</span> 8.3 The balance between overfitting and underfitting</a></li>
+  <li><a href="#how-to-deal-with-overfitting" id="toc-how-to-deal-with-overfitting" class="nav-link" data-scroll-target="#how-to-deal-with-overfitting">8.1 How to deal with overfitting</a></li>
+  <li><a href="#how-to-deal-with-underfitting" id="toc-how-to-deal-with-underfitting" class="nav-link" data-scroll-target="#how-to-deal-with-underfitting">8.2 How to deal with underfitting</a></li>
+  <li><a href="#the-balance-between-overfitting-and-underfitting" id="toc-the-balance-between-overfitting-and-underfitting" class="nav-link" data-scroll-target="#the-balance-between-overfitting-and-underfitting">8.3 The balance between overfitting and underfitting</a></li>
   </ul></li>
-  <li><a href="#model-1-tinyvgg-with-data-augmentation" id="toc-model-1-tinyvgg-with-data-augmentation" class="nav-link" data-scroll-target="#model-1-tinyvgg-with-data-augmentation"><span class="header-section-number">6.13</span> 9. Model 1: TinyVGG with Data Augmentation</a>
+  <li><a href="#model-1-tinyvgg-with-data-augmentation" id="toc-model-1-tinyvgg-with-data-augmentation" class="nav-link" data-scroll-target="#model-1-tinyvgg-with-data-augmentation">9. Model 1: TinyVGG with Data Augmentation</a>
   <ul class="collapse">
-  <li><a href="#create-transform-with-data-augmentation" id="toc-create-transform-with-data-augmentation" class="nav-link" data-scroll-target="#create-transform-with-data-augmentation"><span class="header-section-number">6.13.1</span> 9.1 Create transform with data augmentation</a></li>
-  <li><a href="#create-train-and-test-datasets-and-dataloaders" id="toc-create-train-and-test-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-train-and-test-datasets-and-dataloaders"><span class="header-section-number">6.13.2</span> 9.2 Create train and test <code>Dataset</code>’s and <code>DataLoader</code>’s</a></li>
-  <li><a href="#construct-and-train-model-1" id="toc-construct-and-train-model-1" class="nav-link" data-scroll-target="#construct-and-train-model-1"><span class="header-section-number">6.13.3</span> 9.3 Construct and train Model 1</a></li>
-  <li><a href="#plot-the-loss-curves-of-model-1" id="toc-plot-the-loss-curves-of-model-1" class="nav-link" data-scroll-target="#plot-the-loss-curves-of-model-1"><span class="header-section-number">6.13.4</span> 9.4 Plot the loss curves of Model 1</a></li>
+  <li><a href="#create-transform-with-data-augmentation" id="toc-create-transform-with-data-augmentation" class="nav-link" data-scroll-target="#create-transform-with-data-augmentation">9.1 Create transform with data augmentation</a></li>
+  <li><a href="#create-train-and-test-datasets-and-dataloaders" id="toc-create-train-and-test-datasets-and-dataloaders" class="nav-link" data-scroll-target="#create-train-and-test-datasets-and-dataloaders">9.2 Create train and test <code>Dataset</code>’s and <code>DataLoader</code>’s</a></li>
+  <li><a href="#construct-and-train-model-1" id="toc-construct-and-train-model-1" class="nav-link" data-scroll-target="#construct-and-train-model-1">9.3 Construct and train Model 1</a></li>
+  <li><a href="#plot-the-loss-curves-of-model-1" id="toc-plot-the-loss-curves-of-model-1" class="nav-link" data-scroll-target="#plot-the-loss-curves-of-model-1">9.4 Plot the loss curves of Model 1</a></li>
   </ul></li>
-  <li><a href="#compare-model-results" id="toc-compare-model-results" class="nav-link" data-scroll-target="#compare-model-results"><span class="header-section-number">6.14</span> 10. Compare model results</a></li>
-  <li><a href="#make-a-prediction-on-a-custom-image" id="toc-make-a-prediction-on-a-custom-image" class="nav-link" data-scroll-target="#make-a-prediction-on-a-custom-image"><span class="header-section-number">6.15</span> 11. Make a prediction on a custom image</a>
+  <li><a href="#compare-model-results" id="toc-compare-model-results" class="nav-link" data-scroll-target="#compare-model-results">10. Compare model results</a></li>
+  <li><a href="#make-a-prediction-on-a-custom-image" id="toc-make-a-prediction-on-a-custom-image" class="nav-link" data-scroll-target="#make-a-prediction-on-a-custom-image">11. Make a prediction on a custom image</a>
   <ul class="collapse">
-  <li><a href="#loading-in-a-custom-image-with-pytorch" id="toc-loading-in-a-custom-image-with-pytorch" class="nav-link" data-scroll-target="#loading-in-a-custom-image-with-pytorch"><span class="header-section-number">6.15.1</span> 11.1 Loading in a custom image with PyTorch</a></li>
-  <li><a href="#predicting-on-custom-images-with-a-trained-pytorch-model" id="toc-predicting-on-custom-images-with-a-trained-pytorch-model" class="nav-link" data-scroll-target="#predicting-on-custom-images-with-a-trained-pytorch-model"><span class="header-section-number">6.15.2</span> 11.2 Predicting on custom images with a trained PyTorch model</a></li>
-  <li><a href="#putting-custom-image-prediction-together-building-a-function" id="toc-putting-custom-image-prediction-together-building-a-function" class="nav-link" data-scroll-target="#putting-custom-image-prediction-together-building-a-function"><span class="header-section-number">6.15.3</span> 11.3 Putting custom image prediction together: building a function</a></li>
+  <li><a href="#loading-in-a-custom-image-with-pytorch" id="toc-loading-in-a-custom-image-with-pytorch" class="nav-link" data-scroll-target="#loading-in-a-custom-image-with-pytorch">11.1 Loading in a custom image with PyTorch</a></li>
+  <li><a href="#predicting-on-custom-images-with-a-trained-pytorch-model" id="toc-predicting-on-custom-images-with-a-trained-pytorch-model" class="nav-link" data-scroll-target="#predicting-on-custom-images-with-a-trained-pytorch-model">11.2 Predicting on custom images with a trained PyTorch model</a></li>
+  <li><a href="#putting-custom-image-prediction-together-building-a-function" id="toc-putting-custom-image-prediction-together-building-a-function" class="nav-link" data-scroll-target="#putting-custom-image-prediction-together-building-a-function">11.3 Putting custom image prediction together: building a function</a></li>
   </ul></li>
-  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways"><span class="header-section-number">6.16</span> Main takeaways</a></li>
-  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제"><span class="header-section-number">6.17</span> 연습 문제</a></li>
-  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료"><span class="header-section-number">6.18</span> 추가 학습 자료</a></li>
+  <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways">Main takeaways</a></li>
+  <li><a href="#연습-문제" id="toc-연습-문제" class="nav-link" data-scroll-target="#연습-문제">연습 문제</a></li>
+  <li><a href="#추가-학습-자료" id="toc-추가-학습-자료" class="nav-link" data-scroll-target="#추가-학습-자료">추가 학습 자료</a></li>
   </ul>
 </nav>
     </div>
@@ -296,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></h1>
+<h1 class="title"><span class="chapter-title">04 - PyTorch 사용자 정의 데이터셋</span></h1>
 </div>
 
 
@@ -318,8 +307,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The steps we took are similar across many different problems in machine learning.</p>
 <p>Find a dataset, turn the dataset into numbers, build a model (or find an existing model) to find patterns in those numbers that can be used for prediction.</p>
 <p>PyTorch has many built-in datasets used for a wide number of machine learning benchmarks, however, you’ll often want to use your own <strong>custom dataset</strong>.</p>
-<section id="what-is-a-custom-dataset" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="what-is-a-custom-dataset"><span class="header-section-number">6.1</span> What is a custom dataset?</h2>
+<section id="what-is-a-custom-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-custom-dataset">What is a custom dataset?</h2>
 <p>A <strong>custom dataset</strong> is a collection of data relating to a specific problem you’re working on.</p>
 <p>In essence, a <strong>custom dataset</strong> can be comprised of almost anything.</p>
 <p>For example, if we were building a food image classification app like <a href="https://nutrify.app">Nutrify</a>, our custom dataset might be images of food.</p>
@@ -331,8 +320,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>But sometimes these existing functions may not be enough.</p>
 <p>In that case, we can always subclass <code>torch.utils.data.Dataset</code> and customize it to our liking.</p>
 </section>
-<section id="이번-장에서-다룰-내용" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="이번-장에서-다룰-내용"><span class="header-section-number">6.2</span> 이번 장에서 다룰 내용</h2>
+<section id="이번-장에서-다룰-내용" class="level2">
+<h2 class="anchored" data-anchor-id="이번-장에서-다룰-내용">이번 장에서 다룰 내용</h2>
 <p>We’re going to be applying the PyTorch Workflow we covered in <a href="https://www.learnpytorch.io/01_pytorch_workflow/">notebook 01</a> and <a href="https://www.learnpytorch.io/02_pytorch_classification/">notebook 02</a> to a computer vision problem.</p>
 <p>But instead of using an in-built PyTorch dataset, we’re going to be using our own dataset of pizza, steak and sushi images.</p>
 <p>The goal will be to load these images and then build a model to train and predict on them.</p>
@@ -402,14 +391,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="도움을-받을-수-있는-곳" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="도움을-받을-수-있는-곳"><span class="header-section-number">6.3</span> 도움을 받을 수 있는 곳</h2>
+<section id="도움을-받을-수-있는-곳" class="level2">
+<h2 class="anchored" data-anchor-id="도움을-받을-수-있는-곳">도움을 받을 수 있는 곳</h2>
 <p>All of the materials for this course <a href="https://github.com/mrdbourke/pytorch-deep-learning">live on GitHub</a>.</p>
 <p>If you run into trouble, you can ask a question on the course <a href="https://github.com/mrdbourke/pytorch-deep-learning/discussions">GitHub Discussions page</a> there too.</p>
 <p>And of course, there’s the <a href="https://pytorch.org/docs/stable/index.html">PyTorch documentation</a> and <a href="https://discuss.pytorch.org/">PyTorch developer forums</a>, a very helpful place for all things PyTorch.</p>
 </section>
-<section id="importing-pytorch-and-setting-up-device-agnostic-code" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="importing-pytorch-and-setting-up-device-agnostic-code"><span class="header-section-number">6.4</span> 0. Importing PyTorch and setting up device-agnostic code</h2>
+<section id="importing-pytorch-and-setting-up-device-agnostic-code" class="level2">
+<h2 class="anchored" data-anchor-id="importing-pytorch-and-setting-up-device-agnostic-code">0. Importing PyTorch and setting up device-agnostic code</h2>
 <div id="cell-6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
@@ -433,8 +422,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="get-data" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="get-data"><span class="header-section-number">6.5</span> 1. Get data</h2>
+<section id="get-data" class="level2">
+<h2 class="anchored" data-anchor-id="get-data">1. Get data</h2>
 <p>First thing’s first we need some data.</p>
 <p>And like any good cooking show, some data has already been prepared for us.</p>
 <p>We’re going to start small.</p>
@@ -485,8 +474,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="become-one-with-the-data-data-preparation" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="become-one-with-the-data-data-preparation"><span class="header-section-number">6.6</span> 2. Become one with the data (data preparation)</h2>
+<section id="become-one-with-the-data-data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="become-one-with-the-data-data-preparation">2. Become one with the data (data preparation)</h2>
 <p>Dataset downloaded!</p>
 <p>Time to become one with it.</p>
 <p>This is another important step before building a model.</p>
@@ -579,8 +568,8 @@ There are 0 directories and 72 images in 'data\pizza_steak_sushi\train\sushi'.</
  WindowsPath('data/pizza_steak_sushi/test'))</code></pre>
 </div>
 </div>
-<section id="visualize-an-image" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="visualize-an-image"><span class="header-section-number">6.6.1</span> 2.1 Visualize an image</h3>
+<section id="visualize-an-image" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-an-image">2.1 Visualize an image</h3>
 <p>Okay, we’ve seen how our directory structure is formatted.</p>
 <p>Now in the spirit of the data explorer, it’s time to <em>visualize, visualize, visualize!</em></p>
 <p>Let’s write some code to: 1. Get all of the image paths using <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob"><code>pathlib.Path.glob()</code></a> to find all of the files ending in <code>.jpg</code>. 2. Pick a random image path using Python’s <a href="https://docs.python.org/3/library/random.html#random.choice"><code>random.choice()</code></a>. 3. Get the image class name using <a href="https://docs.python.org/3/library/pathlib.html#pathlib.PurePath.parent"><code>pathlib.Path.parent.stem</code></a>. 4. And since we’re working with images, we’ll open the random image path using <a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open"><code>PIL.Image.open()</code></a> (PIL stands for Python Image Library). 5. We’ll then show the image and print some metadata.</p>
@@ -646,8 +635,8 @@ Image width: 512</code></pre>
 </div>
 </section>
 </section>
-<section id="transforming-data" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="transforming-data"><span class="header-section-number">6.7</span> 3. Transforming data</h2>
+<section id="transforming-data" class="level2">
+<h2 class="anchored" data-anchor-id="transforming-data">3. Transforming data</h2>
 <p>Now what if we wanted to load our image data into PyTorch?</p>
 <p>Before we can use our image data with PyTorch we need to:</p>
 <ol type="1">
@@ -688,8 +677,8 @@ Image width: 512</code></pre>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets, transforms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="transforming-data-with-torchvision.transforms" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="transforming-data-with-torchvision.transforms"><span class="header-section-number">6.7.1</span> 3.1 Transforming data with <code>torchvision.transforms</code></h3>
+<section id="transforming-data-with-torchvision.transforms" class="level3">
+<h3 class="anchored" data-anchor-id="transforming-data-with-torchvision.transforms">3.1 Transforming data with <code>torchvision.transforms</code></h3>
 <p>We’ve got folders of images but before we can use them with PyTorch, we need to convert them into tensors.</p>
 <p>One of the ways we can do this is by using the <code>torchvision.transforms</code> module.</p>
 <p><code>torchvision.transforms</code> contains many pre-built methods for formatting images, turning them into tensors and even manipulating them for <strong>data augmentation</strong> (the practice of altering data to make it harder for a model to learn, we’ll see this later on) purposes .</p>
@@ -775,8 +764,8 @@ Image width: 512</code></pre>
 </blockquote>
 </section>
 </section>
-<section id="option-1-loading-image-data-using-imagefolder" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="option-1-loading-image-data-using-imagefolder"><span class="header-section-number">6.8</span> 4. Option 1: Loading Image Data Using <a href="https://pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html#torchvision.datasets.ImageFolder"><code>ImageFolder</code></a></h2>
+<section id="option-1-loading-image-data-using-imagefolder" class="level2">
+<h2 class="anchored" data-anchor-id="option-1-loading-image-data-using-imagefolder">4. Option 1: Loading Image Data Using <a href="https://pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html#torchvision.datasets.ImageFolder"><code>ImageFolder</code></a></h2>
 <p>Alright, time to turn our image data into a <code>Dataset</code> capable of being used with PyTorch.</p>
 <p>Since our data is in standard image classification format, we can use the class <a href="https://pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html#torchvision.datasets.ImageFolder"><code>torchvision.datasets.ImageFolder</code></a>.</p>
 <p>Where we can pass it the file path of a target image directory as well as a series of transforms we’d like to perform on our images.</p>
@@ -915,8 +904,8 @@ Image permute shape: torch.Size([64, 64, 3]) -&gt; [height, width, color_channel
 <p>Notice the image is now more pixelated (less quality).</p>
 <p>This is due to it being resized from <code>512x512</code> to <code>64x64</code> pixels.</p>
 <p>The intuition here is that if you think the image is harder to recognize what’s going on, chances are a model will find it harder to understand too.</p>
-<section id="turn-loaded-images-into-dataloaders" class="level3" data-number="6.8.1">
-<h3 data-number="6.8.1" class="anchored" data-anchor-id="turn-loaded-images-into-dataloaders"><span class="header-section-number">6.8.1</span> 4.1 Turn loaded images into <code>DataLoader</code>’s</h3>
+<section id="turn-loaded-images-into-dataloaders" class="level3">
+<h3 class="anchored" data-anchor-id="turn-loaded-images-into-dataloaders">4.1 Turn loaded images into <code>DataLoader</code>’s</h3>
 <p>We’ve got our images as PyTorch <code>Dataset</code>’s but now let’s turn them into <code>DataLoader</code>’s.</p>
 <p>We’ll do so using <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader"><code>torch.utils.data.DataLoader</code></a>.</p>
 <p>Turning our <code>Dataset</code>’s into <code>DataLoader</code>’s makes them iterable so a model can go through learn the relationships between samples and targets (features and labels).</p>
@@ -967,8 +956,8 @@ Label shape: torch.Size([1])</code></pre>
 <p>But before we do, let’s look at another option to load images (or almost any other kind of data).</p>
 </section>
 </section>
-<section id="option-2-loading-image-data-with-a-custom-dataset" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="option-2-loading-image-data-with-a-custom-dataset"><span class="header-section-number">6.9</span> 5. Option 2: Loading Image Data with a Custom <code>Dataset</code></h2>
+<section id="option-2-loading-image-data-with-a-custom-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="option-2-loading-image-data-with-a-custom-dataset">5. Option 2: Loading Image Data with a Custom <code>Dataset</code></h2>
 <p>What if a pre-built <code>Dataset</code> creator like <a href="https://pytorch.org/vision/stable/datasets.html#torchvision.datasets.ImageFolder"><code>torchvision.datasets.ImageFolder()</code></a> didn’t exist?</p>
 <p>Or one for your specific problem didn’t exist?</p>
 <p>Well, you could build your own.</p>
@@ -1018,8 +1007,8 @@ Label shape: torch.Size([1])</code></pre>
 <pre><code>(['pizza', 'steak', 'sushi'], {'pizza': 0, 'steak': 1, 'sushi': 2})</code></pre>
 </div>
 </div>
-<section id="creating-a-helper-function-to-get-class-names" class="level3" data-number="6.9.1">
-<h3 data-number="6.9.1" class="anchored" data-anchor-id="creating-a-helper-function-to-get-class-names"><span class="header-section-number">6.9.1</span> 5.1 Creating a helper function to get class names</h3>
+<section id="creating-a-helper-function-to-get-class-names" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-helper-function-to-get-class-names">5.1 Creating a helper function to get class names</h3>
 <p>Let’s write a helper function capable of creating a list of class names and a dictionary of class names and their indexes given a directory path.</p>
 <p>To do so, we’ll: 1. Get the class names using <code>os.scandir()</code> to traverse a target directory (ideally the directory is in standard image classification format). 2. Raise an error if the class names aren’t found (if this happens, there might be something wrong with the directory structure). 3. Turn the class names into a dictionary of numerical labels, one for each class.</p>
 <p>Let’s see a small example of step 1 before we write the full function.</p>
@@ -1076,8 +1065,8 @@ Class names found: ['pizza', 'steak', 'sushi']</code></pre>
 </div>
 <p>Woohoo! Looking good!</p>
 </section>
-<section id="create-a-custom-dataset-to-replicate-imagefolder" class="level3" data-number="6.9.2">
-<h3 data-number="6.9.2" class="anchored" data-anchor-id="create-a-custom-dataset-to-replicate-imagefolder"><span class="header-section-number">6.9.2</span> 5.2 Create a custom <code>Dataset</code> to replicate <code>ImageFolder</code></h3>
+<section id="create-a-custom-dataset-to-replicate-imagefolder" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-custom-dataset-to-replicate-imagefolder">5.2 Create a custom <code>Dataset</code> to replicate <code>ImageFolder</code></h3>
 <p>Now we’re ready to build our own custom <code>Dataset</code>.</p>
 <p>We’ll build one to replicate the functionality of <code>torchvision.datasets.ImageFolder()</code>.</p>
 <p>This will be good practice, plus, it’ll reveal a few of the required steps to make your own custom <code>Dataset</code>.</p>
@@ -1197,8 +1186,8 @@ True</code></pre>
 <p>You can’t get much better than that.</p>
 <p>How about we take it up a notch and plot some random images to test our <code>__getitem__</code> override?</p>
 </section>
-<section id="create-a-function-to-display-random-images" class="level3" data-number="6.9.3">
-<h3 data-number="6.9.3" class="anchored" data-anchor-id="create-a-function-to-display-random-images"><span class="header-section-number">6.9.3</span> 5.3 Create a function to display random images</h3>
+<section id="create-a-function-to-display-random-images" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-function-to-display-random-images">5.3 Create a function to display random images</h3>
 <p>You know what time it is!</p>
 <p>Time to put on our data explorer’s hat and <em>visualize, visualize, visualize!</em></p>
 <p>Let’s create a helper function called <code>display_random_images()</code> that helps us visualize images in our <code>Dataset'</code>s.</p>
@@ -1281,8 +1270,8 @@ True</code></pre>
 <p>Nice!!!</p>
 <p>Looks like our <code>ImageFolderCustom</code> is working just as we’d like it to.</p>
 </section>
-<section id="turn-custom-loaded-images-into-dataloaders" class="level3" data-number="6.9.4">
-<h3 data-number="6.9.4" class="anchored" data-anchor-id="turn-custom-loaded-images-into-dataloaders"><span class="header-section-number">6.9.4</span> 5.4 Turn custom loaded images into <code>DataLoader</code>’s</h3>
+<section id="turn-custom-loaded-images-into-dataloaders" class="level3">
+<h3 class="anchored" data-anchor-id="turn-custom-loaded-images-into-dataloaders">5.4 Turn custom loaded images into <code>DataLoader</code>’s</h3>
 <p>We’ve got a way to turn our raw images into <code>Dataset</code>’s (features mapped to labels or <code>X</code>’s mapped to <code>y</code>’s) through our <code>ImageFolderCustom</code> class.</p>
 <p>Now how could we turn our custom <code>Dataset</code>’s into <code>DataLoader</code>’s?</p>
 <p>If you guessed by using <code>torch.utils.data.DataLoader()</code>, you’d be right!</p>
@@ -1324,8 +1313,8 @@ Label shape: torch.Size([1])</code></pre>
 <p>Let’s now take a lot at some other forms of data transforms.</p>
 </section>
 </section>
-<section id="other-forms-of-transforms-data-augmentation" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="other-forms-of-transforms-data-augmentation"><span class="header-section-number">6.10</span> 6. Other forms of transforms (data augmentation)</h2>
+<section id="other-forms-of-transforms-data-augmentation" class="level2">
+<h2 class="anchored" data-anchor-id="other-forms-of-transforms-data-augmentation">6. Other forms of transforms (data augmentation)</h2>
 <p>We’ve seen a couple of transforms on our data already but there’s plenty more.</p>
 <p>You can see them all in the <a href="https://pytorch.org/vision/stable/transforms.html"><code>torchvision.transforms</code> documentation</a>.</p>
 <p>The purpose of tranforms is to alter your images in some way.</p>
@@ -1407,13 +1396,13 @@ Label shape: torch.Size([1])</code></pre>
 </div>
 <p>Try running the cell above a few times and seeing how the original image changes as it goes through the transform.</p>
 </section>
-<section id="model-0-tinyvgg-without-data-augmentation" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="model-0-tinyvgg-without-data-augmentation"><span class="header-section-number">6.11</span> 7. Model 0: TinyVGG without data augmentation</h2>
+<section id="model-0-tinyvgg-without-data-augmentation" class="level2">
+<h2 class="anchored" data-anchor-id="model-0-tinyvgg-without-data-augmentation">7. Model 0: TinyVGG without data augmentation</h2>
 <p>Alright, we’ve seen how to turn our data from images in folders to transformed tensors.</p>
 <p>Now let’s construct a computer vision model to see if we can classify if an image is of pizza, steak or sushi.</p>
 <p>To begin, we’ll start with a simple transform, only resizing the images to <code>(64, 64)</code> and turning them into tensors.</p>
-<section id="creating-transforms-and-loading-data-for-model-0" class="level3" data-number="6.11.1">
-<h3 data-number="6.11.1" class="anchored" data-anchor-id="creating-transforms-and-loading-data-for-model-0"><span class="header-section-number">6.11.1</span> 7.1 Creating transforms and loading data for Model 0</h3>
+<section id="creating-transforms-and-loading-data-for-model-0" class="level3">
+<h3 class="anchored" data-anchor-id="creating-transforms-and-loading-data-for-model-0">7.1 Creating transforms and loading data for Model 0</h3>
 <div id="cell-86" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create simple transform</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>simple_transform <span class="op">=</span> transforms.Compose([ </span>
@@ -1460,8 +1449,8 @@ Label shape: torch.Size([1])</code></pre>
 <p><code>DataLoader</code>’s created!</p>
 <p>Let’s build a model.</p>
 </section>
-<section id="create-tinyvgg-model-class" class="level3" data-number="6.11.2">
-<h3 data-number="6.11.2" class="anchored" data-anchor-id="create-tinyvgg-model-class"><span class="header-section-number">6.11.2</span> 7.2 Create TinyVGG model class</h3>
+<section id="create-tinyvgg-model-class" class="level3">
+<h3 class="anchored" data-anchor-id="create-tinyvgg-model-class">7.2 Create TinyVGG model class</h3>
 <p>In <a href="https://www.learnpytorch.io/03_pytorch_computer_vision/#7-model-2-building-a-convolutional-neural-network-cnn">notebook 03</a>, we used the TinyVGG model from the <a href="https://poloclub.github.io/cnn-explainer/">CNN Explainer website</a>.</p>
 <p>Let’s recreate the same model, except this time we’ll be using color images instead of grayscale (<code>in_channels=3</code> instead of <code>in_channels=1</code> for RGB pixels).</p>
 <div id="cell-91" class="cell" data-execution_count="45">
@@ -1550,8 +1539,8 @@ Label shape: torch.Size([1])</code></pre>
 <p>Now that’s a nice looking model!</p>
 <p>How about we test it out with a forward pass on a single image?</p>
 </section>
-<section id="try-a-forward-pass-on-a-single-image-to-test-the-model" class="level3" data-number="6.11.3">
-<h3 data-number="6.11.3" class="anchored" data-anchor-id="try-a-forward-pass-on-a-single-image-to-test-the-model"><span class="header-section-number">6.11.3</span> 7.3 Try a forward pass on a single image (to test the model)</h3>
+<section id="try-a-forward-pass-on-a-single-image-to-test-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="try-a-forward-pass-on-a-single-image-to-test-the-model">7.3 Try a forward pass on a single image (to test the model)</h3>
 <p>A good way to test a model is to do a forward pass on a single piece of data.</p>
 <p>It’s also handy way to test the input and output shapes of our different layers.</p>
 <p>To do a forward pass on a single image, let’s: 1. Get a batch of images and labels from the <code>DataLoader</code>. 2. Get a single image from the batch and <code>unsqueeze()</code> the image so it has a batch size of <code>1</code> (so its shape fits the model). 3. Perform inference on a single image (making sure to send the image to the target <code>device</code>). 4. Print out what’s happening and convert the model’s raw output logits to prediction probabilities with <code>torch.softmax()</code> (since we’re working with multi-class data) and convert the prediction probabilities to prediction labels with <code>torch.argmax()</code>.</p>
@@ -1594,8 +1583,8 @@ Actual label:
 <p>And you’ll probably notice the predictions are often wrong.</p>
 <p>This is to be expected because the model hasn’t been trained yet and it’s essentially guessing using random weights.</p>
 </section>
-<section id="use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model" class="level3" data-number="6.11.4">
-<h3 data-number="6.11.4" class="anchored" data-anchor-id="use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model"><span class="header-section-number">6.11.4</span> 7.4 Use <code>torchinfo</code> to get an idea of the shapes going through our model</h3>
+<section id="use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model" class="level3">
+<h3 class="anchored" data-anchor-id="use-torchinfo-to-get-an-idea-of-the-shapes-going-through-our-model">7.4 Use <code>torchinfo</code> to get an idea of the shapes going through our model</h3>
 <p>Printing out our model with <code>print(model)</code> gives us an idea of what’s going on with our model.</p>
 <p>And we can print out the shapes of our data throughout the <code>forward()</code> method.</p>
 <p>However, a helpful way to get information from our model is to use <a href="https://github.com/TylerYep/torchinfo"><code>torchinfo</code></a>.</p>
@@ -1660,8 +1649,8 @@ Estimated Total Size (MB): 0.91
 <p>This because we’re starting with a small model.</p>
 <p>And if we need to increase its size later, we can.</p>
 </section>
-<section id="create-train-test-loop-functions" class="level3" data-number="6.11.5">
-<h3 data-number="6.11.5" class="anchored" data-anchor-id="create-train-test-loop-functions"><span class="header-section-number">6.11.5</span> 7.5 Create train &amp; test loop functions</h3>
+<section id="create-train-test-loop-functions" class="level3">
+<h3 class="anchored" data-anchor-id="create-train-test-loop-functions">7.5 Create train &amp; test loop functions</h3>
 <p>We’ve got data and we’ve got a model.</p>
 <p>Now let’s make some training and test loop functions to train our model on the training data and evaluate our model on the testing data.</p>
 <p>And to make sure we can use these the training and testing loops again, we’ll functionize them.</p>
@@ -1751,8 +1740,8 @@ Estimated Total Size (MB): 0.91
 </div>
 <p>Excellent!</p>
 </section>
-<section id="creating-a-train-function-to-combine-train_step-and-test_step" class="level3" data-number="6.11.6">
-<h3 data-number="6.11.6" class="anchored" data-anchor-id="creating-a-train-function-to-combine-train_step-and-test_step"><span class="header-section-number">6.11.6</span> 7.6 Creating a <code>train()</code> function to combine <code>train_step()</code> and <code>test_step()</code></h3>
+<section id="creating-a-train-function-to-combine-train_step-and-test_step" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-train-function-to-combine-train_step-and-test_step">7.6 Creating a <code>train()</code> function to combine <code>train_step()</code> and <code>test_step()</code></h3>
 <p>Now we need a way to put our <code>train_step()</code> and <code>test_step()</code> functions together.</p>
 <p>To do so, we’ll package them up in a <code>train()</code> function.</p>
 <p>This function will train the model as well as evaluate it.</p>
@@ -1805,8 +1794,8 @@ Estimated Total Size (MB): 0.91
 <span id="cb78-44"><a href="#cb78-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="train-and-evaluate-model-0" class="level3" data-number="6.11.7">
-<h3 data-number="6.11.7" class="anchored" data-anchor-id="train-and-evaluate-model-0"><span class="header-section-number">6.11.7</span> 7.7 Train and Evaluate Model 0</h3>
+<section id="train-and-evaluate-model-0" class="level3">
+<h3 class="anchored" data-anchor-id="train-and-evaluate-model-0">7.7 Train and Evaluate Model 0</h3>
 <p>Alright, alright, alright we’ve got all of the ingredients we need to train and evaluate our model.</p>
 <p>Time to put our <code>TinyVGG</code> model, <code>DataLoader</code>’s and <code>train()</code> function together to see if we can build a model capable of discerning between pizza, steak and sushi!</p>
 <p>Let’s recreate <code>model_0</code> (we don’t need to but we will for completeness) then call our <code>train()</code> function passing in the necessary parameters.</p>
@@ -1867,8 +1856,8 @@ Total training time: 65.122 seconds</code></pre>
 <p><strong>참고:</strong> Check out the <a href="https://www.learnpytorch.io/02_pytorch_classification/#5-improving-a-model-from-a-model-perspective"><em>Improving a model (from a model perspective)</em> section in notebook 02</a> for ideas on improving our TinyVGG model.</p>
 </blockquote>
 </section>
-<section id="plot-the-loss-curves-of-model-0" class="level3" data-number="6.11.8">
-<h3 data-number="6.11.8" class="anchored" data-anchor-id="plot-the-loss-curves-of-model-0"><span class="header-section-number">6.11.8</span> 7.8 Plot the loss curves of Model 0</h3>
+<section id="plot-the-loss-curves-of-model-0" class="level3">
+<h3 class="anchored" data-anchor-id="plot-the-loss-curves-of-model-0">7.8 Plot the loss curves of Model 0</h3>
 <p>From the print outs of our <code>model_0</code> training, it didn’t look like it did too well.</p>
 <p>But we can further evaluate it by plotting the model’s <strong>loss curves</strong>.</p>
 <p><strong>Loss curves</strong> show the model’s results over time.</p>
@@ -1941,8 +1930,8 @@ Total training time: 65.122 seconds</code></pre>
 <p>You could try training the model for longer and see what happens when you plot a loss curve over a longer time horizon.</p>
 </section>
 </section>
-<section id="what-should-an-ideal-loss-curve-look-like" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="what-should-an-ideal-loss-curve-look-like"><span class="header-section-number">6.12</span> 8. What should an ideal loss curve look like?</h2>
+<section id="what-should-an-ideal-loss-curve-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-should-an-ideal-loss-curve-look-like">8. What should an ideal loss curve look like?</h2>
 <p>Looking at training and test loss curves is a great way to see if your model is <strong>overfitting</strong>.</p>
 <p>An overfitting model is one that performs better (often by a considerable margin) on the training set than the validation/test set.</p>
 <p>If your training loss is far lower than your test loss, your model is <strong>overfitting</strong>.</p>
@@ -1951,8 +1940,8 @@ Total training time: 65.122 seconds</code></pre>
 <p>The ideal position for a training and test loss curve is for them to line up closely with each other.</p>
 <p><img src="https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/images/04-loss-curves-overfitting-underfitting-ideal.jpg" alt="different training and test loss curves illustrating overfitting, underfitting and the ideal loss curves" width="800"></p>
 <p><em>Left: If your training and test loss curves aren’t as low as you’d like, this is considered <strong>underfitting</strong>. </em>Middle:* When your test/validation loss is higher than your training loss this is considered <strong>overfitting</strong>. <em>Right:</em> The ideal scenario is when your training and test loss curves line up over time. This means your model is generalizing well. There are more combinations and different things loss curves can do, for more on these, see Google’s <a href="https://developers.google.com/machine-learning/testing-debugging/metrics/interpretic">Interpreting Loss Curves guide</a>.*</p>
-<section id="how-to-deal-with-overfitting" class="level3" data-number="6.12.1">
-<h3 data-number="6.12.1" class="anchored" data-anchor-id="how-to-deal-with-overfitting"><span class="header-section-number">6.12.1</span> 8.1 How to deal with overfitting</h3>
+<section id="how-to-deal-with-overfitting" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-deal-with-overfitting">8.1 How to deal with overfitting</h3>
 <p>Since the main problem with overfitting is that you’re model is fitting the training data <em>too well</em>, you’ll want to use techniques to “reign it in”.</p>
 <p>A common technique of preventing overfitting is known as <a href="https://ml-cheatsheet.readthedocs.io/en/latest/regularization.html"><strong>regularization</strong></a>.</p>
 <p>I like to think of this as “making our models more regular”, as in, capable of fitting <em>more</em> kinds of data.</p>
@@ -1998,8 +1987,8 @@ Total training time: 65.122 seconds</code></pre>
 <p>There are more methods for dealing with overfitting but these are some of the main ones.</p>
 <p>As you start to build more and more deep models, you’ll find because deep learnings are <em>so good</em> at learning patterns in data, dealing with overfitting is one of the primary problems of deep learning.</p>
 </section>
-<section id="how-to-deal-with-underfitting" class="level3" data-number="6.12.2">
-<h3 data-number="6.12.2" class="anchored" data-anchor-id="how-to-deal-with-underfitting"><span class="header-section-number">6.12.2</span> 8.2 How to deal with underfitting</h3>
+<section id="how-to-deal-with-underfitting" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-deal-with-underfitting">8.2 How to deal with underfitting</h3>
 <p>When a model is <a href="https://developers.google.com/machine-learning/glossary#underfitting"><strong>underfitting</strong></a> it is considered to have poor predictive power on the training and test sets.</p>
 <p>In essence, an underfitting model will fail to reduce the loss values to a desired level.</p>
 <p>Right now, looking at our current loss curves, I’d considered our <code>TinyVGG</code> model, <code>model_0</code>, to be underfitting the data.</p>
@@ -2040,8 +2029,8 @@ Total training time: 65.122 seconds</code></pre>
 </tbody>
 </table>
 </section>
-<section id="the-balance-between-overfitting-and-underfitting" class="level3" data-number="6.12.3">
-<h3 data-number="6.12.3" class="anchored" data-anchor-id="the-balance-between-overfitting-and-underfitting"><span class="header-section-number">6.12.3</span> 8.3 The balance between overfitting and underfitting</h3>
+<section id="the-balance-between-overfitting-and-underfitting" class="level3">
+<h3 class="anchored" data-anchor-id="the-balance-between-overfitting-and-underfitting">8.3 The balance between overfitting and underfitting</h3>
 <p>None of the methods discussed above are silver bullets, meaning, they don’t always work.</p>
 <p>And preventing overfitting and underfitting is possibly the most active area of machine learning research.</p>
 <p>Since everone wants their models to fit better (less underfitting) but not so good they don’t generalize well and perform in the real world (less overfitting).</p>
@@ -2052,14 +2041,14 @@ Total training time: 65.122 seconds</code></pre>
 <p>We’ll see the power of transfer learning in a later notebook.</p>
 </section>
 </section>
-<section id="model-1-tinyvgg-with-data-augmentation" class="level2" data-number="6.13">
-<h2 data-number="6.13" class="anchored" data-anchor-id="model-1-tinyvgg-with-data-augmentation"><span class="header-section-number">6.13</span> 9. Model 1: TinyVGG with Data Augmentation</h2>
+<section id="model-1-tinyvgg-with-data-augmentation" class="level2">
+<h2 class="anchored" data-anchor-id="model-1-tinyvgg-with-data-augmentation">9. Model 1: TinyVGG with Data Augmentation</h2>
 <p>Time to try out another model!</p>
 <p>This time, let’s load in the data and use <strong>data augmentation</strong> to see if it improves our results in anyway.</p>
 <p>First, we’ll compose a training transform to include <code>transforms.TrivialAugmentWide()</code> as well as resize and turn our images into tensors.</p>
 <p>We’ll do the same for a testing transform except without the data augmentation.</p>
-<section id="create-transform-with-data-augmentation" class="level3" data-number="6.13.1">
-<h3 data-number="6.13.1" class="anchored" data-anchor-id="create-transform-with-data-augmentation"><span class="header-section-number">6.13.1</span> 9.1 Create transform with data augmentation</h3>
+<section id="create-transform-with-data-augmentation" class="level3">
+<h3 class="anchored" data-anchor-id="create-transform-with-data-augmentation">9.1 Create transform with data augmentation</h3>
 <div id="cell-121" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create training transform with TrivialAugment</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>train_transform_trivial_augment <span class="op">=</span> transforms.Compose([</span>
@@ -2077,8 +2066,8 @@ Total training time: 65.122 seconds</code></pre>
 <p>Wonderful!</p>
 <p>Now let’s turn our images into <code>Dataset</code>’s using <code>torchvision.datasets.ImageFolder()</code> and then into <code>DataLoader</code>’s with <code>torch.utils.data.DataLoader()</code>.</p>
 </section>
-<section id="create-train-and-test-datasets-and-dataloaders" class="level3" data-number="6.13.2">
-<h3 data-number="6.13.2" class="anchored" data-anchor-id="create-train-and-test-datasets-and-dataloaders"><span class="header-section-number">6.13.2</span> 9.2 Create train and test <code>Dataset</code>’s and <code>DataLoader</code>’s</h3>
+<section id="create-train-and-test-datasets-and-dataloaders" class="level3">
+<h3 class="anchored" data-anchor-id="create-train-and-test-datasets-and-dataloaders">9.2 Create train and test <code>Dataset</code>’s and <code>DataLoader</code>’s</h3>
 <p>We’ll make sure the train <code>Dataset</code> uses the <code>train_transform_trivial_augment</code> and the test <code>Dataset</code> uses the <code>test_transform</code>.</p>
 <div id="cell-123" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn image folders into Datasets</span></span>
@@ -2131,8 +2120,8 @@ Total training time: 65.122 seconds</code></pre>
 </div>
 </div>
 </section>
-<section id="construct-and-train-model-1" class="level3" data-number="6.13.3">
-<h3 data-number="6.13.3" class="anchored" data-anchor-id="construct-and-train-model-1"><span class="header-section-number">6.13.3</span> 9.3 Construct and train Model 1</h3>
+<section id="construct-and-train-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="construct-and-train-model-1">9.3 Construct and train Model 1</h3>
 <p>Data loaded!</p>
 <p>Now to build our next model, <code>model_1</code>, we can reuse our <code>TinyVGG</code> class from before.</p>
 <p>We’ll make sure to send it to the target device.</p>
@@ -2216,8 +2205,8 @@ Total training time: 67.543 seconds</code></pre>
 <p>It doesn’t look like our model performed very well again.</p>
 <p>Let’s check out its loss curves.</p>
 </section>
-<section id="plot-the-loss-curves-of-model-1" class="level3" data-number="6.13.4">
-<h3 data-number="6.13.4" class="anchored" data-anchor-id="plot-the-loss-curves-of-model-1"><span class="header-section-number">6.13.4</span> 9.4 Plot the loss curves of Model 1</h3>
+<section id="plot-the-loss-curves-of-model-1" class="level3">
+<h3 class="anchored" data-anchor-id="plot-the-loss-curves-of-model-1">9.4 Plot the loss curves of Model 1</h3>
 <p>Since we’ve got the results of <code>model_1</code> saved in a results dictionary, <code>model_1_results</code>, we can plot them using <code>plot_loss_curves()</code>.</p>
 <div id="cell-132" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>plot_loss_curves(model_1_results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2237,8 +2226,8 @@ Total training time: 67.543 seconds</code></pre>
 <p>What are some methods you could try to use to achieve these?</p>
 </section>
 </section>
-<section id="compare-model-results" class="level2" data-number="6.14">
-<h2 data-number="6.14" class="anchored" data-anchor-id="compare-model-results"><span class="header-section-number">6.14</span> 10. Compare model results</h2>
+<section id="compare-model-results" class="level2">
+<h2 class="anchored" data-anchor-id="compare-model-results">10. Compare model results</h2>
 <p>Even though our models our performing quite poorly, we can still write code to compare them.</p>
 <p>Let’s first turn our model results in pandas DataFrames.</p>
 <div id="cell-135" class="cell" data-execution_count="61">
@@ -2352,8 +2341,8 @@ Total training time: 67.543 seconds</code></pre>
 <p>It looks like our models both performed equally poorly and were kind of sporadic (the metrics go up and down sharply).</p>
 <p>If you built <code>model_2</code>, what would you do differently to try and improve performance?</p>
 </section>
-<section id="make-a-prediction-on-a-custom-image" class="level2" data-number="6.15">
-<h2 data-number="6.15" class="anchored" data-anchor-id="make-a-prediction-on-a-custom-image"><span class="header-section-number">6.15</span> 11. Make a prediction on a custom image</h2>
+<section id="make-a-prediction-on-a-custom-image" class="level2">
+<h2 class="anchored" data-anchor-id="make-a-prediction-on-a-custom-image">11. Make a prediction on a custom image</h2>
 <p>If you’ve trained a model on a certain dataset, chances are you’d like to make a prediction on on your own custom data.</p>
 <p>In our case, since we’ve trained a model on pizza, steak and sushi images, how could we use our model to make a prediction on one of our own images?</p>
 <p>To do so, we can load an image and then <strong>preprocess it in a way that matches the type of data our model was trained on</strong>.</p>
@@ -2384,8 +2373,8 @@ Total training time: 67.543 seconds</code></pre>
 <pre><code>data\04-pizza-dad.jpeg already exists, skipping download.</code></pre>
 </div>
 </div>
-<section id="loading-in-a-custom-image-with-pytorch" class="level3" data-number="6.15.1">
-<h3 data-number="6.15.1" class="anchored" data-anchor-id="loading-in-a-custom-image-with-pytorch"><span class="header-section-number">6.15.1</span> 11.1 Loading in a custom image with PyTorch</h3>
+<section id="loading-in-a-custom-image-with-pytorch" class="level3">
+<h3 class="anchored" data-anchor-id="loading-in-a-custom-image-with-pytorch">11.1 Loading in a custom image with PyTorch</h3>
 <p>Excellent!</p>
 <p>Looks like we’ve got a custom image downloaded and ready to go at <code>data/04-pizza-dad.jpeg</code>.</p>
 <p>Time to load it in.</p>
@@ -2556,8 +2545,8 @@ Custom image dtype: torch.float32</code></pre>
 </div>
 </div>
 </section>
-<section id="predicting-on-custom-images-with-a-trained-pytorch-model" class="level3" data-number="6.15.2">
-<h3 data-number="6.15.2" class="anchored" data-anchor-id="predicting-on-custom-images-with-a-trained-pytorch-model"><span class="header-section-number">6.15.2</span> 11.2 Predicting on custom images with a trained PyTorch model</h3>
+<section id="predicting-on-custom-images-with-a-trained-pytorch-model" class="level3">
+<h3 class="anchored" data-anchor-id="predicting-on-custom-images-with-a-trained-pytorch-model">11.2 Predicting on custom images with a trained PyTorch model</h3>
 <p>Beautiful, it looks like our image data is now in the same format our model was trained on.</p>
 <p>Except for one thing…</p>
 <p>It’s <code>shape</code>.</p>
@@ -2826,8 +2815,8 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 <p>Having prediction probabilities this similar could mean a couple of things: 1. The model is trying to predict all three classes at the same time (there may be an image containing pizza, steak and sushi). 2. The model doesn’t really know what it wants to predict and is in turn just assigning similar values to each of the classes.</p>
 <p>Our case is number 2, since our model is poorly trained, it is basically <em>guessing</em> the prediction.</p>
 </section>
-<section id="putting-custom-image-prediction-together-building-a-function" class="level3" data-number="6.15.3">
-<h3 data-number="6.15.3" class="anchored" data-anchor-id="putting-custom-image-prediction-together-building-a-function"><span class="header-section-number">6.15.3</span> 11.3 Putting custom image prediction together: building a function</h3>
+<section id="putting-custom-image-prediction-together-building-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="putting-custom-image-prediction-together-building-a-function">11.3 Putting custom image prediction together: building a function</h3>
 <p>Doing all of the above steps every time you’d like to make a prediction on a custom image would quickly become tedious.</p>
 <p>So let’s put them all together in a function we can easily use over and over again.</p>
 <p>Specifically, let’s make a function that: 1. Takes in a target image path and converts to the right datatype for our model (<code>torch.float32</code>). 2. Makes sure the target image pixel values are in the range <code>[0, 1]</code>. 3. Transforms the target image if necessary. 4. Makes sure the model is on the target device. 5. Makes a prediction on the target image with a trained model (ensuring the image is the right size and on the same device as the model). 6. Converts the model’s output logits to prediction probabilities. 7. Converts the prediction probabilities to prediction labels. 8. Plots the target image alongside the model prediction and prediction probability.</p>
@@ -2902,8 +2891,8 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 </blockquote>
 </section>
 </section>
-<section id="main-takeaways" class="level2" data-number="6.16">
-<h2 data-number="6.16" class="anchored" data-anchor-id="main-takeaways"><span class="header-section-number">6.16</span> Main takeaways</h2>
+<section id="main-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="main-takeaways">Main takeaways</h2>
 <p>We’ve covered a fair bit in this module.</p>
 <p>Let’s summarise it with a few dot points.</p>
 <ul>
@@ -2919,8 +2908,8 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 </ol></li>
 </ul>
 </section>
-<section id="연습-문제" class="level2" data-number="6.17">
-<h2 data-number="6.17" class="anchored" data-anchor-id="연습-문제"><span class="header-section-number">6.17</span> 연습 문제</h2>
+<section id="연습-문제" class="level2">
+<h2 class="anchored" data-anchor-id="연습-문제">연습 문제</h2>
 <p>All of the exercises are focused on practicing the code in the sections above.</p>
 <p>You should be able to complete them by referencing each section or by following the resource(s) linked.</p>
 <p>All exercises should be completed using <a href="https://pytorch.org/docs/stable/notes/cuda.html#device-agnostic-code">device-agnostic code</a>.</p>
@@ -2947,8 +2936,8 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 </ul></li>
 </ol>
 </section>
-<section id="추가-학습-자료" class="level2" data-number="6.18">
-<h2 data-number="6.18" class="anchored" data-anchor-id="추가-학습-자료"><span class="header-section-number">6.18</span> 추가 학습 자료</h2>
+<section id="추가-학습-자료" class="level2">
+<h2 class="anchored" data-anchor-id="추가-학습-자료">추가 학습 자료</h2>
 <ul>
 <li>To practice your knowledge of PyTorch <code>Dataset</code>’s and <code>DataLoader</code>’s through PyTorch <a href="https://pytorch.org/tutorials/beginner/basics/data_tutorial.html">datasets and dataloaders tutorial notebook</a>.</li>
 <li>Spend 10-minutes reading the <a href="https://pytorch.org/vision/stable/transforms.html">PyTorch <code>torchvision.transforms</code> documentation</a>.
@@ -3371,12 +3360,12 @@ Prediction label: tensor([0], device='cuda:0')</code></pre>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03_pytorch_computer_vision.html" class="pagination-link" aria-label="03 - PyTorch 컴퓨터 비전">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">03 - PyTorch 컴퓨터 비전</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05_pytorch_going_modular.html" class="pagination-link" aria-label="05 - PyTorch 모듈화">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">05 - PyTorch 모듈화</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-title">05 - PyTorch 모듈화</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
